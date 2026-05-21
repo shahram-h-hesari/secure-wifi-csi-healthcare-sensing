@@ -1,40 +1,38 @@
 # Data Folder
 
-## Data Policy
+## Disclaimer
 
-**No real clinical, private, or patient data is included in this repository.**
-
-This folder is reserved for datasets used in experiments. All current examples use **synthetic, simulated CSI-like data** generated programmatically in the notebook and source files.
+This repository currently uses synthetic CSI-like time-series data for demonstration purposes. It does not use real patient data, real clinical data, or validated WiFi CSI measurements. Results are intended only to demonstrate the research workflow and should not be interpreted as clinical or real-world fall detection performance.
 
 ---
 
-## Current Data
+## What Is in This Folder?
 
-- All data used in the current version of this repository is **synthetically generated** using NumPy.
-- Synthetic data simulates basic CSI-like time-series patterns for two classes:
-  - Normal activity
-  - Fall-like event
-- This data is created on-the-fly in `notebooks/01_csi_signal_exploration.ipynb` and `src/simulate_csi.py`.
-- It does **not** represent real-world WiFi channel measurements, patient data, or clinical recordings.
+This folder is reserved for datasets used in experiments. Currently, it contains no data files.
 
----
+**No real clinical data is included in this repository.**  
+**No private data is included.**  
+**No patient data of any kind is included.**
 
-## Future Data
-
-Real CSI datasets may be incorporated in future versions of this repository **only if**:
-
-1. The dataset is publicly available and properly licensed for research use.
-2. The dataset does not contain personally identifiable information (PII) or protected health information (PHI).
-3. The dataset is ethically appropriate for use and consistent with IRB/ethical research guidelines.
-4. Clear attribution and licensing documentation is included.
-
-Potential future public datasets under consideration (subject to license review):
-- UT-HAR (University of Toronto Human Activity Recognition)
-- Widar 3.0 (Tsinghua University CSI gesture dataset)
-- Other publicly available WiFi sensing benchmarks
+All current examples use synthetic CSI-like time-series data that is generated programmatically in the notebook and source files (`src/simulate_csi.py`). No external data files are needed to run the current version.
 
 ---
 
-## Important Disclaimer
+## Future Data Policy
 
-> This repository does not contain, process, or store real patient data. It is not a clinical system. All current experiments are based on synthetic, simulated data for research and learning purposes only.
+Future datasets will only be added to this repository if they meet all of the following conditions:
+
+1. Publicly available and freely accessible
+2. Properly licensed for research use
+3. Ethically appropriate (no private patient data, no sensitive health records)
+4. Accompanied by proper attribution and citation
+
+> Future versions may add real public WiFi CSI datasets if they are publicly available, properly licensed, and ethically appropriate.
+
+---
+
+## Author
+
+**Shahram H. Hesari**  
+PhD Candidate, Electrical and Computer Engineering  
+Portland State University
