@@ -1,24 +1,27 @@
 # Figures Folder
 
-Figures generated from notebooks can be saved here. Examples may include synthetic CSI-like signals, filtered signals, feature plots, and confusion matrices.
+This folder is reserved for figures generated from notebooks and experiments in this repository.
 
----
+## Current Figure Status
+
+At this stage, all figures are expected to be generated from synthetic CSI-like time-series data.
+
+No figures in this repository should be interpreted as real WiFi CSI measurements, real fall events, clinical results, or real-world fall detection performance.
 
 ## What May Be Saved Here
 
-- Plots of synthetic CSI-like time-series signals (normal activity vs. fall-like events)
-- Filtered and preprocessed signal plots
-- Feature distribution plots
-- Confusion matrix visualizations from baseline classifier evaluation
-- Any other figures generated during notebook exploration
+Examples of figures that may be saved in this folder include:
 
----
+- synthetic CSI-like time-series signals for normal activity and fall-like events
+- filtered or smoothed signal plots
+- feature distribution plots
+- confusion matrix visualizations from baseline classifier evaluation
+- figures illustrating the synthetic signal-processing workflow
+- future visualizations related to synthetic perturbation or robustness analysis
 
-## Note
+## Data Source Note
 
-All figures in this folder are generated from synthetic data only. They do not represent real WiFi CSI measurements or real fall events.
-
----
+All current figures are based on synthetic data only. They do not represent real patient data, real clinical data, validated WiFi CSI measurements, or real eldercare deployment results.
 
 ## Author
 
