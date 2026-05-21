@@ -1,83 +1,61 @@
 # References
 
-This file collects key references related to the research areas covered in this repository.
-Citations are organized by topic. Placeholders marked "to be added" will be updated as the literature review progresses.
+This file collects key references related to the research areas covered in this repository. Citations are organized by topic. Placeholders marked "To be added" will be updated as the literature review progresses.
+
+> References will be expanded as the repository develops.
 
 ---
 
-## 1. WiFi CSI Sensing
+## WiFi CSI Sensing
 
-- **Halperin, D. et al. (2011).** Tool Release: Gathering 802.11n Traces with Channel State Information.
-  *ACM SIGCOMM Computer Communication Review.*
-  [https://dl.acm.org/doi/10.1145/1925861.1925870](https://dl.acm.org/doi/10.1145/1925861.1925870)
+1. Halperin, D., Hu, W., Sheth, A., & Wetherall, D. (2011). **Tool release: Gathering 802.11n traces with channel state information.** ACM SIGCOMM Computer Communication Review, 41(1), 53–53. https://doi.org/10.1145/1925861.1925870
 
-- **Gringoli, F. et al. (2019).** Free Your CSI: A Channel State Information Extraction Platform For Modern Wi-Fi Chipsets.
-  *Proceedings of the 13th International Workshop on Wireless Network Testbeds, Experimental Evaluation & Characterization (WiNTECH).*
-  [https://dl.acm.org/doi/10.1145/3349623.3355477](https://dl.acm.org/doi/10.1145/3349623.3355477)
+2. Yang, Z., Zhou, Z., & Liu, Y. (2013). **From RSSI to CSI: Indoor localization via channel response.** ACM Computing Surveys, 46(2), Article 25. https://doi.org/10.1145/2543581.2543592
 
-- **Yang, Z. et al. (2013).** From RSSI to CSI: Indoor localization via channel response.
-  *ACM Computing Surveys.*
-  [https://dl.acm.org/doi/10.1145/2543581.2543592](https://dl.acm.org/doi/10.1145/2543581.2543592)
+3. Wang, W., Liu, A. X., Shahzad, M., Ling, K., & Lu, S. (2015). **Understanding and modeling of WiFi signal based human activity recognition.** Proceedings of ACM MobiCom. https://doi.org/10.1145/2789168.2790093
 
-- *(to be added)* Survey of WiFi CSI-based human activity recognition systems.
+4. To be added — survey paper on WiFi CSI-based sensing for healthcare.
 
 ---
 
-## 2. Fall Detection and Healthcare Sensing
+## Fall Detection and Healthcare Sensing
 
-- **Wang, Y. et al. (2017).** E-eyes: Device-free Location-Oriented Activity Identification System Using Fine-Grained WiFi Signatures.
-  *(to be added — verify full citation and DOI)*
+1. Gu, Y., Wang, Y., & Liu, T. (2019). **WiFall: Device-free fall detection by wireless networks.** IEEE Transactions on Mobile Computing, 16(2), 581–594. https://doi.org/10.1109/TMC.2016.2557792
 
-- **Wang, W. et al. (2017).** Understanding and Modeling of WiFi Signal Based Human Activity Recognition.
-  *MobiCom.* *(to be added — verify full citation and DOI)*
+2. Wang, H., Zhang, D., Wang, Y., Ma, J., Wang, Y., & Li, S. (2016). **RT-Fall: A real-time and contactless fall detection system with commodity WiFi devices.** IEEE Transactions on Mobile Computing, 16(2), 511–526. https://doi.org/10.1109/TMC.2016.2557795
 
-- **Palipana, S. et al. (2018).** FallDeFi: Ubiquitous Fall Detection using Commodity Wi-Fi Devices.
-  *Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT).*
-  [https://dl.acm.org/doi/10.1145/3161183](https://dl.acm.org/doi/10.1145/3161183)
+3. To be added — review of contactless vital-sign monitoring using WiFi CSI.
 
-- **Gu, Y. et al. (2017).** WiFall: Device-Free Fall Detection by Wireless Networks.
-  *IEEE Transactions on Mobile Computing.*
-  [https://doi.org/10.1109/TMC.2016.2557792](https://doi.org/10.1109/TMC.2016.2557792)
-
-- *(to be added)* Review of contactless vital sign monitoring using WiFi/RF sensors.
+4. To be added — paper on respiration-rate estimation using CSI.
 
 ---
 
-## 3. Physical-Layer Security and Adversarial Robustness
+## Physical-Layer Security and Adversarial Robustness
 
-- **Shi, Y. et al. (2021).** Adversarial Attack and Defense in Deep Learning-Based Wireless Sensing.
-  *(to be added — search IEEE Xplore for exact citation)*
+1. Goodfellow, I. J., Shlens, J., & Szegedy, C. (2015). **Explaining and harnessing adversarial examples.** International Conference on Learning Representations (ICLR). https://arxiv.org/abs/1412.6572
 
-- **Roos, T. et al. (2002).** A probabilistic approach to WLAN user location estimation.
-  *International Journal of Wireless Information Networks.* *(included for baseline localization context)*
+2. To be added — paper on physical-layer attacks on WiFi sensing systems.
 
-- *(to be added)* Papers on spoofing attacks against WiFi sensing systems.
+3. To be added — paper on adversarial robustness for time-series classification.
 
-- *(to be added)* Adversarial examples in RF and wireless domains.
-
-- *(to be added)* Physical-layer authentication and anomaly detection in IEEE 802.11 systems.
+4. To be added — paper on spoofing attacks in wireless sensing environments.
 
 ---
 
-## 4. Signal Processing and Machine Learning
+## Signal Processing and Machine Learning
 
-- **Oppenheim, A. V. & Schafer, R. W.** *Discrete-Time Signal Processing.* Prentice Hall.
-  (Standard reference for digital signal processing fundamentals)
+1. Pedregosa, F., et al. (2011). **Scikit-learn: Machine learning in Python.** Journal of Machine Learning Research, 12, 2825–2830. https://jmlr.org/papers/v12/pedregosa11a.html
 
-- **Pedregosa, F. et al. (2011).** Scikit-learn: Machine Learning in Python.
-  *Journal of Machine Learning Research, 12, 2825-2830.*
-  [https://jmlr.org/papers/v12/pedregosa11a.html](https://jmlr.org/papers/v12/pedregosa11a.html)
+2. Virtanen, P., et al. (2020). **SciPy 1.0: Fundamental algorithms for scientific computing in Python.** Nature Methods, 17, 261–272. https://doi.org/10.1038/s41592-019-0686-2
 
-- **Virtanen, P. et al. (2020).** SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python.
-  *Nature Methods, 17, 261-272.*
-  [https://doi.org/10.1038/s41592-019-0686-2](https://doi.org/10.1038/s41592-019-0686-2)
+3. Harris, C. R., et al. (2020). **Array programming with NumPy.** Nature, 585, 357–362. https://doi.org/10.1038/s41586-020-2649-2
 
-- *(to be added)* References on time-series feature extraction for health sensing.
+4. To be added — reference on time-series feature extraction for human activity recognition.
 
 ---
 
-## Notes
+## Author
 
-- This reference list will be expanded as the literature review for the dissertation progresses.
-- Citations marked *(to be added)* need verification via Google Scholar or IEEE Xplore before use in academic work.
-- All references should be independently verified by the researcher before citing in publications.
+**Shahram H. Hesari**  
+PhD Candidate, Electrical and Computer Engineering  
+Portland State University
