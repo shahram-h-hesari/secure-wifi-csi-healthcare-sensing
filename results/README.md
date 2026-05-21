@@ -1,35 +1,48 @@
 # Results Folder
 
+This folder is reserved for outputs generated from notebooks and experiments in this repository.
+
+## Current Results Status
+
+All current results are based on synthetic CSI-like time-series data only.
+
+The current notebook may generate basic workflow outputs such as:
+
+- synthetic signal plots
+- smoothed signal plots
+- extracted feature tables
+- baseline classifier accuracy
+- confusion matrix visualizations
+
 ## Disclaimer
 
 This repository currently uses synthetic CSI-like time-series data for demonstration purposes. It does not use real patient data, real clinical data, or validated WiFi CSI measurements. Results are intended only to demonstrate the research workflow and should not be interpreted as clinical or real-world fall detection performance.
 
----
+## How to Interpret Results
 
-## Status
+Any accuracy, confusion matrix, or classifier output generated in this repository should be interpreted only as a demonstration of the workflow.
 
-Results in this folder are preliminary and based entirely on synthetic, simulated data.
+These results do **not** represent:
 
----
+- real-world fall detection performance
+- clinical validation
+- real WiFi CSI sensing performance
+- deployment readiness
+- medical-device performance
+- real patient or eldercare monitoring outcomes
 
-## Important Notes
+## Future Results Policy
 
-- All results in this folder are generated from **synthetic CSI-like signals**, not from real WiFi measurements.
-- Results **should not be interpreted as real-world fall detection performance**.
-- Results **should not be interpreted as clinical accuracy or clinical validation**.
-- Accuracy scores and confusion matrices in this folder are intended only to demonstrate that the workflow runs correctly end-to-end.
-- High accuracy on synthetic data does not imply the system would perform well on real data.
+Future results may be added only when they are clearly documented with:
 
----
+- data source
+- preprocessing steps
+- model settings
+- evaluation method
+- limitations
+- whether the data is synthetic or real
 
-## What May Be Saved Here
-
-- Accuracy scores from baseline classifier evaluation
-- Confusion matrix outputs
-- Feature importance summaries (if added in future versions)
-- Summary tables from notebook runs
-
----
+If real public datasets are added later, their results will be clearly separated from synthetic demonstration results.
 
 ## Author
 
