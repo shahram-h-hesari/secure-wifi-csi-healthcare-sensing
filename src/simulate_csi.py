@@ -1,14 +1,25 @@
 """
 simulate_csi.py
 
-Functions to generate synthetic CSI-like time-series signals.
+Synthetic CSI-like signal generation utilities for the WiFi CSI fall detection
+research prototype.
 
-NOTE: All data produced here is SYNTHETIC and SIMULATED.
-It does not represent real WiFi channel measurements,
-patient data, or clinical recordings.
+This module generates simple one-dimensional time-series signals that loosely
+represent CSI-like amplitude behavior for two conceptual classes:
+
+- Class 0: normal activity
+- Class 1: fall-like event
+
+IMPORTANT:
+This repository currently uses synthetic CSI-like time-series data for demonstration
+purposes. It does not use real patient data, real clinical data, or validated WiFi
+CSI measurements. Results are intended only to demonstrate the research workflow
+and should not be interpreted as clinical or real-world fall detection performance.
 
 Part of the wifi-csi-fall-detection research prototype.
+
 Author: Shahram H. Hesari
+PhD Candidate, Electrical and Computer Engineering
 Portland State University
 """
 
@@ -19,35 +30,44 @@ def generate_normal_signal(length=200, noise_level=0.05, random_state=None):
     """
     Generate a synthetic CSI-like signal representing normal activity.
 
-    Normal activity is modeled as low-amplitude smooth fluctuations
-    with small random noise. This simulates a relatively stable
-    WiFi channel with minor environmental changes (e.g., slow walking
-    or sitting still).
+    Normal activity is modeled as low-amplitude smooth fluctuations with
+    small random noise. This represents a simplified, relatively stable
+    wireless sensing condition.
 
     Parameters
     ----------
-    length : int
-        Number of time steps in the signal. Default is 200.
-    noise_level : float
+    length : int, default=200
+        Number of time samples in the signal.
+
+    noise_level : float, default=0.05
         Standard deviation of the Gaussian noise added to the signal.
-        Default is 0.05.
-    random_state : int or None
-        Random seed for reproducibility. Default is None.
+
+    random_state : int or None, default=None
+        Random seed for reproducibility.
 
     Returns
     -------
-    signal : numpy.ndarray
-        1D array of shape (length,) representing the synthetic signal.
+    signal : numpy.ndarray of shape (length,)
+        One-dimensional synthetic CSI-like amplitude signal.
+
+    Notes
+    -----
+    This signal is synthetic and is not a real WiFi CSI measurement.
     """
-    # Set random seed if provided for reproducibility
-    rng = np.random.RandomState(random_state)
+    if length <= 0:
+        raise ValueError("length must be a positive integer.")
 
-    # Create a time axis from 0 to 2*pi
-    t = np.linspace(0, 2 * np.pi, length)
+    if noise_level < 0:
+        raise ValueError("noise_level must be non-negative.")
 
-    # Normal activity: smooth low-amplitude sine wave with small noise
-    # The sine wave simulates slow periodic channel fluctuations
-    signal = 0.3 * np.sin(t) + noise_level * rng.randn(length)
+    rng = np.random.default_rng(random_state)
+    t = np.linspace(0, 1, length)
+
+    slow_variation = 0.15 * np.sin(2 * np.pi * 3 * t)
+    small_motion = 0.05 * np.sin(2 * np.pi * 12 * t)
+    noise = noise_level * rng.normal(size=length)
+
+    signal = 1.0 + slow_variation + small_motion + noise
 
     return signal
 
@@ -57,91 +77,139 @@ def generate_fall_like_signal(length=200, noise_level=0.05, random_state=None):
     Generate a synthetic CSI-like signal representing a fall-like event.
 
     A fall-like event is modeled as a sudden transient spike followed by
-    a recovery period. This simulates an abrupt change in the WiFi channel
-    caused by a rapid body movement (i.e., a simulated fall).
+    a short recovery dip. This is a simplified conceptual model of an abrupt
+    change in the wireless sensing signal.
 
     Parameters
     ----------
-    length : int
-        Number of time steps in the signal. Default is 200.
-    noise_level : float
+    length : int, default=200
+        Number of time samples in the signal.
+
+    noise_level : float, default=0.05
         Standard deviation of the Gaussian noise added to the signal.
-        Default is 0.05.
-    random_state : int or None
-        Random seed for reproducibility. Default is None.
+
+    random_state : int or None, default=None
+        Random seed for reproducibility.
 
     Returns
     -------
-    signal : numpy.ndarray
-        1D array of shape (length,) representing the synthetic signal.
+    signal : numpy.ndarray of shape (length,)
+        One-dimensional synthetic CSI-like amplitude signal.
+
+    Notes
+    -----
+    This signal is synthetic and is not a real WiFi CSI measurement or a
+    validated fall signature.
     """
-    # Set random seed if provided for reproducibility
-    rng = np.random.RandomState(random_state)
+    if length <= 0:
+        raise ValueError("length must be a positive integer.")
 
-    # Start with a low-amplitude baseline similar to normal activity
-    t = np.linspace(0, 2 * np.pi, length)
-    signal = 0.3 * np.sin(t) + noise_level * rng.randn(length)
+    if noise_level < 0:
+        raise ValueError("noise_level must be non-negative.")
 
-    # Add a transient spike to simulate the fall event
-    # The spike occurs at roughly 40% into the signal
-    spike_center = int(0.4 * length)
-    spike_width = int(0.05 * length)  # spike lasts ~5% of signal length
+    rng = np.random.default_rng(random_state)
 
-    # Create a Gaussian-shaped spike with high amplitude
-    for i in range(length):
-        distance_from_spike = abs(i - spike_center)
-        if distance_from_spike < spike_width:
-            # The closer to the spike center, the higher the value
-            signal[i] += 2.0 * np.exp(-0.5 * (distance_from_spike / (spike_width / 3)) ** 2)
+    signal = generate_normal_signal(
+        length=length,
+        noise_level=noise_level,
+        random_state=random_state
+    )
+
+    center = rng.integers(low=int(length * 0.35), high=int(length * 0.70))
+    width = rng.integers(low=max(3, int(length * 0.025)), high=max(4, int(length * 0.07)))
+    amplitude = rng.uniform(0.8, 1.3)
+
+    sample_index = np.arange(length)
+    transient = amplitude * np.exp(
+        -0.5 * ((sample_index - center) / width) ** 2
+    )
+
+    signal = signal + transient
+
+    recovery_start = min(center + width, length - 1)
+    recovery_end = min(center + 3 * width, length)
+
+    if recovery_start < recovery_end:
+        signal[recovery_start:recovery_end] -= 0.15
 
     return signal
 
 
-def generate_dataset(n_samples_per_class=100, length=200, random_state=42):
+def generate_dataset(n_samples_per_class=100, length=200, noise_level=0.05, random_state=42):
     """
     Generate a labeled dataset of synthetic CSI-like signals.
 
-    Creates n_samples_per_class samples for each of two classes:
-    - Class 0: normal activity signals
-    - Class 1: fall-like event signals
+    The dataset contains two classes:
+
+    - Class 0: normal activity
+    - Class 1: fall-like event
 
     Parameters
     ----------
-    n_samples_per_class : int
-        Number of samples to generate per class. Default is 100.
-    length : int
-        Length of each signal (number of time steps). Default is 200.
-    random_state : int
-        Random seed for reproducibility. Default is 42.
+    n_samples_per_class : int, default=100
+        Number of synthetic samples to generate for each class.
+
+    length : int, default=200
+        Number of time samples in each signal.
+
+    noise_level : float, default=0.05
+        Standard deviation of Gaussian noise added to each signal.
+
+    random_state : int, default=42
+        Random seed for reproducibility.
 
     Returns
     -------
-    X : numpy.ndarray
-        Array of shape (2 * n_samples_per_class, length) containing all signals.
-    y : numpy.ndarray
-        Array of shape (2 * n_samples_per_class,) containing labels (0 or 1).
+    X : numpy.ndarray of shape (2 * n_samples_per_class, length)
+        Synthetic CSI-like time-series signals.
+
+    y : numpy.ndarray of shape (2 * n_samples_per_class,)
+        Class labels.
+        0 = normal activity
+        1 = fall-like event
+
+    Notes
+    -----
+    This dataset is synthetic and should be used only to demonstrate the
+    signal-processing and machine learning workflow.
     """
-    X = []  # will hold all signal arrays
-    y = []  # will hold all labels
+    if n_samples_per_class <= 0:
+        raise ValueError("n_samples_per_class must be a positive integer.")
 
-    # Generate normal activity signals (class 0)
-    for i in range(n_samples_per_class):
-        # Use a different random seed for each sample
-        seed = random_state + i
-        signal = generate_normal_signal(length=length, noise_level=0.05, random_state=seed)
-        X.append(signal)
-        y.append(0)  # class 0 = normal activity
+    if length <= 0:
+        raise ValueError("length must be a positive integer.")
 
-    # Generate fall-like event signals (class 1)
-    for i in range(n_samples_per_class):
-        # Use a different random seed for each sample
-        seed = random_state + n_samples_per_class + i
-        signal = generate_fall_like_signal(length=length, noise_level=0.05, random_state=seed)
-        X.append(signal)
-        y.append(1)  # class 1 = fall-like event
+    if noise_level < 0:
+        raise ValueError("noise_level must be non-negative.")
 
-    # Convert to numpy arrays
-    X = np.array(X)
-    y = np.array(y)
+    rng = np.random.default_rng(random_state)
+
+    signals = []
+    labels = []
+
+    for _ in range(n_samples_per_class):
+        seed = rng.integers(0, 1_000_000)
+        signals.append(
+            generate_normal_signal(
+                length=length,
+                noise_level=noise_level,
+                random_state=seed
+            )
+        )
+        labels.append(0)
+
+    for _ in range(n_samples_per_class):
+        seed = rng.integers(0, 1_000_000)
+        signals.append(
+            generate_fall_like_signal(
+                length=length,
+                noise_level=noise_level,
+                random_state=seed
+            )
+        )
+        labels.append(1)
+
+    X = np.array(signals)
+    y = np.array(labels)
 
     return X, y
