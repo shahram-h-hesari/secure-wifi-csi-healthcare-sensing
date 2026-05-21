@@ -1,27 +1,52 @@
-# Python
+# Python cache and compiled files
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.so
 
-# Jupyter Notebook
+# Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# Environment variables
+# Environment variables and secrets
 .env
+.env.*
+*.env
 
 # Virtual environments
 .venv/
 venv/
 env/
+ENV/
 
-# macOS
+# macOS system files
 .DS_Store
 
-# Private or raw data (never commit these)
+# Windows system files
+Thumbs.db
+ehthumbs.db
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Private or raw data
+# Do not commit private, clinical, patient, or raw experimental data.
 data/raw/
 data/private/
 
-# IDE
-.vscode/
-.idea/
+# Temporary files
+*.tmp
+*.log
+
+# Python packaging/build outputs
+build/
+dist/
+*.egg-info/
+
+# Test and coverage outputs
+.coverage
+htmlcov/
+.pytest_cache/
