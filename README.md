@@ -1,69 +1,74 @@
-# WiFi CSI Fall Detection — Research Prototype
+# WiFi CSI Fall Detection Research Prototype
 
-> **Early-stage research prototype** | PhD research in Electrical & Computer Engineering | Portland State University
+> **Disclaimer:** This repository currently uses synthetic CSI-like time-series data for demonstration purposes. It does not use real patient data, real clinical data, or validated WiFi CSI measurements. Results are intended only to demonstrate the research workflow and should not be interpreted as clinical or real-world fall detection performance.
 
 ---
 
-## Project Title
+## Overview
 
-**WiFi CSI-Based Fall Detection: Signal Processing and ML Prototype**
+This is an early-stage research prototype exploring WiFi Channel State Information (CSI)-inspired fall detection using synthetic CSI-like signals, signal processing, and machine learning workflows. The goal is to demonstrate a clean, beginner-friendly pipeline from signal generation through baseline ML classification.
+
+This repository is intended to support PhD research in Electrical and Computer Engineering at Portland State University. It is not a clinical product, not a production system, and not a validated fall detection tool.
 
 ---
 
 ## Research Motivation
 
-Falls are a leading cause of injury among older adults. Contactless, privacy-preserving monitoring systems that do not require wearables or cameras offer a promising path toward eldercare safety. WiFi Channel State Information (CSI) provides rich multipath signal data that can be passively extracted from standard 802.11 hardware, making it an accessible substrate for ambient human activity sensing research.
+Contactless sensing using WiFi CSI is being actively explored for eldercare and healthcare monitoring applications. Potential use cases include:
 
----
+- Fall detection for elderly individuals
+- Respiration-rate and heart-rate monitoring
+- Sleep apnea-related monitoring
+- Continuous vital-sign sensing without wearable devices
 
-## Research Context
-
-This repository supports PhD research in the area of **secure WiFi-based vital sign and activity sensing**, with a focus on:
-- Fall detection and eldercare monitoring
-- Respiration-rate and heart-rate estimation
-- Apnea-related monitoring
-- Adversarial robustness and physical-layer security for CSI-based systems
-
-This is an **early-stage, actively evolving prototype**. It is not a finished system. It is being developed as part of coursework and dissertation research while the author is concurrently learning Python and machine learning.
+WiFi-based sensing is attractive because it is non-invasive, does not require the user to wear any device, and can operate using existing WiFi infrastructure in homes and care facilities.
 
 ---
 
 ## Why WiFi CSI?
 
-WiFi CSI is derived from OFDM preamble symbols, channel training sequences, and pilot subcarriers during the physical-layer channel estimation process — **before higher-layer security mechanisms protect the payload**. This means:
+WiFi Channel State Information (CSI) describes how a wireless signal propagates from a transmitter to a receiver through the environment. Key points:
 
-- CSI is inherently accessible at the radio level without encryption barriers
-- It reflects fine-grained multipath channel conditions sensitive to body movement
-- It does not require wearable sensors or cameras
-- It enables passive, ambient monitoring using commodity WiFi infrastructure
-
-This dual-use nature makes CSI-based sensing both powerful for healthcare applications and potentially vulnerable at the physical layer.
+- CSI captures amplitude and phase information across multiple OFDM subcarriers.
+- Human motion — such as walking, falling, or breathing — changes the multipath propagation of WiFi signals.
+- These changes in CSI can be analyzed to infer information about human activity and vital signs.
+- CSI-based sensing is contactless and does not require dedicated hardware beyond a standard WiFi setup.
 
 ---
 
 ## Physical-Layer Security Motivation
 
-Because CSI is extracted before cryptographic protections apply, CSI-based sensing systems face an underexplored attack surface:
+WiFi CSI is derived from OFDM preamble, training symbols, and pilot subcarriers before higher-layer security mechanisms protect the payload. This creates an underexplored attack surface for WiFi-based sensing systems. If an adversary manipulates the RF channel, injects spoofed signals, or perturbs CSI measurements, the sensing pipeline could be corrupted or degraded even without directly attacking application-layer security controls.
 
-- **RF channel manipulation** — an adversary could alter the wireless environment to distort CSI
-- **Spoofed signal injection** — fabricated 802.11 frames may pollute CSI measurements
-- **Synthetic CSI perturbation** — adversarial perturbations could suppress or trigger false detections
-
-Understanding these threats is essential before deploying WiFi sensing in safety-critical healthcare settings. This repository begins to explore these concepts in a synthetic, controlled setting.
+This repository includes a conceptual threat model in `docs/threat_model.md` documenting these risks at a research level.
 
 ---
 
 ## Current Scope
 
-This prototype currently:
-- Generates **synthetic CSI-like time-series signals** simulating normal activity and fall-like events
-- Applies basic signal preprocessing (smoothing, normalization)
-- Extracts simple time-series features (mean, std, energy, peak-to-peak, max amplitude)
-- Trains a **baseline scikit-learn classifier** (Logistic Regression / Random Forest)
-- Evaluates with accuracy score and confusion matrix
-- Documents an initial threat model for physical-layer security concepts
+Version 1 of this repository focuses on:
 
-> All data used in this repository is **synthetic and simulated**. No real patient, clinical, or private data is used.
+- Generating synthetic CSI-like time-series signals
+- Simulating two classes: normal activity (class 0) and fall-like events (class 1)
+- Preprocessing time-series signals (smoothing and normalization)
+- Extracting simple statistical features (mean, std, energy, peak-to-peak range, max, min, variance)
+- Training a baseline scikit-learn classifier (Logistic Regression or Random Forest)
+- Evaluating with accuracy score and confusion matrix
+- Documenting limitations and a conceptual threat-model
+
+**All data used in this version is synthetic and simulated. No real WiFi CSI measurements are used.**
+
+---
+
+## What This Repository Is NOT
+
+- **Not** a clinical fall detection system
+- **Not** trained on real patient data
+- **Not** clinically validated
+- **Not** a production ML system
+- **Not** a medical device or clinical decision support tool
+- **Not** a deployment-ready application
+- **Not** a benchmark against real-world WiFi CSI datasets
 
 ---
 
@@ -72,77 +77,74 @@ This prototype currently:
 ```
 wifi-csi-fall-detection/
 │
-├── README.md                    # This file
-├── requirements.txt             # Python dependencies
-├── references.md                # Research references
-├── LICENSE                      # MIT License
-├── .gitignore                   # Python .gitignore
+├── README.md                  # This file
+├── requirements.txt           # Python dependencies
+├── references.md              # Research references
+├── LICENSE                    # MIT License
+├── .gitignore                 # Git ignore rules
 │
 ├── data/
-│   └── README.md                # Data policy and notes
+│   └── README.md              # Data disclaimer and description
 │
 ├── notebooks/
 │   └── 01_csi_signal_exploration.ipynb  # Main exploration notebook
 │
 ├── src/
-│   ├── simulate_csi.py          # Synthetic CSI signal generation
-│   ├── preprocessing.py         # Signal smoothing and normalization
-│   ├── features.py              # Time-series feature extraction
-│   └── baseline_model.py        # Baseline ML classifier and evaluation
+│   ├── __init__.py            # Package init
+│   ├── simulate_csi.py        # Synthetic signal generation
+│   ├── preprocessing.py       # Signal preprocessing functions
+│   ├── features.py            # Feature extraction functions
+│   └── baseline_model.py      # Baseline ML classifier
 │
 ├── results/
-│   └── README.md                # Results notes
+│   └── README.md              # Results disclaimer
 │
 ├── figures/
-│   └── README.md                # Figures from notebooks
+│   └── README.md              # Figures description
 │
 └── docs/
-    └── threat_model.md          # Physical-layer threat model notes
+    └── threat_model.md        # Conceptual physical-layer threat model
 ```
 
 ---
 
 ## Tools Used
 
-| Tool | Purpose |
-|---|---|
-| Python 3.x | Core programming language |
-| NumPy | Numerical computation and signal arrays |
-| Pandas | Data organization and feature tables |
-| Matplotlib | Signal visualization and plots |
-| SciPy | Signal filtering and processing |
-| scikit-learn | Baseline ML classification and evaluation |
-| Jupyter Notebook | Interactive exploration and documentation |
+- **Python** — primary programming language
+- **NumPy** — numerical computing and signal generation
+- **Pandas** — feature table creation and data handling
+- **Matplotlib** — signal and result visualization
+- **SciPy** — signal filtering and preprocessing
+- **scikit-learn** — baseline ML classifier, train/test split, evaluation
+- **Jupyter Notebook** — interactive exploration and documentation
+
+> PyTorch may be added later for deep learning-based time-series models after the baseline workflow is complete.
 
 ---
 
 ## Planned Next Steps
 
-- [ ] Integrate a small real-world public CSI dataset (e.g., UT-HAR, Widar, or similar — subject to license review)
-- [ ] Add CNN or LSTM-based deep learning classifier (PyTorch)
-- [ ] Implement adversarial perturbation examples on synthetic CSI
-- [ ] Expand threat model with concrete attack simulations
-- [ ] Explore federated learning concepts for privacy-preserving multi-site sensing
-- [ ] Add cross-validation and more robust evaluation metrics
-- [ ] Improve signal simulation with more realistic OFDM-like multipath characteristics
+- Add real public WiFi CSI dataset if available and properly licensed
+- Improve preprocessing pipeline
+- Add more feature extraction methods
+- Compare multiple baseline classifiers
+- Add synthetic perturbation experiments
+- Add adversarial robustness analysis
+- Add PyTorch time-series model as a future extension
+- Document all limitations carefully
 
----
-
-## Important Disclaimer
-
-> **This repository is a research prototype. It is not a clinically validated fall detection system and should not be used for medical decision-making.**
->
-> All experiments use synthetic, simulated data. Results reported in notebooks are for demonstration and learning purposes only and do not represent real-world clinical performance. This project is part of an academic research and learning process.
+> Future versions may add real public WiFi CSI datasets if they are publicly available, properly licensed, and ethically appropriate.
 
 ---
 
 ## Author
 
-PhD Candidate, Electrical & Computer Engineering
+**Shahram H. Hesari**  
+PhD Candidate, Electrical and Computer Engineering  
 Portland State University
-
-*Research areas: WiFi CSI sensing, healthcare AI, physical-layer security, adversarial ML, signal processing*
 
 ---
 
-*Last updated: May 2026*
+## License
+
+MIT License. See [LICENSE](LICENSE) for details.
