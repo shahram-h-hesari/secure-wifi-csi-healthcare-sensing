@@ -1,71 +1,91 @@
 # Physical-Layer Threat Model for WiFi CSI Sensing
 
----
+This document summarizes conceptual security risks for WiFi Channel State Information (CSI)-based sensing systems. It is intended to support the research context of this repository and does **not** describe implemented attack tools, validated exploits, or instructions for compromising real systems.
 
 ## Purpose
 
-This document summarizes conceptual security risks for WiFi CSI-based sensing systems. It is intended as a research-level framing document to support the PhD research context of this repository. It does not describe implemented attack tools or validated exploits.
+WiFi CSI-based sensing systems use physical-layer wireless measurements to infer environmental or human activity patterns. In healthcare and eldercare applications, this may include contactless fall detection, respiration monitoring, heart-rate estimation, or activity recognition.
 
----
+The purpose of this document is to frame potential physical-layer risks that could affect the reliability of CSI-based sensing pipelines, especially when those pipelines use machine learning models.
 
 ## What Is WiFi CSI?
 
-WiFi Channel State Information (CSI) describes how a wireless signal propagates from a transmitter to a receiver through the physical environment. CSI is extracted at the physical layer from OFDM preamble symbols, training sequences, and pilot subcarriers. It captures amplitude and phase information across multiple subcarriers and can reflect changes in the environment caused by human motion, breathing, or other physical disturbances.
+WiFi Channel State Information describes how a wireless signal propagates from a transmitter to a receiver through the physical environment. CSI can capture changes in signal amplitude and phase across OFDM subcarriers.
 
-Because CSI is derived before higher-layer encryption and security mechanisms are applied, it represents a distinct and underexplored attack surface in WiFi-based sensing systems.
-
----
+In WiFi systems, CSI is derived from physical-layer information such as OFDM preamble symbols, training sequences, and pilot subcarriers. Because human motion, breathing, posture changes, and environmental movement can alter the wireless channel, CSI is often studied as a signal source for contactless sensing.
 
 ## Why CSI-Based Sensing Can Be Vulnerable
 
-CSI is derived from the physical behavior of RF signals in the environment. Unlike application-layer data, which is typically protected by encryption (e.g., WPA3), CSI reflects raw channel conditions that:
+CSI reflects physical-layer channel behavior rather than application-layer payload content. Higher-layer security mechanisms can protect data payloads, but they do not necessarily protect the sensing features derived from the wireless channel itself.
 
-- Can be observed or estimated without decrypting payload data
-- Can be manipulated by altering the RF channel (e.g., introducing interference or reflectors)
-- Can be perturbed by injecting synthetic signals into the wireless medium
-- Can be adversarially crafted to fool machine learning models trained on CSI features
+This creates an underexplored attack surface for WiFi-based sensing systems. A sensing pipeline that depends on CSI may be affected by changes in the RF environment, spoofed or interfering signals, or perturbations that alter extracted signal features.
 
-This means that a sensing pipeline built on CSI can potentially be attacked at the physical layer, bypassing application-layer security protections entirely.
-
----
+In safety-sensitive healthcare sensing, this matters because even small changes in the sensing input could affect downstream classification, detection, or alert-generation behavior.
 
 ## Example Threat Scenarios
 
+The following scenarios are conceptual research examples. They are not implemented in this repository.
+
 ### 1. RF-Channel Manipulation
-An adversary physically alters the RF propagation environment to corrupt CSI measurements. Examples include introducing metallic reflectors, RF absorbers, or intentional interference sources near the sensing area. This can degrade CSI quality or shift signal characteristics in ways that confuse a fall detection classifier.
+
+An adversary or environmental disturbance alters the RF propagation environment in a way that changes CSI measurements. For example, reflections, attenuation, interference, or movement near the sensing area could shift the observed signal patterns.
+
+In a fall detection pipeline, this could reduce sensing reliability or cause the extracted features to differ from those observed during normal training conditions.
 
 ### 2. Spoofed Signal Injection
-An adversary transmits RF signals that mimic the CSI patterns associated with normal activity, even during an actual fall event. If the sensing system cannot distinguish spoofed signals from genuine CSI, critical fall alerts may be suppressed.
+
+A sensing system may be affected if external RF signals create patterns that resemble expected activity signatures. In a safety-critical context, spoofed or misleading wireless patterns could potentially interfere with reliable event detection.
+
+This repository does not implement spoofing. This scenario is included only to motivate the need for robust sensing and anomaly-aware evaluation.
 
 ### 3. Synthetic CSI Perturbation
-An adversary adds carefully crafted perturbations to the CSI measurement stream. These perturbations are small enough to be imperceptible at the application layer but large enough to shift extracted features beyond a classifier's decision boundary, causing misclassification.
+
+CSI-based machine learning pipelines may be sensitive to perturbations in amplitude, phase, or derived features. Synthetic perturbation studies can help evaluate how much signal change is required before a baseline classifier changes its prediction.
+
+In this repository, any future perturbation examples should remain synthetic and educational, using simulated data only.
 
 ### 4. Adversarial Manipulation of Sensing Features
-An adversary with knowledge of the ML model architecture and feature extraction pipeline crafts inputs that cause systematic misclassification. This is analogous to adversarial examples in computer vision but applied to the CSI feature domain (e.g., manipulating mean amplitude, energy, or peak-to-peak range features).
 
----
+Machine learning models trained on CSI-derived features may be vulnerable to adversarial changes in the feature space. For example, changes in statistical features such as energy, peak-to-peak range, variance, or maximum amplitude could influence a classifier’s decision boundary.
+
+This is conceptually related to adversarial examples in other ML domains, but here the focus is on wireless sensing and signal-derived features.
 
 ## Possible Safety Impacts
 
 ### 1. Missed Falls
-A fall event occurs but the sensing system classifies it as normal activity due to signal manipulation. The fall is not detected and no alert is generated, potentially delaying emergency response.
+
+A genuine fall event may be incorrectly classified as normal activity. In an eldercare setting, this could delay assistance or prevent an alert from being generated.
 
 ### 2. False Alarms
-Normal activity is classified as a fall event due to spoofed or perturbed CSI signals. Repeated false alarms can erode trust in the system and lead to alert fatigue among caregivers.
+
+Normal activity may be incorrectly classified as a fall. Repeated false alarms can reduce trust in the system and contribute to caregiver alert fatigue.
 
 ### 3. Suppressed Alerts
-An adversary actively prevents the fall detection system from generating any alert, even when a genuine fall occurs. This is a denial-of-sensing attack targeting safety-critical functionality.
+
+A sensing pipeline may fail to generate an alert when one is needed. In safety-critical monitoring, this type of failure is especially important to study.
 
 ### 4. Time-to-Alarm Delay
-CSI perturbations cause the system to take longer to classify an event correctly, introducing dangerous delays in emergency response time for elderly or vulnerable individuals.
 
----
+Perturbed or degraded CSI measurements may delay correct classification, increasing the time between an event and a response.
 
 ## Current Repository Limitation
 
-The current repository demonstrates only synthetic concept-level examples and does not validate real-world attack feasibility or clinical impact. All signals are simulated, no real adversarial attacks are implemented, and no real-world sensing environment has been tested. The threat scenarios described above are theoretical and are intended to frame the research motivation, not to describe validated vulnerabilities.
+This repository currently demonstrates only synthetic concept-level examples. It does not validate real-world attack feasibility, clinical impact, or real deployment behavior.
 
----
+All signals are simulated. No real patient data, clinical data, private data, or validated WiFi CSI measurements are included. No real adversarial attacks are implemented. The threat scenarios described here are theoretical and are intended only to frame the research motivation.
+
+## Relationship to the Current Notebook
+
+The current notebook demonstrates a simple synthetic workflow:
+
+1. generate synthetic CSI-like signals,
+2. simulate normal and fall-like classes,
+3. apply basic preprocessing,
+4. extract simple features,
+5. train a baseline scikit-learn classifier,
+6. evaluate results on synthetic data.
+
+The notebook does not test real attacks or real healthcare sensing performance.
 
 ## Author
 
