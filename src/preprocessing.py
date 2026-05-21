@@ -2,87 +2,80 @@
 preprocessing.py
 
 Signal preprocessing functions for CSI-like time-series data.
-
 Includes smoothing/filtering and normalization utilities.
 
 NOTE: Designed for synthetic/simulated data in this research prototype.
 Not validated for clinical use.
 
 Part of the wifi-csi-fall-detection research prototype.
+Author: Shahram H. Hesari
+Portland State University
 """
 
 import numpy as np
-from scipy.ndimage import uniform_filter1d
 
 
 def smooth_signal(signal, window_size=5):
     """
-    Apply a moving average (uniform) filter to smooth the signal.
+    Smooth a signal using a simple moving average filter.
 
-    Applies 1D uniform smoothing along the time axis (axis=0),
-    independently for each subcarrier channel.
+    This reduces short-term noise in the signal by averaging
+    each point with its neighbors within a sliding window.
 
     Parameters
     ----------
-    signal : np.ndarray of shape (n_samples, n_subcarriers)
-        Raw CSI-like amplitude array
+    signal : numpy.ndarray
+        1D array representing the input signal.
     window_size : int
-        Size of the smoothing window (default: 5)
+        Number of points to include in each averaging window.
+        Larger values produce smoother signals but may reduce
+        sharp feature visibility. Default is 5.
 
     Returns
     -------
-    smoothed : np.ndarray of shape (n_samples, n_subcarriers)
-        Smoothed signal array
+    smoothed : numpy.ndarray
+        1D array of the same length as the input signal,
+        with edge values handled using 'same' convolution mode.
     """
-    # Apply uniform filter along time axis (axis=0) for each subcarrier
-    smoothed = uniform_filter1d(signal, size=window_size, axis=0)
+    # Create a uniform averaging kernel (all weights equal to 1/window_size)
+    kernel = np.ones(window_size) / window_size
+
+    # Apply convolution to compute moving average
+    # 'same' mode ensures output has the same length as input
+    smoothed = np.convolve(signal, kernel, mode='same')
+
     return smoothed
 
 
 def normalize_signal(signal):
     """
-    Normalize a signal to zero mean and unit variance (z-score normalization).
+    Normalize a signal to the range [0, 1] using min-max scaling.
 
-    Normalization is applied globally across the entire signal array.
-    This brings signals to a common scale, which helps with ML training.
+    This scales the signal so that the minimum value becomes 0
+    and the maximum value becomes 1. This is useful for comparing
+    signals with different amplitude ranges.
 
     Parameters
     ----------
-    signal : np.ndarray of shape (n_samples, n_subcarriers)
-        Input signal array
+    signal : numpy.ndarray
+        1D array representing the input signal.
 
     Returns
     -------
-    normalized : np.ndarray of shape (n_samples, n_subcarriers)
-        Normalized signal array (zero mean, unit std)
+    normalized : numpy.ndarray
+        1D array of the same length, scaled to [0, 1].
+        If the signal has zero range (all values equal),
+        returns an array of zeros to avoid division by zero.
     """
-    mean = np.mean(signal)
-    std = np.std(signal)
+    signal_min = np.min(signal)
+    signal_max = np.max(signal)
+    signal_range = signal_max - signal_min
 
-    # Avoid division by zero for flat signals
-    if std < 1e-8:
-        return signal - mean
+    # Avoid division by zero if the signal is constant
+    if signal_range == 0:
+        return np.zeros_like(signal)
 
-    normalized = (signal - mean) / std
+    # Apply min-max normalization
+    normalized = (signal - signal_min) / signal_range
+
     return normalized
-
-
-def preprocess_signal(signal, window_size=5):
-    """
-    Apply full preprocessing pipeline: smoothing followed by normalization.
-
-    Parameters
-    ----------
-    signal : np.ndarray of shape (n_samples, n_subcarriers)
-        Raw CSI-like amplitude array
-    window_size : int
-        Smoothing window size (default: 5)
-
-    Returns
-    -------
-    processed : np.ndarray of shape (n_samples, n_subcarriers)
-        Preprocessed signal array
-    """
-    smoothed = smooth_signal(signal, window_size=window_size)
-    processed = normalize_signal(smoothed)
-    return processed
