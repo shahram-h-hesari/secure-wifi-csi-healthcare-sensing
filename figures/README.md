@@ -1,28 +1,27 @@
 # Figures Folder
 
-This folder stores figures and plots exported from Jupyter notebooks.
+Figures generated from notebooks can be saved here. Examples may include synthetic CSI-like signals, filtered signals, feature plots, and confusion matrices.
 
 ---
 
-## Usage
+## What May Be Saved Here
 
-When running the notebooks, save any generated plots here using:
-
-```python
-import matplotlib.pyplot as plt
-plt.savefig('../figures/your_figure_name.png', dpi=150, bbox_inches='tight')
-```
-
----
-
-## Expected Contents
-
-As the project progresses, this folder may include:
-- CSI amplitude time-series plots (normal vs. fall-like)
-- Smoothed/filtered signal comparison plots
+- Plots of synthetic CSI-like time-series signals (normal activity vs. fall-like events)
+- Filtered and preprocessed signal plots
 - Feature distribution plots
-- Confusion matrix heatmaps
+- Confusion matrix visualizations from baseline classifier evaluation
+- Any other figures generated during notebook exploration
 
 ---
 
-> All figures in this repository are generated from **synthetic, simulated data** and are for research and demonstration purposes only.
+## Note
+
+All figures in this folder are generated from synthetic data only. They do not represent real WiFi CSI measurements or real fall events.
+
+---
+
+## Author
+
+**Shahram H. Hesari**  
+PhD Candidate, Electrical and Computer Engineering  
+Portland State University
