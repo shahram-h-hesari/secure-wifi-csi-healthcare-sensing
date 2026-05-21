@@ -1,30 +1,38 @@
 # Results Folder
 
+## Disclaimer
+
+This repository currently uses synthetic CSI-like time-series data for demonstration purposes. It does not use real patient data, real clinical data, or validated WiFi CSI measurements. Results are intended only to demonstrate the research workflow and should not be interpreted as clinical or real-world fall detection performance.
+
+---
+
 ## Status
 
-Results in this folder are **preliminary** and based entirely on **synthetic, simulated data**.
+Results in this folder are preliminary and based entirely on synthetic, simulated data.
 
 ---
 
 ## Important Notes
 
-- All results generated in this prototype use synthetically generated CSI-like signals.
-- They do **not** represent real-world WiFi sensing performance.
-- They do **not** represent clinical fall detection accuracy.
-- These results are for **learning, prototyping, and demonstration purposes only**.
+- All results in this folder are generated from **synthetic CSI-like signals**, not from real WiFi measurements.
+- Results **should not be interpreted as real-world fall detection performance**.
+- Results **should not be interpreted as clinical accuracy or clinical validation**.
+- Accuracy scores and confusion matrices in this folder are intended only to demonstrate that the workflow runs correctly end-to-end.
+- High accuracy on synthetic data does not imply the system would perform well on real data.
 
 ---
 
-## What to Expect Here
+## What May Be Saved Here
 
-As the project progresses, this folder may contain:
-- Saved confusion matrices from notebook experiments
-- Classification accuracy summaries
-- Feature importance outputs
-- Comparison tables across baseline models
-
-All outputs will be clearly labeled as synthetic/prototype results.
+- Accuracy scores from baseline classifier evaluation
+- Confusion matrix outputs
+- Feature importance summaries (if added in future versions)
+- Summary tables from notebook runs
 
 ---
 
-> **Disclaimer:** No results in this repository should be interpreted as clinical validation or real-world system performance.
+## Author
+
+**Shahram H. Hesari**  
+PhD Candidate, Electrical and Computer Engineering  
+Portland State University
