@@ -1,42 +1,33 @@
 # WiFi CSI Fall Detection Research Prototype
 
-> **Disclaimer:** This repository currently uses synthetic CSI-like time-series data for demonstration purposes.
-> It does not use real patient data, real clinical data, or validated WiFi CSI measurements.
-> Results are intended only to demonstrate the research workflow and should not be interpreted as clinical or real-world fall detection performance.
+> **Disclaimer:** This repository currently uses synthetic CSI-like time-series data for demonstration purposes. It does not use real patient data, real clinical data, or validated WiFi CSI measurements. Results are intended only to demonstrate the research workflow and should not be interpreted as clinical or real-world fall detection performance.
 
 ---
 
 ## Overview
 
-This is an early-stage research prototype exploring WiFi Channel State Information (CSI)-inspired fall detection
-using synthetic CSI-like signals, signal processing, and machine learning workflows.
-The goal is to demonstrate a clean, beginner-friendly pipeline from signal generation through preprocessing,
-feature extraction, and baseline ML classification.
+This is an early-stage research prototype exploring WiFi Channel State Information (CSI)-inspired fall detection using synthetic CSI-like signals, signal processing, and machine learning workflows. The goal is to demonstrate a clean, beginner-friendly pipeline from signal generation through preprocessing, feature extraction, and baseline ML classification.
 
-This repository is intended to support PhD research in Electrical and Computer Engineering at Portland State University.
-It is not a clinical product, not a production system, and not a validated fall detection tool.
+This repository is intended to support PhD research in Electrical and Computer Engineering at Portland State University. It is not a clinical product, not a production system, and not a validated fall detection tool.
 
 ---
 
 ## Research Motivation
 
-Contactless sensing using WiFi CSI is being explored for eldercare and healthcare monitoring applications.
-Potential use cases include:
+Contactless sensing using WiFi CSI is being explored for eldercare and healthcare monitoring applications. Potential use cases include:
 
 - Fall detection for elderly individuals
 - Respiration-rate and heart-rate monitoring
 - Sleep apnea-related monitoring
 - Continuous vital-sign sensing without wearable devices
 
-WiFi-based sensing is attractive because it is non-invasive, does not require the user to wear any device,
-and may operate using existing WiFi infrastructure in homes and care facilities.
+WiFi-based sensing is attractive because it is non-invasive, does not require the user to wear any device, and may operate using existing WiFi infrastructure in homes and care facilities.
 
 ---
 
 ## Why WiFi CSI?
 
-WiFi Channel State Information describes how a wireless signal propagates from a transmitter to a receiver
-through the environment. Key points:
+WiFi Channel State Information describes how a wireless signal propagates from a transmitter to a receiver through the environment. Key points:
 
 - CSI captures amplitude and phase information across multiple OFDM subcarriers.
 - Human motion, posture changes, breathing, and environmental movement can affect the multipath propagation of WiFi signals.
@@ -47,13 +38,9 @@ through the environment. Key points:
 
 ## Physical-Layer Security Motivation
 
-WiFi CSI is derived from OFDM preamble, training symbols, and pilot subcarriers before higher-layer security
-mechanisms protect the payload. This creates an underexplored attack surface for WiFi-based sensing systems.
-If an adversary manipulates the RF channel, injects spoofed signals, or perturbs CSI measurements,
-the sensing pipeline could be corrupted or degraded even without directly attacking application-layer security controls.
+WiFi CSI is derived from OFDM preamble, training symbols, and pilot subcarriers before higher-layer security mechanisms protect the payload. This creates an underexplored attack surface for WiFi-based sensing systems. If an adversary manipulates the RF channel, injects spoofed signals, or perturbs CSI measurements, the sensing pipeline could be corrupted or degraded even without directly attacking application-layer security controls.
 
-This repository includes a conceptual threat model in [`docs/threat_model.md`](./docs/threat_model.md)
-documenting these risks at a research level.
+This repository includes a conceptual threat model in [`docs/threat_model.md`](./docs/threat_model.md) documenting these risks at a research level.
 
 ---
 
@@ -126,21 +113,13 @@ wifi-csi-fall-detection/
     └── wifi_sensing_security/            # WiFi sensing security references
 ```
 
-> **Third-party note:** External open-source references are organized in `third_party/` and are clearly
-> separated from original work.
-> See [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) for the full attribution and license policy.
+> **Third-party note:** External open-source references are organized in `third_party/` and are clearly separated from original work. See [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) for the full attribution and license policy.
 
-> **Research prototype note:** This repository currently focuses on synthetic CSI-like data, visualization,
-> preprocessing, baseline ML workflow, and future security/robustness extensions.
-> It does not claim clinical validation or real CSI validation.
-> See [`docs/validation_status.md`](./docs/validation_status.md) for the explicit validation status.
+> **Research prototype note:** This repository currently focuses on synthetic CSI-like data, visualization, preprocessing, baseline ML workflow, and future security/robustness extensions. It does not claim clinical validation or real CSI validation. See [`docs/validation_status.md`](./docs/validation_status.md) for the explicit validation status.
 
-For an overview of the broader research direction and security motivation, see
-[`docs/security_motivation.md`](./docs/security_motivation.md) and
-[`docs/research_context.md`](./docs/research_context.md).
+For an overview of the broader research direction and security motivation, see [`docs/security_motivation.md`](./docs/security_motivation.md) and [`docs/research_context.md`](./docs/research_context.md).
 
-Related open-source projects and datasets used for literature review and technical comparison are summarized in
-[`docs/related_projects.md`](./docs/related_projects.md).
+Related open-source projects and datasets used for literature review and technical comparison are summarized in [`docs/related_projects.md`](./docs/related_projects.md).
 
 ---
 
@@ -174,15 +153,13 @@ jupyter notebook notebooks/01_csi_signal_exploration.ipynb
 - **scikit-learn** - baseline ML classifier, train/test split, and evaluation
 - **Jupyter Notebook** - interactive exploration and documentation
 
-> PyTorch may be added in a later phase for deep learning-based time-series models,
-> after the baseline workflow is complete.
+> PyTorch may be added in a later phase for deep learning-based time-series models, after the baseline workflow is complete.
 
 ---
 
 ## Development Roadmap
 
-This repository is an early-stage research prototype. The current version uses synthetic CSI-like data only;
-it is not a medical device and has not been clinically validated.
+This repository is an early-stage research prototype. The current version uses synthetic CSI-like data only; it is not a medical device and has not been clinically validated.
 
 Planned phases include:
 
@@ -198,16 +175,16 @@ For the full multi-phase roadmap, see [`docs/roadmap.md`](./docs/roadmap.md).
 
 ## Current Status
 
-The repository currently provides an early research foundation for WiFi CSI-inspired sensing and
-machine-learning exploration. The next priority is to strengthen the baseline ML workflow,
-improve feature extraction, and add robustness evaluation experiments.
+The repository currently provides an early research foundation for WiFi CSI-inspired sensing and machine-learning exploration. The next priority is to strengthen the baseline ML workflow, improve feature extraction, and add robustness evaluation experiments.
 
 ---
 
 ## Author
 
 **Shahram H. Hesari**
+
 PhD Student, Electrical and Computer Engineering
+
 Portland State University
 
 ---
@@ -216,5 +193,4 @@ Portland State University
 
 MIT License. See [`LICENSE`](./LICENSE) for details.
 
-Third-party work included in `third_party/` remains under its original license.
-See [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) for full attribution details.
+Third-party work included in `third_party/` remains under its original license. See [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) for full attribution details.
