@@ -7,19 +7,21 @@ This module includes simple smoothing and normalization functions used in the
 WiFi CSI fall detection research prototype.
 
 IMPORTANT:
-This repository currently uses synthetic CSI-like time-series data for demonstration
-purposes. It does not use real patient data, real clinical data, or validated WiFi
-CSI measurements. Results are intended only to demonstrate the research workflow
-and should not be interpreted as clinical or real-world fall detection performance.
+This repository currently uses synthetic CSI-like time-series data for
+demonstration purposes. It does not use real patient data, real clinical data,
+or validated WiFi CSI measurements. Results are intended only to demonstrate
+the research workflow and should not be interpreted as clinical or real-world
+fall detection performance.
 
 Part of the wifi-csi-fall-detection research prototype.
 
 Author: Shahram H. Hesari
-PhD Candidate, Electrical and Computer Engineering
+PhD Student, Electrical and Computer Engineering
 Portland State University
 """
 
 import numpy as np
+from scipy.ndimage import uniform_filter1d
 
 
 def smooth_signal(signal, window_size=5):
@@ -33,7 +35,6 @@ def smooth_signal(signal, window_size=5):
     ----------
     signal : array-like of shape (n_samples,)
         One-dimensional input signal.
-
     window_size : int, default=5
         Number of samples in the moving-average window.
         Larger values produce smoother signals but may reduce sharp transient
@@ -53,31 +54,20 @@ def smooth_signal(signal, window_size=5):
 
     if signal.ndim != 1:
         raise ValueError("Input signal must be one-dimensional.")
-
     if signal.size == 0:
         raise ValueError("Input signal must not be empty.")
-
-    if not isinstance(window_size, int):
-        raise TypeError("window_size must be an integer.")
-
     if window_size < 1:
         raise ValueError("window_size must be at least 1.")
 
-    if window_size > signal.size:
-        raise ValueError("window_size must not be larger than the signal length.")
-
-    kernel = np.ones(window_size) / window_size
-    smoothed = np.convolve(signal, kernel, mode="same")
-
-    return smoothed
+    return uniform_filter1d(signal, size=window_size)
 
 
-def normalize_signal(signal):
+def normalize_csi(signal):
     """
-    Normalize a one-dimensional signal using z-score normalization.
+    Normalize a CSI-like signal to zero mean and unit standard deviation.
 
-    The output signal has approximately zero mean and unit standard deviation.
-    This is useful for comparing signals with different amplitude scales.
+    This is a standard z-score normalization. It shifts the signal to have
+    mean zero and scales it so that the standard deviation equals one.
 
     Parameters
     ----------
@@ -87,37 +77,35 @@ def normalize_signal(signal):
     Returns
     -------
     normalized : numpy.ndarray
-        Z-score-normalized signal.
+        Normalized signal. If the standard deviation is zero, only mean
+        subtraction is applied.
 
     Notes
     -----
-    If the signal has zero standard deviation, this function returns a
-    zero-centered signal to avoid division by zero.
+    This function is intended for synthetic CSI-like demonstration data only.
     """
     signal = np.asarray(signal, dtype=float)
 
     if signal.ndim != 1:
         raise ValueError("Input signal must be one-dimensional.")
-
     if signal.size == 0:
         raise ValueError("Input signal must not be empty.")
 
-    mean = np.mean(signal)
     std = np.std(signal)
-
-    if std == 0:
-        return signal - mean
-
-    normalized = (signal - mean) / std
-
-    return normalized
+    if std == 0.0:
+        return signal - np.mean(signal)
+    return (signal - np.mean(signal)) / std
 
 
-def min_max_scale_signal(signal):
+# Alias so notebook imports still work with older name
+normalize_signal = normalize_csi
+
+
+def remove_mean(signal):
     """
-    Scale a one-dimensional signal to the range [0, 1].
+    Remove the mean (DC offset) from a one-dimensional signal.
 
-    This function is provided as an alternative to z-score normalization.
+    This centers the signal around zero without scaling.
 
     Parameters
     ----------
@@ -126,28 +114,82 @@ def min_max_scale_signal(signal):
 
     Returns
     -------
-    scaled : numpy.ndarray
-        Signal scaled to the range [0, 1].
+    centered : numpy.ndarray
+        Mean-subtracted signal.
 
     Notes
     -----
-    If the signal has zero range, this function returns an array of zeros.
+    This function is intended for synthetic CSI-like demonstration data only.
     """
     signal = np.asarray(signal, dtype=float)
 
     if signal.ndim != 1:
         raise ValueError("Input signal must be one-dimensional.")
-
     if signal.size == 0:
         raise ValueError("Input signal must not be empty.")
 
-    signal_min = np.min(signal)
-    signal_max = np.max(signal)
-    signal_range = signal_max - signal_min
+    return signal - np.mean(signal)
 
-    if signal_range == 0:
-        return np.zeros_like(signal)
 
-    scaled = (signal - signal_min) / signal_range
+def preprocess_signal(signal, window_size=7, normalize=True):
+    """
+    Apply a full preprocessing pipeline to a single synthetic CSI-like signal.
 
-    return scaled
+    Steps applied:
+      1. Smooth using a moving-average filter.
+      2. Optionally normalize to zero mean and unit standard deviation.
+
+    Parameters
+    ----------
+    signal : array-like of shape (n_samples,)
+        One-dimensional input signal.
+    window_size : int, default=7
+        Size of the smoothing window.
+    normalize : bool, default=True
+        Whether to apply z-score normalization after smoothing.
+
+    Returns
+    -------
+    processed : numpy.ndarray
+        Preprocessed one-dimensional signal.
+
+    Notes
+    -----
+    This function is intended for synthetic CSI-like demonstration data only.
+    """
+    processed = smooth_signal(signal, window_size=window_size)
+    if normalize:
+        processed = normalize_csi(processed)
+    return processed
+
+
+def preprocess_dataset(X, window_size=7, normalize=True):
+    """
+    Apply preprocessing to every signal in a dataset array.
+
+    Parameters
+    ----------
+    X : numpy.ndarray of shape (n_samples, signal_length)
+        Array of synthetic CSI-like signals.
+    window_size : int, default=7
+        Size of the smoothing window applied to each signal.
+    normalize : bool, default=True
+        Whether to apply z-score normalization to each signal.
+
+    Returns
+    -------
+    X_processed : numpy.ndarray of shape (n_samples, signal_length)
+        Preprocessed signal array.
+
+    Notes
+    -----
+    This function is intended for synthetic CSI-like demonstration data only.
+    """
+    X = np.asarray(X, dtype=float)
+    if X.ndim != 2:
+        raise ValueError("X must be a 2D array of shape (n_samples, signal_length).")
+
+    return np.array([
+        preprocess_signal(row, window_size=window_size, normalize=normalize)
+        for row in X
+    ])
