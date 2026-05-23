@@ -106,7 +106,23 @@ wifi-csi-fall-detection/
 │
 └── docs/
     └── threat_model.md        # Conceptual physical-layer threat model
+    ├── research_context.md     # PhD research context and positioning
+    ├── security_motivation.md  # Security threat landscape and research direction
+    ├── validation_status.md    # Explicit synthetic-data-only status
+    ├── roadmap.md              # 5-phase research trajectory
+    └── related_projects.md     # Related open-source projects and datasets
+|
+├── third_party/               # External references (clearly separated from original work)
+    ├── README.md
+    ├── wifi_sensing/          # WiFi sensing references
+    └── wifi_sensing_security/ # WiFi sensing security references
+|
+├── THIRD_PARTY_NOTICES.md     # License and attribution policy for third-party code
 ```
+
+> **Third-party note:** External open-source references are organized in `third_party/` and are clearly separated from original work. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the full attribution and license policy.
+
+> **Research prototype note:** This repository currently focuses on synthetic CSI-like data, visualization, preprocessing, baseline ML workflow, and future security/robustness extensions. It does not claim clinical validation. See [docs/validation_status.md](docs/validation_status.md) for the explicit validation status.
 
 ---
 
