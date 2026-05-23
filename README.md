@@ -126,15 +126,60 @@ wifi-csi-fall-detection/
 
 ## Planned Next Steps
 
-Future versions may:
+## Development Roadmap
 
-- improve the preprocessing pipeline
-- add more feature extraction methods
-- compare multiple baseline scikit-learn classifiers
-- add synthetic perturbation experiments
-- add adversarial robustness analysis using simulated perturbations
-- add real public WiFi CSI datasets if they are publicly available, properly licensed, and ethically appropriate
-- document all limitations carefully as the repository develops
+This repository is an early-stage research prototype for exploring WiFi CSI-inspired signal processing, machine-learning workflows, and robustness evaluation for contactless healthcare and aging-in-place sensing. The current version uses synthetic CSI-like data only. It is not a medical device and has not been clinically validated.
+
+### Phase 1 — Research Prototype Foundation
+
+- [x] Create public GitHub repository for WiFi CSI-inspired fall-detection research
+- [x] Add synthetic CSI-like signal exploration notebook
+- [x] Include basic preprocessing and visualization examples
+- [x] Add feature extraction and baseline ML workflow
+- [x] Document research motivation, current scope, and limitations
+- [x] Add conceptual physical-layer threat model
+
+### Phase 2 — Machine Learning Baseline
+
+- [ ] Improve feature extraction from CSI-like time-series data
+- [ ] Compare multiple baseline ML models, such as logistic regression, random forest, SVM, and k-nearest neighbors
+- [ ] Add evaluation metrics such as accuracy, precision, recall, F1-score, false alarm rate, and missed detection rate
+- [ ] Add clearer visual summaries of model performance
+- [ ] Improve notebook explanations for collaborators and non-specialist readers
+
+### Phase 3 — Robustness and Adversarial Evaluation
+
+- [ ] Add controlled noise and signal perturbation experiments
+- [ ] Evaluate model performance under signal distortion and environmental variation
+- [ ] Add simple adversarial perturbation experiments using simulated CSI-like signals
+- [ ] Compare clean versus perturbed model performance
+- [ ] Begin mapping ML errors to safety-relevant outcomes such as missed falls and false alerts
+
+### Phase 4 — Clinical-Safety-Aware Metrics
+
+- [ ] Add clinical-safety-oriented evaluation tables
+- [ ] Translate model errors into practical safety endpoints, including missed falls per day, false alarms per hour, and time-to-alert delay
+- [ ] Include visual summaries connecting ML performance to healthcare monitoring risk
+- [ ] Document assumptions, limitations, and validation needs
+
+### Phase 5 — Vital-Sign and Aging-in-Place Extension
+
+- [ ] Extend the roadmap toward respiratory-rate and heart-rate sensing workflows
+- [ ] Explore apnea-related monitoring scenarios using CSI-like signal patterns
+- [ ] Connect the research direction to passive in-home sensing and aging-in-place applications
+- [ ] Identify public datasets or collaboration opportunities for future validation
+
+### Phase 6 — Reproducibility and Collaboration
+
+- [ ] Improve repository structure for external collaborators
+- [ ] Add environment setup instructions
+- [ ] Add example outputs and figures
+- [ ] Add a short technical blog or project page explaining the research in plain language
+- [ ] Prepare the repository for future academic collaboration, pilot-study discussion, and publication support
+
+## Current Status
+
+The repository currently provides an early research foundation for WiFi CSI-inspired sensing and machine-learning exploration. The next priority is to strengthen the baseline ML workflow, improve feature extraction, and add robustness evaluation experiments.
 
 ---
 
