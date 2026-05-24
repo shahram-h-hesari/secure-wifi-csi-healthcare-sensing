@@ -2,7 +2,7 @@
 ## Secure WiFi CSI Healthcare Sensing — Research Prototype
 
 > **Last Updated:** 2026-05-24  
-> **Status:** Active — scaffolding complete; paper cards and reproducibility scoring in progress.
+> **Status:** Active — initial cleanup complete; 11 papers tracked; 7 with confirmed public code; 4 pending code verification
 
 ---
 
