@@ -8,7 +8,7 @@ This repository may include or reference third-party open-source projects for th
 
 Third-party projects are **not** part of the core fall-detection pipeline of this repository unless explicitly stated. Third-party claims (e.g., accuracy figures, system performance) are **not** treated as validated unless independently supported by our own experiments. The current implementation uses **synthetic CSI-like data only**.
 
-> **Last Updated:** 2025-05-24
+> **Last Updated:** 2026-05-24
 
 ---
 
@@ -49,7 +49,7 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 ### SenseFi / WiFi CSI Sensing Benchmark
 - **Original Repository:** https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark
 - **Original Authors:** xyanchen and contributors
-- **License:** Pending verification
+- **License:** MIT (verified)
 - **Category:** WiFi CSI sensing benchmark — deep-learning-based WiFi CSI human sensing evaluation framework
 - **Use in This Repository:** External reference for benchmark methodology.
 - **Validation Status:** Claims not independently validated.
@@ -59,7 +59,7 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 ### Attack\_WiFi\_Sensing
 - **Original Repository:** https://github.com/Guolin-Yin/Attack_WiFi_Sensing
 - **Original Authors:** Guolin-Yin and contributors
-- **License:** Pending verification
+- **License:** MIT (verified)
 - **Category:** WiFi sensing security — adversarial evasion attacks, universal perturbation, robustness evaluation
 - **Use in This Repository:** Core adversarial reference for thesis threat model.
 - **Validation Status:** External reference only; no code copied.
@@ -80,7 +80,7 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 - **Original Repository:** https://github.com/MoWING-Lab/AntiEave-WiFi-Sensing
 - **Original Authors:** MoWING-Lab and contributors
 - **License:** Pending verification
-- **Category:** WiFi sensing security — anti-eavesdropping defense (IEEE PerCom 2023)
+- **Category:** WiFi sensing security — anti-eavesdropping defense (IEEE INFOCOM 2023)
 - **Use in This Repository:** Defense mechanism reference for privacy-preserving WiFi sensing.
 - **Validation Status:** External reference only; no code copied.
 
@@ -90,7 +90,7 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 - **Original Repository:** https://github.com/siwangzhou/WiFi-ADG
 - **Original Authors:** siwangzhou and contributors
 - **License:** Pending verification
-- **Category:** WiFi sensing security — adversarial data generation (IEEE Communications Letters 2019)
+- **Category:** WiFi sensing security — adversarial data generation
 - **Use in This Repository:** Adversarial data generation reference for thesis defense pipeline.
 - **Validation Status:** External reference only; no code copied.
 
@@ -110,68 +110,63 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 - **Original Repository:** https://github.com/ChunjingXiao/CsiGAN
 - **Original Authors:** ChunjingXiao and contributors
 - **License:** Pending verification
-- **Category:** WiFi CSI data augmentation — semi-supervised GAN for robust activity recognition (IEEE IoT Journal, 2019)
+- **Category:** WiFi CSI data augmentation — semi-supervised GAN for robust activity recognition
 - **Use in This Repository:** Data augmentation and victim-model reference.
 - **Validation Status:** External reference only; no code copied.
 
 ---
 
 ### NoiSec
-- **Original Repository:** https://github.com/noise-lab/noisec
-- **Original Authors:** noise-lab and contributors
-- **License:** Pending verification
+- **Original Repository:** https://github.com/shahriar0651/NoiSec
+- **Original Authors:** shahriar0651 and contributors
+- **License:** MIT (verified)
 - **Category:** WiFi sensing security — noise-based adversarial defense and signal obfuscation
 - **Use in This Repository:** Defense taxonomy reference: noise injection and signal-layer defense methods.
 - **Validation Status:** External reference only; no code copied.
-- **Note:** Identified via open-source landscape analysis (Gemini report 2025). License status requires independent verification.
+
+---
+
+### CSI-Bench
+- **Original Repository:** https://github.com/guozhen-jenn-zhu/CSI-Bench-Real-WiFi-Sensing-Benchmark
+- **Original Authors:** guozhen-jenn-zhu and contributors
+- **License:** MIT (verified)
+- **Category:** WiFi sensing benchmark — standardized real WiFi sensing benchmark
+- **Use in This Repository:** Future dataset/benchmark candidate (not yet integrated or downloaded).
+- **Validation Status:** External reference only; no data copied.
 
 ---
 
 ### Awesome-RIS-Security
-- **Original Repository:** Pending verification (RIS security literature tracker)
+- **Original Repository:** Pending verification
 - **Original Authors:** Pending verification
 - **License:** Pending verification
 - **Category:** Physical-layer security — reconfigurable intelligent surface (RIS) attack and defense literature tracker
 - **Use in This Repository:** Physical-layer attack literature reference for threat model expansion.
 - **Validation Status:** External reference only; literature aggregator.
-- **Note:** Identified via open-source landscape analysis (Gemini report 2025). Repository URL and license require independent verification.
+- **Note:** Repository URL and license require independent verification.
 
 ---
 
 ### unilateral-csi-entropy
-- **Original Repository:** Pending verification (CSI entropy for edge security)
+- **Original Repository:** Pending verification
 - **Original Authors:** Pending verification
 - **License:** Pending verification
-- **Category:** CSI security — CSI-based entropy analysis for edge security and cryptographic key generation
+- **Category:** CSI security — CSI-based entropy analysis for edge security
 - **Use in This Repository:** Cryptographic entropy reference for CSI-layer security discussion.
 - **Validation Status:** External reference only; no code copied.
-- **Note:** Identified via open-source landscape analysis (Gemini report 2025). Repository URL and license require independent verification.
-
----
-
-### CSI-Bench
-- **Original Repository:** Pending verification (real WiFi sensing benchmark)
-- **Original Authors:** Pending verification
-- **License:** Pending verification
-- **Category:** WiFi sensing benchmark — standardized real WiFi sensing benchmark
-- **Use in This Repository:** Future dataset candidate (not yet integrated or downloaded).
-- **Validation Status:** External reference only; no data copied.
-- **Note:** Identified via open-source landscape analysis (Gemini report 2025). Repository URL, license, and access method require independent verification. See `datasets/future_datasets/README.md`.
+- **Note:** Repository URL and license require independent verification.
 
 ---
 
 ## Pending Verification Items
 
-The following items have been identified as external references but require independent verification of their license, repository URL, or access method before any use:
+The following items require independent verification of license, repository URL, or access method before any use:
 
 | Item | Category | Status |
-|------|----------|--------|
-| NoiSec | Defense reference | Repository URL and license: Pending verification |
+|---|---|---|
 | Awesome-RIS-Security | Physical-layer attack literature | Repository URL and license: Pending verification |
 | unilateral-csi-entropy | CSI edge security | Repository URL and license: Pending verification |
-| CSI-Bench | Real WiFi sensing benchmark | Repository URL, license, access: Pending verification |
 | CsiGAN | Data augmentation | License: Pending verification |
-| Attack\_WiFi\_Sensing | Adversarial attacks | License: Pending verification |
 | Awesome-WS-Security | Security literature | License: Pending verification |
 | AntiEave-WiFi-Sensing | Anti-eavesdropping defense | License: Pending verification |
 | WiFi-ADG | Adversarial data generation | License: Pending verification |
@@ -179,3 +174,4 @@ The following items have been identified as external references but require inde
 ---
 
 *This file is maintained as part of the Secure WiFi CSI Healthcare Sensing research prototype at Portland State University.*
+*Last Updated: 2026-05-24*
