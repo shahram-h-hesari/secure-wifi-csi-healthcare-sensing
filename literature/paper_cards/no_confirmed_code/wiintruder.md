@@ -2,6 +2,16 @@
 
 **Paper ID:** `wiintruder` | **Card Type:** no_confirmed_code | **Last Updated:** 2026-05-24
 
+## Status Summary
+
+| Field | Value |
+|---|---|
+| Reproducibility Status | No confirmed public code |
+| Code Searchable | Searched — not found |
+| Tested Locally | No |
+| Reproduction Score | Not assessed |
+| Reproducibility Note | Not reproducible from public artifacts |
+
 ## Metadata
 
 | Field | Value |
@@ -11,44 +21,66 @@
 | Year | 2022 |
 | Venue | IEEE SECON |
 | DOI | Pending verification |
-| Public Code URL | N/A |
+| Public Code URL | N/A — not found |
 | License | N/A |
-| Dataset Used | Lab CSI |
+| Dataset Used | Lab-collected CSI |
 | Dataset License | Pending verification |
 
-## Synopsis
+## Official Links
 
-WiIntruder addresses intrusion detection in WiFi-based vital sign sensing systems, relevant to adversarial perturbation risks and software-based hardening for healthcare.
+| Resource | URL | Status |
+|---|---|---|
+| IEEE Xplore | Pending verification | Unverified |
+| Public Code Repository | Not found | N/A |
 
-> **Note:** Not reproducible from public artifacts. No PDFs stored.
+## Paper / Project Summary
+
+WiIntruder proposes an intrusion detection system for WiFi-based vital
+sign sensing, targeting adversarial perturbation risks in healthcare
+monitoring contexts. The work is relevant to software-based hardening
+and clinical safety analysis in this repository.
+
+> **Note:** Metadata (title, authors, venue, DOI) pending verification
+> from official IEEE source. No public code or dataset found.
+
+## Code / Dataset Availability
+
+| Item | Status |
+|---|---|
+| Public code available | No |
+| Dataset publicly available | No |
+| Tested locally | No |
+| Code release monitored | See docs/code_release_watchlist.md |
 
 ## Reproducibility Assessment
 
 | Item | Status |
 |---|---|
 | Public code available | No |
-| Code tested in this repo | No |
-| License confirmed | N/A |
-| Reproducibility status | Not reproducible from public artifacts |
+| Tested locally | No |
+| Reproduction score | Not assessed |
+| Reproducibility note | Not reproducible from public artifacts |
 
-## Thesis Relevance
+## How This Supports the Repository
 
-| Chapter | Role |
-|---|---|
-| Chapter 5: Clinical Safety | Universal perturbation risk reference |
-| Chapter 6: Software-Based Hardening | Primary intrusion hardening reference |
+Provides a reference for intrusion detection in WiFi vital-sign sensing,
+supporting thesis arguments on adversarial perturbation risks
+(Chapter 5: Clinical Safety) and software-based defense hardening
+(Chapter 6: Software-Based Hardening).
 
-## Watch Status
+## Limitations and Open Questions
 
-Listed in `code_release_watchlist.md` — **Medium priority**.
+- All metadata pending verification from official IEEE source.
+- No confirmed public code or dataset available.
+- Code release should be monitored in docs/code_release_watchlist.md
+  (listed as medium priority).
 
-## Attribution
+## Citation Status
 
-```
-Kim et al. (2022). WiIntruder: Detecting Intrusions in WiFi-Based Vital Sensing.
-IEEE SECON. DOI: Pending verification.
-```
+Citation pending verification — metadata (title, authors, venue, DOI)
+not yet confirmed from official source.
+See `docs/code_release_watchlist.md` for code release monitoring.
 
-> **Disclaimer:** No code or datasets copied. Citation metadata only.
+## Last Verified
 
-*See `literature/papers.csv` for the full index entry.*
+2026-05-24 — Metadata pending verification. No public code confirmed.
