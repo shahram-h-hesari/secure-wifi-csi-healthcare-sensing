@@ -1,96 +1,121 @@
-% references.bib — Verified BibTeX entries for Secure WiFi CSI Healthcare Sensing
+% references.bib — BibTeX entries for Secure WiFi CSI Healthcare Sensing
 % Last Updated: 2026-05-24
-% NOTE: Entries marked PENDING require DOI/page verification before journal submission.
-% Do NOT copy PDFs or reproduce full paper text. Citation metadata only.
-% Entries correspond to papers tracked in literature/papers.csv.
+%
+% IMPORTANT: BibTeX entries in this file should be used academically only after
+% verification from official sources (DOI page, IEEE Xplore, ACM DL, arXiv, or
+% official project page). Entries marked PENDING require verification.
+%
+% Rules:
+%   - Do NOT keep invented titles, authors, or venues without official verification
+%   - Do NOT add fake GitHub links
+%   - For unverified citations, use % TODO: verify citation comments only
+%   - Do NOT copy PDFs or reproduce full paper text; citation metadata only
+%   - This project uses synthetic CSI data only; do not add clinical validation claims
 
-@inproceedings{li2023attack,
-  title        = {Adversarial Attack on Deep Learning-Based {WiFi} Sensing},
-  author       = {Li, Xin and others},
-  booktitle    = {Pending verification},
-  year         = {2023},
-  note         = {DOI pending verification; public code: https://github.com/Guolin-Yin/Attack_WiFi_Sensing; license: MIT (pending confirmation)},
-}
+%% ============================================================
+%% VERIFIED ENTRIES (metadata confirmed from official sources)
+%% ============================================================
 
+% SenseFi: DOI verified from upstream README (10.1016/j.patter.2023.100764)
 @article{yang2023sensefi,
-  title        = {{SenseFi}: A Library and Benchmark on Deep Learning-Enhanced {WiFi} Human Sensing},
-  author       = {Yang, Jianfei and others},
-  journal      = {Patterns},
-  volume       = {4},
-  number       = {3},
-  year         = {2023},
-  publisher    = {Cell Press},
-  doi          = {10.1016/j.patter.2023.100764},
-  note         = {Public code: https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark; license: MIT (pending confirmation)},
+  title     = {{SenseFi}: A Library and Benchmark on Deep Learning-Enhanced {WiFi} Human Sensing},
+  author    = {Yang, Jianfei and others},
+  journal   = {Patterns},
+  volume    = {4},
+  number    = {3},
+  year      = {2023},
+  publisher = {Cell Press},
+  doi       = {10.1016/j.patter.2023.100764},
+  note      = {Public code: https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark; license pending verification},
 }
 
-@inproceedings{liu2023antieave,
-  title        = {{AntiEave}: Defending Against Eavesdropping {WiFi} Sensing Attacks},
-  author       = {Liu, Yue and others},
-  booktitle    = {Proceedings of IEEE INFOCOM},
-  year         = {2023},
-  note         = {DOI pending verification; public code: https://github.com/MoWING-Lab/AntiEave-WiFi-Sensing; license pending verification},
+% AntiEave: Authors S. M. Hernandez and Eyuphan Bulut verified from upstream BibTeX; venue IEEE PerCom 2023 verified from upstream BibTeX
+@inproceedings{hernandez2023antieave,
+  title     = {{AntiEave}: Defending Against Eavesdropping {WiFi} Sensing Attacks Using Scheduling},
+  author    = {Hernandez, S. M. and Bulut, Eyuphan},
+  booktitle = {Proceedings of IEEE PerCom 2023},
+  year      = {2023},
+  note      = {DOI pending verification; public code: https://github.com/MoWiNG-Lab/AntiEave-WiFi-Sensing; license pending verification},
 }
 
-@inproceedings{zhang2022wifiadg,
-  title        = {{WiFi-ADG}: Adversarial Defense Generation for {WiFi} Sensing},
-  author       = {Zhang, Wei and others},
-  booktitle    = {Proceedings of IEEE GLOBECOM},
-  year         = {2022},
-  note         = {DOI pending verification; public code: https://github.com/siwangzhou/WiFi-ADG; license pending verification},
+%% ============================================================
+%% PARTIALLY VERIFIED ENTRIES (GitHub URL verified; metadata PENDING)
+%% ============================================================
+
+% Attack_WiFi_Sensing: GitHub URL verified; title/author/venue PENDING
+@inproceedings{li2023attack,
+  title     = {Pending verification},
+  author    = {Pending verification},
+  booktitle = {Pending verification},
+  year      = {2023},
+  note      = {DOI pending verification; public code: https://github.com/Guolin-Yin/Attack_WiFi_Sensing; license pending verification},
 }
 
-@article{wang2022csigan,
-  title        = {{CSI-GAN}: Generative Adversarial Network for {CSI} Augmentation},
-  author       = {Wang, Fei and others},
-  journal      = {IEEE Access},
-  year         = {2022},
-  note         = {DOI pending verification; public code: https://github.com/ChunjingXiao/CsiGAN; license pending verification},
+% WiFi-ADG: GitHub URL verified; title/author/venue not provided in upstream repo
+@misc{wifiadg,
+  title     = {Pending verification},
+  author    = {Pending verification},
+  year      = {Pending verification},
+  note      = {DOI pending verification; public code: https://github.com/siwangzhou/WiFi-ADG; contact: swzhou@hnu.edu.cn; license pending verification},
 }
 
+% CSI-GAN: DOI doi.org/10.1109/JIOT.2019.2936580 identified; full metadata PENDING independent verification
+@article{wang2019csigan,
+  title     = {Pending verification},
+  author    = {Pending verification},
+  journal   = {Pending verification},
+  year      = {Pending verification},
+  note      = {DOI pending independent verification: 10.1109/JIOT.2019.2936580; public code: https://github.com/ChunjingXiao/CsiGAN; license pending verification},
+}
+
+% CSI-Bench: GitHub URL and MIT license verified; arXiv eprint PENDING independent verification
 @misc{chen2024csibench,
-  title        = {{CSI-Bench}: A Benchmark for {WiFi} {CSI}-Based Sensing},
-  author       = {Chen, Hao and others},
-  year         = {2024},
-  note         = {arXiv eprint pending verification; public code: https://github.com/guozhen-jenn-zhu/CSI-Bench-Real-WiFi-Sensing-Benchmark; license: MIT (verified)},
+  title     = {Pending verification},
+  author    = {Pending verification},
+  year      = {2024},
+  note      = {arXiv eprint pending independent verification; public code: https://github.com/guozhen-jenn-zhu/CSI-Bench-Real-WiFi-Sensing-Benchmark; license: MIT (verified)},
 }
 
+% NoiSec: GitHub URL and MIT license verified; venue ACM CCS identified; full metadata PENDING independent verification
 @inproceedings{pham2023noisec,
-  title        = {{NoiSec}: Exploiting Noise for Adversarial Attacks and Defenses in {WiFi} Sensing},
-  author       = {Pham, Linh and others},
-  booktitle    = {Proceedings of ACM CCS},
-  year         = {2023},
-  note         = {DOI pending verification; public code: https://github.com/shahriar0651/NoiSec; license: MIT (verified)},
+  title     = {Pending verification},
+  author    = {Pending verification},
+  booktitle = {Pending verification},
+  year      = {2023},
+  note      = {DOI pending verification; public code: https://github.com/shahriar0651/NoiSec; license: MIT (verified); WiFi CSI applicability pending verification},
 }
 
+%% ============================================================
+%% PAPER-ONLY ENTRIES (no confirmed public code; metadata PENDING)
+%% ============================================================
+
+% INFOCOM 2023 WiFi Apnea Attack: title and venue identified from literature search; full metadata PENDING
 @inproceedings{ambalkar2023wifiaapnea,
-  title        = {Adversarial Attack and Defense for {WiFi}-Based Apnea Detection System},
-  author       = {Ambalkar, Harshit and others},
-  booktitle    = {Proceedings of IEEE INFOCOM 2023 Workshops},
-  year         = {2023},
-  note         = {DOI pending verification; no confirmed public code as of 2026-05-24; metadata pending verification},
+  title     = {Pending verification},
+  author    = {Pending verification},
+  booktitle = {Pending verification},
+  year      = {2023},
+  note      = {DOI pending verification; no confirmed public code as of 2026-05-24; metadata pending independent verification from IEEE Xplore},
 }
 
-@inproceedings{ma2021wicam,
-  title        = {{WiCam}: Recognizing People Behind Walls Using {WiFi}},
-  author       = {Ma, Yongsen and others},
-  booktitle    = {Proceedings of ACM MobiSys},
-  year         = {2021},
-  note         = {DOI pending verification; no confirmed public code as of 2026-05-24},
-}
-
-@inproceedings{kim2022wiintruder,
-  title        = {{WiIntruder}: Detecting Intrusions in {WiFi}-Based Vital Sensing},
-  author       = {Kim, Juhyeon and others},
-  booktitle    = {Proceedings of IEEE SECON},
-  year         = {2022},
-  note         = {DOI pending verification; no confirmed public code as of 2026-05-24},
-}
-
+% MobiCom 2024 Preamble Perturbation Attack: year 2024 and venue ACM MobiCom 2024 identified; full metadata PENDING
 @inproceedings{mobicom2024preamble,
-  title        = {Preamble Perturbation Attack on {WiFi} Sensing},
-  author       = {Pending verification},
-  booktitle    = {Proceedings of ACM MobiCom 2024},
-  year         = {2024},
-  note         = {Full title and author metadata pending verification; no confirmed public code as of 2026-05-24},
+  title     = {Pending verification},
+  author    = {Pending verification},
+  booktitle = {Pending verification},
+  year      = {2024},
+  note      = {Full title and author metadata pending independent verification from ACM DL; no confirmed public code as of 2026-05-24},
 }
+
+%% ============================================================
+%% TODO: CITATIONS REQUIRING FULL VERIFICATION
+%% (Do not use these for academic citations until verified)
+%% ============================================================
+
+% TODO: verify citation for WiCAM / WiCAM 2.0
+% Paper identity and metadata not confirmed. Do not add until verified from official source.
+% Previous versions of this repository contained likely-invented metadata for this paper.
+
+% TODO: verify citation for WiIntruder
+% Paper identity and metadata not confirmed. Do not add until verified from official source.
+% Previous versions of this repository contained likely-invented metadata for this paper.
