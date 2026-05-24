@@ -16,6 +16,11 @@ This catalog lists public and research WiFi CSI datasets that are relevant to th
 |---------|----------------|----------|-------------|--------|---------------------|-------|
 | MM-Fi | [Project page](https://ntu-aiot-lab.github.io/mm-fi) \| [GitHub/tooling](https://github.com/ybhbingo/MMFi_dataset) \| [Paper](https://openreview.net/forum?id=1uAsASS1th) | WiFi CSI + multi-modal (pending verification) | Human sensing / pose / activity-related research | .npy (mentioned in RuView docs; verify officially) | Cataloged only; not integrated | Related to WiFi CSI sensing; not claimed as fall-detection validation here |
 | Wi-Pose | [GitHub dataset repo](https://github.com/NjtechCVLab/Wi-PoseDataset) \| [CSI-Former paper](https://www.mdpi.com/1099-4300/25/1/20) | WiFi CSI with pose-related annotations (pending verification) | WiFi-based pose estimation | .mat (mentioned in RuView docs; verify officially) | Cataloged only; not integrated | Related to WiFi CSI sensing; not claimed as fall-detection validation here |
+| SignFi | [GitHub dataset repo](https://github.com/yichenwang231/SignFi) \| [Paper](https://dl.acm.org/doi/10.1145/3161189) | WiFi CSI | Sign language gesture recognition | .mat (pending verification) | Cataloged only; not integrated | WiFi CSI sensing reference; not fall-detection; tracked for future robustness benchmarking |
+| Widar | [GitHub dataset repo](https://github.com/Harlinn/widar3.0) \| [Official page](http://tns.thss.tsinghua.edu.cn/widar3.0/) \| [Paper](https://dl.acm.org/doi/10.1145/3307334.3326081) | WiFi CSI | Gesture recognition / cross-domain WiFi sensing | .mat (pending verification) | Cataloged only; not integrated | WiFi CSI sensing reference; cross-domain; tracked for future robustness benchmarking |
+| UT-HAR | [SenseFi Benchmark](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark) \| [Paper](https://ieeexplore.ieee.org/document/8067693) \| [Kaggle mirror (unverified)](https://www.kaggle.com/datasets/hylanj/wifi-csi-dataset-ut-har) | WiFi CSI | Human activity recognition (includes fall class) | Pending verification | Cataloged only; not integrated | Tracked via SenseFi; fall class may be relevant to benchmarking; license pending |
+| NTU-Fi HAR | [SenseFi Benchmark](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark) | WiFi CSI | Human activity recognition | Pending verification | Cataloged only; not integrated | Tracked via SenseFi; may be relevant for future comparative benchmarking; license pending |
+| NTU-Fi HumanID | [SenseFi Benchmark](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark) | WiFi CSI | Human identification via WiFi | Pending verification | Cataloged only; not integrated | Tracked via SenseFi; adversarial robustness relevance; license pending |
 
 > **Note:** All dataset details must be verified from official dataset pages or papers before use. Do not treat unverified fields as authoritative. Links point to official or associated sources and do not mean data are stored in this repository.
 
@@ -27,6 +32,11 @@ This catalog lists public and research WiFi CSI datasets that are relevant to th
 |---------|---------------------|-------------------|----------------------|--------------------|-----------------------|
 | MM-Fi | Yes | No | No | No | No |
 | Wi-Pose | Yes | No | No | No | No |
+| SignFi | Yes | No | No | No | No |
+| Widar | Yes | No | No | No | No |
+| UT-HAR | Pending | No | No | No | No |
+| NTU-Fi HAR | Pending | No | No | No | No |
+| NTU-Fi HumanID | Pending | No | No | No | No |
 
 All experiments currently use **synthetic CSI-like data**. This will be updated as real-data integration progresses.
 
