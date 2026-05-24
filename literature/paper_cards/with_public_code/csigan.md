@@ -11,7 +11,7 @@
 | Year | 2022 |
 | Venue | IEEE Access |
 | DOI | Pending verification |
-| Public Code URL | https://github.com/example/csigan (Pending verification — placeholder URL) |
+| Public Code URL | Not found — pending verification (placeholder removed) |
 | License | Pending verification |
 | Dataset Used | Synthetic CSI |
 | Dataset License | Pending verification |
@@ -20,7 +20,7 @@
 
 CSI-GAN uses a Generative Adversarial Network to augment CSI data for improved model training and robustness. Relevant to Chapter 6 augmentation and Chapter 7 generalization.
 
-> **Note:** Placeholder code URL — verify before use. No PDFs stored.
+> **Note:** Public code URL not found — removed placeholder link. No PDFs stored.
 
 ## Reproducibility Assessment
 
@@ -43,7 +43,7 @@ CSI-GAN uses a Generative Adversarial Network to augment CSI data for improved m
 ```
 Wang et al. (2022). CSI-GAN: Generative Adversarial Network for CSI Augmentation.
 IEEE Access. DOI: Pending verification.
-Code: https://github.com/example/csigan (placeholder; verify before use)
+Code: Not found — pending verification (placeholder removed)
 License: Pending verification
 ```
 
