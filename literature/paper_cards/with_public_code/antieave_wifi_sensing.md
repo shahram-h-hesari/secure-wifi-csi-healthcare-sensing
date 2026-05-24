@@ -11,7 +11,7 @@
 | Year | 2023 |
 | Venue | IEEE INFOCOM |
 | DOI | Pending verification |
-| Public Code URL | https://github.com/example/antieave (Pending verification — placeholder URL) |
+| Public Code URL | Not found — pending verification (placeholder removed) |
 | License | Pending verification |
 | Dataset Used | Real CSI (lab) |
 | Dataset License | Pending verification |
@@ -20,7 +20,7 @@
 
 AntiEave proposes a defense mechanism against eavesdropping attacks that exploit Wi-Fi CSI sensing. Key reference for Chapter 6 software-based hardening.
 
-> **Note:** No PDFs stored here. Placeholder code URL — verify if real repo exists before use.
+> **Note:** No PDFs stored here. Public code URL not found — removed placeholder link.
 
 ## Reproducibility Assessment
 
@@ -43,7 +43,7 @@ AntiEave proposes a defense mechanism against eavesdropping attacks that exploit
 ```
 Liu et al. (2023). AntiEave: Defending Against Eavesdropping WiFi Sensing Attacks.
 IEEE INFOCOM. DOI: Pending verification.
-Code: https://github.com/example/antieave (placeholder; verify before use)
+Code: Not found — pending verification (placeholder removed)
 License: Pending verification
 ```
 
