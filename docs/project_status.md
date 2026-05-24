@@ -142,3 +142,45 @@ Four new external GitHub repositories have been added to `third_party/` as track
 ---
 
 *Last updated: 2026-05-24*
+
+
+---
+
+## Update Log — 2026-05-24 (Second-Pass Research Update)
+
+### CsiGAN Added as External Reference
+
+- `third_party/wifi_sensing/csigan/` added — CsiGAN (Chunjing Xiao et al., IEEE IoT Journal 2019): semi-supervised GAN for robust WiFi CSI activity recognition and data augmentation.
+- **Status:** External reference only. No code copied. License pending verification (no LICENSE file in upstream repo).
+- **Use:** Not used in current project implementation. Candidate for future robustness/augmentation experiments.
+
+### No New External Code or Datasets Copied
+
+- No source code from any external repository was copied into this project.
+- No datasets were downloaded or integrated.
+- No new real-data validation was performed.
+- The project continues to use **synthetic CSI-like data only**.
+
+### Open-Source Gap Confirmed
+
+- A second-pass search confirmed: **no additional healthcare-specific adversarial WiFi CSI GitHub repository was found** beyond the currently tracked references.
+- The most directly relevant paper-only work (INFOCOM 2023 apnea attack/defense) has no confirmed public GitHub implementation.
+- Existing public repositories primarily cover general WiFi CSI sensing, activity recognition, privacy defense, or non-healthcare adversarial WiFi sensing — not the specific combination of healthcare sensing + adversarial evaluation + clinical safety metrics targeted by this thesis.
+- The `device-classification-5g` repository identified in the second-pass search was **not added** — it is 5G RF fingerprinting, not WiFi CSI healthcare sensing.
+
+### Updated Files
+
+- `third_party/wifi_sensing/csigan/README.md` (new)
+- `third_party/README.md`
+- `THIRD_PARTY_NOTICES.md`
+- `docs/related_projects.md`
+- `datasets/future_datasets/README.md`
+- `datasets/dataset_catalog.md`
+- `README.md`
+- `references.md`
+- `docs/project_status.md`
+- `docs/roadmap.md`
+
+---
+
+*Last updated: 2026-05-24*
