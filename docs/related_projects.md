@@ -33,6 +33,8 @@ This document lists open-source projects and academic repositories that are rele
 |---|---|---|---|
 | Attack_WiFi_Sensing | https://github.com/Guolin-Yin/Attack_WiFi_Sensing | External repository focused on adversarial evasion attacks, universal perturbation testing, adversarial training, and robustness evaluation for WiFi sensing models. | External reference only; no code copied. See `third_party/wifi_sensing_security/attack_wifi_sensing/`. |
 | Awesome-WS-Security | https://github.com/Intelligent-Perception-Lab/Awesome-WS-Security | Curated literature and resource list for wireless sensing security, attacks, privacy, and defenses. | External reference only. See `third_party/wifi_sensing_security/awesome_ws_security/`. |
+| AntiEave-WiFi-Sensing | https://github.com/MoWiNG-Lab/AntiEave-WiFi-Sensing | Anti-eavesdropping WiFi sensing defense; scheduled spatial sensing against adversarial WiFi sensing (IEEE PerCom 2023). | External reference only; no code copied. See `third_party/wifi_sensing_security/antieave_wifi_sensing/`. |
+| WiFi-ADG | https://github.com/siwangzhou/WiFi-ADG | Adversarial WiFi sensing for privacy preservation of human behaviors; adversarial CSI data generation to prevent unauthorized behavior recognition (IEEE Communications Letters 2019). | External reference only; no code copied. See `third_party/wifi_sensing_security/wifi_adg/`. |
 
 *These repositories are referenced for literature review and future robustness evaluation only. No code has been copied or adapted. See `THIRD_PARTY_NOTICES.md` for details.*
 
