@@ -144,3 +144,45 @@ In a real deployment (not implemented here), missed fall detections could have c
 ---
 
 *Plan created: May 2026. No perturbation experiments have been executed.*
+
+
+---
+
+## Dependency on Baseline Verification
+
+> **Perturbations should only be applied after the input data format and baseline outputs are understood.**
+
+This section defines the dependency chain that must be satisfied before any perturbation experiment is executed:
+
+### Before Starting Perturbation Experiments
+
+- [ ] Baseline simulation has been reproduced successfully (see `run_ruview_baseline.md`)
+- [ ] Input data format is identified and documented
+- [ ] Model weights source is identified and documented
+- [ ] Baseline output format is documented (labels / scores / visualizations / placeholders)
+- [ ] Dataset provenance table in `run_ruview_baseline.md` is completed
+
+### Data Type Labeling Rules
+
+| Data Type Available | Required Result Labeling |
+|---|---|
+| Simulated data only | **Synthetic/simulation-only results** — not real-data evaluation |
+| Recorded CSI (local) | **Locally-recorded CSI results** — not a peer-reviewed public benchmark |
+| Public dataset (verified) | **Results on [dataset name]** — must cite dataset paper and verify split |
+| Unknown / unverified | **Preliminary results — data source unverified** |
+
+### Ethical Considerations for Real CSI Data
+
+If real CSI data is used in future experiments (beyond simulation):
+
+- Authorization must be obtained for any data collected from real environments
+- Informed consent requirements must be assessed for any human-subject data
+- Institutional review board (IRB) or ethics board guidance should be followed
+- No data should be collected from environments or individuals without authorization
+- All real-data experiments must be documented with collection protocol, subject count, and consent status
+
+> This section applies only if and when real CSI data is used. All current planned experiments use simulated data only.
+
+---
+
+*Baseline verification dependency section added: May 2026. No perturbation experiments have been executed.*
