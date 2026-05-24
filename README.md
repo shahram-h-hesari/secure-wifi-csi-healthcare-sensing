@@ -343,3 +343,14 @@ Portland State University
 This project is licensed under the MIT License. See [`LICENSE`](./LICENSE) for details.
 
 Third-party project attributions are documented in [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md).
+
+
+---
+
+> **Update Note (2026-05-24):** Four new external repository references have been added to `third_party/`:
+> - `third_party/wifi_sensing_security/goop_veil/` — goop-veil: software-only WiFi CSI privacy defense (Apache-2.0)
+> - `third_party/wifi_sensing/wifi_csi_human_pose_detection/` — WiFi-CSI-Human-Pose-Detection: pose sensing, through-wall sensing, domain generalization (GPL-3.0)
+> - `third_party/wifi_sensing/mowa_wifi_sensing/` — mowa-wifi-sensing: WiFi CSI HAR / fall baseline (BSD-3-Clause)
+> - `third_party/wifi_sensing/baby_monitor_wifi_csi/` — baby-monitor-wifi-csi: WiFi CSI breathing / apnea baseline (MIT)
+>
+> All are external references only. No code, datasets, or files have been copied. The `datasets/future_datasets/` folder tracks candidate dataset notes for these repositories pending future verification. Current implementation continues to use **synthetic CSI-like data only**. Third-party projects and dataset candidates are cataloged for future work and are not currently used for model validation or benchmarking.
