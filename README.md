@@ -59,11 +59,10 @@ This repository is positioned to address that gap as a research prototype. See [
 | Project | Area | Notes |
 |---|---|---|
 | [Attack\_WiFi\_Sensing](https://github.com/Guolin-Yin/Attack_WiFi_Sensing) | Adversarial attacks on WiFi sensing | Core adversarial reference |
-| [NoiSec](https://github.com/NoiSec) | Noise-based adversarial defense | Defense taxonomy reference |
-| [Awesome-RIS-Security](https://github.com/topics/ris-security) | Physical-layer attack literature | Literature tracker reference |
-| [CSI-Bench](https://github.com/topics/csi-benchmark) | Real WiFi sensing benchmark | Future dataset candidate (Pending verification) |
-| [unilateral-csi-entropy](https://github.com/topics/csi-entropy) | Edge security / CSI entropy | Cryptographic entropy reference |
-
+| [NoiSec](https://github.com/shahriar0651/NoiSec) | Noise-based adversarial defense | Defense taxonomy reference |
+| [Awesome-RIS-Security](https://github.com/awesome-ris-security/awesome-ris-security.github.io) | Physical-layer attack literature | Literature tracker reference |
+| [CSI-Bench](https://github.com/guozhen-jenn-zhu/CSI-Bench-Real-WiFi-Sensing-Benchmark) | Real WiFi sensing benchmark | Future dataset candidate (Pending verification) |
+| [unilateral-csi-entropy](https://github.com/topics/csi-entropy) | Edge security / CSI entropy | Cryptographic entropy reference — URL pending verification; no confirmed canonical repo found |
 > All referenced projects are **external references only**. See [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) and [`docs/related_projects.md`](docs/related_projects.md) for full attribution.
 
 ---
