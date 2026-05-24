@@ -2,32 +2,37 @@
 
 This document lists open-source projects and academic repositories that are relevant to the research conducted in this repository. These are organized by research area for reference and literature context.
 
-> **Note:** Listings here are for academic reference only. Inclusion does not imply endorsement, validation of claims, or incorporation into this repository's pipeline. See [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) for the full attribution and license policy.
+> **Note:** Listings here are for academic reference only. Inclusion does not imply endorsement, validation of claims, or incorporation into this repository's pipeline. The current implementation uses **synthetic CSI-like data only**. See [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) for the full attribution and license policy.
 
 ---
 
-## WiFi CSI Sensing and Fall Detection
+## WiFi CSI Sensing and Benchmark Repositories
 
-| Project | Link | Description | Notes |
+| Project | Link | Description | Status |
 |---|---|---|---|
-| ESP32 CSI Toolkit | — | CSI extraction tools for ESP32 hardware | Hardware-level CSI capture |
-| nexmon_csi | — | Nexmon-based CSI extraction for Broadcom/Cypress chips | Widely used in research |
-| Widar3.0 | — | Gesture recognition via WiFi CSI | Published academic system |
-| WiSe | — | WiFi sensing benchmark dataset | For reproducibility comparison |
-| RuView | — | WiFi-based spatial intelligence and vital sign sensing | Open-source reference project/experimental target; included for repo-structure review, simulation workflow study, and planned offline adversarial robustness evaluation. |
-| SenseFi / WiFi CSI Sensing Benchmark | https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark | Benchmark framework for deep-learning-based WiFi CSI human sensing. | Useful future baseline framework for testing robustness and adversarial attacks. External reference only. |
-| ESP-CSI | https://github.com/espressif/esp-csi | ESP32-based CSI collection and wireless sensing examples. | Useful for future real CSI collection and hardware prototyping. External reference only. |
+| RuView | https://github.com/ruvnet/RuView | WiFi-based spatial intelligence, vital sign monitoring, and presence detection. | External reference and experimental target; included for repo-structure review, simulation workflow study, and planned offline adversarial robustness evaluation. See `third_party/wifi_sensing/ruview/`. |
+| SenseFi / WiFi CSI Sensing Benchmark | https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark | Benchmark framework for deep-learning-based WiFi CSI human sensing. | External reference only; useful for future victim-model and robustness evaluation. See `third_party/wifi_sensing/sensefi/`. |
+| Widar3.0 | — | Gesture recognition via WiFi CSI. | Published academic system; external reference only. |
+| WiSe | — | WiFi sensing benchmark dataset. | External reference only; for reproducibility comparison. |
 
-*This table will be expanded as projects are reviewed and added to `third_party/wifi_sensing/`.*
+---
+
+## WiFi CSI Collection and Hardware Repositories
+
+| Project | Link | Description | Status |
+|---|---|---|---|
+| ESP-CSI | https://github.com/espressif/esp-csi | ESP32-based CSI collection and wireless sensing examples. | External reference only; useful for future real CSI collection and prototyping. See `third_party/wifi_sensing/esp_csi/`. |
+| ESP32 CSI Toolkit | — | CSI extraction tools for ESP32 hardware. | Hardware-level CSI capture; external reference only. |
+| nexmon_csi | — | Nexmon-based CSI extraction for Broadcom/Cypress chips. | Widely used in research; external reference only. |
 
 ---
 
 ## WiFi Sensing Security and Adversarial Robustness
 
-| Project | Link | Description | Notes |
+| Project | Link | Description | Status |
 |---|---|---|---|
-| Attack_WiFi_Sensing | https://github.com/Guolin-Yin/Attack_WiFi_Sensing | Adversarial evasion attacks, universal perturbation testing, adversarial training, and robustness evaluation for WiFi sensing models. | Directly relevant to future adversarial robustness evaluation for WiFi CSI-based sensing. External reference only; no code copied. |
-| Awesome-WS-Security | https://github.com/Intelligent-Perception-Lab/Awesome-WS-Security | Curated literature and resources on wireless sensing security, attacks, privacy, and defenses. | Useful as a literature map for WiFi sensing security. External reference only. |
+| Attack_WiFi_Sensing | https://github.com/Guolin-Yin/Attack_WiFi_Sensing | External repository focused on adversarial evasion attacks, universal perturbation testing, adversarial training, and robustness evaluation for WiFi sensing models. | External reference only; no code copied. See `third_party/wifi_sensing_security/attack_wifi_sensing/`. |
+| Awesome-WS-Security | https://github.com/Intelligent-Perception-Lab/Awesome-WS-Security | Curated literature and resource list for wireless sensing security, attacks, privacy, and defenses. | External reference only. See `third_party/wifi_sensing_security/awesome_ws_security/`. |
 
 *These repositories are referenced for literature review and future robustness evaluation only. No code has been copied or adapted. See `THIRD_PARTY_NOTICES.md` for details.*
 
@@ -35,21 +40,21 @@ This document lists open-source projects and academic repositories that are rele
 
 ## Federated Learning and Privacy-Preserving ML
 
-| Project | Description | Notes |
+| Project | Description | Status |
 |---|---|---|
-| PySyft | Privacy-preserving ML framework | Relevant to future federated learning phase |
-| Flower (flwr) | Federated learning framework | Under consideration for Phase 5 |
-| OpenDP | Differential privacy library | Relevant to privacy-preserving sensing extensions |
+| PySyft | Privacy-preserving ML framework. | External reference; relevant to future federated learning phase. |
+| Flower (flwr) | Federated learning framework. | External reference; under consideration for Phase 5. |
+| OpenDP | Differential privacy library. | External reference; relevant to privacy-preserving sensing extensions. |
 
 ---
 
 ## Datasets
 
-| Dataset | Description | Notes |
+| Dataset | Description | Status |
 |---|---|---|
-| FallDefi | WiFi-based fall detection dataset | Published research dataset |
-| UT-HAR | University of Toronto HAR WiFi dataset | Activity recognition benchmark |
-| (TBD) | Additional CSI datasets | To be identified during literature review |
+| FallDefi | WiFi-based fall detection dataset. | Published research dataset; external reference. |
+| UT-HAR | University of Toronto HAR WiFi dataset. | Activity recognition benchmark; external reference. |
+| (TBD) | Additional CSI datasets. | To be identified during literature review. |
 
 ---
 
