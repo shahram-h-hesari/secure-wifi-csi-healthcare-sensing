@@ -272,7 +272,25 @@ See [`docs/roadmap.md`](./docs/roadmap.md) for the full multi-phase research roa
 | Phase 8 | Streamlit demo dashboard | Completed |
 | Phase 9 | GitHub polish and LinkedIn-ready presentation | Completed |
 | Phase 10 | Testing & verification (synthetic pipeline) | Completed |
+| Phase 11 | RuView third-party integration and adversarial evaluation workspace | Completed |
 | Phase 10+ | Real CSI datasets, hardware, clinical evaluation | Future work |
+
+---
+
+## Third-Party Projects
+
+This repository references third-party open-source WiFi sensing projects for academic study. Third-party code is kept **strictly separate** from this repository's original `src/`, `notebooks/`, and `app.py` pipeline.
+
+### RuView (Third-Party Reference and Experimental Target)
+
+- **Source:** https://github.com/ruvnet/RuView
+- **License:** MIT (verified May 2026)
+- **Documentation:** [`third_party/wifi_sensing/ruview/`](./third_party/wifi_sensing/ruview/README.md)
+- **Experiment Workspace:** [`experiments/ruview_adversarial_evaluation/`](./experiments/ruview_adversarial_evaluation/README.md)
+- **Use:** Repository-structure review, simulation workflow study, dashboard/interface design inspiration, and planned future offline adversarial robustness evaluation
+- **Validation Status:** RuView's claims are **not independently validated** in this repository. No clinical, hardware, or real-world validation is claimed.
+
+See [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) for the full attribution and license policy.
 
 ---
 
