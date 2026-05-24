@@ -11,6 +11,8 @@ Third-party projects are **not** part of the core fall-detection pipeline of thi
 
 Third-party claims (e.g., accuracy figures, system performance) are **not** treated as validated unless independently supported by our own experiments.
 
+The current implementation uses **synthetic CSI-like data only**.
+
 ---
 
 ## License and Attribution Policy
@@ -52,16 +54,42 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 
 ---
 
+### SenseFi / WiFi CSI Sensing Benchmark
+
+- **Original Repository:** https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark
+- **Original Authors:** xyanchen and contributors
+- **License:** To be verified before any code use
+- **Category:** WiFi CSI sensing benchmark — deep-learning-based WiFi CSI human sensing evaluation framework
+- **Use in This Repository:** Linked as an external reference for WiFi CSI sensing benchmarks. Useful for future victim-model identification and robustness evaluation planning. Referenced for literature review and future baseline comparison only.
+- **Validation Status:** SenseFi's benchmark results and claims are **not independently validated** in this repository.
+- **Code Status:** No source code has been copied into this project. Any future code reuse requires verifying the original license and adding proper attribution.
+- **Documentation:** `third_party/wifi_sensing/sensefi/README.md`
+
+---
+
+### ESP-CSI
+
+- **Original Repository:** https://github.com/espressif/esp-csi
+- **Original Authors:** Espressif Systems and contributors
+- **License:** To be verified before any code use (likely Apache 2.0 or similar)
+- **Category:** WiFi CSI collection and hardware — ESP32-based CSI extraction and wireless sensing examples
+- **Use in This Repository:** Linked as an external reference for ESP32 CSI collection and hardware prototyping. Referenced for literature review and future real CSI collection planning only.
+- **Validation Status:** ESP-CSI's examples and results are **not independently validated** in this repository.
+- **Code Status:** No source code has been copied into this project. Any future code reuse requires verifying the original license and adding proper attribution.
+- **Documentation:** `third_party/wifi_sensing/esp_csi/README.md`
+
+---
+
 ### Attack_WiFi_Sensing
 
 - **Original Repository:** https://github.com/Guolin-Yin/Attack_WiFi_Sensing
 - **Original Authors:** Guolin Yin and contributors
 - **License:** To be verified before any code use
 - **Category:** WiFi sensing security — adversarial evasion attacks, universal perturbation testing, adversarial training, and robustness evaluation
-- **Use in This Repository:** Referenced for literature review and future adversarial robustness evaluation planning only. No code has been copied or adapted into this repository.
-- **Validation Status:** Claims from this repository are **not independently validated** here. Its inclusion does not imply endorsement of its results.
-- **Code Status:** No code copied. License review must be completed before any code is adapted or incorporated.
-- **Documentation:** To be added under `third_party/wifi_sensing_security/` after license review.
+- **Use in This Repository:** Linked as an external reference for adversarial attacks and robustness evaluation in WiFi sensing. Referenced for literature review and future adversarial robustness evaluation planning only. No code has been copied or adapted.
+- **Validation Status:** Attack_WiFi_Sensing's results and attack claims are **not independently validated** in this repository. Inclusion does not imply that described attacks have been tested against this repository's pipeline.
+- **Code Status:** No source code has been copied into this project. Any future code reuse requires verifying the original license and adding proper attribution.
+- **Documentation:** `third_party/wifi_sensing_security/attack_wifi_sensing/README.md`
 
 ---
 
@@ -70,11 +98,11 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 - **Original Repository:** https://github.com/Intelligent-Perception-Lab/Awesome-WS-Security
 - **Original Authors:** Intelligent Perception Lab and contributors
 - **License:** To be verified before any use
-- **Category:** WiFi sensing security — curated literature and resources on wireless sensing security, attacks, privacy, and defenses
-- **Use in This Repository:** Referenced as a literature map for WiFi sensing security research. Used for literature review and future robustness evaluation scoping only. No code or content has been copied.
-- **Validation Status:** Listings in this curated repository are **not independently validated** by this repository.
-- **Code Status:** No code copied. This is a reference/literature-tracking resource only.
-- **Documentation:** To be added under `third_party/wifi_sensing_security/` after review.
+- **Category:** WiFi sensing security literature — curated list of papers, tools, and resources on wireless sensing security, attacks, privacy, and defenses
+- **Use in This Repository:** Linked as an external reference for wireless sensing security literature and resources. Referenced for literature review and future robustness evaluation scoping only. No code or content has been copied.
+- **Validation Status:** Listings and papers in this curated resource are **not independently validated** by this repository. Inclusion does not imply endorsement of any listed paper or tool.
+- **Code Status:** No code or content has been copied into this project. Any future reuse requires verifying the original license and adding proper attribution.
+- **Documentation:** `third_party/wifi_sensing_security/awesome_ws_security/README.md`
 
 ---
 
