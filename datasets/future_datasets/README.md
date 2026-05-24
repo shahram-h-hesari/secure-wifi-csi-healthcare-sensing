@@ -70,3 +70,67 @@ For each new dataset entry, complete the following before adding it to the catal
 ---
 
 *Last updated: May 2026*
+
+
+---
+
+## New Candidate Dataset Entries (Added 2026-05-24)
+
+The following candidate entries were added based on newly tracked third-party repositories. All entries are candidates only. No data has been downloaded, integrated, validated, or benchmarked. These are tracking notes for future verification.
+
+---
+
+### goop-veil live/router CSI data
+
+- **Candidate Name:** goop-veil live/router CSI data
+- **Related Repo:** `third_party/wifi_sensing_security/goop_veil/`
+- **GitHub:** https://github.com/kobepaw/goop-veil
+- **Task Relevance:** Security/privacy tooling — WiFi CSI surveillance detection and defense. No fall-detection or vital-sign dataset confirmed.
+- **Dataset Availability:** No public dataset confirmed. The repository appears to operate on live/router-side CSI or WiFi privacy-defense workflows.
+- **License Status:** Pending verification for any associated data.
+- **Action Needed:** Manually inspect upstream repository for any public dataset links or example CSI traces. Do not create dataset folder unless confirmed.
+- **Status:** Candidate only — not downloaded, integrated, or benchmarked.
+
+---
+
+### WiFi-CSI-Human-Pose-Detection dataset
+
+- **Candidate Name:** WiFi-CSI-Human-Pose-Detection dataset
+- **Related Repo:** `third_party/wifi_sensing/wifi_csi_human_pose_detection/`
+- **GitHub:** https://github.com/euaziel/WiFi-CSI-Human-Pose-Detection
+- **Task Relevance:** Possible WiFi CSI pose/through-wall dataset. Fall-detection relevance: possible (pending verification).
+- **Dataset Availability:** Pending verification — the upstream repository may contain or reference CSI pose/through-wall data. No confirmed public downloadable dataset identified.
+- **License Status:** Repo license GPL-3.0 (confirmed). Dataset license: pending verification.
+- **Action Needed:** Inspect upstream repository for dataset links, included data files, or external dataset references. Verify license terms before any download or use.
+- **Status:** Candidate only — not downloaded, integrated, or benchmarked.
+
+---
+
+### mowa-fall-har
+
+- **Candidate Name:** mowa-fall-har
+- **Related Repo:** `third_party/wifi_sensing/mowa_wifi_sensing/`
+- **GitHub:** https://github.com/oss-inc/mowa-wifi-sensing
+- **Related Fork:** https://github.com/cheeseBG/wifi-sensing
+- **Task Relevance:** WiFi CSI HAR and fall-detection baseline. Fall-detection relevance: possible (pending verification).
+- **Dataset Availability:** Pending verification — the repository may expect or include real-time Nexmon CSI data with domain-specific HAR folders (e.g., `csi_dataset/domain_A`, `domain_B`). No confirmed public downloadable dataset identified.
+- **License Status:** Repo license BSD-3-Clause (confirmed). Dataset license: pending verification.
+- **Action Needed:** Inspect upstream repository for any included dataset folders, data download links, or collection scripts. Verify license and access terms before any use. Assess whether domain-specific HAR data includes fall-related activity classes relevant to this thesis.
+- **Status:** Candidate only — not downloaded, integrated, or benchmarked.
+
+---
+
+### baby-monitor-wifi-csi
+
+- **Candidate Name:** baby-monitor-wifi-csi breathing/apnea CSI data
+- **Related Repo:** `third_party/wifi_sensing/baby_monitor_wifi_csi/`
+- **GitHub:** https://github.com/mohosy/baby-monitor-wifi-csi
+- **Task Relevance:** WiFi CSI breathing/apnea sensing baseline. Vital-sign relevance: possible (pending verification).
+- **Dataset Availability:** Unknown — the upstream repository implements a real-time sensing system. No confirmed public downloadable CSI breathing/apnea dataset identified.
+- **License Status:** Repo license MIT (confirmed). Dataset license: pending verification.
+- **Action Needed:** Inspect upstream repository for any included recorded CSI traces, dataset folders, or data download links. Verify license and access terms before any use. Assess applicability to thesis vital-sign experiments.
+- **Status:** Candidate only — not downloaded, integrated, or benchmarked.
+
+---
+
+*Last updated: 2026-05-24*
