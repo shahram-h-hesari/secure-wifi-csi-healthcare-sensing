@@ -1,196 +1,263 @@
 # WiFi CSI Fall Detection Research Prototype
 
-> **Disclaimer:** This repository currently uses synthetic CSI-like time-series data for demonstration purposes. It does not use real patient data, real clinical data, or validated WiFi CSI measurements. Results are intended only to demonstrate the research workflow and should not be interpreted as clinical or real-world fall detection performance.
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
+![Status](https://img.shields.io/badge/Status-Research%20Prototype-yellow)
+![Data](https://img.shields.io/badge/Data-Synthetic%20Only-lightgrey)
+
+> **Disclaimer:** This repository uses **synthetic CSI-like data only**. It does not use real patient data, real clinical data, or validated WiFi CSI hardware measurements. All results are prototype outputs intended to demonstrate a research workflow. This is not a clinical product, a validated fall-detection system, or a medical device.
 
 ---
 
-## Overview
+## Project Summary
 
-This is an early-stage research prototype exploring WiFi Channel State Information (CSI)-inspired fall detection using synthetic CSI-like signals, signal processing, and machine learning workflows. The goal is to demonstrate a clean, beginner-friendly pipeline from signal generation through preprocessing, feature extraction, and baseline ML classification.
-
-This repository is intended to support PhD research in Electrical and Computer Engineering at Portland State University. It is not a clinical product, not a production system, and not a validated fall detection tool.
+An end-to-end research prototype exploring **WiFi Channel State Information (CSI)-inspired fall detection** using synthetic signals, signal processing, and machine learning. The project demonstrates a full pipeline from synthetic CSI generation through baseline classification, clinical-safety-aware evaluation, adversarial robustness stress testing, simple defense methods, and interactive visualization. Built to support PhD research in secure WiFi sensing at Portland State University.
 
 ---
 
-## Research Motivation
+## Repository Highlights
 
-Contactless sensing using WiFi CSI is being explored for eldercare and healthcare monitoring applications. Potential use cases include:
-
-- Fall detection for elderly individuals
-- Respiration-rate and heart-rate monitoring
-- Sleep apnea-related monitoring
-- Continuous vital-sign sensing without wearable devices
-
-WiFi-based sensing is attractive because it is non-invasive, does not require the user to wear any device, and may operate using existing WiFi infrastructure in homes and care facilities.
-
----
-
-## Why WiFi CSI?
-
-WiFi Channel State Information describes how a wireless signal propagates from a transmitter to a receiver through the environment. Key points:
-
-- CSI captures amplitude and phase information across multiple OFDM subcarriers.
-- Human motion, posture changes, breathing, and environmental movement can affect the multipath propagation of WiFi signals.
-- These changes in CSI can be analyzed to study human activity and vital-sign-related patterns.
-- CSI-based sensing is contactless and can be studied without camera-based monitoring.
-
----
-
-## Physical-Layer Security Motivation
-
-WiFi CSI is derived from OFDM preamble, training symbols, and pilot subcarriers before higher-layer security mechanisms protect the payload. This creates an underexplored attack surface for WiFi-based sensing systems. If an adversary manipulates the RF channel, injects spoofed signals, or perturbs CSI measurements, the sensing pipeline could be corrupted or degraded even without directly attacking application-layer security controls.
-
-This repository includes a conceptual threat model in [`docs/threat_model.md`](./docs/threat_model.md) documenting these risks at a research level.
-
----
-
-## Current Scope
-
-Version 1 of this repository focuses on:
-
-- Generating synthetic CSI-like time-series signals
-- Simulating two classes: normal activity (class 0) and fall-like events (class 1)
-- Preprocessing time-series signals using smoothing and normalization
-- Extracting simple statistical features: mean, standard deviation, energy, peak-to-peak range, max, min, and variance
-- Training a baseline scikit-learn classifier
-- Evaluating the workflow using accuracy score and confusion matrix
-- Documenting limitations and a conceptual physical-layer threat model
-
-**All data used in this version is synthetic and simulated. No real WiFi CSI measurements are used.**
-
-For an explicit statement of the validation status, see [`docs/validation_status.md`](./docs/validation_status.md).
-
----
-
-## What This Repository Is NOT
-
-This repository is:
-
-- **not** a clinical fall detection system
-- **not** trained on real patient data
-- **not** clinically validated
-- **not** a production ML system
-- **not** a medical device or clinical decision support tool
-- **not** a deployment-ready application
-- **not** a benchmark against real-world WiFi CSI datasets
-
----
-
-## Repository Structure
-
-```text
-wifi-csi-fall-detection/
-├── README.md                             # This file
-├── requirements.txt                      # Python dependencies
-├── references.md                         # Research references
-├── LICENSE                               # MIT License
-├── .gitignore                            # Git ignore rules
-├── THIRD_PARTY_NOTICES.md                # Third-party attribution and license policy
-├── data/
-│   └── README.md                         # Data disclaimer and description
-├── notebooks/
-│   └── 01_csi_signal_exploration.ipynb   # Main exploration notebook
-├── src/
-│   ├── __init__.py                       # Package init
-│   ├── simulate_csi.py                   # Synthetic signal generation
-│   ├── preprocessing.py                  # Signal preprocessing functions
-│   ├── features.py                       # Feature extraction functions
-│   └── baseline_model.py                 # Baseline ML classifier
-├── results/
-│   └── README.md                         # Results disclaimer
-├── figures/
-│   └── README.md                         # Figures description
-├── docs/
-│   ├── threat_model.md                   # Conceptual physical-layer threat model
-│   ├── research_context.md               # PhD research context and positioning
-│   ├── security_motivation.md            # Security threat landscape and research direction
-│   ├── validation_status.md              # Explicit synthetic-data-only status
-│   ├── roadmap.md                        # Phase-based research trajectory
-│   └── related_projects.md               # Related open-source projects and datasets
-└── third_party/                          # External references (separated from original work)
-    ├── README.md
-    ├── wifi_sensing/                     # WiFi sensing references
-    └── wifi_sensing_security/            # WiFi sensing security references
-```
-
-> **Third-party note:** External open-source references are organized in `third_party/` and are clearly separated from original work. See [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) for the full attribution and license policy.
-
-> **Research prototype note:** This repository currently focuses on synthetic CSI-like data, visualization, preprocessing, baseline ML workflow, and future security/robustness extensions. It does not claim clinical validation or real CSI validation. See [`docs/validation_status.md`](./docs/validation_status.md) for the explicit validation status.
-
-For an overview of the broader research direction and security motivation, see [`docs/security_motivation.md`](./docs/security_motivation.md) and [`docs/research_context.md`](./docs/research_context.md).
-
-Related open-source projects and datasets used for literature review and technical comparison are summarized in [`docs/related_projects.md`](./docs/related_projects.md).
+| Feature | Status |
+|---|---|
+| Synthetic CSI-like signal generation | Implemented |
+| Amplitude and phase visualization | Implemented |
+| Normal vs fall-like event simulation | Implemented |
+| Preprocessing and feature extraction | Implemented |
+| Baseline Random Forest classifier | Implemented |
+| Clinical-safety-aware metrics (missed falls, false alarms) | Implemented |
+| Adversarial robustness stress testing (synthetic) | Implemented |
+| Simple preprocessing defense methods (synthetic) | Implemented |
+| Streamlit interactive dashboard | Implemented |
+| Real CSI hardware data | Future work |
+| Clinical validation | Not claimed |
+| Hardware deployment | Not claimed |
 
 ---
 
 ## Quick Start
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/shahram-h-hesari/wifi-csi-fall-detection.git
 cd wifi-csi-fall-detection
 
-# Create a virtual environment (recommended)
+# 2. Create a virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate   # Windows: venv\Scripts\activate
 
-# Install dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# Launch Jupyter Notebook
+# 4. Launch the Jupyter notebook
 jupyter notebook notebooks/01_csi_signal_exploration.ipynb
 ```
 
 ---
 
-## Tools Used
+## Demo Dashboard
 
-- **Python** - primary programming language
-- **NumPy** - numerical computing and signal generation
-- **Pandas** - feature table creation and data handling
-- **Matplotlib** - signal and result visualization
-- **SciPy** - signal filtering and preprocessing
-- **scikit-learn** - baseline ML classifier, train/test split, and evaluation
-- **Jupyter Notebook** - interactive exploration and documentation
+An interactive Streamlit dashboard visualizes the full synthetic prototype pipeline.
 
-> PyTorch may be added in a later phase for deep learning-based time-series models, after the baseline workflow is complete.
+```bash
+streamlit run app.py
+```
 
----
+The dashboard includes:
+- Synthetic CSI amplitude and phase visualization
+- Normal vs fall-like event comparison
+- Baseline classifier prototype predictions
+- Clinical-safety-aware metrics (missed falls, false alarms)
+- Clean vs perturbed adversarial robustness comparison
+- Perturbed vs defended comparison
 
-## Development Roadmap
+See [`docs/demo_dashboard.md`](./docs/demo_dashboard.md) for full instructions.
 
-This repository is an early-stage research prototype. The current version uses synthetic CSI-like data only; it is not a medical device and has not been clinically validated.
-
-Planned phases include:
-
-1. Research prototype foundation and baseline ML workflows *(current phase)*
-2. Robustness and adversarial evaluation on synthetic signals
-3. Clinical-safety-aware metrics and error interpretation
-4. Future extension toward vital-sign sensing and aging-in-place scenarios
-5. Reproducibility and open collaboration improvements
-
-For the full multi-phase roadmap, see [`docs/roadmap.md`](./docs/roadmap.md).
+> **Note:** The dashboard uses synthetic data only. It is for research visualization and education, not clinical use.
 
 ---
 
-## Current Status
+## Repository Structure
 
-The repository currently provides an early research foundation for WiFi CSI-inspired sensing and machine-learning exploration. The next priority is to strengthen the baseline ML workflow, improve feature extraction, and add robustness evaluation experiments.
+```
+wifi-csi-fall-detection/
+├── app.py                          # Streamlit demo dashboard
+├── requirements.txt                # Python dependencies
+├── notebooks/
+│   └── 01_csi_signal_exploration.ipynb  # Full prototype pipeline notebook
+├── src/
+│   ├── simulate_csi.py             # Synthetic CSI signal generation
+│   ├── preprocessing.py            # Signal preprocessing
+│   ├── features.py                 # Feature extraction
+│   ├── baseline_model.py           # Baseline ML classifier
+│   ├── clinical_metrics.py         # Clinical-safety-aware metrics
+│   ├── adversarial.py              # Synthetic perturbation functions
+│   └── defenses.py                 # Preprocessing defense functions
+├── docs/
+│   ├── research_context.md         # Research background
+│   ├── threat_model.md             # Physical-layer threat model
+│   ├── clinical_safety_metrics.md  # Safety metrics explanation
+│   ├── adversarial_robustness.md   # Adversarial robustness methodology
+│   ├── defense_methods.md          # Defense methods explanation
+│   ├── demo_dashboard.md           # Dashboard instructions
+│   ├── project_status.md           # Project status checklist
+│   ├── roadmap.md                  # Research roadmap
+│   └── validation_status.md        # Validation transparency
+├── results/
+│   ├── baseline_results.md
+│   ├── clinical_safety_summary.md
+│   ├── adversarial_robustness_summary.md
+│   └── defense_methods_summary.md
+├── figures/                        # Saved plots
+├── data/                           # Data directory (synthetic only)
+└── third_party/                    # Third-party attributions
+```
+
+---
+
+## Project Status
+
+See [`docs/project_status.md`](./docs/project_status.md) for the full component status table.
+
+**Current phase:** Phase 9 - GitHub Polish and LinkedIn-Ready Presentation
+
+All results are synthetic prototype outputs. Real CSI datasets, hardware deployment, and clinical validation are identified as future work.
+
+---
+
+## Research Motivation
+
+WiFi Channel State Information (CSI) captures how wireless signals propagate through an environment. Human movement affects the multipath profile of WiFi signals, making CSI a candidate signal for contactless sensing applications such as:
+
+- Fall detection for elderly individuals
+- Respiration-rate and heart-rate monitoring
+- Sleep monitoring
+- Continuous vital-sign sensing without wearable devices
+
+CSI-based sensing also operates at the **physical layer**, creating a potential attack surface that motivates the study of **adversarial robustness** and **physical-layer security** for healthcare-oriented WiFi sensing systems.
+
+---
+
+## Security and Robustness Evaluation
+
+This repository includes synthetic adversarial robustness stress testing and simple preprocessing defense evaluation:
+
+- Three synthetic perturbation types: random noise, burst perturbation, subcarrier-level perturbation
+- Clean vs perturbed ML metrics and safety metrics
+- Defense methods: moving average smoothing, median filtering, outlier clipping, robust normalization
+- Results connect perturbation impact to missed falls and false alarms
+
+See [`docs/adversarial_robustness.md`](./docs/adversarial_robustness.md) and [`docs/defense_methods.md`](./docs/defense_methods.md).
+
+> **Note:** These are synthetic prototype evaluations only. No real physical-layer attack or validated defense is implemented.
+
+---
+
+## Clinical-Safety-Aware Metrics
+
+The prototype evaluates models using safety-aware metrics appropriate for healthcare sensing contexts:
+
+- **Missed falls** (false negatives): Fall events predicted as normal activity
+- **False alarms** (false positives): Normal activity predicted as a fall
+- **Missed fall rate** and **false alarm rate**
+- **Alarm fatigue indicator**
+
+See [`docs/clinical_safety_metrics.md`](./docs/clinical_safety_metrics.md).
+
+> **Note:** All safety metrics are computed from synthetic labels and predictions only.
+
+---
+
+## Documentation
+
+| Document | Description |
+|---|---|
+| [`docs/research_context.md`](./docs/research_context.md) | PhD research framing |
+| [`docs/threat_model.md`](./docs/threat_model.md) | Physical-layer threat model |
+| [`docs/clinical_safety_metrics.md`](./docs/clinical_safety_metrics.md) | Safety metrics explanation |
+| [`docs/adversarial_robustness.md`](./docs/adversarial_robustness.md) | Robustness methodology |
+| [`docs/defense_methods.md`](./docs/defense_methods.md) | Defense methods |
+| [`docs/demo_dashboard.md`](./docs/demo_dashboard.md) | Dashboard instructions |
+| [`docs/project_status.md`](./docs/project_status.md) | Project status checklist |
+| [`docs/roadmap.md`](./docs/roadmap.md) | Research roadmap |
+| [`docs/validation_status.md`](./docs/validation_status.md) | Validation transparency |
+| [`references.md`](./references.md) | Academic references |
+| [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) | Third-party attributions |
+
+---
+
+## Results
+
+| File | Description |
+|---|---|
+| [`results/baseline_results.md`](./results/baseline_results.md) | Baseline classifier results |
+| [`results/clinical_safety_summary.md`](./results/clinical_safety_summary.md) | Clinical-safety metric results |
+| [`results/adversarial_robustness_summary.md`](./results/adversarial_robustness_summary.md) | Robustness stress test results |
+| [`results/defense_methods_summary.md`](./results/defense_methods_summary.md) | Defense comparison results |
+
+All results are synthetic prototype outputs and should not be interpreted as real-world performance.
+
+---
+
+## Tools and Technologies
+
+- **Python 3.10+**
+- **NumPy, Pandas** - Data manipulation and signal processing
+- **Matplotlib** - Signal and results visualization
+- **SciPy** - Filtering and FFT
+- **scikit-learn** - Machine learning pipeline
+- **Streamlit** - Interactive demo dashboard
+- **Jupyter Notebook** - Prototype exploration
+
+---
+
+## Limitations
+
+- All data are synthetic CSI-like signals, not real WiFi CSI measurements
+- No clinical data, patient data, or hospital data are used
+- No hardware deployment is included
+- The fall-like event model is simplified and not clinically validated
+- Adversarial perturbations are synthetic stress tests, not real physical-layer attacks
+- Defense methods are simple preprocessing prototypes, not certified security solutions
+- All results should be interpreted as prototype outputs only
+
+---
+
+## LinkedIn and Portfolio Use
+
+See [`docs/linkedin_summary.md`](./docs/linkedin_summary.md) for a LinkedIn-ready project summary, post draft, and skills overview.
+
+---
+
+## Roadmap
+
+See [`docs/roadmap.md`](./docs/roadmap.md) for the full multi-phase research roadmap.
+
+| Phase | Description | Status |
+|---|---|---|
+| Phase 1 | Repository structure and synthetic pipeline | Completed |
+| Phase 2 | README and documentation foundation | Completed |
+| Phase 3 | Source code refactoring | Completed |
+| Phase 4 | Synthetic CSI pipeline notebook | Completed |
+| Phase 5 | Clinical-safety-aware metrics | Completed |
+| Phase 6 | Adversarial robustness stress testing | Completed |
+| Phase 7 | Defense methods and robustness hardening | Completed |
+| Phase 8 | Streamlit demo dashboard | Completed |
+| Phase 9 | GitHub polish and LinkedIn-ready presentation | Completed |
+| Phase 10+ | Real CSI datasets, hardware, clinical evaluation | Future work |
 
 ---
 
 ## Author
 
 **Shahram H. Hesari**
-
-PhD Student, Electrical and Computer Engineering
-
+PhD Candidate, Electrical Engineering and Computer Science
 Portland State University
 
 ---
 
 ## License
 
-MIT License. See [`LICENSE`](./LICENSE) for details.
+This project is licensed under the MIT License. See [`LICENSE`](./LICENSE) for details.
 
-Third-party work included in `third_party/` remains under its original license. See [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) for full attribution details.
+Third-party project attributions are documented in [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md).
