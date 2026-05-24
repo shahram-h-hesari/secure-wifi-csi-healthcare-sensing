@@ -10,7 +10,7 @@ Full dataset files are not stored directly in this repository unless redistribut
 
 ## Current Status
 
-Current repository experiments use **synthetic CSI-like data only**. MM-Fi, Wi-Pose, SignFi, Widar, UT-HAR, NTU-Fi HAR, and NTU-Fi HumanID are cataloged as related datasets for future real-data benchmarking and robustness evaluation; they are **not yet integrated into the pipeline**.
+Current repository experiments use **synthetic CSI-like data only**. MM-Fi, Wi-Pose, SignFi, Widar, UT-HAR, NTU-Fi HAR, NTU-Fi HumanID, AntiEave-WiFi-Sensing, and WiFi-ADG are cataloged as related datasets for future real-data benchmarking and robustness evaluation; they are **not yet integrated into the pipeline**. AntiEave-WiFi-Sensing and WiFi-ADG are security/privacy-focused references; they are not healthcare datasets and not fall-detection datasets.
 
 Real CSI dataset integration is **future work**.
 
@@ -27,6 +27,8 @@ Real CSI dataset integration is **future work**.
 | UT-HAR | `datasets/ut-har/` | Human activity recognition including fall class (reference) | Cataloged only; not integrated |
 | NTU-Fi HAR | `datasets/ntu-fi-har/` | Human activity recognition (reference) | Cataloged only; not integrated |
 | NTU-Fi HumanID | `datasets/ntu-fi-humanid/` | Human identification via WiFi (reference) | Cataloged only; not integrated |
+| AntiEave-WiFi-Sensing Dataset | `datasets/antieave-wifi-sensing/` | Adversarial WiFi sensing / anti-eavesdropping security (reference; not healthcare; not fall-detection) | Cataloged only; not downloaded; license pending |
+| WiFi-ADG Dataset | `datasets/wifi-adg/` | Adversarial WiFi sensing / privacy preservation (reference; not healthcare; not fall-detection) | Cataloged only; not downloaded; license pending |
 | Future entries | `datasets/future_datasets/` | TBD | Placeholder |
 
 ---
