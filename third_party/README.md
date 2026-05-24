@@ -25,7 +25,9 @@ third_party/
 │   └── esp_csi/                     # ESP-CSI: ESP32-based CSI collection and hardware prototyping
 └── wifi_sensing_security/           # Adversarial attacks, CSI spoofing, privacy, and robustness evaluation
     ├── attack_wifi_sensing/         # Attack_WiFi_Sensing: adversarial evasion and robustness evaluation
-    └── awesome_ws_security/         # Awesome-WS-Security: curated wireless sensing security literature
+        ├──ome_ws_security/         # Awesome-WS-Security: curated wireless sensing security literature
+    ├── antieave_wifi_sensing/  # AntiEave-WiFi-Sensing: anti-eavesdropping and scheduled spatial sensing defense
+    └── wifi_adg/               # WiFi-ADG: adversarial WiFi sensing for privacy preservation
 ```
 
 ---
