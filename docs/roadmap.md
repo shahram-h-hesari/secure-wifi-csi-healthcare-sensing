@@ -197,5 +197,55 @@ The ultimate goal is to contribute to the design of **secure, privacy-preserving
 
 ---
 
-*Last updated: Phase 10 - May 2026*
+## Phase 11 – Third-Party WiFi Sensing Integration: RuView (Completed)
+
+**Status:** Completed
+
+**Goals:**
+- [x] Add RuView as a third-party WiFi sensing experimental target
+- [x] Create `third_party/wifi_sensing/ruview/` documentation folder
+- [x] Add README.md, LICENSE_SUMMARY.md, REVIEW_NOTES.md, EXPERIMENT_PLAN.md, SUBMODULE_INSTRUCTIONS.md
+- [x] Create `experiments/ruview_adversarial_evaluation/` workspace
+- [x] Add run_ruview_baseline.md, perturbation_plan.md, results_template.md
+- [x] Update THIRD_PARTY_NOTICES.md with complete RuView entry
+- [x] Update docs/related_projects.md and README.md
+
+**Notes:**
+- RuView is cataloged as a third-party reference only; no code copied into src/
+- No clinical or independent validation claimed
+- Dataset and validation protocol for RuView remain pending independent verification
+- Adversarial experiments require completed baseline documentation first
+
+---
+
+## Phase 12 – WiFi CSI Dataset Catalog (Completed)
+
+**Status:** Completed
+
+**Goals:**
+- [x] Create `datasets/` catalog folder structure
+- [x] Add `datasets/README.md` — catalog purpose, policy, and current status
+- [x] Add `datasets/dataset_catalog.md` — table-based dataset index
+- [x] Add MM-Fi catalog entry: `datasets/mm-fi/` with README, DATASET_CARD, LICENSE_SUMMARY, DOWNLOAD_INSTRUCTIONS
+- [x] Add Wi-Pose catalog entry: `datasets/wi-pose/` with README, DATASET_CARD, LICENSE_SUMMARY, DOWNLOAD_INSTRUCTIONS
+- [x] Add `datasets/future_datasets/README.md` with candidate list (Widar3.0, FallDeFi, SignFi, UT-HAR)
+- [x] Update `data/README.md` with external data storage policy
+- [x] Update `.gitignore` to exclude `data/external/` and common large dataset file extensions
+- [x] Update `README.md` with Dataset Catalog section
+- [x] Update `docs/roadmap.md` (this file)
+
+**Notes:**
+- Dataset files are NOT stored in this repository
+- MM-Fi and Wi-Pose are cataloged as related datasets, not current validation datasets
+- Current experiments still use synthetic CSI-like data only
+- Real-data integration remains future work
+- Catalog entries include license, citation, and download guidance placeholders requiring manual verification
+
+**Future tasks (Phase 13+):**
+- Verify official sources, licenses, and citations for MM-Fi and Wi-Pose
+- Write local dataset loaders (scripts/load_mmfi.py, scripts/load_wipose.py)
+- Add FallDeFi, Widar3.0, and other candidate dataset entries
+- Connect real CSI datasets to synthetic pipeline for benchmarking
+
+*Last updated: Phase 12 - May 2026*
 *See also: [research_context.md](research_context.md), [validation_status.md](validation_status.md), [security_motivation.md](security_motivation.md)*
