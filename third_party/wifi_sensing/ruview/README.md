@@ -63,6 +63,24 @@ RuView is studied here as an external reference. Its code and documentation are 
 
 ---
 
+## Dataset and Validation Status
+
+> **Dataset and validation status: pending review.**
+
+RuView's dataset, model provenance, and validation protocol have not yet been independently verified in this repository. Specifically:
+
+- RuView may include simulated or demo-mode workflows. These are useful for testing the software interface but are **not equivalent to validation** on a real, labeled WiFi CSI dataset.
+- RuView may support recording labeled CSI sessions from real WiFi hardware, but this repository has not yet verified a complete public dataset, train/test split, subject count, room setup, or benchmark protocol.
+- RuView may reference or use pretrained models. The dataset used to train them has not been independently verified here.
+- Public datasets such as Wi-Pose or MM-Fi are treated as *mentioned or potentially relevant only*. They should not be cited as RuView's training or evaluation dataset unless directly documented in RuView's official sources.
+- RuView should **not be cited as validated evidence** for any pipeline in this repository unless a reproducible dataset, model, and benchmark protocol are verified.
+
+> **Inclusion of RuView does not imply endorsement or independent validation of its sensing claims.**
+
+See [`REVIEW_NOTES.md`](./REVIEW_NOTES.md) for the full dataset and validation review checklist.
+
+---
+
 ## Planned Review
 
 See [`REVIEW_NOTES.md`](./REVIEW_NOTES.md) for a structured technical review template.
