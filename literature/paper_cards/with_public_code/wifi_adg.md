@@ -36,7 +36,7 @@ WiFi-ADG provides Python scripts for adversarial data generation (ADG) targeting
 The upstream repository contains WIFI_ADG_ae.py, WIFI_ADG_model.py, and WIFI_ADG_run.py.
 The repository contact is swzhou@hnu.edu.cn; no formal citation block is provided upstream.
 
-> **Note:** Paper title, authors, venue, and DOI are pending verification — not provided in upstream README.
+> **Note:** Paper title, authors, year, venue, and DOI are pending verification — not provided in upstream README.
 > External reference only. No code, PDFs, or datasets are copied into this repository.
 
 ## Task and Modality
@@ -46,7 +46,8 @@ The repository contact is swzhou@hnu.edu.cn; no formal citation block is provide
 | Primary task | Adversarial data generation for WiFi sensing |
 | Modality | WiFi CSI (Channel State Information) |
 | Authors | Pending verification (contact: swzhou@hnu.edu.cn) |
-| Year | Approximately 2017–2018 (based on commit history; not formally stated) |
+| Year | Pending verification |
+| Venue | Pending verification |
 
 ## Attack / Defense / Benchmark Role
 
@@ -58,40 +59,30 @@ Relevant to CSI privacy, behavior obfuscation, and adversarial data generation w
 
 | Chapter | Role |
 |---|---|
-| Chapter 5: Clinical Safety and Privacy | Behavior obfuscation and privacy reference |
-| Chapter 6: Software-Based Hardening | Adversarial data generation for defense testing |
+| Chapter 4 (adversarial attacks) | Adversarial data generation methodology reference |
+| Chapter 6 (defense methods) | Adversarial data generation for WiFi privacy |
 
-## Reproducibility Status
+## Reproducibility Notes
 
-| Item | Status |
-|---|---|
-| Code available | Yes — https://github.com/siwangzhou/WiFi-ADG |
-| Tested locally | No |
-| Reproduction score | Not assessed |
-| Reproducibility note | Not tested in this repository |
-
-## How This Supports the Repository
-
-Provides a reference implementation for WiFi CSI adversarial data generation.
-Useful for evaluating perturbation-based privacy preservation and defense pipeline design.
+- Public code exists at https://github.com/siwangzhou/WiFi-ADG
+- Code has NOT been tested locally in this repository
+- Dataset files are referenced in upstream README via external Baidu link; accessibility pending verification
+- No reproduction claimed
 
 ## Limitations and Open Questions
 
-- Paper title, authors, venue, and DOI not confirmed from upstream README; all pending verification.
-- No LICENSE file in upstream repository.
-- Dataset access relies on external Baidu link; availability pending verification.
-- Not validated in a healthcare or vital-sign sensing context.
+- Paper metadata (title, authors, venue, year, DOI) not provided in upstream repository
+- Dataset access requires Baidu link verification
+- License terms not stated in upstream repository
 
 ## Citation Status
 
-Citation pending verification — no formal BibTeX or paper reference found in upstream README.
-Contact: swzhou@hnu.edu.cn
+| Field | Value |
+|---|---|
+| BibTeX available | Pending verification |
+| DOI | Pending verification |
+| Citation key | wifi_adg |
 
 ## Last Verified
 
-2026-05-24 — GitHub URL confirmed live. Paper metadata (title, authors, DOI, venue) pending verification.
-
----
-
-*Third-party folder reference: `third_party/wifi_sensing_security/wifi_adg/`*
-*See also: `literature/papers.csv`, `literature/reproducibility_matrix.md`*
+2026-05-24 by repository author.
