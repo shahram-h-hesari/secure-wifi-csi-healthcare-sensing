@@ -52,4 +52,30 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 
 ---
 
+### Attack_WiFi_Sensing
+
+- **Original Repository:** https://github.com/Guolin-Yin/Attack_WiFi_Sensing
+- **Original Authors:** Guolin Yin and contributors
+- **License:** To be verified before any code use
+- **Category:** WiFi sensing security — adversarial evasion attacks, universal perturbation testing, adversarial training, and robustness evaluation
+- **Use in This Repository:** Referenced for literature review and future adversarial robustness evaluation planning only. No code has been copied or adapted into this repository.
+- **Validation Status:** Claims from this repository are **not independently validated** here. Its inclusion does not imply endorsement of its results.
+- **Code Status:** No code copied. License review must be completed before any code is adapted or incorporated.
+- **Documentation:** To be added under `third_party/wifi_sensing_security/` after license review.
+
+---
+
+### Awesome-WS-Security
+
+- **Original Repository:** https://github.com/Intelligent-Perception-Lab/Awesome-WS-Security
+- **Original Authors:** Intelligent Perception Lab and contributors
+- **License:** To be verified before any use
+- **Category:** WiFi sensing security — curated literature and resources on wireless sensing security, attacks, privacy, and defenses
+- **Use in This Repository:** Referenced as a literature map for WiFi sensing security research. Used for literature review and future robustness evaluation scoping only. No code or content has been copied.
+- **Validation Status:** Listings in this curated repository are **not independently validated** by this repository.
+- **Code Status:** No code copied. This is a reference/literature-tracking resource only.
+- **Documentation:** To be added under `third_party/wifi_sensing_security/` after review.
+
+---
+
 *Last updated: May 2026*
