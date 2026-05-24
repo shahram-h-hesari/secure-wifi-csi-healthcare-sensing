@@ -27,7 +27,8 @@ third_party/
 │   ├── esp_csi/                         # ESP-CSI: ESP32-based CSI collection and hardware prototyping
 │   ├── wifi_csi_human_pose_detection/   # WiFi-CSI-Human-Pose-Detection: pose sensing / domain generalization (general sensing)
 │   ├── mowa_wifi_sensing/               # mowa-wifi-sensing: WiFi CSI HAR / fall baseline (Nexmon CSI, BSD-3-Clause)
-│   └── baby_monitor_wifi_csi/           # baby-monitor-wifi-csi: WiFi CSI breathing / apnea baseline (ESP32, MIT)
+│   ├── baby_monitor_wifi_csi/           # baby-monitor-wifi-csi: WiFi CSI breathing / apnea baseline (ESP32, MIT)
+│   └── csigan/                          # CsiGAN: GAN-based data augmentation for CSI activity recognition (IEEE IoT 2019)
 └── wifi_sensing_security/             # Adversarial attacks, CSI spoofing, privacy, and robustness evaluation
     ├── attack_wifi_sensing/             # Attack_WiFi_Sensing: adversarial evasion and robustness evaluation
     ├── awesome_ws_security/             # Awesome-WS-Security: curated wireless sensing security literature
@@ -50,6 +51,7 @@ third_party/
 | `wifi_csi_human_pose_detection/` | Human pose estimation via WiFi CSI; through-wall sensing; pose/domain-generalization baseline. Placed here because no adversarial domain generalization confirmed in upstream. | GPL-3.0 | External reference only; dataset pending verification |
 | `mowa_wifi_sensing/` | Real-time WiFi CSI-based HAR using Nexmon CSI extractor. Fall/HAR baseline candidate. Not an adversarial/security repo. | BSD-3-Clause | External reference only; dataset pending verification |
 | `baby_monitor_wifi_csi/` | Contactless baby breathing monitor via WiFi CSI and ESP32. Breathing/apnea sensing baseline. Not an adversarial/security repo. Not clinically validated. | MIT | External reference only; dataset pending verification |
+| `csigan/` | Semi-supervised GAN for robust WiFi CSI activity recognition and data augmentation (IEEE IoT Journal 2019). Useful for future robustness/augmentation experiments. Not healthcare-specific. Not an adversarial attack/defense repo. | Pending verification (no LICENSE file detected) | External reference only; dataset pending verification |
 
 ### wifi_sensing_security/
 
