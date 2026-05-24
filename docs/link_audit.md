@@ -64,4 +64,43 @@ The following items were identified during Phase 11 (2025-05-25) as requiring UR
 
 ---
 
+## Final Literature Cleanup Pass
+
+> **Date:** 2026-05-24
+
+This pass was completed to synchronize all literature tracking files and eliminate all remaining inconsistencies.
+
+### Actions Completed
+
+| Action | Files Affected | Result |
+|--------|---------------|--------|
+| Deleted stale duplicate cards from no_confirmed_code | csi_bench.md, noisec.md, infocom_2023_wifi_ap.md removed | DONE |
+| Rebuilt papers.csv with proper quoting and 25-column schema | literature/papers.csv | DONE |
+| Rebuilt prisma_tracking.csv with proper quoting and 14-column schema | literature/prisma_tracking.csv | DONE |
+| Verified code_release_watchlist.md has all 7 public-code entries in Section A | literature/code_release_watchlist.md | DONE |
+| Verified reproducibility_matrix.md has all 7 public-code/benchmark entries | literature/reproducibility_matrix.md | DONE |
+| Fixed paper_cards/README.md: replaced invented wicam_wicam2 and wiintruder titles with Pending verification | literature/paper_cards/README.md | DONE |
+| Verified references.bib has no fake URLs, no xdawnn links, no 2406.example IDs | literature/references.bib | DONE |
+| Verified THIRD_PARTY_NOTICES.md has correct canonical GitHub URLs | THIRD_PARTY_NOTICES.md | DONE |
+
+### Prohibited Pattern Checks
+
+| Pattern | Result |
+|---------|--------|
+| `github.com/example` | Zero matches |
+| `xdawnn/attack-wifi-sensing` | Zero matches |
+| `2406.example` | Zero matches |
+| `topics/csi-benchmark` (in docs/) | Zero matches (replaced with canonical URL) |
+| `topics/ris-security` (in docs/) | Zero matches (replaced with canonical URL) |
+| `topics/csi-entropy` (in docs/) | Retained only in related_projects.md with explicit "URL pending verification" notice |
+| Public Code URL: Not found (in with_public_code/) | Zero matches |
+
+### Consistency Summary
+
+- All 7 public-code/benchmark entries appear in papers.csv, reproducibility_matrix.md, code_release_watchlist.md Section A, and prisma_tracking.csv with `code_available = Yes`.
+- All 4 no-confirmed-code entries appear in papers.csv, reproducibility_matrix.md, and prisma_tracking.csv with `code_available = No confirmed public GitHub found`.
+- No project has duplicate cards across categories.
+- No project in `with_public_code/` or `defense_methods/` or `datasets_and_benchmarks/` claims locally tested or reproduced results.
+- Synthetic CSI-like data disclaimer is preserved across all central files.
+
 *This audit document is maintained as part of the Secure WiFi CSI Healthcare Sensing research prototype at Portland State University.*
