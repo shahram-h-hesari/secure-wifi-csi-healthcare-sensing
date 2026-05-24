@@ -1,7 +1,7 @@
 # Literature and Reproducibility Tracker
 ## Secure WiFi CSI Healthcare Sensing — Research Prototype
 
-> **Last Updated:** 2026-05-24  
+> **Last Updated:** 2026-05-24
 > **Status:** Active — initial cleanup complete; 11 papers tracked; 7 with confirmed public code; 4 pending code verification
 
 ---
@@ -20,6 +20,23 @@ This folder is the **literature and reproducibility tracking layer** for the Sec
 
 ---
 
+## Critical Clarifications
+
+> **"Public GitHub available" does NOT mean code has been tested locally, reproduced, or integrated into this repository.**
+> All public-code entries default to `Reproducibility Status: Not tested` and `Tested Locally: No` unless explicit evidence exists in this repository.
+
+> **Duplicate paper cards across category folders are NOT allowed.**
+> Each paper or repository must have exactly ONE paper card in exactly ONE category folder.
+> If a card exists in `with_public_code/`, `datasets_and_benchmarks/`, or `defense_methods/`, it must NOT also appear in `no_confirmed_code/`.
+
+> **Category folder assignment rules:**
+> - `with_public_code/` — Papers or repositories with a confirmed, verified public GitHub URL
+> - `no_confirmed_code/` — ONLY for papers where no public GitHub has been confirmed as of the last check
+> - `datasets_and_benchmarks/` — For dataset/benchmark repositories such as CSI-Bench
+> - `defense_methods/` — For defense-method repositories or defense-method reference papers such as NoiSec
+
+---
+
 ## What Is and Is Not Stored Here
 
 | Allowed | Not Allowed |
@@ -33,7 +50,7 @@ This folder is the **literature and reproducibility tracking layer** for the Sec
 | Short original summaries by repo author | Fake or unverified metadata |
 | Reproducibility notes and code-status notes | Claims of tested/reproduced code unless verified |
 | Thesis-chapter relevance notes | Medical or clinical validation claims |
-| Systematic-review screening decisions |   |
+| Systematic-review screening decisions | Duplicate paper cards across folders |
 
 ---
 
@@ -43,67 +60,51 @@ This folder is the **literature and reproducibility tracking layer** for the Sec
 |---|---|
 | `README.md` (this file) | Overview of the literature tracking layer |
 | `papers.csv` | Machine-readable index of all tracked papers and repositories |
-| `references.bib` | Verified BibTeX entries (or TODO placeholders for unverified) |
-| `reproducibility_matrix.md` | Human-readable reproducibility status table |
+| `references.bib` | BibTeX entries (verified or marked PENDING) |
+| `reproducibility_matrix.md` | Human-readable reproducibility status table with sections |
+| `code_release_watchlist.md` | Public-code and no-code watchlist for monitoring |
 | `systematic_review_protocol.md` | Systematic review plan (not a completed review) |
 | `inclusion_exclusion_criteria.md` | Criteria for including/excluding papers in the review |
 | `search_queries.md` | Exact search queries for systematic review reproducibility |
 | `prisma_tracking.csv` | PRISMA-compatible paper screening records |
 | `thesis_chapter_mapping.md` | Maps thesis chapters to GitHub artifacts and literature evidence |
 | `paper_cards/` | Structured summaries per paper or repository |
-| `paper_cards/with_public_code/` | Papers/repos with confirmed public GitHub code |
-| `paper_cards/no_confirmed_code/` | High-priority papers without confirmed public code |
-| `paper_cards/datasets_and_benchmarks/` | Dataset/benchmark paper cards |
-| `paper_cards/defense_methods/` | Defense method reference cards |
-| `paper_cards/healthcare_sensing/` | Healthcare sensing reference cards |
+| `paper_cards/with_public_code/` | Papers/repos with confirmed public GitHub code (NOT necessarily tested) |
+| `paper_cards/no_confirmed_code/` | Papers WITHOUT confirmed public GitHub code |
+| `paper_cards/datasets_and_benchmarks/` | Dataset and benchmark repository cards (e.g., CSI-Bench) |
+| `paper_cards/defense_methods/` | Defense-method repository or reference cards (e.g., NoiSec) |
 
 ---
 
 ## Status Legend
 
 ### Code Status
-| Value | Meaning |
-|---|---|
-| Public official code | Code confirmed at official repository URL |
-| Public unofficial code | Third-party reproduction, not from original authors |
-| No confirmed public GitHub found | No public code found as of last check |
-| Pending release | Authors announced intent to release |
-| Broken/unusable | Code found but cannot run / dependencies broken |
-| Pending verification | Not yet checked |
 
-### Dataset Status
 | Value | Meaning |
 |---|---|
-| Public dataset | Dataset freely available without request |
-| Request-only dataset | Requires formal data-access request |
-| Dataset link broken | Link found but URL dead |
-| Dataset missing | No public dataset link found |
-| Candidate dataset | Identified as candidate but not yet verified |
+| Public GitHub available | Code confirmed at official repository URL; NOT necessarily tested locally |
+| No confirmed public GitHub found | No public code found as of last check |
 | Pending verification | Not yet checked |
 
 ### Reproducibility Status
+
 | Value | Meaning |
 |---|---|
-| Not tested | Code/data not yet run locally |
-| Installed successfully | Dependencies installed without errors |
-| Dataset unavailable | Code available but dataset cannot be accessed |
-| Ran baseline | Ran inference/baseline script |
-| Ran attack | Ran adversarial attack script |
-| Partially reproduced | Some results match; not full reproduction |
-| Fully reproduced | Main results match within reported margins |
-| Failed to reproduce | Attempted but results do not match |
-| Not reproducible from public artifacts | No public code or data available |
+| Not tested | Code or paper available but code has not been run locally |
+| Not reproducible from public code yet | No confirmed public code; cannot reproduce |
+| Pending verification | Not yet assessed |
 
 ### Reproducibility Score (A–E)
+
 | Score | Meaning |
 |---|---|
-| A | Official code + dataset available; installation tested; baseline reproduced |
-| B | Official code available; dataset available or documented; not yet reproduced |
+| A | Official code + dataset available; installation tested; baseline reproduced locally |
+| B | Official code available; dataset available or documented; not yet reproduced locally |
 | C | Code available but dataset missing, unclear, or license/access unresolved |
 | D | Paper available but no confirmed public code |
 | E | Unverified or weak relevance; watchlist/background only |
 
-> **Note:** Scores should be conservative. Do not assign A unless the code actually runs locally and results are reproduced. Most entries begin at B, C, D, or Pending verification.
+> **Note:** Scores should be conservative. Do not assign A unless the code actually runs locally and results are reproduced.
 
 ---
 
@@ -114,15 +115,18 @@ This folder is the **literature and reproducibility tracking layer** for the Sec
 - **This repository uses synthetic CSI-like data only.** No real WiFi CSI hardware, clinical data, or medical-grade validation is claimed.
 - **No third-party code has been copied.** All third-party items are external references only.
 - **Reproducibility scores reflect local testing status.** A score of B does not mean the code was run; it means the code appears available but has not been tested locally.
+- **Public GitHub available ≠ Tested locally ≠ Results reproduced.**
 
 ---
 
-## Related Documents
+## Quick Links
 
+- [`literature/papers.csv`](papers.csv) — Machine-readable paper index
 - [`literature/reproducibility_matrix.md`](reproducibility_matrix.md) — Full reproducibility status table
+- [`literature/code_release_watchlist.md`](code_release_watchlist.md) — Watchlist for code monitoring
+- [`literature/prisma_tracking.csv`](prisma_tracking.csv) — PRISMA screening records
 - [`literature/systematic_review_protocol.md`](systematic_review_protocol.md) — Systematic review plan
 - [`literature/thesis_chapter_mapping.md`](thesis_chapter_mapping.md) — Chapter-to-evidence map
-- [`literature/papers.csv`](papers.csv) — Machine-readable paper index
 - [`docs/open_source_gap.md`](../docs/open_source_gap.md) — Open-source gap analysis
 - [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md) — Attribution and license policy
 
