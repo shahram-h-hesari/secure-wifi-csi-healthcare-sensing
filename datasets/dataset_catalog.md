@@ -21,6 +21,8 @@ This catalog lists public and research WiFi CSI datasets that are relevant to th
 | UT-HAR | [SenseFi Benchmark](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark) \| [Paper](https://ieeexplore.ieee.org/document/8067693) \| [Kaggle mirror (unverified)](https://www.kaggle.com/datasets/hylanj/wifi-csi-dataset-ut-har) | WiFi CSI | Human activity recognition (includes fall class) | Pending verification | Cataloged only; not integrated | Tracked via SenseFi; fall class may be relevant to benchmarking; license pending |
 | NTU-Fi HAR | [SenseFi Benchmark](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark) | WiFi CSI | Human activity recognition | Pending verification | Cataloged only; not integrated | Tracked via SenseFi; may be relevant for future comparative benchmarking; license pending |
 | NTU-Fi HumanID | [SenseFi Benchmark](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark) | WiFi CSI | Human identification via WiFi | Pending verification | Cataloged only; not integrated | Tracked via SenseFi; adversarial robustness relevance; license pending |
+| AntiEave-WiFi-Sensing Dataset | [Official GitHub repository](https://github.com/MoWiNG-Lab/AntiEave-WiFi-Sensing) \| [Repository dataset folder](https://github.com/MoWiNG-Lab/AntiEave-WiFi-Sensing/tree/main/dataset) \| [Paper](https://www.computer.org/csdl/proceedings-article/percom/2023/10099079/1MrG8Bbqka4) | WiFi sensing / CSI-related | Adversarial WiFi sensing / anti-eavesdropping (IEEE PerCom 2023) | Pending verification | Cataloged only; not downloaded; not integrated | Not a fall-detection dataset; not healthcare-specific; WiFi sensing cybersecurity/privacy context; related repo: `third_party/wifi_sensing_security/antieave_wifi_sensing/` |
+| WiFi-ADG Dataset | [Official GitHub repository](https://github.com/siwangzhou/WiFi-ADG) \| [Baidu download link (upstream-provided)](https://pan.baidu.com/s/1fOhaYD1vq39JWXPExtsCIg) \| [Paper DOI](https://doi.org/10.1109/LCOMM.2019.2952844) | WiFi CSI | Adversarial WiFi sensing / privacy-preserving human behavior (IEEE Comm. Letters 2019) | .mat (9 files: data0–data7 + resdata; pending verification) | Cataloged only; not downloaded; not integrated | Not a fall-detection dataset; not healthcare-specific; WiFi sensing cybersecurity/adversarial robustness context; related repo: `third_party/wifi_sensing_security/wifi_adg/` |
 
 > **Note:** All dataset details must be verified from official dataset pages or papers before use. Do not treat unverified fields as authoritative. Links point to official or associated sources and do not mean data are stored in this repository.
 
@@ -37,6 +39,8 @@ This catalog lists public and research WiFi CSI datasets that are relevant to th
 | UT-HAR | Pending | No | No | No | No |
 | NTU-Fi HAR | Pending | No | No | No | No |
 | NTU-Fi HumanID | Pending | No | No | No | No |
+| AntiEave-WiFi-Sensing Dataset | Yes | No | No | No | No |
+| WiFi-ADG Dataset | Yes | No | No | No | No |
 
 All experiments currently use **synthetic CSI-like data**. This will be updated as real-data integration progresses.
 
