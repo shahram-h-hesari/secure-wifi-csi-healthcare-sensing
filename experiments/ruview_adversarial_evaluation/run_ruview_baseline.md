@@ -129,3 +129,53 @@ python main.py
 ---
 
 *Document created: May 2026. All steps are planned and pending verification.*
+
+
+---
+
+## Data and Model Provenance Checklist
+
+> **Complete this checklist before designing any perturbation experiments.**
+
+### Data Source
+
+- [ ] Dataset status: simulated / recorded CSI / public dataset / unknown
+- [ ] Input file paths: (document exact paths once identified)
+- [ ] Input file format: (CSV, NumPy, HDF5, proprietary format, etc.)
+- [ ] Whether sample data is included in the repository or must be downloaded/recorded
+- [ ] Whether inputs can be replayed offline without real WiFi hardware
+
+### Model Source
+
+- [ ] Model source: local / downloaded / pretrained / external service / unknown
+- [ ] Model file paths: (document exact paths once identified)
+- [ ] Model file format: (.pt, .pkl, .h5, .onnx, etc.)
+- [ ] Training dataset: (must be verified from model card or official documentation — TBD)
+- [ ] Evaluation dataset: (must be verified from model card or official documentation — TBD)
+- [ ] Whether model weights are available offline or require runtime download
+
+### Reproducibility Status
+
+- [ ] Reproducibility status: reproduced / partially reproduced / not reproduced / pending
+- [ ] Whether baseline inference runs without errors
+- [ ] Whether outputs are deterministic given the same inputs
+- [ ] Whether hardware is required for claimed sensing outputs
+- [ ] What outputs are produced: labels / predictions / visualizations / simulated placeholders
+
+### Provenance Summary Table
+
+| Field | Value | Status |
+|---|---|---|
+| Dataset status | simulated / recorded CSI / public dataset / unknown | Pending |
+| Input file | TBD | Pending |
+| Input format | TBD | Pending |
+| Model source | local / downloaded / pretrained / unknown | Pending |
+| Training dataset | TBD — verify from model card | Pending |
+| Evaluation dataset | TBD — verify from model card | Pending |
+| Reproducibility status | reproduced / partially / not reproduced / pending | Pending |
+| Hardware required | Yes / No / Partial / Unknown | Pending |
+| Output type | labels / predictions / visualizations / placeholders | Pending |
+
+---
+
+*Data and model provenance checklist added: May 2026. Fill in after running baseline simulation.*
