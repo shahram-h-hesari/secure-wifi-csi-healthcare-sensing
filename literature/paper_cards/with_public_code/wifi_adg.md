@@ -11,7 +11,7 @@
 | Year | 2022 |
 | Venue | IEEE GLOBECOM |
 | DOI | Pending verification |
-| Public Code URL | https://github.com/example/wifi-adg (Pending verification — placeholder URL) |
+| Public Code URL | Not found — pending verification (placeholder removed) |
 | License | Pending verification |
 | Dataset Used | Synthetic/lab CSI |
 | Dataset License | Pending verification |
@@ -20,7 +20,7 @@
 
 WiFi-ADG generates adversarial examples to evaluate and improve defenses for WiFi-based deep learning sensing. Relevant to Chapter 6 adversarial defense methods.
 
-> **Note:** Placeholder code URL — verify before use. No PDFs stored.
+> **Note:** Public code URL not found — removed placeholder link. No PDFs stored.
 
 ## Reproducibility Assessment
 
@@ -43,7 +43,7 @@ WiFi-ADG generates adversarial examples to evaluate and improve defenses for WiF
 ```
 Zhang et al. (2022). WiFi-ADG: Adversarial Defense Generation for WiFi Sensing.
 IEEE GLOBECOM. DOI: Pending verification.
-Code: https://github.com/example/wifi-adg (placeholder; verify before use)
+Code: Not found — pending verification (placeholder removed)
 License: Pending verification
 ```
 
