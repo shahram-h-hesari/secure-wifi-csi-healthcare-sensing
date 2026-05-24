@@ -249,3 +249,51 @@ The ultimate goal is to contribute to the design of **secure, privacy-preserving
 
 *Last updated: Phase 12 - May 2026*
 *See also: [research_context.md](research_context.md), [validation_status.md](validation_status.md), [security_motivation.md](security_motivation.md)*
+
+
+---
+
+## Future Tasks — Third-Party Repository Integration (Added 2026-05-24)
+
+The following tasks were added after four new external repositories were cataloged in `third_party/`. These tasks are for future investigation and integration planning.
+
+### Third-Party Repository Inspection Tasks
+
+- [ ] **Inspect goop-veil for license compliance and potential integration**
+  - Review the Apache-2.0 license terms for any code or ideas you wish to adapt.
+  - Compare `goop-veil`'s router-side privacy defense approach with this project's planned software-only defense framework.
+  - Determine if any detection or degradation methods from `goop-veil` can inform the thesis adversarial defense pipeline.
+  - Verify whether any live CSI data examples or test traces are publicly available.
+
+- [ ] **Decide whether mowa-wifi-sensing can be used as a fall/HAR baseline**
+  - Inspect the upstream repository for dataset availability (real-time Nexmon CSI; domain-specific HAR folders such as `csi_dataset/domain_A`, `domain_B`).
+  - Verify whether fall-related activity classes are included in the HAR data.
+  - Verify the BSD-3-Clause license terms for data and code use.
+  - If dataset is confirmed and license allows, plan a future experiment to compare synthetic pipeline performance against a real-data HAR baseline.
+
+- [ ] **Decide whether baby-monitor-wifi-csi can inform apnea/vital-sign experiments**
+  - Inspect the upstream repository for recorded CSI breathing traces or data download links.
+  - Verify the MIT license terms for data and code use.
+  - If relevant data is confirmed, plan a future experiment extending the synthetic vital-sign pipeline toward real WiFi CSI breathing detection.
+  - Assess whether ESP32 CSI collection methodology is compatible with this project's hardware plans.
+
+- [ ] **Inspect WiFi-CSI-Human-Pose-Detection for dataset and integration potential**
+  - Inspect the upstream repository for confirmed CSI pose/through-wall dataset links.
+  - Verify the GPL-3.0 license copyleft implications before any code adaptation.
+  - Determine whether pose-based CSI features can enrich fall-detection baseline experiments.
+  - If adversarial domain generalization content is found in future exploration, consider reclassifying to `third_party/wifi_sensing_security/`.
+
+### Dataset Candidate Verification Tasks
+
+- [ ] **Verify dataset candidates in `datasets/future_datasets/README.md`**
+  - Manually check each of the four new candidate entries:
+    1. `goop-veil live/router CSI data` — confirm or rule out public dataset.
+    2. `WiFi-CSI-Human-Pose-Detection dataset` — confirm or rule out public CSI dataset.
+    3. `mowa-fall-har` — confirm availability of fall/HAR CSI data with activity classes.
+    4. `baby-monitor-wifi-csi breathing/apnea CSI data` — confirm or rule out public dataset.
+  - For each confirmed dataset: create a full `DATASET_CARD.md` following the style of `datasets/mm-fi/DATASET_CARD.md`.
+  - For each ruled-out candidate: update the candidate entry with a "Not available" or "Dataset not publicly distributed" note.
+
+---
+
+*Last updated: 2026-05-24*
