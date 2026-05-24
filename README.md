@@ -354,3 +354,24 @@ Third-party project attributions are documented in [`THIRD_PARTY_NOTICES.md`](./
 > - `third_party/wifi_sensing/baby_monitor_wifi_csi/` — baby-monitor-wifi-csi: WiFi CSI breathing / apnea baseline (MIT)
 >
 > All are external references only. No code, datasets, or files have been copied. The `datasets/future_datasets/` folder tracks candidate dataset notes for these repositories pending future verification. Current implementation continues to use **synthetic CSI-like data only**. Third-party projects and dataset candidates are cataloged for future work and are not currently used for model validation or benchmarking.
+
+
+---
+
+## Research Gap in Public Code
+
+A second-pass search of public GitHub repositories did not identify an open-source project that specifically combines **WiFi CSI healthcare sensing** (fall detection, vital-sign monitoring, or elderly home monitoring) with **adversarial attack/defense evaluation** and **clinical safety metrics**.
+
+Existing public repositories primarily cover one of the following:
+- General WiFi CSI sensing and activity recognition (e.g., SenseFi, mowa-wifi-sensing, WiFi-CSI-Human-Pose-Detection)
+- Privacy defense for WiFi sensing without healthcare context (e.g., goop-veil, AntiEave-WiFi-Sensing, WiFi-ADG)
+- Non-healthcare adversarial WiFi sensing attack/defense (e.g., Attack_WiFi_Sensing)
+- WiFi CSI data augmentation without adversarial robustness framing (e.g., CsiGAN)
+
+This repository is intended to help address that gap by building a **reproducible research framework for secure WiFi CSI healthcare sensing**, combining fall-detection modeling, adversarial robustness evaluation, and clinical-safety-aware metrics in a single open-source prototype.
+
+> **Note:** The current implementation uses **synthetic CSI-like data only**. No clinical validation, real-data validation, or medical-device readiness is claimed.
+
+---
+
+> **Update Note (2026-05-24):** `third_party/wifi_sensing/csigan/` added — CsiGAN: GAN-based data augmentation for CSI activity recognition (IEEE IoT Journal 2019, license pending verification). External reference only; no code copied.
