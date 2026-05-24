@@ -1,0 +1,13 @@
+paper_id,title,year,venue,screening_stage,decision,exclusion_reason,screener,date_screened,notes
+attack_wifi_sensing,Adversarial Attack on Deep Learning-Based WiFi Sensing,2023,IEEE TIFS,Full text,Included,N/A,SHH,2026-05-24,Primary adversarial attack reference; meets I1 I3 I4
+sensefi,SenseFi: A Library and Benchmark on Deep Learning-Enhanced WiFi Human Sensing,2023,Patterns,Full text,Included,N/A,SHH,2026-05-24,Key benchmark; meets I1 I3 I6 I7
+antieave_wifi_sensing,AntiEave: Defending Against Eavesdropping WiFi Sensing Attacks,2023,IEEE INFOCOM,Full text,Included,N/A,SHH,2026-05-24,Defense reference; meets I1 I3 I4
+wifi_adg,WiFi-ADG: Adversarial Defense Generation for WiFi Sensing,2022,IEEE GLOBECOM,Full text,Included,N/A,SHH,2026-05-24,Adversarial defense generation; meets I1 I3 I4
+csigan,CSI-GAN: Generative Adversarial Network for CSI Augmentation,2022,IEEE Access,Full text,Included,N/A,SHH,2026-05-24,GAN augmentation; meets I1 I3 I4
+csi_bench,CSI-Bench: A Benchmark for WiFi CSI-Based Sensing,2024,arXiv,Full text,Included,N/A,SHH,2026-05-24,Benchmark; meets I1 I3 I6; no confirmed public code
+noisec,NoiSec: Exploiting Noise for Adversarial Attacks and Defenses in WiFi Sensing,2023,ACM CCS,Full text,Included (tentative),WiFi CSI applicability pending,SHH,2026-05-24,Noise-based defense; meets I1 I4; WiFi CSI domain applicability pending verification
+infocom_2023_wifi_ap,Exposing Wireless Eavesdropping Risks from WiFi APs,2023,IEEE INFOCOM,Full text,Included,N/A,SHH,2026-05-24,Privacy risk; meets I1 I3 I4
+wicam_wicam2,WiCam: Recognizing People Behind Walls Using WiFi,2021,ACM MobiSys,Full text,Included,N/A,SHH,2026-05-24,Attack model; meets I1 I3 I4
+wiintruder,WiIntruder: Detecting Intrusions in WiFi-Based Vital Sensing,2022,IEEE SECON,Full text,Included,N/A,SHH,2026-05-24,Hardening reference; meets I1 I2 I3 I4
+awesome_ris_security,Awesome RIS Security,2024,GitHub Repository,Title/abstract,Included (reference only),Not peer-reviewed; curated list,SHH,2026-05-24,Reading list; included as background reference only
+unilateral_csi_entropy,Unilateral CSI Entropy Estimation for WiFi Sensing,2023,IEEE WCNC,Full text,Included,N/A,SHH,2026-05-24,Entropy estimation; meets I1 I3
