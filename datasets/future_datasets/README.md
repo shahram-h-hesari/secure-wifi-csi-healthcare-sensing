@@ -134,3 +134,23 @@ The following candidate entries were added based on newly tracked third-party re
 ---
 
 *Last updated: 2026-05-24*
+
+
+---
+
+### CsiGAN-related CSI activity-recognition data
+
+- **Candidate Name:** CsiGAN-related CSI activity-recognition data
+- **Related Repo:** `third_party/wifi_sensing/csigan/`
+- **GitHub:** https://github.com/ChunjingXiao/CsiGAN
+- **Associated Paper:** Chunjing Xiao et al. "CsiGAN: Robust Channel State Information-based Activity Recognition with GANs." IEEE Internet of Things Journal, 2019.
+- **Task Relevance:** Activity recognition, GAN-based data augmentation, possible robustness support for victim models.
+- **Healthcare Relevance:** None directly. Possible indirect use for future victim-model augmentation in fall-detection or vital-sign sensing contexts.
+- **Dataset Availability:** Pending verification — CsiGAN may use CSI activity-recognition datasets (potentially SignFi or similar) for GAN training and evaluation. Source data, access terms, license, and compatibility with this repository are pending verification.
+- **License Status:** Repository has no LICENSE file detected (as of 2026-05-24). Dataset license: pending verification.
+- **Action Needed:** Inspect upstream repository for dataset links, included data folders, or references to external datasets. Verify access terms and license before any download or use.
+- **Status:** Candidate only — not downloaded, integrated, trained on, validated on, or benchmarked in this repository.
+
+---
+
+*Last updated: 2026-05-24*
