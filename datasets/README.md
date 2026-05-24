@@ -1,8 +1,10 @@
-# WiFi CSI Dataset Catalog
+# WiFi CSI Dataset Catalog — Secure WiFi CSI Healthcare Sensing Research Prototype
+
+> **Important note:** This folder catalogs public and research datasets related to WiFi CSI sensing. It is maintained as part of the **Secure WiFi CSI Healthcare Sensing** research prototype. Current experiments use **synthetic CSI-like data only**. No real CSI dataset is integrated into the pipeline. No clinical validation, real hardware validation, or medical-device readiness is claimed.
 
 ## Purpose
 
-This folder catalogs public and research datasets related to WiFi CSI sensing. It is maintained as part of the `wifi-csi-fall-detection` repository to support transparent academic research, reproducibility planning, and future real-data benchmarking.
+This folder catalogs public and research datasets related to WiFi CSI sensing. It is maintained as part of the `secure-wifi-csi-healthcare-sensing` repository to support transparent academic research, reproducibility planning, and future real-data benchmarking.
 
 Full dataset files are not stored directly in this repository unless redistribution is explicitly permitted and files are small enough for GitHub. Instead, this repository provides dataset cards, download instructions, license summaries, citation notes, and future loader plans.
 
@@ -10,13 +12,15 @@ Full dataset files are not stored directly in this repository unless redistribut
 
 ## Current Status
 
-Current repository experiments use **synthetic CSI-like data only**. MM-Fi, Wi-Pose, SignFi, Widar, UT-HAR, NTU-Fi HAR, NTU-Fi HumanID, AntiEave-WiFi-Sensing, and WiFi-ADG are cataloged as related datasets for future real-data benchmarking and robustness evaluation; they are **not yet integrated into the pipeline**. AntiEave-WiFi-Sensing and WiFi-ADG are security/privacy-focused references; they are not healthcare datasets and not fall-detection datasets.
+Current repository experiments use **synthetic CSI-like data only**. MM-Fi, Wi-Pose, SignFi, Widar, UT-HAR, NTU-Fi HAR, NTU-Fi HumanID, AntiEave-WiFi-Sensing, and WiFi-ADG are **cataloged only** for future real-data benchmarking and robustness evaluation; they are **not yet integrated into the pipeline**. AntiEave-WiFi-Sensing and WiFi-ADG are security/privacy-focused references; they are not healthcare datasets and not fall-detection datasets.
 
 Real CSI dataset integration is **future work**.
 
 ---
 
-## Included Dataset Entries
+## Confirmed Cataloged Dataset Entries
+
+The following datasets have full catalog cards in this repository. They are **cataloged only** and are not integrated into the current pipeline.
 
 | Dataset | Folder | Task Focus | Integration Status |
 |---------|--------|------------|-------------------|
@@ -33,6 +37,22 @@ Real CSI dataset integration is **future work**.
 
 ---
 
+## Candidate / Future Dataset Sources
+
+The following are **candidate sources only** from newer tracked third-party repositories. These are **not confirmed datasets**. Dataset availability, license, file format, and access terms are **pending verification**. No data has been downloaded or integrated. These candidates are tracked for future investigation only.
+
+| Candidate Source | Related Repo | Possible Task Relevance | Availability Status |
+|-----------------|-------------|------------------------|--------------------|
+| mowa-wifi-sensing CSI data | [mowa-wifi-sensing](https://github.com/oss-inc/mowa-wifi-sensing) | Fall detection / HAR baseline (pending verification) | Pending verification |
+| BabyGuard / baby-monitor-wifi-csi breathing data | [baby-monitor-wifi-csi](https://github.com/mohosy/baby-monitor-wifi-csi) | Breathing / apnea-style healthcare sensing baseline (pending verification) | Pending verification |
+| WiFi-CSI-Human-Pose-Detection CSI data | [WiFi-CSI-Human-Pose-Detection](https://github.com/euaziel/WiFi-CSI-Human-Pose-Detection) | Pose / through-wall sensing / fall-context baseline (pending verification) | Pending verification |
+| CsiGAN-related CSI activity-recognition data | [CsiGAN](https://github.com/ChunjingXiao/CsiGAN) | GAN-based CSI augmentation / robustness support; not healthcare-specific | Pending verification |
+| goop-veil live/router CSI data | [goop-veil](https://github.com/kobepaw/goop-veil) | WiFi CSI privacy-defense and router-side mitigation workflow | No public dataset confirmed |
+
+> **Note:** These candidate sources are **not validated datasets**. They are tracking placeholders for future work. Do not treat them as confirmed training, validation, or benchmarking sources. See `datasets/future_datasets/README.md` for detailed candidate notes.
+
+---
+
 ## What Is Stored Here
 
 - Dataset cards (metadata, task, format, subjects, labels)
@@ -40,8 +60,6 @@ Real CSI dataset integration is **future work**.
 - Download instructions with recommended local paths
 - Future loader plans and integration notes
 - Catalog index (`dataset_catalog.md`)
-
----
 
 ## What Is Not Stored Here
 
@@ -54,14 +72,27 @@ Real CSI dataset integration is **future work**.
 
 ## Local Data Storage Policy
 
-If you download datasets locally for experimentation, store them at:
+If you download datasets locally for experimentation, store them under the general pattern:
+
+```
+data/external/<dataset-name>/
+```
+
+Example local paths (for reference only — paths should remain gitignored):
 
 ```
 data/external/mm-fi/
 data/external/wi-pose/
+data/external/signfi/
+data/external/widar/
+data/external/ut-har/
+data/external/ntu-fi-har/
+data/external/ntu-fi-humanid/
+data/external/antieave-wifi-sensing/
+data/external/wifi-adg/
 ```
 
-These paths are listed in `.gitignore` and will not be tracked by Git.
+These paths are listed in `.gitignore` and will not be tracked by Git. Raw dataset files are **not stored directly in this repository** unless redistribution is explicitly permitted and files are small enough for GitHub.
 
 ---
 
@@ -81,7 +112,12 @@ The following dataset categories are candidates for future catalog entries:
 
 - **Fall detection datasets:** FallDeFi, and other WiFi CSI fall-detection corpora
 - **Activity recognition datasets:** Widar3.0, UT-HAR, SignFi
-- **Vital sign / health sensing datasets:** WiFi-based respiration and heart rate datasets
+- **Vital sign / health sensing datasets:** WiFi-based respiration, heart rate, and apnea datasets
 - **Pose estimation datasets:** Additional WiFi CSI pose datasets
+- **Candidate sources from newer repos:** See the Candidate / Future Dataset Sources section above and `datasets/future_datasets/README.md` for full candidate notes.
 
 See `datasets/future_datasets/README.md` for the structured candidate list and review checklist.
+
+---
+
+*Last updated: 2026-05-24*
