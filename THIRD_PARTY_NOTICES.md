@@ -47,3 +47,19 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 ---
 
 *Last updated: May 2026*
+
+
+---
+
+### RuView
+
+- **Original Repository:** https://github.com/ruvnet/RuView
+- **Original Authors:** ruvnet and contributors
+- **License:** MIT (verified May 2026)
+- **Category:** WiFi sensing — real-time spatial intelligence, vital sign monitoring, and presence detection
+- **Use in This Repository:** Third-party open-source reference and experimental target. Included for repository-structure review, simulation workflow study, dashboard/interface design inspiration, and planned future offline adversarial robustness evaluation.
+- **Validation Status:** RuView's claims are **not independently validated** in this repository. No clinical, hardware, or real-world validation is claimed.
+- **Code Status:** No RuView code has been copied into this repository. A Git submodule is the preferred method for including code (see `third_party/wifi_sensing/ruview/SUBMODULE_INSTRUCTIONS.md`).
+- **Documentation:** `third_party/wifi_sensing/ruview/`
+- **Experiment Workspace:** `experiments/ruview_adversarial_evaluation/`
+- **Attribution Note:** Any code copied or included from RuView remains subject to its original MIT License terms. Original license text must be preserved if code is copied.
