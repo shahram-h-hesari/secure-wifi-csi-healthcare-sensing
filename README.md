@@ -110,7 +110,27 @@ wifi-csi-fall-detection/
 │   └── defense_methods_summary.md
 ├── figures/                        # Saved plots
 ├── data/                           # Data directory (synthetic only)
-└── third_party/                    # Third-party attributions
+├── datasets/               # External dataset catalog (metadata and source links only; no dataset files stored)
+|   ├── mm-fi/              # MM-Fi multi-modal WiFi sensing dataset card
+|   ├── wi-pose/            # Wi-Pose WiFi CSI pose estimation dataset card
+|   ├── signfi/             # SignFi sign language WiFi CSI dataset card
+|   ├── widar/              # Widar3 cross-domain WiFi gesture dataset card
+|   ├── ut-har/             # UT-HAR WiFi HAR dataset card (SenseFi benchmark)
+|   ├── ntu-fi-har/         # NTU-Fi HAR WiFi dataset card (SenseFi benchmark)
+|   ├── ntu-fi-humanid/     # NTU-Fi HumanID WiFi dataset card (SenseFi benchmark)
+|   ├── antieave-wifi-sensing/ # AntiEave anti-eavesdropping security dataset card
+|   ├── wifi-adg/           # WiFi-ADG adversarial privacy dataset card
+|   └── future_datasets/    # Placeholder for future dataset tracking
+└── third_party/            # Third-party attributions (external reference READMEs; no code copied)
+    ├── wifi_sensing/
+    |   ├── ruview/         # RuView third-party reference
+    |   ├── sensefi/        # SenseFi WiFi CSI Sensing Benchmark reference
+    |   └── esp_csi/        # ESP-CSI WiFi CSI toolkit reference
+    └── wifi_sensing_security/
+        ├── attack_wifi_sensing/    # Attack_WiFi_Sensing adversarial attack reference
+        ├── awesome_ws_security/    # Awesome-WS-Security literature reference
+        ├── antieave_wifi_sensing/  # AntiEave anti-eavesdropping defense reference
+        └── wifi_adg/               # WiFi-ADG adversarial privacy reference
 ```
 
 ---
