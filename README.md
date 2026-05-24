@@ -294,6 +294,22 @@ See [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) for the full attributio
 
 ---
 
+## Dataset Catalog
+
+The [`datasets/`](./datasets/README.md) folder contains a curated catalog of public and research WiFi CSI datasets relevant to this repository's research area.
+
+- **Initial entries:** [MM-Fi](./datasets/mm-fi/README.md) and [Wi-Pose](./datasets/wi-pose/README.md) — related WiFi CSI sensing datasets referenced in third-party documentation
+- **Full catalog:** [`datasets/dataset_catalog.md`](./datasets/dataset_catalog.md)
+- **Future candidates:** Widar3.0, FallDeFi, SignFi, UT-HAR, and others (see [`datasets/future_datasets/README.md`](./datasets/future_datasets/README.md))
+
+**Dataset policy:**
+- Dataset files are **not stored directly** in this repository unless redistribution is explicitly permitted
+- Current repository experiments still use **synthetic CSI-like data only**
+- Real CSI dataset integration is **future work**
+- MM-Fi and Wi-Pose are cataloged as related datasets; they are **not currently used for validation** in this repository
+
+---
+
 ## Author
 
 **Shahram H. Hesari**
