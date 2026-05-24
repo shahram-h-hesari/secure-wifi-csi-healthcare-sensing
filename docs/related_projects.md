@@ -8,13 +8,15 @@ This document lists open-source projects and academic repositories that are rele
 
 ## WiFi CSI Sensing and Fall Detection
 
-| Project | Description | Notes |
-|---|---|---|
-| ESP32 CSI Toolkit | CSI extraction tools for ESP32 hardware | Hardware-level CSI capture |
-| nexmon_csi | Nexmon-based CSI extraction for Broadcom/Cypress chips | Widely used in research |
-| Widar3.0 | Gesture recognition via WiFi CSI | Published academic system |
-| WiSe | WiFi sensing benchmark dataset | For reproducibility comparison |
-| RuView | WiFi-based spatial intelligence and vital sign sensing | Open-source reference project and experimental target; included for repository-structure review, simulation workflow study, and planned offline adversarial robustness evaluation. Its in this repository. |
+| Project | Link | Description | Notes |
+|---|---|---|---|
+| ESP32 CSI Toolkit | — | CSI extraction tools for ESP32 hardware | Hardware-level CSI capture |
+| nexmon_csi | — | Nexmon-based CSI extraction for Broadcom/Cypress chips | Widely used in research |
+| Widar3.0 | — | Gesture recognition via WiFi CSI | Published academic system |
+| WiSe | — | WiFi sensing benchmark dataset | For reproducibility comparison |
+| RuView | — | WiFi-based spatial intelligence and vital sign sensing | Open-source reference project/experimental target; included for repo-structure review, simulation workflow study, and planned offline adversarial robustness evaluation. |
+| SenseFi / WiFi CSI Sensing Benchmark | https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark | Benchmark framework for deep-learning-based WiFi CSI human sensing. | Useful future baseline framework for testing robustness and adversarial attacks. External reference only. |
+| ESP-CSI | https://github.com/espressif/esp-csi | ESP32-based CSI collection and wireless sensing examples. | Useful for future real CSI collection and hardware prototyping. External reference only. |
 
 *This table will be expanded as projects are reviewed and added to `third_party/wifi_sensing/`.*
 
@@ -22,13 +24,12 @@ This document lists open-source projects and academic repositories that are rele
 
 ## WiFi Sensing Security and Adversarial Robustness
 
-| Project | Description | Notes |
-|---|---|---|
-| (TBD) | Adversarial attack tools for RF/WiFi sensing | To be identified during literature review |
-| (TBD) | CSI spoofing or injection frameworks | To be identified during literature review |
-| (TBD) | Privacy attack tools for passive sensing | To be identified during literature review |
+| Project | Link | Description | Notes |
+|---|---|---|---|
+| Attack_WiFi_Sensing | https://github.com/Guolin-Yin/Attack_WiFi_Sensing | Adversarial evasion attacks, universal perturbation testing, adversarial training, and robustness evaluation for WiFi sensing models. | Directly relevant to future adversarial robustness evaluation for WiFi CSI-based sensing. External reference only; no code copied. |
+| Awesome-WS-Security | https://github.com/Intelligent-Perception-Lab/Awesome-WS-Security | Curated literature and resources on wireless sensing security, attacks, privacy, and defenses. | Useful as a literature map for WiFi sensing security. External reference only. |
 
-*This table will be expanded as security-focused references are identified and reviewed.*
+*These repositories are referenced for literature review and future robustness evaluation only. No code has been copied or adapted. See `THIRD_PARTY_NOTICES.md` for details.*
 
 ---
 
@@ -53,5 +54,3 @@ This document lists open-source projects and academic repositories that are rele
 ---
 
 *Last updated: May 2026*
-
-*See also: [third_party/README.md](../third_party/README.md), [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md)*
