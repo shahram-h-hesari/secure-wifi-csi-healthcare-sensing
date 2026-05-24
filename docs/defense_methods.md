@@ -4,6 +4,8 @@
 
 > **Project identity note:** This document is part of the **Secure WiFi CSI Healthcare Sensing** research prototype. The current implemented prototype task is **fall detection** using synthetic data. Broader healthcare sensing tasks (vital-sign monitoring, apnea detection, respiration, HR/RR) are part of the long-term thesis direction.
 
+---
+
 ## Purpose
 
 This document explains the motivation and methodology for defense and robustness-hardening methods in the **Secure WiFi CSI Healthcare Sensing** research prototype. The current focus is to evaluate whether basic preprocessing defenses can reduce the effect of synthetic perturbations on the baseline fall-detection classifier, and to measure improvement using both ML metrics and clinical-safety-aware metrics such as missed falls and false alarms.
@@ -18,197 +20,124 @@ The long-term thesis goal is **software-only hardening calibrated to clinical-sa
 
 WiFi CSI-based sensing systems are exposed to multiple sources of signal degradation:
 
-- **Noise and interference**: Background RF noise, co-channel interference, and multipath effects can corrupt CSI amplitude and phase measurements.
-- **Adversarial perturbations**: A motivated attacker may inject signals or manipulate the wireless channel to degrade sensing performance.
-- **Hardware imperfections**: Calibration drift, phase offsets, and subcarrier-level noise can introduce systematic distortions.
-- **Distribution shift**: A model trained in one environment may encounter signal statistics not seen during training.
-
-Without any defense, even modest perturbations can increase missed falls and false alarms, degrading the safety profile of the system. Simple preprocessing defenses provide a first-line hardening layer that may reduce perturbation impact before signals reach the classifier.
-
-> **Important:** Simple preprocessing defenses are not complete security solutions. They do not guarantee robustness against adaptive adversaries or real-world physical-layer attacks. They are evaluated here as baseline hardening methods only.
+- **Noise and interference:** Background RF noise, co-channel interference, and multipath effects can corrupt CSI amplitude and phase measurements.
+- **Adversarial perturbations:** A motivated attacker may inject signals or manipulate the wireless channel to degrade sensing performance.
+- **Hardware imperfections:** Calibration drift, phase offsets, and subcarrier-level noise can introduce systematic distortions.
+- **Clinical-safety stakes:** In healthcare applications, missed fall alarms or false positives carry direct patient-safety consequences — not merely accuracy costs.
 
 ---
 
-## Defense Taxonomy: Implemented, External References, and Future Work
+## Defense Taxonomy (Two-Layer)
 
-This section organizes defense methods into three tiers based on current implementation status.
+Defenses are organized into two layers:
 
-### Tier 1: Implemented in Current Prototype
+### Layer 1: Preprocessing / Signal-Level Defenses
 
-These defenses are **implemented** in `src/defenses.py` and evaluated on synthetic CSI-like data. They are baseline hardening only and do not represent complete security solutions.
+These methods operate on the raw CSI signal before feature extraction and classification:
 
-| Defense | Type | Implementation | Notes |
-|---------|------|---------------|-------|
-| Moving average smoothing | Time-domain filtering | `moving_average_defense()` | Reduces high-frequency noise perturbations |
-| Median filtering | Robust filtering | `median_filter_defense()` | Reduces spike-like burst perturbations |
-| Outlier clipping | Statistical thresholding | `clip_outliers()` | Limits extreme perturbation values |
-| Robust normalization | Robust scaling | `robust_normalize()` | Reduces outlier effect on normalization |
-| Perturbation-aware augmentation | Training data augmentation | `augment_with_perturbations()` | Prototype for adversarial training concept |
+| Method | Type | Description | Status |
+|--------|------|-------------|--------|
+| Moving average smoothing | Signal filtering | Reduces high-frequency noise perturbations in time-domain CSI | Implemented |
+| Median filtering | Robust filtering | Reduces spike-like burst perturbations | Implemented |
+| Outlier clipping | Statistical thresholding | Limits extreme perturbation values | Implemented |
+| Robust normalization | Robust scaling | Reduces outlier effect during normalization | Implemented |
+| Wavelet denoising | Advanced filtering | Multi-resolution noise removal (reference method) | Future work |
+| Noise injection defense (NoiSec-style) | Signal obfuscation | Adds calibrated noise to prevent CSI eavesdropping and adversarial sensing | External reference only |
+| Physical-layer shaping | RIS / antenna control | Reconfigures physical-layer signal to degrade attacker CSI quality | External reference only |
 
-### Tier 2: External References Only
+### Layer 2: Model-Level / Adversarial Training Defenses
 
-These defense families are referenced from related third-party repositories and academic literature. **No external code has been copied into this repository.** These are cited for literature context and future work planning only.
+These methods operate at the ML model layer:
 
-| Defense Family | Source / Reference | Relevance to Thesis |
-|---------------|-------------------|---------------------|
-| Adversarial training / evasion robustness | Attack_WiFi_Sensing | FGSM/PGD-trained models; robustness evaluation for WiFi sensing |
-| Anti-eavesdropping / scheduled spatial sensing | AntiEave-WiFi-Sensing | Defense mechanism against adversarial WiFi sensing; privacy-preserving scheduled sensing |
-| Adversarial data generation for privacy | WiFi-ADG | CSI data transformation; behavior obfuscation for privacy preservation |
-| Router-side privacy mitigation | goop-veil | CSI surveillance detection; band steering; software-only router-side defense |
-| GAN-based CSI augmentation | CsiGAN | GAN-based augmentation for class imbalance and synthetic-to-real CSI robustness |
-| Domain/generalization robustness | WiFi-CSI-Human-Pose-Detection / SenseFi | Cross-room and cross-device generalization; relevant to robustness but not adversarial defense specifically |
-
-### Tier 3: Planned Future Work
-
-These defense methods are identified as future work in the thesis roadmap. They are **not yet implemented**.
-
-| Defense | Status | Priority |
-|---------|--------|----------|
-| FGSM adversarial training | Future work | High |
-| PGD adversarial training | Future work | High |
-| C&W adversarial training | Future work | Medium |
-| Universal perturbation robustness | Future work | Medium |
-| Transfer-based black-box defense evaluation | Future work | Medium |
-| Randomized smoothing / certified robustness | Future work | High (for certified safety bounds) |
-| Raw CSI-level signal filtering | Future work | Medium |
-| Clinical-safety-aware defense thresholds | Future work | High |
-| Detection-delay-aware defense evaluation | Future work | Medium |
-| Domain / generalization robustness across rooms and devices | Future work | Medium |
-| Federated Byzantine-robust aggregation | Future work | Low (Phase 5+) |
+| Method | Type | Description | Status |
+|--------|------|-------------|--------|
+| Perturbation-aware augmentation | Adversarial training | Prototype adversarial training via training data augmentation | Implemented |
+| Adversarial training (PGD-style) | Adversarial training | Full projected gradient descent adversarial training (reference method) | Future work |
+| Certified robustness (randomized smoothing) | Certified defense | Probabilistic guarantee of robustness to bounded perturbations | Future work |
+| Ensemble defenses | Model diversity | Multiple diverse models to reduce adversarial transfer | Future work |
 
 ---
 
-## Defense Taxonomy Table
+## Tier 1: Implemented Baseline Defenses
 
-| Defense Family | Source / Reference | Current Status | Thesis Relevance |
-|---------------|-------------------|---------------|------------------|
-| Preprocessing defenses | This repository | Implemented on synthetic data | Baseline hardening; not a complete security solution |
-| Perturbation-aware augmentation | This repository | Prototype implemented | Conceptual adversarial training precursor |
-| Adversarial training (FGSM/PGD/C&W) | Attack_WiFi_Sensing + thesis plan | Future work | Core defense for adversarial robustness evaluation |
-| Certified robustness (randomized smoothing) | Thesis plan + literature | Future work | Certified worst-case safety bounds; critical for healthcare sensing |
-| Anti-eavesdropping / privacy scheduling | AntiEave-WiFi-Sensing | External reference only | Defense against adversarial WiFi sensing eavesdropping |
-| Adversarial data generation / privacy | WiFi-ADG | External reference only | Behavior obfuscation; adversarial privacy preservation |
-| Router-side privacy mitigation | goop-veil | External reference only | Not healthcare-specific; software-only surveillance defense |
-| GAN-based CSI augmentation | CsiGAN | External reference only / future | Class imbalance; synthetic-to-real robustness support |
-| Domain / generalization robustness | WiFi-CSI-Human-Pose-Detection + SenseFi | External reference / future | Cross-room and cross-device generalization |
+The following methods are implemented in `src/defenses.py` to provide a first-line hardening layer:
+
+- **Moving average smoothing:** Time-domain filtering used to reduce high-frequency noise perturbations.
+- **Median filtering:** Robust filtering used to reduce spike-like burst perturbations.
+- **Outlier clipping:** Statistical thresholding used to limit extreme perturbation values.
+- **Robust normalization:** Robust scaling used to reduce the effect of outliers during data normalization.
+- **Perturbation-aware augmentation:** A prototype for adversarial training concepts, applied via training data augmentation.
+
+**All Tier 1 defenses are evaluated against synthetic perturbations only. No real-world attack validation has been performed.**
 
 ---
 
-## Defense Methods to Clinical-Safety Metric Mapping
+## Tier 2: External Reference Methods (Not Implemented)
 
-All safety-metric connections are evaluated using **synthetic data only**. They do not represent clinical outcomes or validated healthcare performance.
+The following methods are referenced from academic literature and third-party repositories for future planning. **No external code has been copied into this repository.**
 
-| Defense | Missed Falls / Day Impact | False Alarms / Hour Impact | Suppressed Apnea Alarms / Hour | Time-to-Alarm Delay |
-|---------|--------------------------|---------------------------|-------------------------------|--------------------|
-| Moving average smoothing | May reduce (noise-induced FN) | May reduce (noise-induced FP) | Not evaluated (future work) | Not evaluated |
-| Median filtering | May reduce (burst-induced FN) | May reduce (burst-induced FP) | Not evaluated (future work) | Not evaluated |
-| Outlier clipping | May reduce (extreme-perturbation FN) | May reduce (extreme-perturbation FP) | Not evaluated (future work) | Not evaluated |
-| Robust normalization | Minor effect | Minor effect | Not evaluated (future work) | Not evaluated |
-| Perturbation-aware augmentation | Prototype only; not yet evaluated | Prototype only; not yet evaluated | Not evaluated (future work) | Not evaluated |
-| Adversarial training (future) | Primary target: reduce | Primary target: reduce | Primary target: reduce | Must not increase |
-| Randomized smoothing (future) | Certified bound; evaluate | Certified bound; evaluate | Certified bound; evaluate | Must not increase |
-| Clinical-threshold defense (future) | Tune defense for safety margin | Tune defense for safety margin | Tune defense for safety margin | Must not increase |
+### Noise-Based Signal Obfuscation
 
-> **Disclaimer:** All connections above are evaluated using synthetic data only. The safety-metric columns for future work methods are design targets, not measured results.
+- **NoiSec** (external reference): Noise-injection and signal obfuscation techniques for preventing CSI eavesdropping and adversarial WiFi sensing.
+  - Source: `third_party/wifi_sensing_security/noisec/`
+  - Relevance: Defense taxonomy reference for noise-injection layer
+  - License: Pending verification
+  - Status: External reference only; no code copied
 
----
+### Physical-Layer Attack Defenses (RIS Security)
 
-## Preprocessing-Based Defenses (Implemented)
+- **Awesome-RIS-Security** (external reference): Literature tracker for reconfigurable intelligent surface (RIS) physical-layer attacks and defenses. Covers beam-forming manipulation, channel spoofing, and physical-layer shaping defenses.
+  - Source: `third_party/wifi_sensing_security/awesome_ris_security/`
+  - Relevance: Physical-layer attack literature for threat model expansion
+  - License: Pending verification
+  - Status: External reference only; literature aggregator
 
-### Moving Average Smoothing
+### CSI Entropy and Edge Security
 
-- **Description**: Applies a sliding-window mean filter along each feature dimension across the sample axis.
-- **Purpose**: Reduces the effect of high-frequency Gaussian noise perturbations on the feature distribution.
-- **Limitation**: Cannot remove large burst perturbations or structured adversarial perturbations.
-- **Implementation**: `src/defenses.py` → `moving_average_defense()`
+- **unilateral-csi-entropy** (external reference): CSI-based entropy analysis for edge security and cryptographic key generation from channel variation.
+  - Source: `third_party/wifi_sensing_security/unilateral_csi_entropy/`
+  - Relevance: Cryptographic entropy reference for CSI-layer security discussion
+  - License: Pending verification
+  - Status: External reference only; no code copied
 
-### Median Filtering
+### Anti-Eavesdropping Defenses
 
-- **Description**: Applies a median filter along each feature dimension across the sample axis.
-- **Purpose**: Robust to spike-like outliers and burst perturbations; preserves edges better than mean filtering.
-- **Limitation**: Computationally more expensive than mean filtering; may blur step-change signals.
-- **Implementation**: `src/defenses.py` → `median_filter_defense()`
+- **AntiEave-WiFi-Sensing** (external reference): Scheduled spatial sensing against adversarial WiFi sensing and eavesdropping (IEEE PerCom 2023).
+  - Source: `third_party/wifi_sensing_security/antieave_wifi_sensing/`
+  - Relevance: Defense mechanism reference for privacy-preserving WiFi sensing
+  - Status: External reference only; no code copied
 
-### Outlier Clipping
+### Adversarial Training References
 
-- **Description**: Clips feature values to a configurable range defined by percentile thresholds or standard-deviation bounds.
-- **Purpose**: Prevents extreme perturbation values from dominating the feature space.
-- **Limitation**: May discard genuine extreme values if thresholds are too tight.
-- **Implementation**: `src/defenses.py` → `clip_outliers()`
-
-### Robust Normalization
-
-- **Description**: Normalizes features using median and interquartile range (IQR) instead of mean and standard deviation.
-- **Purpose**: Standard normalization is sensitive to outliers; robust normalization reduces their effect.
-- **Limitation**: Does not remove perturbations, only reduces their relative scale.
-- **Implementation**: `src/defenses.py` → `robust_normalize()`
+- **Attack\_WiFi\_Sensing** (external reference): Adversarial training and universal perturbation techniques for WiFi sensing models.
+  - Source: `third_party/wifi_sensing_security/attack_wifi_sensing/`
+  - Relevance: Core adversarial reference for defense evaluation methodology
+  - Status: External reference only; no code copied
 
 ---
 
-## Perturbation-Aware Training (Implemented as Prototype)
+## Clinical-Safety Defense Evaluation
 
-Perturbation-aware training (also called adversarial training in the machine learning literature) involves augmenting the training dataset with perturbed examples so that the trained classifier learns to be robust to expected perturbations.
+In the context of healthcare sensing, defense effectiveness is evaluated not only on ML metrics (accuracy, F1) but also on **clinical-safety metrics**:
 
-In this repository, `augment_with_perturbations()` provides a simple prototype of this concept by generating a combined dataset of clean and perturbed synthetic samples. Full adversarial training with FGSM, PGD, or C&W is **not yet implemented** and is identified as future work.
+| Metric | Defense Goal | Why It Matters |
+|--------|-------------|----------------|
+| Missed fall rate (under attack) | Minimize increase | Missed falls = direct patient safety risk |
+| False alarm rate (under attack) | Minimize increase | False alarms = alarm fatigue, care burden |
+| Fall detection recovery (post-defense) | Maximize | Defenses should restore safety-critical performance |
+| F1 score degradation | Minimize | General ML robustness indicator |
 
----
-
-## Connection to Clinical-Safety Metrics
-
-Defense quality is evaluated not only using standard ML metrics but also using clinical-safety-aware metrics:
-
-| Defense Effect | Safety Metric Impact |
-|---------------|---------------------|
-| Reduced false negatives after defense | Lower missed fall rate |
-| Reduced false positives after defense | Lower false alarm rate |
-| No improvement | Defense insufficient for this perturbation type |
-| Worse performance after defense | Over-smoothing or over-clipping effect |
-
-> **Disclaimer:** These safety-metric connections are evaluated using synthetic data only. They do not represent clinical outcomes or validated healthcare performance.
+See [`docs/clinical_safety_metrics.md`](clinical_safety_metrics.md) for the full clinical-safety evaluation framework.
 
 ---
 
-## Current Repository Status
+## Important Caveats
 
-| Component | Status |
-|-----------|--------|
-| Preprocessing defense functions | Implemented (`src/defenses.py`) |
-| Clean vs perturbed vs defended comparison | Implemented (notebook Section 17) |
-| ML metrics for all three conditions | Implemented (notebook Section 17) |
-| Safety metrics for all three conditions | Implemented (notebook Section 17) |
-| Defense results summary | Saved to `results/defense_methods_summary.md` |
-| Perturbation-aware augmentation prototype | Implemented (`src/defenses.py`) |
-| Full adversarial training (FGSM/PGD/C&W) | Not implemented (future work) |
-| Certified robustness (randomized smoothing) | Not implemented (future work) |
-| Real physical-layer defense | Not implemented (future work) |
-| Clinical defense validation | Not implemented (future work) |
-| Detection-delay-aware evaluation | Not implemented (future work) |
-| Cross-dataset / real-data defense evaluation | Not implemented (future work) |
+- **Prototype Limitations:** These defenses are evaluated as baseline hardening only; they are not complete security solutions and do not guarantee robustness against real-world physical-layer attacks or adaptive adversaries.
+- **Data Scope:** Methods are currently only applied to synthetic CSI data; no real WiFi hardware or clinical validation has been utilized.
+- **External References:** Tier 2 methods are external references only. No third-party code has been copied. All are documented in [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md).
+- **Open-Source Gap:** No existing public repository fully combines WiFi CSI healthcare sensing with this defense taxonomy. See [`docs/open_source_gap.md`](open_source_gap.md) for the full landscape analysis.
 
 ---
 
-## Limitations
-
-- All defenses are synthetic. They operate on synthetic CSI-like features, not on real WiFi CSI measurements.
-- Preprocessing defenses are not designed to resist adaptive adversaries. An attacker with knowledge of the defense strategy could likely circumvent these methods.
-- The evaluation is performed using a simple Random Forest classifier on synthetic data. Results may not generalize to deep learning models or real hardware.
-- No formal security guarantee (such as certified robustness) is provided.
-- Results should not be interpreted as evidence of real-world defense effectiveness, clinical safety improvement, or hardware-validated performance.
-
----
-
-## Future Extensions
-
-- Implement adversarial training using FGSM, PGD, C&W, and MIM attacks on synthetic and real CSI data.
-- Evaluate randomized smoothing as a certifiable defense; compute certified radius and worst-case safety bounds.
-- Apply defenses to raw synthetic CSI-like time-series signals instead of extracted features.
-- Evaluate defense effectiveness against adaptive perturbations.
-- Collect real CSI measurements and evaluate hardware-level defense effectiveness.
-- Connect defense evaluation to detection delay metrics and clinical-safety endpoints.
-- Evaluate defenses under WiFi 7 multi-link operation scenarios.
-- Extend to federated learning settings where Byzantine-robust aggregation serves as a defense.
-- Map every defense to clinical-safety metrics: missed falls per day, false alarms per hour, suppressed apnea alarms per hour, and time-to-alarm delay.
-
----
-
-*This document is part of the Secure WiFi CSI Healthcare Sensing Research Prototype. All content is intended for academic research and prototype demonstration purposes only. Last updated: 2026-05-24*
+*Maintained as part of the Secure WiFi CSI Healthcare Sensing research prototype at Portland State University.*
