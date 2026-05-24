@@ -106,4 +106,34 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 
 ---
 
+### AntiEave-WiFi-Sensing
+
+- **Original Repository:** https://github.com/MoWiNG-Lab/AntiEave-WiFi-Sensing
+- **Original Authors:** MoWiNG Lab and contributors
+- **License:** To be verified before any code use
+- **Category:** WiFi sensing security — anti-eavesdropping defense and scheduled spatial sensing against adversarial WiFi sensing
+- **Associated Paper:** Scheduled Spatial Sensing against Adversarial WiFi Sensing (IEEE PerCom 2023)
+- **Use in This Repository:** Linked as an external reference for WiFi sensing security, anti-eavesdropping, and adversarial robustness research context. Referenced for literature review and future adversarial robustness evaluation planning only. No code has been copied or adapted.
+- **Validation Status:** AntiEave-WiFi-Sensing's results and claims are **not independently validated** in this repository. Inclusion does not imply that described defenses have been tested against this repository's pipeline.
+- **Code Status:** No source code has been copied into this project. Any future code reuse requires verifying the original license and adding proper attribution.
+- **Documentation:** `third_party/wifi_sensing_security/antieave_wifi_sensing/README.md`
+- **Dataset:** Cataloged separately in `datasets/antieave-wifi-sensing/`; dataset files not downloaded or stored.
+
+---
+
+### WiFi-ADG
+
+- **Original Repository:** https://github.com/siwangzhou/WiFi-ADG
+- **Original Authors:** Siwang Zhou and contributors
+- **License:** To be verified before any code use
+- **Category:** WiFi sensing security — adversarial WiFi sensing for privacy preservation of human behaviors; adversarial CSI data generation
+- **Associated Paper:** Adversarial WiFi Sensing for Privacy Preservation of Human Behaviors (IEEE Communications Letters, DOI: 10.1109/LCOMM.2019.2952844)
+- **Use in This Repository:** Linked as an external reference for adversarial CSI data generation, WiFi sensing privacy preservation, and behavior obfuscation research context. Referenced for literature review and future adversarial robustness evaluation planning only. No code has been copied or adapted.
+- **Validation Status:** WiFi-ADG's results and claims are **not independently validated** in this repository. Inclusion does not imply that described adversarial techniques have been tested against this repository's pipeline.
+- **Code Status:** No source code has been copied into this project. Any future code reuse requires verifying the original license and adding proper attribution.
+- **Documentation:** `third_party/wifi_sensing_security/wifi_adg/README.md`
+- **Dataset:** Cataloged separately in `datasets/wifi-adg/`; dataset files not downloaded or stored. Baidu download link is recorded as an upstream-provided reference only.
+
+---
+
 *Last updated: May 2026*
