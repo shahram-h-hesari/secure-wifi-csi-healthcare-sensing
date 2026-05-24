@@ -70,3 +70,23 @@ See `datasets/future_datasets/README.md` for the structured candidate list and r
 ---
 
 *Last updated: May 2026*
+
+
+---
+
+## Candidate / Future Datasets (Pending Verification)
+
+The following entries are candidate datasets associated with newly tracked third-party repositories. None of these are confirmed datasets. They are tracked here for future investigation only. All are marked **Pending verification**. No data has been downloaded or used.
+
+| Candidate Name | Related Repo | GitHub | Task Relevance | Fall-Detection Relevance | Vital-Sign Relevance | Dataset Availability | License Status | Action Needed |
+|---|---|---|---|---|---|---|---|---|
+| goop-veil live/router CSI data | `third_party/wifi_sensing_security/goop_veil/` | https://github.com/kobepaw/goop-veil | Security/privacy tooling; WiFi CSI surveillance detection and defense | Not applicable | Not applicable | Not confirmed | Pending verification | Inspect upstream for any public CSI data or traces; do not create dataset folder unless confirmed |
+| WiFi-CSI-Human-Pose-Detection dataset | `third_party/wifi_sensing/wifi_csi_human_pose_detection/` | https://github.com/euaziel/WiFi-CSI-Human-Pose-Detection | Pose/through-wall WiFi CSI sensing; domain generalization | Possible — pending verification | Not applicable | Pending verification | Repo: GPL-3.0; Dataset: pending verification | Inspect upstream for dataset links or included data; verify license before any download |
+| mowa-fall-har | `third_party/wifi_sensing/mowa_wifi_sensing/` | https://github.com/oss-inc/mowa-wifi-sensing | WiFi CSI HAR / fall-detection baseline (Nexmon CSI, Raspberry Pi) | Possible — pending verification | Not applicable | Pending verification | Repo: BSD-3-Clause; Dataset: pending verification | Inspect upstream for included CSI folders or download links; verify fall-related activity classes |
+| baby-monitor-wifi-csi breathing/apnea CSI data | `third_party/wifi_sensing/baby_monitor_wifi_csi/` | https://github.com/mohosy/baby-monitor-wifi-csi | WiFi CSI breathing/apnea sensing baseline (ESP32) | Not applicable | Possible — pending verification | Unknown | Repo: MIT; Dataset: pending verification | Inspect upstream for recorded CSI traces or data links; assess applicability to vital-sign experiments |
+
+> **Note:** These are not validated datasets. They are tracking placeholders for future work. The current implementation uses synthetic CSI-like data only.
+
+---
+
+*Last updated: 2026-05-24*
