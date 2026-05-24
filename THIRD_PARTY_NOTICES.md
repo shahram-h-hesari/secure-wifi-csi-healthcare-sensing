@@ -34,23 +34,6 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 
 ---
 
-## RuView (Placeholder — Pending License Review)
-
-**Project:** RuView — WiFi-based human sensing reference
-
-**Status:** Referenced for literature review only. No code has been copied or adapted yet.
-
-**Action required before inclusion:** Review the project's license to confirm compatibility with this repository's usage. If compatible, any included or adapted code will be placed under `third_party/wifi_sensing/` with full attribution and original license notice preserved.
-
-> Note: This placeholder section will be updated once license review is complete.
-
----
-
-*Last updated: May 2026*
-
-
----
-
 ### RuView
 
 - **Original Repository:** https://github.com/ruvnet/RuView
@@ -62,4 +45,11 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 - **Code Status:** No RuView code has been copied into this repository. A Git submodule is the preferred method for including code (see `third_party/wifi_sensing/ruview/SUBMODULE_INSTRUCTIONS.md`).
 - **Documentation:** `third_party/wifi_sensing/ruview/`
 - **Experiment Workspace:** `experiments/ruview_adversarial_evaluation/`
-- **Attribution Note:** Any code copied or included from RuView remains subject to its original MIT License terms. Original license text must be preserved if code is copied.
+- **Attribution Note:** Any code copied or included from RuView remains subject to its original MIT License terms. Original authors (ruvnet and contributors) must be credited in any derivative or adapted work. License text must be preserved in full.
+- **Dataset and validation protocol:** Pending review. RuView's dataset, model provenance, and validation protocol have not yet been independently verified in this repository.
+- **Independent validation status:** RuView is not treated as independent validation for this repository. Its inclusion does not imply endorsement of its sensing claims.
+- **Future adversarial evaluation:** Any future adversarial evaluation will first document baseline data/model provenance before applying perturbation experiments. See `third_party/wifi_sensing/ruview/REVIEW_NOTES.md` for the full dataset review checklist.
+
+---
+
+*Last updated: May 2026*
