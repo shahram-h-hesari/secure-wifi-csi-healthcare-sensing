@@ -90,3 +90,18 @@ The following entries are candidate datasets associated with newly tracked third
 ---
 
 *Last updated: 2026-05-24*
+
+
+---
+
+## Additional Candidate / Future Dataset Notes (Added 2026-05-24)
+
+| Candidate Name | Related Repo | Task Relevance | Healthcare Relevance | Fall-Detection Relevance | Vital-Sign Relevance | Dataset Availability | License/Access Status | Action Needed |
+|---|---|---|---|---|---|---|---|---|
+| CsiGAN-related CSI activity-recognition data | `third_party/wifi_sensing/csigan/` | Activity recognition, GAN-based data augmentation, possible robustness support for victim models | None directly; possible indirect use for victim-model augmentation | Not directly applicable | Not directly applicable | Pending verification | No LICENSE file detected in upstream repo (2026-05-24). Dataset license: pending verification | Inspect upstream for dataset links or included data; verify license before any download or use |
+
+> **Note:** These are not validated datasets. They are tracking placeholders for future work. The current implementation uses synthetic CSI-like data only.
+
+---
+
+*Last updated: 2026-05-24*
