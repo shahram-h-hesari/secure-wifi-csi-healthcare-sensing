@@ -113,3 +113,32 @@ This repository **does not** claim any of the following:
 ---
 
 *This document is part of the WiFi CSI Fall Detection Research Prototype. Last updated: Phase 9.*
+
+
+---
+
+## Update Log — 2026-05-24
+
+### New Third-Party Repository References Added
+
+Four new external GitHub repositories have been added to `third_party/` as tracking placeholders and attribution notes:
+
+| Folder | Repository | Category | License |
+|---|---|---|---|
+| `third_party/wifi_sensing_security/goop_veil/` | [goop-veil](https://github.com/kobepaw/goop-veil) | WiFi Sensing Security / Privacy Defense | Apache-2.0 |
+| `third_party/wifi_sensing/wifi_csi_human_pose_detection/` | [WiFi-CSI-Human-Pose-Detection](https://github.com/euaziel/WiFi-CSI-Human-Pose-Detection) | WiFi CSI Sensing / Pose / Domain Generalization | GPL-3.0 |
+| `third_party/wifi_sensing/mowa_wifi_sensing/` | [mowa-wifi-sensing](https://github.com/oss-inc/mowa-wifi-sensing) | WiFi CSI HAR / Fall Detection Baseline | BSD-3-Clause |
+| `third_party/wifi_sensing/baby_monitor_wifi_csi/` | [baby-monitor-wifi-csi](https://github.com/mohosy/baby-monitor-wifi-csi) | WiFi CSI Breathing / Apnea Sensing Baseline | MIT |
+
+### Status of New Additions
+
+- **These newly added third-party repos are external references only.** No code, binaries, or dataset files have been copied.
+- **No new external code has been used in the current project implementation.** The project continues to use synthetic CSI-like data only.
+- **No new real-data validation has been performed.** The current implementation status is unchanged.
+- **Healthcare-specific adversarial WiFi CSI GitHub code remains limited or not publicly confirmed** beyond the currently tracked repositories (`attack_wifi_sensing`, `awesome_ws_security`, `antieave_wifi_sensing`, `wifi_adg`, `goop_veil`).
+- **Four new candidate dataset entries** have been added to `datasets/future_datasets/README.md` and `datasets/dataset_catalog.md` for future verification. No datasets have been downloaded or integrated.
+- **Updated files:** `third_party/README.md`, `THIRD_PARTY_NOTICES.md`, `docs/related_projects.md`, `datasets/future_datasets/README.md`, `datasets/dataset_catalog.md`, `README.md`, `references.md`, `docs/project_status.md`, `docs/roadmap.md`.
+
+---
+
+*Last updated: 2026-05-24*
