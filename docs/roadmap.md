@@ -84,4 +84,98 @@ The ultimate goal is to contribute to the design of **secure, privacy-preserving
 
 *Last updated: May 2026*
 
+
+---
+
+## Phase 6 - Adversarial Robustness Stress Testing
+
+**Status:** Completed
+
+**Goals:**
+- [x] Implement synthetic random noise perturbation
+- [x] Implement synthetic burst perturbation
+- [x] Implement synthetic subcarrier-level perturbation
+- [x] Compare clean vs perturbed ML metrics
+- [x] Compare clean vs perturbed safety metrics
+- [x] Save results to results/adversarial_robustness_summary.md
+- [x] Add adversarial robustness documentation
+- [ ] Real physical-layer attack implementation (future work)
+- [ ] Hardware-validated robustness experiments (future work)
+
+---
+
+## Phase 7 - Defense Methods and Robustness Hardening
+
+**Status:** Completed
+
+**Goals:**
+- [x] Implement moving average smoothing defense
+- [x] Implement median filter defense
+- [x] Implement outlier clipping
+- [x] Implement robust normalization (median/IQR)
+- [x] Implement perturbation-aware augmentation prototype
+- [x] Compare clean vs perturbed vs defended ML metrics
+- [x] Compare clean vs perturbed vs defended safety metrics
+- [x] Save results to results/defense_methods_summary.md
+- [x] Add defense methods documentation
+- [ ] Full adversarial training (future work)
+- [ ] Certified robustness evaluation (future work)
+- [ ] Real physical-layer defense validation (future work)
+
+---
+
+## Phase 8 - Streamlit Demo Dashboard
+
+**Status:** Completed
+
+**Goals:**
+- [x] Create interactive Streamlit dashboard (app.py)
+- [x] Synthetic CSI amplitude and phase visualization
+- [x] Normal vs fall-like event comparison
+- [x] Baseline classifier prototype demo
+- [x] Clinical-safety-aware metrics display
+- [x] Adversarial robustness comparison
+- [x] Defense comparison
+- [x] Sidebar controls for all key parameters
+- [x] Synthetic-data-only disclaimer throughout
+- [ ] Real CSI data file upload (future work)
+- [ ] Deploy to Streamlit Cloud (future work)
+
+---
+
+## Phase 9 - GitHub Polish and LinkedIn-Ready Presentation
+
+**Status:** Completed
+
+**Goals:**
+- [x] Polish README with badges, highlights table, quick start, and roadmap
+- [x] Add docs/project_status.md
+- [x] Add docs/linkedin_summary.md
+- [x] Add docs/demo_dashboard.md
+- [x] Add figures/dashboard_screenshot_placeholder.md
+- [x] Update roadmap.md (this file)
+- [ ] Add actual dashboard screenshot after local testing (next step)
+- [ ] Add GitHub repository to LinkedIn Featured section (next step)
+- [ ] Publish LinkedIn post introducing the project (next step)
+
+---
+
+## Phase 10+ - Real CSI, Hardware, and Clinical Evaluation (Future Work)
+
+**Status:** Not started
+
+**Goals:**
+- [ ] Collect real WiFi CSI measurements (Intel 5300, Nexmon, or ESP32)
+- [ ] Evaluate pipeline on real CSI fall datasets
+- [ ] Hardware deployment in controlled research environment
+- [ ] Deep learning models (CNN, LSTM, Transformer)
+- [ ] Federated learning with Byzantine robustness
+- [ ] IRB approval and clinical feasibility study
+- [ ] Real physical-layer attack experiments
+- [ ] Certified robustness evaluation
+- [ ] WiFi 7 multi-link operation security evaluation
+
+---
+
+*Last updated: Phase 9 - May 2026*
 *See also: [research_context.md](research_context.md), [validation_status.md](validation_status.md), [security_motivation.md](security_motivation.md)*
