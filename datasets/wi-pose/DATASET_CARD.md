@@ -12,25 +12,29 @@ Wi-Pose is a WiFi CSI-based pose estimation dataset. It is referenced in RuView 
 
 ## Official Source
 
-- **Official repository or page:** Pending verification — search for "Wi-Pose dataset WiFi CSI" on Google Scholar or GitHub
-- **Associated paper:** Pending verification
-- **DOI / arXiv link:** Pending verification
+- **Official dataset repository:** [https://github.com/NjtechCVLab/Wi-PoseDataset](https://github.com/NjtechCVLab/Wi-PoseDataset)
+  - Contains WiFi CSI data and pose annotations in `.mat` format
+  - Described as publicly available in the associated CSI-Former paper
+- **Associated paper (MDPI Entropy — CSI-Former):** [https://www.mdpi.com/1099-4300/25/1/20](https://www.mdpi.com/1099-4300/25/1/20)
+
+> Official links are provided for convenience and reproducibility planning. Dataset files are not stored in this repository. License, exact access terms, and loader compatibility should be verified from the official sources before use.
 
 ---
 
 ## Associated Paper or Citation
 
-> Pending verification. Once the official paper is identified, add the full citation here in BibTeX or APA format.
+> The associated CSI-Former paper is available at: https://www.mdpi.com/1099-4300/25/1/20 (MDPI Entropy, 2023)
+> Verify the full citation from the official publication before using in academic work.
 
 ```bibtex
-% TODO: Add Wi-Pose BibTeX citation after verifying official source
+% TODO: Add Wi-Pose / CSI-Former BibTeX citation after verifying official citation from the paper page
 ```
 
 ---
 
 ## Data Modalities
 
-- **Primary modality:** WiFi CSI (pending verification)
+- **Primary modality:** WiFi CSI (pending verification from official source)
 - **Additional modalities:** Pose-related annotations (pending verification from official source)
 - **Sensing hardware:** Pending verification
 
@@ -46,7 +50,7 @@ Wi-Pose is a WiFi CSI-based pose estimation dataset. It is referenced in RuView 
 
 ## Subjects and Environment
 
-- **Number of subjects:** Pending verification
+- **Number of subjects:** Pending verification from official source
 - **Age range:** Pending verification
 - **Collection environment:** Pending verification (indoor, number of rooms, etc.)
 - **WiFi equipment / setup:** Pending verification
@@ -55,23 +59,23 @@ Wi-Pose is a WiFi CSI-based pose estimation dataset. It is referenced in RuView 
 
 ## File Formats
 
-- **Format mentioned in RuView docs:** `.mat` (verify from official source)
+- **Format mentioned in RuView docs:** `.mat` (verify from official dataset repository)
 - **Other formats:** Pending verification
-- **Directory structure:** Pending verification
+- **Directory structure:** See official GitHub repository for verified structure
 
 ---
 
 ## Labels and Annotations
 
-- **Pose keypoints / skeleton:** Pending verification
-- **Activity labels:** Pending verification
+- **Pose keypoints / skeleton:** Pending verification from official source
+- **Activity labels:** Pending verification from official source
 - **Label schema:** Pending verification from official dataset documentation
 
 ---
 
 ## License and Access
 
-- **License type:** Pending verification
+- **License type:** Pending verification from official dataset repository
 - **Access method:** Pending verification (open access, request form, institutional access, etc.)
 - **Redistribution allowed:** Pending verification — do not redistribute without confirming license
 - **Commercial use allowed:** Pending verification
@@ -89,7 +93,7 @@ If integrated in the future, Wi-Pose may be used for:
 - Adversarial robustness evaluation using real CSI signals
 - Comparison of model generalization across synthetic and real data
 
-**Current status: Wi-Pose is cataloged only. It is not yet downloaded, loaded, or used.**
+**Current status: Cataloged only; not downloaded, not integrated, and not used for validation in this repository.**
 
 ---
 
@@ -98,6 +102,7 @@ If integrated in the future, Wi-Pose may be used for:
 | Item | Status |
 |------|--------|
 | Cataloged in this repository | Yes |
+| Official source links added | Yes |
 | Downloaded locally | No |
 | Loaded into pipeline | No |
 | Used for model training | No |
@@ -110,12 +115,12 @@ If integrated in the future, Wi-Pose may be used for:
 
 ## Open Questions
 
-- [ ] What is the official download source and access method?
-- [ ] What is the exact license (CC-BY, research-only, custom, etc.)?
+- [ ] Verify exact license type and access requirements from the official dataset repository
 - [ ] Is redistribution of any portion of Wi-Pose permitted?
-- [ ] What pose keypoints and activities are labeled?
-- [ ] What WiFi hardware and CSI format are used?
-- [ ] What is the correct citation for Wi-Pose?
+- [ ] What pose keypoints and activities are labeled? (check official repo)
+- [ ] Confirm WiFi hardware and CSI format details
+- [ ] Does Wi-Pose include fall events? (not assumed by this repository)
+- [ ] What is the correct BibTeX citation for Wi-Pose / CSI-Former?
 - [ ] How many subjects and environments are included?
 
 ---
