@@ -52,8 +52,8 @@ Cards are organized into subdirectories by category.
 | File | Paper ID | Title |
 |---|---|---|
 | `infocom_2023_wifi_apnea_attack.md` | infocom_2023_wifi_apnea_attack | Adversarial Attack and Defense for WiFi-Based Apnea Detection System |
-| `wicam_wicam2.md` | wicam_wicam2 | WiCam: Recognizing People Behind Walls Using WiFi |
-| `wiintruder.md` | wiintruder | WiIntruder: Detecting Intrusions in WiFi-Based Vital Sensing |
+| `wicam_wicam2.md` | wicam_wicam2 | Pending verification |
+| `wiintruder.md` | wiintruder | Pending verification |
 | `mobicom_2024_preamble_perturbation.md` | mobicom_2024_preamble_perturbation | Preamble Perturbation Attack on WiFi Sensing (ACM MobiCom 2024) |
 
 ---
