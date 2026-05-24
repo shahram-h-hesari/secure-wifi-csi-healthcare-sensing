@@ -160,6 +160,26 @@ The ultimate goal is to contribute to the design of **secure, privacy-preserving
 
 ---
 
+## Phase 10 – Testing and Verification (Completed)
+
+**Status:** Completed
+
+**Goals:**
+- [x] Create docs/testing_and_verification.md with full testing documentation
+- [x] Implement scripts/smoke_test.py for end-to-end synthetic pipeline verification
+- [x] Create tests/test_basic_pipeline.py with basic pytest unit tests
+- [x] Add pytest to requirements.txt
+- [x] Add Testing & Verification section to README.md
+- [x] Update roadmap.md to reflect Phase 10 completion
+
+**Notes:**
+- All tests operate on synthetic data only
+- Tests verify prototype pipeline logic, not real-world CSI performance
+- Smoke test covers: data generation, preprocessing, feature extraction, model training, prediction, and adversarial robustness
+- Unit tests cover: output shapes, prediction range, and above-chance accuracy on synthetic data
+
+---
+
 ## Phase 10+ - Real CSI, Hardware, and Clinical Evaluation (Future Work)
 
 **Status:** Not started
@@ -177,5 +197,5 @@ The ultimate goal is to contribute to the design of **secure, privacy-preserving
 
 ---
 
-*Last updated: Phase 9 - May 2026*
+*Last updated: Phase 10 - May 2026*
 *See also: [research_context.md](research_context.md), [validation_status.md](validation_status.md), [security_motivation.md](security_motivation.md)*
