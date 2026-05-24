@@ -50,3 +50,29 @@ dist/
 .coverage
 htmlcov/
 .pytest_cache/
+
+# Do not commit private, clinical, patient, or raw experimental data.
+
+# External dataset local storage (Phase 12 - Dataset Catalog)
+# Downloaded datasets should be stored locally under data/external/
+# These paths should NEVER be committed to the repository.
+data/external/
+
+# Large dataset file extensions - prevent accidental commits
+*.zip
+*.tar
+*.tar.gz
+*.tar.bz2
+*.7z
+*.rar
+*.gz
+*.mat
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.bin
+*.nii
+*.nii.gz
