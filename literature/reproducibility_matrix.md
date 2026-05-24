@@ -31,17 +31,15 @@
 |---|---|---|---|---|---|---|
 | attack_wifi_sensing | https://github.com/Guolin-Yin/Attack_WiFi_Sensing | MIT | Pending verification | Synthetic CSI | Pending verification | Verified URL; code not yet tested in this repo |
 | sensefi | https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark | MIT | Pending verification | Multiple public CSI datasets | Pending verification | Verified URL; code not yet tested in this repo |
-| antieave_wifi_sensing | N/A — not found | Pending verification | Pending verification | Real CSI (lab) | Pending verification | No confirmed public repo; defense reference only |
-| wifi_adg | N/A — not found | Pending verification | Pending verification | Synthetic/lab CSI | Pending verification | No confirmed public repo; adversarial defense ref only |
-| csigan | N/A — not found | Pending verification | Pending verification | Synthetic CSI | Pending verification | No confirmed public repo; GAN augmentation ref only |
-| csi_bench | N/A | Pending verification | Pending verification | Multiple CSI datasets | Pending verification | No confirmed public code; high-priority future dataset |
-| noisec | N/A | Pending verification | Pending verification | Lab CSI | Pending verification | Noise-based defense; WiFi CSI applicability not confirmed |
-| infocom_2023_wifi_ap | N/A | N/A | Not reproducible from public artifacts | Lab CSI | Pending verification | Privacy risk reference only |
-| infocom_2023_wifi_apnea_attack | N/A | N/A | Not reproducible from public artifacts | Lab CSI | Pending verification | Clinical adversarial attack reference; metadata pending |
-| wicam_wicam2 | N/A | N/A | Not reproducible from public artifacts | Lab CSI | Pending verification | Privacy threat model reference only |
-| wiintruder | N/A | N/A | Not reproducible from public artifacts | Lab CSI | Pending verification | Intrusion detection reference only |
-| awesome_ris_security | Pending verification | Pending verification | N/A (curated list) | N/A | N/A | Curated reading list; no code to reproduce |
-| unilateral_csi_entropy | N/A | Pending verification | Pending verification | Synthetic/lab CSI | Pending verification | Entropy estimation reference; no confirmed public code |
+| antieave_wifi_sensing | https://github.com/MoWING-Lab/AntiEave-WiFi-Sensing | Pending verification | Pending verification | Real CSI (lab) | Pending verification | Verified URL; code not yet tested in this repo |
+| wifi_adg | https://github.com/siwangzhou/WiFi-ADG | Pending verification | Pending verification | Synthetic/lab CSI | Pending verification | Verified URL; code not yet tested in this repo |
+| csigan | https://github.com/ChunjingXiao/CsiGAN | Pending verification | Pending verification | Synthetic CSI | Pending verification | Verified URL; code not yet tested in this repo |
+| csi_bench | https://github.com/guozhen-jenn-zhu/CSI-Bench-Real-WiFi-Sensing-Benchmark | MIT | Pending verification | Multiple CSI datasets | Pending verification | Verified URL; benchmark not yet tested in this repo |
+| noisec | https://github.com/shahriar0651/NoiSec | MIT | Pending verification | Lab CSI | Pending verification | Verified URL; code not yet tested in this repo |
+| infocom_2023_wifi_apnea_attack | N/A | N/A | Not reproducible from public artifacts | Lab CSI | Pending verification | No confirmed public repo; adversarial WiFi sensing reference; metadata pending |
+| wicam_wicam2 | N/A | N/A | Not reproducible from public artifacts | Lab CSI | Pending verification | No confirmed public repo; adversarial WiFi sensing reference; all metadata pending |
+| wiintruder | N/A | N/A | Not reproducible from public artifacts | Lab CSI | Pending verification | No confirmed public repo; adversarial WiFi sensing reference; all metadata pending |
+| mobicom_2024_preamble_perturbation | N/A | N/A | Not reproducible from public artifacts | Pending verification | Pending verification | No confirmed public repo; physical-layer WiFi sensing attack reference; all metadata pending |
 
 ---
 
@@ -49,8 +47,7 @@
 
 | Status | Count |
 |---|---|
-| Verified public code (URL confirmed) | 2 |
-| No confirmed public code | 10 |
-| N/A (curated list / no code expected) | 1 |
+| Verified public code (URL confirmed) | 7 |
+| No confirmed public code | 4 |
 
 **Last Updated:** 2026-05-24
