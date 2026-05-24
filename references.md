@@ -56,3 +56,53 @@ Additional papers on physical-layer security, adversarial robustness, spoofing, 
 **Shahram H. Hesari**
 PhD Candidate, Electrical and Computer Engineering
 Portland State University
+
+
+---
+
+## GitHub Repository References (Added 2026-05-24)
+
+The following GitHub repositories have been added as external references to `third_party/`. These are tool and code repository references, not formal academic citations. They are listed here for completeness and future citation planning.
+
+> **Note:** Formal paper citations for these repositories are pending verification. If an upstream publication is confirmed, references will be updated with the proper citation. Do not treat repository links as peer-reviewed citations.
+
+---
+
+### WiFi Sensing Security / Privacy Defense
+
+- **goop-veil** — kobepaw. *goop-veil: Software-only WiFi privacy defense: detect, degrade, and document potential CSI surveillance.* GitHub repository. https://github.com/kobepaw/goop-veil. License: Apache-2.0. (Accessed 2026-05-24. External reference only. Formal paper citation: Pending verification.)
+  - See `third_party/wifi_sensing_security/goop_veil/`.
+  - Relevance: WiFi CSI privacy defense, CSI-based surveillance threat awareness, router-side mitigation, software-only adversarial sensing defense.
+
+---
+
+### WiFi CSI Sensing / Pose Sensing / Domain Generalization
+
+- **WiFi-CSI-Human-Pose-Detection** — euaziel (Aziel S.). *WiFi-CSI-Human-Pose-Detection: Human pose estimation using WiFi Channel State Information (CSI) and deep learning — enabling camera-free sensing through walls.* GitHub repository. https://github.com/euaziel/WiFi-CSI-Human-Pose-Detection. License: GPL-3.0. (Accessed 2026-05-24. External reference only. Formal paper citation: Pending verification.)
+  - See `third_party/wifi_sensing/wifi_csi_human_pose_detection/`.
+  - Relevance: WiFi CSI human pose estimation, through-wall sensing, fall-detection context, domain generalization. Not classified as adversarial attack repo.
+
+---
+
+### WiFi CSI Fall Detection / Human Activity Recognition Baselines
+
+- **mowa-wifi-sensing** — oss-inc (Jungik Jang, Pio). *mowa-wifi-sensing: Wi-Fi sensing model of MOWA — real-time WiFi CSI-based HAR using Nexmon CSI extractor.* GitHub repository. https://github.com/oss-inc/mowa-wifi-sensing. License: BSD-3-Clause. (Accessed 2026-05-24. External reference only. Formal paper citation: Pending verification.)
+  - Related fork: https://github.com/cheeseBG/wifi-sensing
+  - See `third_party/wifi_sensing/mowa_wifi_sensing/`.
+  - Relevance: WiFi CSI HAR and fall-detection baseline, Nexmon CSI pipeline, meta-learning for WiFi sensing.
+
+---
+
+### WiFi CSI Vital-Sign / Breathing / Apnea Sensing Baselines
+
+- **baby-monitor-wifi-csi (BabyGuard)** — mohosy. *baby-monitor-wifi-csi: Contactless baby breathing monitor using WiFi Channel State Information (CSI). Turns an ESP32 + any WiFi router into a real-time infant apnea detection system — no wearables or cameras needed.* GitHub repository. https://github.com/mohosy/baby-monitor-wifi-csi. License: MIT. (Accessed 2026-05-24. External reference only. Formal paper citation: Pending verification.)
+  - See `third_party/wifi_sensing/baby_monitor_wifi_csi/`.
+  - Relevance: WiFi CSI contactless breathing monitoring, apnea-style sensing, healthcare-relevant vital-sign baseline.
+
+---
+
+> **Important note on adversarial WiFi sensing papers without confirmed public GitHub:** Major adversarial WiFi sensing papers that do not have confirmed public GitHub repositories remain in the literature references sections above and should not be added as `third_party/` folders. Only repositories with confirmed GitHub URLs are tracked in `third_party/`.
+
+---
+
+*Last updated: 2026-05-24*
