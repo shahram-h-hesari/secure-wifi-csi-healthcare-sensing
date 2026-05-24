@@ -296,4 +296,53 @@ The following tasks were added after four new external repositories were catalog
 
 ---
 
+## Phase 10 — Open-Source Landscape Integration and Repository Alignment
+
+**Status:** Completed (2025-05-24)
+
+**Goals:**
+- [x] Conduct open-source landscape analysis and identify the research gap
+- [x] Retitle repository to Secure WiFi CSI Healthcare Sensing
+- [x] Create `docs/open_source_gap.md` with 5-category landscape analysis
+- [x] Add NoiSec, Awesome-RIS-Security, unilateral-csi-entropy as external defense references
+- [x] Add CSI-Bench as high-priority future dataset candidate
+- [x] Expand defense taxonomy to two-layer structure (preprocessing + model-level)
+- [x] Update THIRD_PARTY_NOTICES.md with all new external references
+- [x] Update references.md with Gemini-derived references (all Pending verification)
+- [x] Update docs/project_status.md with Phase 10 tracking
+
+**Outcome:** Repository now reflects the broader Secure WiFi CSI Healthcare Sensing research direction. Open-source gap is formally documented. All new items are external references only with Pending verification status.
+
+---
+
+## Phase 11 — External Reference Verification and Dataset Candidate Integration
+
+**Status:** Not started
+
+**Goals:**
+- [ ] Verify NoiSec repository URL, license, and access method
+- [ ] Verify Awesome-RIS-Security repository URL and license
+- [ ] Verify unilateral-csi-entropy repository URL and license
+- [ ] Verify CSI-Bench repository URL, license, and data-access method
+- [ ] If CSI-Bench verified: create `datasets/csi-bench/DATASET_CARD.md` and update catalog
+- [ ] Verify Attack\_WiFi\_Sensing, CsiGAN, AntiEave, WiFi-ADG licenses
+- [ ] Update all Pending verification items with confirmed statuses
+- [ ] Create third_party README stubs for NoiSec, Awesome-RIS-Security, unilateral-csi-entropy
+
+---
+
+## Phase 12 — Code Release Watchlist and Advanced Defense Implementation
+
+**Status:** Not started
+
+**Goals:**
+- [ ] Create `docs/code_release_watchlist.md` to track paper-only references awaiting public code release
+- [ ] Implement wavelet denoising defense (Tier 1, Layer 1)
+- [ ] Implement PGD-style adversarial training (Tier 2, Layer 2)
+- [ ] Evaluate NoiSec-style noise injection defense on synthetic pipeline (if license confirmed)
+- [ ] Implement ensemble defense experiments
+- [ ] Expand clinical-safety evaluation to additional healthcare sensing tasks
+
+---
+
 *Last updated: 2026-05-24*
