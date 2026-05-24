@@ -137,3 +137,74 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 ---
 
 *Last updated: May 2026*
+
+
+---
+
+### goop-veil
+
+- **Repository Name:** goop-veil
+- **GitHub URL:** https://github.com/kobepaw/goop-veil
+- **Original Author(s):** kobepaw and contributors
+- **License:** Apache-2.0 (verified from upstream `LICENSE` file)
+- **Category:** WiFi Sensing Security / Privacy Defense — software-only WiFi CSI surveillance detection, degradation, and documentation tool
+- **Status:** External reference only
+- **Use in This Repository:** Linked as an external reference for WiFi CSI privacy defense, CSI-based surveillance mitigation, router-side mitigation, and Wi-Spoof-style adversarial sensing threat awareness. Referenced for literature review and future software-only defense framework planning. No code has been copied or adapted.
+- **Important Notes:** This repository is not healthcare-specific. No dataset has been confirmed. Not used in current project implementation.
+- **Code Status:** No source code has been copied into this project. Any future code reuse requires review of the Apache-2.0 license terms and adding proper attribution.
+- **Documentation:** `third_party/wifi_sensing_security/goop_veil/README.md`
+- **Dataset:** No public dataset confirmed. Candidate entry added to `datasets/future_datasets/README.md`.
+
+---
+
+### WiFi-CSI-Human-Pose-Detection
+
+- **Repository Name:** WiFi-CSI-Human-Pose-Detection
+- **GitHub URL:** https://github.com/euaziel/WiFi-CSI-Human-Pose-Detection
+- **Original Author(s):** euaziel (Aziel S.) and contributors
+- **License:** GPL-3.0 (verified from upstream repository)
+- **Category:** WiFi CSI Sensing / Pose Sensing / Domain Generalization — human pose estimation through walls using WiFi CSI and deep learning
+- **Status:** External reference only
+- **Placement:** Placed under `third_party/wifi_sensing/` (general sensing) because the upstream repository does not explicitly confirm adversarial domain generalization or adversarial robustness.
+- **Use in This Repository:** Linked as an external reference for WiFi CSI human pose estimation, through-wall sensing, fall-detection context, elderly monitoring, and robustness/domain-generalization ideas. No code has been copied or adapted.
+- **Important Notes:** Not an adversarial attack repo. Not healthcare-specific or clinically validated. Not used in current project implementation.
+- **Code Status:** No source code has been copied into this project. Any future code reuse requires review of the GPL-3.0 copyleft license terms and adding proper attribution.
+- **Documentation:** `third_party/wifi_sensing/wifi_csi_human_pose_detection/README.md`
+- **Dataset:** Dataset availability pending verification. Candidate entry added to `datasets/future_datasets/README.md`.
+
+---
+
+### mowa-wifi-sensing
+
+- **Repository Name:** mowa-wifi-sensing
+- **GitHub URL:** https://github.com/oss-inc/mowa-wifi-sensing
+- **Related Fork:** https://github.com/cheeseBG/wifi-sensing
+- **Original Author(s):** oss-inc (Jungik Jang, Pio) and contributors
+- **License:** BSD-3-Clause (verified from upstream `LICENSE` file)
+- **Category:** Healthcare-Relevant WiFi CSI / Fall Detection / Human Activity Recognition Baseline — real-time WiFi CSI HAR using Nexmon CSI extractor
+- **Status:** External reference only
+- **Use in This Repository:** Linked as an external reference for WiFi CSI HAR baseline research, fall-detection context, and future real-data benchmarking planning. No code has been copied or adapted.
+- **Important Notes:** Not an adversarial/security repo. Not healthcare-specific or clinically validated. Not used in current project implementation. Current project uses synthetic CSI-like data only.
+- **Code Status:** No source code has been copied into this project. Any future code reuse requires review of the BSD-3-Clause license terms and adding proper attribution.
+- **Documentation:** `third_party/wifi_sensing/mowa_wifi_sensing/README.md`
+- **Dataset:** Dataset availability pending verification (real-time Nexmon CSI; possible domain-specific HAR folders). Candidate entry added to `datasets/future_datasets/README.md` as `mowa-fall-har`.
+
+---
+
+### baby-monitor-wifi-csi
+
+- **Repository Name:** baby-monitor-wifi-csi (BabyGuard)
+- **GitHub URL:** https://github.com/mohosy/baby-monitor-wifi-csi
+- **Original Author(s):** mohosy and contributors
+- **License:** MIT (verified from upstream repository)
+- **Category:** Healthcare-Relevant WiFi CSI / Breathing Monitoring / Apnea-Style Sensing Baseline — contactless infant breathing monitoring via WiFi CSI and ESP32
+- **Status:** External reference only
+- **Use in This Repository:** Linked as an external reference for WiFi CSI contactless breathing monitoring, apnea-style sensing, and future vital-sign experiment planning. No code has been copied or adapted.
+- **Important Notes:** Not an adversarial/security repo. Not clinically validated. This project does not treat this repository as a medical device or clinical reference. Not used in current project implementation. Current project uses synthetic CSI-like data only.
+- **Code Status:** No source code has been copied into this project. Any future code reuse requires review of the MIT license terms and adding proper attribution.
+- **Documentation:** `third_party/wifi_sensing/baby_monitor_wifi_csi/README.md`
+- **Dataset:** Dataset availability unknown. No confirmed public downloadable CSI breathing dataset identified. Candidate entry added to `datasets/future_datasets/README.md`.
+
+---
+
+*Last updated: 2026-05-24*
