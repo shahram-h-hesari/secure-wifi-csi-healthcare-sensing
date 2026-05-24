@@ -29,6 +29,15 @@ To be added — papers on contactless fall detection, healthcare sensing, and vi
 
 - **[2]** (Author TBD). "Adversarial Attack and Defense for WiFi-Based Apnea Detection Systems." *IEEE INFOCOM 2023*.
   - Highly relevant to healthcare WiFi sensing, apnea monitoring, adversarial ML, and clinical-safety motivation. Related to: `docs/clinical_safety_metrics.md`, `docs/security_motivation.md`.
+  - 
+- **[3]** (Author TBD). "Scheduled Spatial Sensing against Adversarial WiFi Sensing." *IEEE PerCom 2023*.
+  - Paper page: https://www.computer.org/csdl/proceedings-article/percom/2023/10099079/1MrG8Bbqka4
+  - Related repository: https://github.com/MoWiNG-Lab/AntiEave-WiFi-Sensing
+  - Relevant to anti-eavesdropping countermeasures and adversarial WiFi sensing defenses. Related to: `third_party/wifi_sensing_security/antieave_wifi_sensing/`, `datasets/antieave-wifi-sensing/`.
+
+- **[4]** Zhou, S., et al. "Adversarial WiFi Sensing for Privacy Preservation of Human Behaviors." *IEEE Communications Letters*, 2019. DOI: https://doi.org/10.1109/LCOMM.2019.2952844
+  - Related repository: https://github.com/siwangzhou/WiFi-ADG
+  - Relevant to adversarial CSI modification and privacy preservation of human behaviors. Related to: `third_party/wifi_sensing_security/wifi_adg/`, `datasets/wifi-adg/`.
 
 Additional papers on physical-layer security, adversarial robustness, spoofing, and secure WiFi sensing will be added after full literature review.
 
