@@ -15,7 +15,7 @@
 | Year | 2023 |
 | Venue | IEEE Transactions on Information Forensics and Security (TIFS) |
 | DOI | Pending verification |
-| Public Code URL | https://github.com/xdawnn/attack-wifi-sensing |
+| Public Code URL | https://github.com/Guolin-Yin/Attack_WiFi_Sensing |
 | License | MIT (pending confirmation) |
 | Dataset Used | Synthetic CSI |
 | Dataset License | Pending verification |
@@ -23,7 +23,6 @@
 ---
 
 ## Synopsis
-
 This paper proposes adversarial attack methods targeting deep learning models used for Wi-Fi CSI-based sensing. It is the primary adversarial attack reference for this thesis.
 
 > **Note:** No PDFs are stored in this repository. Synopsis is based on publicly available abstracts and metadata only.
@@ -31,7 +30,6 @@ This paper proposes adversarial attack methods targeting deep learning models us
 ---
 
 ## Reproducibility Assessment
-
 | Item | Status |
 |---|---|
 | Public code available | Yes (pending license verification) |
@@ -43,7 +41,6 @@ This paper proposes adversarial attack methods targeting deep learning models us
 ---
 
 ## Thesis Relevance
-
 | Chapter | Role |
 |---|---|
 | Chapter 4: Adversarial Attacks | Primary evidence source |
@@ -52,17 +49,10 @@ This paper proposes adversarial attack methods targeting deep learning models us
 ---
 
 ## Attribution
-
 ```
 Li et al. (2023). Adversarial Attack on Deep Learning-Based WiFi Sensing.
 IEEE Transactions on Information Forensics and Security.
-Public code: https://github.com/xdawnn/attack-wifi-sensing
+Public code: https://github.com/Guolin-Yin/Attack_WiFi_Sensing
 License: MIT (pending confirmation)
 DOI: Pending verification
 ```
-
-> **Disclaimer:** No code or datasets from this paper have been copied into this repository. This card contains citation metadata and links only.
-
----
-
-*See `literature/papers.csv` for the full index entry.*
