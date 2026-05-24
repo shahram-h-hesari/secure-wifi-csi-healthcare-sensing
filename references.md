@@ -106,3 +106,39 @@ The following GitHub repositories have been added as external references to `thi
 ---
 
 *Last updated: 2026-05-24*
+
+
+---
+
+## GAN-Based Data Augmentation for CSI Sensing
+
+- **CsiGAN** — Chunjing Xiao and contributors. *CsiGAN: Robust Channel State Information-based Activity Recognition with GANs.* IEEE Internet of Things Journal, 2019. GitHub: https://github.com/ChunjingXiao/CsiGAN. License: Pending verification (no LICENSE file detected as of 2026-05-24). (Accessed 2026-05-24. External reference only. No code copied or adapted.)
+  - See `third_party/wifi_sensing/csigan/`.
+  - Relevance: Semi-supervised GAN for WiFi CSI data augmentation, relevant to future robustness, class-imbalance, and synthetic-to-real CSI variation experiments.
+
+---
+
+## Adversarial WiFi CSI Sensing Papers Without Confirmed Public Code
+
+The following adversarial WiFi sensing works are cited as literature references only. As of the latest search (2026-05-24), **no confirmed public GitHub implementation** was found for any of these. They should not be added as `third_party/` folders until a verified public repository is identified.
+
+> **Important:** Do not create `third_party/` folders for these works. Keep them as literature references only until a confirmed GitHub repository is identified. Full citation details should be verified before use in academic writing.
+
+| Work | Venue | Status | Notes |
+|---|---|---|---|
+| Adversarial Attack and Defense for WiFi-based Apnea Detection System | INFOCOM 2023 | No confirmed public GitHub as of 2026-05-24 | Healthcare-specific adversarial WiFi CSI work; most directly relevant to this thesis. TODO: verify full citation details. |
+| Practical Adversarial Attack on WiFi Sensing Through Unnoticeable Communication Packet Perturbation | MobiCom 2024 | No confirmed public GitHub as of 2026-05-24 | Physical-layer communication packet perturbation attack; see existing reference in this file. |
+| WiCAM / WiCAM 2.0 | TBD — TODO: verify citation details | No confirmed public GitHub as of 2026-05-24 | WiFi CSI adversarial manipulation/attack framework. |
+| WiAdv | TBD — TODO: verify citation details | No confirmed public GitHub as of 2026-05-24 | WiFi sensing adversarial attack reference. |
+| WiIntruder | TBD — TODO: verify citation details | No confirmed public GitHub as of 2026-05-24 | WiFi sensing intruder/attack reference. |
+| Wi-Spoof | TBD — TODO: verify citation details | No confirmed public GitHub as of 2026-05-24 | WiFi CSI spoofing attack reference. |
+| SecureSense | TBD — TODO: verify citation details | No confirmed public GitHub as of 2026-05-24 | WiFi sensing security/defense reference. |
+| RIStealth | TBD — TODO: verify citation details | No confirmed public GitHub as of 2026-05-24 | Reconfigurable Intelligent Surface-based stealthy WiFi sensing attack reference. |
+| LeakyBeam | TBD — TODO: verify citation details | No confirmed public GitHub as of 2026-05-24 | WiFi sensing attack reference using beamforming leakage. |
+| Physical-World Attack toward WiFi-based Behavior Recognition | TBD — TODO: verify citation details | No confirmed public GitHub as of 2026-05-24 | Physical-world adversarial attack on WiFi behavior recognition. |
+
+> **Research Gap Note:** As of the second-pass search (2026-05-24), no public GitHub repository was found that specifically combines WiFi CSI healthcare sensing with adversarial attack/defense evaluation and clinical safety metrics. The most directly relevant paper-only work is the INFOCOM 2023 apnea attack/defense paper, which remains a literature reference without confirmed public code.
+
+---
+
+*Last updated: 2026-05-24*
