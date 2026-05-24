@@ -183,4 +183,45 @@ Four new external GitHub repositories have been added to `third_party/` as track
 
 ---
 
+## Phase 10 Updates — Open-Source Landscape Integration (2025-05-24)
+
+**Current phase:** Phase 10 — Open-Source Landscape Integration and Documentation Alignment
+
+### Summary of Phase 10 Changes
+
+This phase integrates findings from an open-source landscape analysis (Gemini report 2025) to:
+1. Retitle repository to **Secure WiFi CSI Healthcare Sensing** to reflect the broader research direction
+2. Create and document an **Open-Source Gap Analysis** (`docs/open_source_gap.md`)
+3. Add new external references: NoiSec, Awesome-RIS-Security, unilateral-csi-entropy, CSI-Bench
+4. Expand the **Defense Methods taxonomy** to a two-layer structure (preprocessing + model-level)
+5. Add CSI-Bench as a **High-Priority Future Dataset Candidate**
+6. Update all documentation with consistent Pending verification tags for new items
+
+### New/Updated Items in Phase 10
+
+| Item | Type | Status |
+|------|------|--------|
+| `docs/open_source_gap.md` | New file | Created |
+| `README.md` | Updated | Retitled; open-source gap section added |
+| `docs/related_projects.md` | Updated | NoiSec, Awesome-RIS-Security, unilateral-csi-entropy, CSI-Bench added |
+| `docs/defense_methods.md` | Updated | Two-layer taxonomy; NoiSec/RIS/entropy as Tier 2 external refs |
+| `datasets/future_datasets/README.md` | Updated | CSI-Bench as high-priority candidate; integration checklist added |
+| `THIRD_PARTY_NOTICES.md` | Updated | All new items added; Pending verification table added |
+| `references.md` | Updated | Gemini-derived references added with Pending verification caveats |
+
+### Open-Source Gap Status
+
+- Confirmed: No public repository fully combines WiFi CSI healthcare sensing + adversarial robustness + clinical-safety metrics + defense taxonomy
+- This repository uniquely addresses this gap as a synthetic-data research prototype
+- See `docs/open_source_gap.md` for the full 5-category landscape analysis
+
+### Synthetic Data Constraint Maintained
+
+- All new items are **external references only**
+- No code or datasets copied from any third-party repository
+- All new items marked as **Pending verification** for license/URL/access
+- The repository continues to use **synthetic CSI-like data only**
+
+---
+
 *Last updated: 2026-05-24*
