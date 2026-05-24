@@ -14,7 +14,7 @@ This document lists open-source projects and academic repositories that are rele
 | nexmon_csi | Nexmon-based CSI extraction for Broadcom/Cypress chips | Widely used in research |
 | Widar3.0 | Gesture recognition via WiFi CSI | Published academic system |
 | WiSe | WiFi sensing benchmark dataset | For reproducibility comparison |
-| RuView | WiFi-based human sensing | Open-source reference project; included for repository-structure and dashboard/interface inspiration. Its claims are not independently validated in this repository. |
+| RuView | WiFi-based spatial intelligence and vital sign sensing | Open-source reference project and experimental target; included for repository-structure review, simulation workflow study, and planned offline adversarial robustness evaluation. Its in this repository. |
 
 *This table will be expanded as projects are reviewed and added to `third_party/wifi_sensing/`.*
 
