@@ -19,22 +19,41 @@ Projects collected here serve the following research purposes:
 
 ```
 third_party/
-├── wifi_sensing/          # WiFi CSI sensing, activity recognition, fall detection, and related applications
-└── wifi_sensing_security/ # Adversarial attacks, CSI spoofing, privacy, and robustness evaluation
+├── wifi_sensing/                    # WiFi CSI sensing, activity recognition, fall detection, and related applications
+│   ├── ruview/                      # RuView: WiFi spatial intelligence and vital sign monitoring
+│   ├── sensefi/                     # SenseFi / WiFi CSI Sensing Benchmark: deep-learning WiFi CSI benchmark
+│   └── esp_csi/                     # ESP-CSI: ESP32-based CSI collection and hardware prototyping
+└── wifi_sensing_security/           # Adversarial attacks, CSI spoofing, privacy, and robustness evaluation
+    ├── attack_wifi_sensing/         # Attack_WiFi_Sensing: adversarial evasion and robustness evaluation
+    └── awesome_ws_security/         # Awesome-WS-Security: curated wireless sensing security literature
 ```
 
-### wifi_sensing/
+---
 
-Contains references, submodule instructions, and review notes for WiFi CSI sensing projects (e.g., RuView). No third-party source code is copied directly into the main pipeline.
+## wifi_sensing/
 
-### wifi_sensing_security/
+Contains references, placeholder documentation, and review notes for WiFi CSI sensing projects.
 
-Tracks security-related repositories for future adversarial robustness evaluation. Currently referenced repositories include:
+| Folder | Project | Purpose |
+|---|---|---|
+| `ruview/` | RuView | WiFi spatial intelligence and vital sign sensing; experimental target for future adversarial robustness evaluation |
+| `sensefi/` | SenseFi / WiFi CSI Sensing Benchmark | Deep-learning WiFi CSI benchmark framework; useful for future victim-model and baseline evaluation |
+| `esp_csi/` | ESP-CSI | ESP32-based CSI collection; useful for future real CSI data collection and hardware prototyping |
 
-- **Attack_WiFi_Sensing** (https://github.com/Guolin-Yin/Attack_WiFi_Sensing): Adversarial evasion and robustness evaluation for WiFi sensing models.
-- **Awesome-WS-Security** (https://github.com/Intelligent-Perception-Lab/Awesome-WS-Security): Curated literature on wireless sensing security.
+> No third-party source code is copied directly into the main pipeline from this folder.
 
-> **Important:** Security-related repositories are tracked under `third_party/wifi_sensing_security/` **only after license review is completed**. No code from these repositories has been copied or adapted into this repository. They are referenced for literature review and future robustness evaluation planning only.
+---
+
+## wifi_sensing_security/
+
+Tracks security-related repositories for future adversarial robustness evaluation and literature review.
+
+| Folder | Project | Purpose |
+|---|---|---|
+| `attack_wifi_sensing/` | Attack_WiFi_Sensing | Adversarial evasion attacks and robustness evaluation for WiFi sensing models |
+| `awesome_ws_security/` | Awesome-WS-Security | Curated literature and resources on wireless sensing security, attacks, privacy, and defenses |
+
+> **Important:** Security-related repositories are tracked here **only after license review is completed**. No code from these repositories has been copied or adapted into this repository. They are referenced for literature review and future robustness evaluation planning only.
 
 ---
 
