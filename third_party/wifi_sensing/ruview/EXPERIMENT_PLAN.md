@@ -29,6 +29,44 @@ This document defines a future research plan for:
 
 ---
 
+## Step 0: Dataset and Validation Verification
+
+**Goal:** Verify what data, models, and outputs RuView uses before designing any perturbation experiments. Adversarial testing must not begin until baseline simulation, data source, and model inputs are identified and documented.
+
+> **Rule:** Adversarial perturbation experiments should begin only after the baseline data source, model inputs, model weights, and output format are documented.
+
+**Checklist:**
+
+- [ ] Identify whether the run uses simulated data or real recorded CSI.
+- [ ] Identify exact input file paths and formats.
+- [ ] Identify whether model weights are loaded locally or downloaded.
+- [ ] Identify the source of any pretrained model.
+- [ ] Identify the training dataset used for the model, if documented.
+- [ ] Identify the evaluation dataset used for reported results, if documented.
+- [ ] Record whether results can be reproduced without hardware.
+- [ ] Record whether hardware is required for the claimed sensing outputs.
+- [ ] Record which outputs are labels, predictions, visualizations, or simulated placeholders.
+
+**Dataset and Model Provenance Fields:**
+
+| Field | Value | Status |
+|---|---|---|
+| Data source | Simulated / recorded CSI / public dataset / unknown | Pending |
+| Input file paths | TBD | Pending |
+| Input file format | TBD | Pending |
+| Model weights source | Local / downloaded / pretrained / unknown | Pending |
+| Training dataset | TBD — must be verified from model card or documentation | Pending |
+| Evaluation dataset | TBD — must be verified from model card or documentation | Pending |
+| Reproducible without hardware | Yes / No / Partial / Unknown | Pending |
+| Output type | Labels / predictions / visualizations / placeholders | Pending |
+
+**Outcome of Step 0:**
+Do not proceed to Step 1 or any adversarial experiment until this checklist is complete and the above table is filled in.
+
+> **Adversarial results rule:** Any adversarial results must be labeled as **preliminary** unless the baseline dataset and model pipeline are verified. If only simulated data is available, results must be labeled **synthetic/simulation-only**.
+
+---
+
 ## Step 1: Reproduce Baseline Simulation
 
 **Goal:** Confirm that RuView's simulation (or a relevant component) runs in a controlled environment without real hardware.
