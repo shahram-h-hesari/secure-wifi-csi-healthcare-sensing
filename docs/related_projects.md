@@ -84,3 +84,16 @@ This document lists open-source projects and academic repositories that are rele
 ---
 
 *Last updated: 2026-05-24*
+
+
+---
+
+## WiFi CSI Sensing / Data Augmentation / Robustness Support
+
+| Project | Link | Description | Relevance | Status |
+|---|---|---|---|---|
+| CsiGAN | https://github.com/ChunjingXiao/CsiGAN | Semi-supervised GAN for robust WiFi CSI-based activity recognition and data augmentation (IEEE IoT Journal, 2019). License: Pending verification (no LICENSE file detected). | Optional robustness/data-augmentation reference for future victim-model experiments; useful for synthetic-to-real CSI variation, class-imbalance experiments, and semi-supervised learning with limited labeled fall/vital-sign data. Not healthcare-specific. Not an adversarial attack/defense repo. | External reference only; no code copied. Dataset: pending verification. See `third_party/wifi_sensing/csigan/`. |
+
+---
+
+*Last updated: 2026-05-24*
