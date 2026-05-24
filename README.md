@@ -229,6 +229,33 @@ See [`docs/linkedin_summary.md`](./docs/linkedin_summary.md) for a LinkedIn-read
 
 ---
 
+
+## Testing & Verification
+
+This repository includes a smoke test script and basic pytest unit tests. All tests operate on **synthetic data only** and verify prototype pipeline logic, not real-world CSI performance.
+
+### Run Smoke Test
+
+```bash
+python scripts/smoke_test.py
+```
+
+Expected output: pipeline stages complete without errors on synthetic data.
+
+### Run Unit Tests (pytest)
+
+```bash
+pip install pytest
+pytest tests/
+```
+
+Expected output: all tests pass on synthetic pipeline checks.
+
+> **Note:** Tests validate the synthetic prototype pipeline only. They do not validate real WiFi CSI hardware, clinical fall-detection accuracy, or real-world deployment readiness.
+
+See [`docs/testing_and_verification.md`](./docs/testing_and_verification.md) for full testing documentation.
+
+---
 ## Roadmap
 
 See [`docs/roadmap.md`](./docs/roadmap.md) for the full multi-phase research roadmap.
@@ -244,6 +271,7 @@ See [`docs/roadmap.md`](./docs/roadmap.md) for the full multi-phase research roa
 | Phase 7 | Defense methods and robustness hardening | Completed |
 | Phase 8 | Streamlit demo dashboard | Completed |
 | Phase 9 | GitHub polish and LinkedIn-ready presentation | Completed |
+| Phase 10 | Testing & verification (synthetic pipeline) | Completed |
 | Phase 10+ | Real CSI datasets, hardware, clinical evaluation | Future work |
 
 ---
