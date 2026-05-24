@@ -53,3 +53,33 @@ See `third_party/wifi_sensing/ruview/EXPERIMENT_PLAN.md` for the full research e
 ---
 
 *Workspace created: May 2026. No experiments have been executed.*
+
+
+---
+
+## Prerequisite: Dataset and Baseline Verification
+
+> **This section must be completed before any adversarial experiments begin.**
+
+Before perturbation experiments can be designed or executed, the following baseline reproduction and data/model provenance verification steps must be completed:
+
+### Requirements Before Adversarial Testing
+
+- [ ] The baseline RuView simulation or inference pipeline must be reproduced locally (see `run_ruview_baseline.md`)
+- [ ] The input data source must be identified and documented (simulated / recorded CSI / public dataset / unknown)
+- [ ] The model weights source must be identified (local / downloaded / pretrained / external service)
+- [ ] The output format must be documented (labels / scores / visualizations / simulated placeholders)
+- [ ] The evaluation metrics must be identified (accuracy, detection rate, false alarm rate, etc.)
+
+### Adversarial Claims Rules
+
+- No adversarial claims should be made until the baseline is reproducible.
+- If only simulated data is available, all adversarial results must be labeled **synthetic/simulation-only**.
+- If real CSI data is used, ethical and authorization requirements must be considered and documented.
+- All adversarial results must be labeled as **preliminary** unless the baseline dataset and model pipeline are fully verified.
+
+> **Dataset and validation status: pending review.** See `third_party/wifi_sensing/ruview/REVIEW_NOTES.md` for the full dataset review checklist.
+
+---
+
+*Prerequisite section added: May 2026.*
