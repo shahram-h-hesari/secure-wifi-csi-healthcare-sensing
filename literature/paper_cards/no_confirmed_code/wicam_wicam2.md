@@ -1,4 +1,4 @@
-# Paper Card: wicam_wicam2
+# Paper Card: WiCAM / WiCAM 2.0
 
 **Paper ID:** `wicam_wicam2` | **Card Type:** no_confirmed_code | **Last Updated:** 2026-05-24
 
@@ -6,80 +6,78 @@
 
 | Field | Value |
 |---|---|
-| Reproducibility Status | No confirmed public code |
-| Code Searchable | Searched — not found |
-| Tested Locally | No |
-| Reproduction Score | Not assessed |
-| Reproducibility Note | Not reproducible from public artifacts |
+| Work type | Research paper — no confirmed public code |
+| Code status | No confirmed public GitHub found |
+| Reproducibility status | Not reproducible from public code yet |
+| Dataset status | Pending verification |
+| Repository status | Paper reference only; no code or data copied |
+| Thesis relevance | Chapter 4 adversarial attacks; imperceptible and targeted attack references |
 
 ## Metadata
 
 | Field | Value |
 |---|---|
-| Title | WiCam: Recognizing People Behind Walls Using WiFi |
-| Authors | Ma et al. |
-| Year | 2021 |
-| Venue | ACM MobiSys |
+| Paper ID | wicam_wicam2 |
+| Short name | WiCAM / WiCAM 2.0 |
+| Full title | Pending verification |
+| Authors | Pending verification |
+| Year | Pending verification |
+| Venue | Pending verification |
 | DOI | Pending verification |
-| Public Code URL | N/A — not found |
+| Public code URL | No confirmed public GitHub found |
 | License | N/A |
-| Dataset Used | Lab-collected CSI |
-| Dataset License | Pending verification |
+| Dataset used | Pending verification |
+| Dataset license | Pending verification |
+
+> **Note:** All metadata above is pending verification from an official
+> publisher or conference page. Previous versions of this card contained
+> unverified metadata that has been cleared per repository rules.
+> Do not use this card to cite specific authors, titles, or venues
+> until verified.
 
 ## Official Links
 
-| Resource | URL | Status |
+| Item | URL | Status |
 |---|---|---|
-| ACM Digital Library | Pending verification | Unverified |
-| Public Code Repository | Not found | N/A |
+| Paper (official) | Pending verification | Not confirmed |
+| Public code repository | No confirmed public GitHub found | N/A |
+
+## Code and Dataset Availability
+
+| Item | Status | Notes |
+|---|---|---|
+| Public code | No confirmed public GitHub found | Searched; none located |
+| Code tested locally | No | Not applicable |
+| Dataset publicly available | Pending verification | Not confirmed |
+| Dataset downloaded | No | Not downloaded into this repository |
 
 ## Paper / Project Summary
 
-WiCam proposes a WiFi CSI-based system for recognizing people behind
-walls. The work demonstrates non-intrusive human identification using
-commodity WiFi hardware, highlighting significant privacy risks. It is
-relevant to this repository as motivation for adversarial attacks on
-WiFi-based sensing systems in healthcare contexts.
+WiCAM / WiCAM 2.0 is referenced as an adversarial WiFi sensing paper
+relevant to imperceptible attack design, targeted misclassification,
+black-box and transfer attack methodology for WiFi CSI systems.
 
-> **Note:** Metadata (title, authors, venue, DOI) pending verification
-> from official ACM source. No public code or dataset found.
+It is included in this repository as a reference for thesis Chapter 4
+(adversarial attack design) only.
 
-## Code / Dataset Availability
+**Critical disclaimer:**
+- Metadata has not been verified from an official source.
+- Do not cite this paper using metadata from this card.
+- Do not claim this paper supports behind-wall recognition unrelated
+  to adversarial WiFi sensing unless verified.
 
-| Item | Status |
+## Thesis Relevance
+
+| Chapter | Role |
 |---|---|
-| Public code available | No |
-| Dataset publicly available | No |
-| Tested locally | No |
-| Code release monitored | See docs/code_release_watchlist.md |
+| Chapter 4 (Adversarial Attacks) | Imperceptible attack reference; targeted misclassification |
+| Chapter 4 (Adversarial Attacks) | Black-box / transfer attack reference (pending metadata verification) |
 
-## Reproducibility Assessment
+## Watch Status
 
-| Item | Status |
-|---|---|
-| Public code available | No |
-| Tested locally | No |
-| Reproduction score | Not assessed |
-| Reproducibility note | Not reproducible from public artifacts |
-
-## How This Supports the Repository
-
-Provides evidence that WiFi CSI can be used for person identification
-through walls, establishing the privacy threat model that motivates
-adversarial robustness research in healthcare WiFi sensing.
-
-## Limitations and Open Questions
-
-- All metadata pending verification from official ACM/IEEE source.
-- No confirmed public code or dataset available.
-- Code release should be monitored in docs/code_release_watchlist.md.
-
-## Citation Status
-
-Citation pending verification — metadata (title, authors, venue, DOI)
-not yet confirmed from official source.
-See `docs/code_release_watchlist.md` for code release monitoring.
+Listed in `code_release_watchlist.md` — Medium priority.
+Monitor for public code release.
 
 ## Last Verified
 
-2026-05-24 — Metadata pending verification. No public code confirmed.
+2026-05-24 — No public code confirmed. All metadata pending verification.
