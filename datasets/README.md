@@ -10,7 +10,7 @@ Full dataset files are not stored directly in this repository unless redistribut
 
 ## Current Status
 
-Current repository experiments use **synthetic CSI-like data only**. MM-Fi and Wi-Pose are cataloged as related datasets for future real-data benchmarking and robustness evaluation; they are **not yet integrated into the pipeline**.
+Current repository experiments use **synthetic CSI-like data only**. MM-Fi, Wi-Pose, SignFi, Widar, UT-HAR, NTU-Fi HAR, and NTU-Fi HumanID are cataloged as related datasets for future real-data benchmarking and robustness evaluation; they are **not yet integrated into the pipeline**.
 
 Real CSI dataset integration is **future work**.
 
@@ -22,6 +22,11 @@ Real CSI dataset integration is **future work**.
 |---------|--------|------------|-------------------|
 | MM-Fi | `datasets/mm-fi/` | Human sensing / pose / activity | Cataloged only; not integrated |
 | Wi-Pose | `datasets/wi-pose/` | WiFi-based pose estimation | Cataloged only; not integrated |
+| SignFi | `datasets/signfi/` | Sign language gesture recognition (WiFi CSI reference) | Cataloged only; not integrated |
+| Widar | `datasets/widar/` | Gesture recognition / cross-domain WiFi sensing (reference) | Cataloged only; not integrated |
+| UT-HAR | `datasets/ut-har/` | Human activity recognition including fall class (reference) | Cataloged only; not integrated |
+| NTU-Fi HAR | `datasets/ntu-fi-har/` | Human activity recognition (reference) | Cataloged only; not integrated |
+| NTU-Fi HumanID | `datasets/ntu-fi-humanid/` | Human identification via WiFi (reference) | Cataloged only; not integrated |
 | Future entries | `datasets/future_datasets/` | TBD | Placeholder |
 
 ---
