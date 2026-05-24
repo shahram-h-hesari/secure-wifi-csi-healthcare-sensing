@@ -208,3 +208,25 @@ Projects related to adversarial attacks, CSI spoofing, privacy leakage, physical
 ---
 
 *Last updated: 2026-05-24*
+
+
+---
+
+### CsiGAN
+
+- **Repository Name:** CsiGAN
+- **GitHub URL:** https://github.com/ChunjingXiao/CsiGAN
+- **Original Author(s):** Chunjing Xiao and contributors
+- **Associated Paper:** Chunjing Xiao et al. "CsiGAN: Robust Channel State Information-based Activity Recognition with GANs." *IEEE Internet of Things Journal*, 2019.
+- **License:** No LICENSE file detected in upstream repository as of 2026-05-24. **License status: Pending verification — do not copy, adapt, or build upon this code until license is confirmed.**
+- **Category:** WiFi CSI Sensing / Data Augmentation / Robustness Support
+- **Status:** External reference only
+- **Use in This Repository:** Linked as an external reference for GAN-based data augmentation in WiFi CSI activity recognition. Potentially relevant for future robustness, class-imbalance, and synthetic-to-real CSI variation experiments. No code has been copied or adapted.
+- **Important Notes:** Not a healthcare-specific repository. Not an adversarial attack repository. Not an adversarial defense repository. Not used in the current project implementation. Current project uses synthetic CSI-like data only.
+- **Code Status:** No source code has been copied into this project. Any future code reuse requires verifying the upstream license terms and citing the associated IEEE IoT Journal 2019 paper.
+- **Documentation:** `third_party/wifi_sensing/csigan/README.md`
+- **Dataset:** Dataset/source-data status pending verification. No dataset files are stored in this repository. Candidate entry added to `datasets/future_datasets/README.md`.
+
+---
+
+*Last updated: 2026-05-24*
