@@ -4,7 +4,7 @@
 
 This folder catalogs public and research datasets related to WiFi CSI sensing. It is maintained as part of the `wifi-csi-fall-detection` repository to support transparent academic research, reproducibility planning, and future real-data benchmarking.
 
-This repository catalogs public and research datasets related to WiFi CSI sensing. Full dataset files are not stored directly in this repository unless redistribution is explicitly permitted and files are small enough for GitHub. Instead, this repository provides dataset cards, download instructions, license summaries, citation notes, and future loader plans.
+Full dataset files are not stored directly in this repository unless redistribution is explicitly permitted and files are small enough for GitHub. Instead, this repository provides dataset cards, download instructions, license summaries, citation notes, and future loader plans.
 
 ---
 
@@ -54,29 +54,27 @@ data/external/mm-fi/
 data/external/wi-pose/
 ```
 
-The `data/external/` path is excluded from Git via `.gitignore`. Do **not** commit large dataset files to this repository.
+These paths are listed in `.gitignore` and will not be tracked by Git.
 
 ---
 
-## Future Dataset Integration
+## Notes on Dataset Validation
 
-Future work may include:
-
-- Downloading and verifying MM-Fi and Wi-Pose locally
-- Writing dataset loaders under `scripts/` or `src/`
-- Benchmarking against the synthetic CSI pipeline
-- Evaluating adversarial robustness using real CSI data
-
-See `datasets/future_datasets/README.md` for candidate future entries.
+- Inclusion of a dataset in this catalog does **not** imply clinical validation.
+- Inclusion does **not** imply fall-detection validation.
+- Dataset claims (accuracy, performance, subject counts) are **not independently verified** by this repository.
+- MM-Fi and Wi-Pose are categorized as **related datasets**, not as current validation sources.
+- Any future integration will require: license review, data verification, baseline documentation, and citation compliance.
 
 ---
 
-## Citation and License Responsibility
+## Future Additions
 
-Inclusion of a dataset in this catalog does **not** imply clinical validation, fall-detection validation, or current use in this repository.
+The following dataset categories are candidates for future catalog entries:
 
-Users are responsible for reviewing each dataset's license and citation requirements before downloading or using any dataset. See each dataset's `LICENSE_SUMMARY.md` and official source for full terms.
+- **Fall detection datasets:** FallDeFi, and other WiFi CSI fall-detection corpora
+- **Activity recognition datasets:** Widar3.0, UT-HAR, SignFi
+- **Vital sign / health sensing datasets:** WiFi-based respiration and heart rate datasets
+- **Pose estimation datasets:** Additional WiFi CSI pose datasets
 
----
-
-*Last updated: May 2026*
+See `datasets/future_datasets/README.md` for the structured candidate list and review checklist.
