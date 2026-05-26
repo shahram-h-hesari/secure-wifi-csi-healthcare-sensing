@@ -10,23 +10,25 @@ Provide a structured, reproducible research plan to investigate adversarial risk
 ## Visual roadmap
 ```mermaid
 flowchart TD
-  A[Phase 1\nBaseline & experimental foundation] --> B[Phase 2\nAttack surface characterization]
-  B --> C[Phase 3\nClinical safety metric mapping\n(missed falls/day, false alarms/hour, suppressed apnea alarms/hour, time-to-alarm delay)]
-  C --> D[Phase 4\nSoftware-only defenses]
-  D --> E[Phase 5\nCertification, generalization, benchmark]
+  A["Phase 1<br/>Baseline & experimental foundation"] --> B["Phase 2<br/>Attack surface characterization"]
+  B --> C["Phase 3<br/>Clinical safety metric mapping<br/>Missed falls per day • False alarms per hour • Suppressed apnea alarms per hour • Time-to-alarm delay"]
+  C --> D["Phase 4<br/>Software-only defenses"]
+  D --> E["Phase 5<br/>Certification, generalization, and benchmark"]
 
-  subgraph Data[Data & Tools]
-    DA[(Public CSI datasets)]
-    DB[(Preprocessing pipelines)]
+  subgraph Data["Data & Tools"]
+    DA["Public CSI datasets or synthetic CSI-like data"]
+    DB["Preprocessing pipelines"]
   end
+
   DA --> A
   DB --> A
 
-  subgraph Outputs[Outputs]
-    O1((Code + Notebooks))
-    O2((Benchmark))
-    O3((Manuscripts))
+  subgraph Outputs["Planned Research Outputs"]
+    O1["Code + notebooks"]
+    O2["Planned benchmark artifacts"]
+    O3["Manuscript-ready documentation"]
   end
+
   E --> O1
   E --> O2
   E --> O3
