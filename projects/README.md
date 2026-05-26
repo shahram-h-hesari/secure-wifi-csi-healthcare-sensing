@@ -8,27 +8,43 @@ Provide a structured, reproducible research plan to investigate adversarial risk
 ---
 
 ## Visual roadmap
+
 ```mermaid
-flowchart LR
-  A["Phase 1<br/><b>Baseline Foundation</b><br/>Datasets • Preprocessing • Baseline ML"] --> B["Phase 2<br/><b>Attack Characterization</b><br/>FGSM • PGD • C&W • Transfer"]
-  B --> C["Phase 3<br/><b>Clinical Safety Mapping</b><br/>Missed falls/day • False alarms/hour<br/>Suppressed apnea alarms/hour • Time-to-alarm"]
-  C --> D["Phase 4<br/><b>Software Defenses</b><br/>Adversarial training • Randomized smoothing"]
-  D --> E["Phase 5<br/><b>Certification & Benchmark</b><br/>Robustness bounds • Generalization<br/>Planned benchmark artifacts"]
+flowchart TB
 
-  S["Research Inputs<br/>Public/synthetic CSI-like data<br/>Literature + threat models"] --> A
-  E --> O["Research Outputs<br/>Code • notebooks • documentation<br/>reproducible evaluation workflow"]
+  I["Research Inputs<br/>Public/synthetic CSI-like data<br/>Literature + threat models"]
 
-  classDef phase fill:#0B1F33,stroke:#58A6FF,color:#FFFFFF,stroke-width:1px;
+  subgraph Row1["Core roadmap"]
+    direction LR
+    P1["Phase 1<br/>Baseline foundation<br/>Datasets • Preprocessing • Baseline ML"]
+    P2["Phase 2<br/>Attack characterization<br/>FGSM • PGD • C&W • Transfer"]
+    P3["Phase 3<br/>Clinical safety mapping<br/>Missed events • False alarms • Time-to-alarm"]
+  end
+
+  subgraph Row2["Hardening and release"]
+    direction LR
+    P4["Phase 4<br/>Software defenses<br/>Adversarial training • Randomized smoothing"]
+    P5["Phase 5<br/>Certification & benchmark<br/>Robustness bounds • Generalization"]
+    O["Research outputs<br/>Code • Notebooks • Documentation<br/>Reproducible workflow"]
+  end
+
+  I --> P1
+  P1 --> P2
+  P2 --> P3
+  P3 --> P4
+  P4 --> P5
+  P5 --> O
+
   classDef input fill:#102A1B,stroke:#3FB950,color:#FFFFFF,stroke-width:1px;
+  classDef phase fill:#0B1F33,stroke:#58A6FF,color:#FFFFFF,stroke-width:1px;
   classDef output fill:#2D1B3D,stroke:#D2A8FF,color:#FFFFFF,stroke-width:1px;
 
-  class A,B,C,D,E phase;
-  class S input;
+  class I input;
+  class P1,P2,P3,P4,P5 phase;
   class O output;
 ```
 
 ---
-
 ## Phase-to-thesis-chapter mapping
 | Phase | Tentative thesis chapter | Core deliverables |
 |---|---:|---|
