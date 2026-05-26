@@ -9,29 +9,22 @@ Provide a structured, reproducible research plan to investigate adversarial risk
 
 ## Visual roadmap
 ```mermaid
-flowchart TD
-  A["Phase 1<br/>Baseline & experimental foundation"] --> B["Phase 2<br/>Attack surface characterization"]
-  B --> C["Phase 3<br/>Clinical safety metric mapping<br/>Missed falls per day • False alarms per hour • Suppressed apnea alarms per hour • Time-to-alarm delay"]
-  C --> D["Phase 4<br/>Software-only defenses"]
-  D --> E["Phase 5<br/>Certification, generalization, and benchmark"]
+flowchart LR
+  A["Phase 1<br/><b>Baseline Foundation</b><br/>Datasets • Preprocessing • Baseline ML"] --> B["Phase 2<br/><b>Attack Characterization</b><br/>FGSM • PGD • C&W • Transfer"]
+  B --> C["Phase 3<br/><b>Clinical Safety Mapping</b><br/>Missed falls/day • False alarms/hour<br/>Suppressed apnea alarms/hour • Time-to-alarm"]
+  C --> D["Phase 4<br/><b>Software Defenses</b><br/>Adversarial training • Randomized smoothing"]
+  D --> E["Phase 5<br/><b>Certification & Benchmark</b><br/>Robustness bounds • Generalization<br/>Planned benchmark artifacts"]
 
-  subgraph Data["Data & Tools"]
-    DA["Public CSI datasets or synthetic CSI-like data"]
-    DB["Preprocessing pipelines"]
-  end
+  S["Research Inputs<br/>Public/synthetic CSI-like data<br/>Literature + threat models"] --> A
+  E --> O["Research Outputs<br/>Code • notebooks • documentation<br/>reproducible evaluation workflow"]
 
-  DA --> A
-  DB --> A
+  classDef phase fill:#0B1F33,stroke:#58A6FF,color:#FFFFFF,stroke-width:1px;
+  classDef input fill:#102A1B,stroke:#3FB950,color:#FFFFFF,stroke-width:1px;
+  classDef output fill:#2D1B3D,stroke:#D2A8FF,color:#FFFFFF,stroke-width:1px;
 
-  subgraph Outputs["Planned Research Outputs"]
-    O1["Code + notebooks"]
-    O2["Planned benchmark artifacts"]
-    O3["Manuscript-ready documentation"]
-  end
-
-  E --> O1
-  E --> O2
-  E --> O3
+  class A,B,C,D,E phase;
+  class S input;
+  class O output;
 ```
 
 ---
