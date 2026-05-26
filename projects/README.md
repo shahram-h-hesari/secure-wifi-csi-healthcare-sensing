@@ -9,40 +9,35 @@ Provide a structured, reproducible research plan to investigate adversarial risk
 
 ## Visual roadmap
 
+### Research pipeline: sensing, attacks, and safety mapping
+
 ```mermaid
-flowchart TB
-
-  I["Research Inputs<br/>Public/synthetic CSI-like data<br/>Literature + threat models"]
-
-  subgraph Row1["Core roadmap"]
-    direction LR
-    P1["Phase 1<br/>Baseline foundation<br/>Datasets • Preprocessing • Baseline ML"]
-    P2["Phase 2<br/>Attack characterization<br/>FGSM • PGD • C&W • Transfer"]
-    P3["Phase 3<br/>Clinical safety mapping<br/>Missed events • False alarms • Time-to-alarm"]
-  end
-
-  subgraph Row2["Hardening and release"]
-    direction LR
-    P4["Phase 4<br/>Software defenses<br/>Adversarial training • Randomized smoothing"]
-    P5["Phase 5<br/>Certification & benchmark<br/>Robustness bounds • Generalization"]
-    O["Research outputs<br/>Code • Notebooks • Documentation<br/>Reproducible workflow"]
-  end
-
-  I --> P1
-  P1 --> P2
-  P2 --> P3
-  P3 --> P4
-  P4 --> P5
-  P5 --> O
+%%{init: {"themeVariables": {"fontSize": "18px"}} }%%
+flowchart LR
+  I["Research Inputs<br/>Public/synthetic CSI-like data<br/>Literature + threat models"] --> P1["Phase 1<br/>Baseline foundation<br/>Datasets • Preprocessing • Baseline ML"]
+  P1 --> P2["Phase 2<br/>Attack characterization<br/>FGSM • PGD • C&W • Transfer"]
+  P2 --> P3["Phase 3<br/>Clinical safety mapping<br/>Missed events • False alarms • Time-to-alarm"]
 
   classDef input fill:#102A1B,stroke:#3FB950,color:#FFFFFF,stroke-width:1px;
   classDef phase fill:#0B1F33,stroke:#58A6FF,color:#FFFFFF,stroke-width:1px;
-  classDef output fill:#2D1B3D,stroke:#D2A8FF,color:#FFFFFF,stroke-width:1px;
 
   class I input;
-  class P1,P2,P3,P4,P5 phase;
-  class O output;
+  class P1,P2,P3 phase;
 ```
+
+### Hardening, certification, and research outputs
+
+```mermaid
+%%{init: {"themeVariables": {"fontSize": "18px"}} }%%
+flowchart LR
+  P4["Phase 4<br/>Software defenses<br/>Adversarial training • Randomized smoothing"] --> P5["Phase 5<br/>Certification & benchmark<br/>Robustness bounds • Generalization"]
+  P5 --> O["Research outputs<br/>Code • Notebooks • Documentation<br/>Reproducible workflow"]
+
+  classDef phase fill:#0B1F33,stroke:#58A6FF,color:#FFFFFF,stroke-width:1px;
+  classDef output fill:#2D1B3D,stroke:#D2A8FF,color:#FFFFFF,stroke-width:1px;
+
+  class P4,P5 phase;
+  class O output;
 
 ---
 ## Phase-to-thesis-chapter mapping
