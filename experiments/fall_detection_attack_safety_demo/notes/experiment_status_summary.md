@@ -561,3 +561,83 @@ At this epsilon, PGD caused complete loss of fall recall in the window-level fal
 This result should not be interpreted as a full FGSM-vs-PGD comparison yet. A PGD epsilon sweep and a direct FGSM-vs-PGD comparison table are still needed before making broader claims about relative attack strength across epsilon values.
 
 Claim boundary: this is not clinical validation, medical-device validation, diagnostic evidence, regulatory evaluation, real patient deployment evidence, event-level fall detection validation, long-lie validation, physical-layer attack validation, packet-level attack validation, preamble-level attack validation, SDR validation, or over-the-air validation.
+
+
+---
+
+## PGD Epsilon Sweep Phase
+
+The experiment now includes a Projected Gradient Descent (PGD) epsilon sweep.
+
+PGD was implemented as a software-level iterative adversarial perturbation applied to processed UT-HAR CSI tensors. The sweep extends the earlier PGD single-epsilon result by evaluating how fall-focused safety-proxy metrics change as perturbation strength increases.
+
+PGD sweep configuration:
+
+```text
+epsilon values = 0.000, 0.005, 0.010, 0.020, 0.030
+pgd_steps = 10
+alpha = epsilon / 6
+epochs = 5
+device = CPU
+```
+
+Generated PGD sweep files:
+
+```text
+scripts/run_pgd_epsilon_sweep_short.py
+results/pgd_epsilon_sweep_summary.csv
+notes/pgd_epsilon_sweep_log.md
+```
+
+Generated PGD sweep figure files:
+
+```text
+scripts/plot_pgd_epsilon_sweep.py
+figures/pgd_epsilon_vs_missed_fall_rate.png
+figures/pgd_epsilon_vs_false_alarm_count.png
+figures/pgd_epsilon_vs_recall.png
+figures/pgd_epsilon_vs_f1_score.png
+figures/pgd_epsilon_combined_safety_summary.png
+notes/pgd_epsilon_sweep_figures_summary.md
+```
+
+PGD epsilon sweep summary:
+
+```text
+epsilon=0.000 | seven_class_acc=0.659639 | missed_fall_rate=0.359551 | false_alarms=32  | recall=0.640449 | f1=0.640449 | prediction_change_rate=0.000000
+epsilon=0.005 | seven_class_acc=0.389558 | missed_fall_rate=0.786517 | false_alarms=43  | recall=0.213483 | f1=0.251656 | prediction_change_rate=0.310241
+epsilon=0.010 | seven_class_acc=0.172691 | missed_fall_rate=1.000000 | false_alarms=70  | recall=0.000000 | f1=0.000000 | prediction_change_rate=0.561245
+epsilon=0.020 | seven_class_acc=0.013052 | missed_fall_rate=1.000000 | false_alarms=111 | recall=0.000000 | f1=0.000000 | prediction_change_rate=0.745984
+epsilon=0.030 | seven_class_acc=0.000000 | missed_fall_rate=1.000000 | false_alarms=115 | recall=0.000000 | f1=0.000000 | prediction_change_rate=0.778112
+```
+
+The PGD sweep shows that fall-focused safety-proxy degradation increases as perturbation strength increases. At `epsilon = 0.010` and above, PGD caused complete fall-recall loss in the window-level fall-vs-non-fall proxy evaluation.
+
+## FGSM vs PGD Comparison Phase
+
+The experiment now includes a direct FGSM vs PGD epsilon-sweep comparison.
+
+Generated comparison files:
+
+```text
+scripts/plot_fgsm_vs_pgd_comparison.py
+results/fgsm_vs_pgd_epsilon_comparison.csv
+figures/fgsm_vs_pgd_safety_comparison.png
+notes/fgsm_vs_pgd_comparison_summary.md
+```
+
+FGSM vs PGD comparison summary:
+
+```text
+epsilon=0.000 | FGSM missed=0.359551 | PGD missed=0.359551 | FGSM recall=0.640449 | PGD recall=0.640449 | FGSM F1=0.640449 | PGD F1=0.640449
+epsilon=0.005 | FGSM missed=0.741573 | PGD missed=0.786517 | FGSM recall=0.258427 | PGD recall=0.213483 | FGSM F1=0.302632 | PGD F1=0.251656
+epsilon=0.010 | FGSM missed=0.988764 | PGD missed=1.000000 | FGSM recall=0.011236 | PGD recall=0.000000 | FGSM F1=0.014815 | PGD F1=0.000000
+epsilon=0.020 | FGSM missed=1.000000 | PGD missed=1.000000 | FGSM recall=0.000000 | PGD recall=0.000000 | FGSM F1=0.000000 | PGD F1=0.000000
+epsilon=0.030 | FGSM missed=1.000000 | PGD missed=1.000000 | FGSM recall=0.000000 | PGD recall=0.000000 | FGSM F1=0.000000 | PGD F1=0.000000
+```
+
+At `epsilon = 0.005`, PGD caused slightly stronger degradation than FGSM in missed fall rate, recall, and F1-score. At `epsilon = 0.010`, PGD reached complete fall-recall loss, while FGSM was already nearly fully degraded. At `epsilon = 0.020` and `epsilon = 0.030`, both attacks caused complete fall-recall loss in this shortened baseline setting.
+
+This comparison supports the current research goal: translating adversarial WiFi CSI model degradation into window-level fall-focused safety-proxy metrics instead of reporting seven-class accuracy alone.
+
+Claim boundary: this is a software-level processed-tensor adversarial comparison. It is not clinical validation, medical-device validation, diagnostic evidence, regulatory evaluation, real patient deployment evidence, event-level fall detection validation, long-lie validation, physical-layer attack validation, packet-level attack validation, preamble-level attack validation, SDR validation, or over-the-air validation.
