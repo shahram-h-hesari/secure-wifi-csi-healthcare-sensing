@@ -500,17 +500,35 @@ This is a software-level adversarial robustness test on processed CSI tensors. I
 
 | Metric | Possible? | Notes |
 |---|---|---|
-| Accuracy | TBD | Window-level |
-| Precision | TBD | Window-level or event-level |
-| Recall / sensitivity | TBD | Window-level or event-level |
-| F1-score | TBD | Window-level |
-| Specificity | TBD | Window-level |
-| Missed fall rate | TBD | Requires fall/non-fall labels |
-| False alarm count | TBD | Requires non-fall labels |
-| False alarms per day | TBD | Requires monitoring duration |
-| Event-level recall | TBD | Requires event IDs |
-| Detection latency | TBD | Requires timestamps |
-| Long-lie risk proxy | TBD | Requires event/timestamp data |
+| Accuracy | Yes | Feasible at the sample/window level. SenseFi’s `run.py` already computes validation accuracy using `predict_y = torch.argmax(outputs, dim=1)` and compares predictions against labels. |
+| Precision | Yes, with modification | Feasible after saving `y_true` and `y_pred_clean`. Precision can be computed from TP and FP after converting labels to binary `fall` vs `non-fall`. |
+| Recall / sensitivity | Yes, with modification | Feasible after binary fall/non-fall conversion. Recall is especially important because it measures how many true fall samples/windows are detected. |
+| F1-score | Yes, with modification | Feasible after computing precision and recall. Useful as a secondary ML metric, but it should not replace missed fall rate and false alarm analysis. |
+| Specificity | Yes, with modification | Feasible after computing TN and FP for the non-fall class. Useful for measuring how well the model rejects non-fall activities. |
+| Missed fall rate | Yes, as a window-level safety proxy | Feasible after converting `fall` to positive class and all other labels to non-fall. Formula: `FN / (TP + FN)`. This is a safety-relevant proxy, but it is not yet event-level unless event IDs are available. |
+| False alarm count | Yes, as a window-level safety proxy | Feasible after converting labels to binary. False alarms are FP cases where non-fall samples/windows are predicted as fall. |
+| False alarms per day | Not currently confirmed | Requires monitoring duration or timestamped continuous data. SenseFi’s visible README and loader structure document train/test samples and labels, but not monitoring duration. This should remain unavailable unless timestamps or recording duration are found after downloading the dataset. |
+| Event-level recall | Not currently confirmed | Requires event IDs or a way to group multiple windows into the same fall event. SenseFi’s visible documentation supports sample/window-level classification, but event-level identifiers are not clearly documented. |
+| Detection latency | Not currently confirmed | Requires fall impact time and alert time. SenseFi’s visible documentation does not show fall impact timestamps or alert timestamps. |
+| Long-lie risk proxy | Not currently feasible from documented SenseFi metadata | Requires event-level missed falls, severe detection delay, or time-on-floor proxy. This cannot be responsibly calculated from sample-level labels alone. |
+
+---
+
+### Feasible Metrics for First SenseFi Demo
+
+The first SenseFi-based demo can likely report these metrics:
+
+```text
+accuracy
+precision
+recall / sensitivity
+specificity
+F1-score
+balanced accuracy
+confusion matrix
+missed fall rate
+false alarm count
+false positive rate
 
 ---
 
