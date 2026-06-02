@@ -54,13 +54,13 @@ Can SenseFi be used to run a clean WiFi CSI fall or fall-related activity baseli
 
 | Question | Finding |
 |---|---|
-| Does SenseFi provide dataset download instructions? | TBD |
-| Are datasets included directly or linked externally? | TBD |
-| Is access public? | TBD |
-| Is the dataset size manageable? | TBD |
-| Is the data format documented? | TBD |
-| Are preprocessing steps documented? | TBD |
-| Are labels documented? | TBD |
+| Does SenseFi provide dataset download instructions? | Yes. The SenseFi GitHub README includes a **Download Processed Data** section and instructs users to download and organize the processed datasets into a `Benchmark/Data/` structure. The README also links to processed datasets and pretrained weights. |
+| Are datasets included directly or linked externally? | The datasets are **linked externally**, not stored directly in the GitHub repository. The GitHub README links to processed datasets through Google Drive, and the paper/data record links to Mendeley Data. |
+| Is access public? | Yes, the processed dataset record is publicly available through Mendeley Data: [SenseFi: A Library and Benchmark on Deep Learning Empowered WiFi Human Sensing](https://data.mendeley.com/datasets/dzvgyxkx2f/1). The Mendeley page provides a `Download All` option and lists the dataset DOI as [10.17632/dzvgyxkx2f.1](https://doi.org/10.17632/dzvgyxkx2f.1). |
+| Is the dataset size manageable? | TBD after download. The GitHub README lists processed datasets and sample counts, including UT-HAR with 3,977 training samples and 996 test samples, NTU-Fi_HAR with 936 training samples and 264 test samples, NTU-Fi-HumanID with 546 training samples and 294 test samples, and Widar with 34,926 training samples and 8,726 test samples. This suggests UT-HAR and NTU-Fi_HAR are likely manageable first-start candidates, but actual file size should still be checked before implementation. |
+| Is the data format documented? | Partially yes. The GitHub README documents expected folder structure and dataset shapes. UT-HAR is listed as CSI size `1 x 250 x 90`; NTU-Fi_HAR and NTU-Fi-HumanID are listed as CSI size `3 x 114 x 500`; Widar is listed as BVP size `22 x 20 x 20`. The README also notes that UT-HAR data files are CSV format but should be loaded through the provided code because they may not be readable in Excel due to encoding. |
+| Are preprocessing steps documented? | Partially yes. The README provides dataset organization and run instructions, while `dataset.py` shows important loading/preprocessing steps. For UT-HAR, the loader reshapes data to `1 x 250 x 90` and applies min-max normalization. For NTU-Fi-style data, the loader loads `.mat` files, normalizes CSI amplitude, downsamples from 2000 to 500 by sampling every fourth point, and reshapes to `3 x 114 x 500`. For Widar, the loader reads CSV files, normalizes values, and reshapes to `22 x 20 x 20`. |
+| Are labels documented? | Yes for the benchmark-level classes. The GitHub README documents UT-HAR classes as `lie down`, `fall`, `walk`, `pickup`, `run`, `sit down`, and `stand up`. It documents NTU-Fi_HAR classes as `box`, `circle`, `clean`, `fall`, `run`, and `walk`. NTU-Fi-HumanID is a 14-subject identification dataset, and Widar contains 22 gesture classes. For this project, UT-HAR and NTU-Fi_HAR are the most relevant SenseFi datasets because both include a `fall` class and non-fall activity classes. |
 
 ---
 
