@@ -1,5 +1,7 @@
-# Local third-party benchmark clone
+# Local third-party benchmark clones
+third_party/
 third_party/WiFi-CSI-Sensing-Benchmark/
+third_party/WiFi_Activity_Recognition/
 
 # Local datasets and downloaded files
 data/
