@@ -305,12 +305,194 @@ SenseFi appears to support window-level or sample-level prediction export. Event
 
 | Question | Finding |
 |---|---|
-| Can input tensors be accessed before model inference? | TBD |
-| Is the model differentiable? | TBD |
-| Can gradients be computed with respect to CSI input? | TBD |
-| Can FGSM be added at input-tensor level? | TBD |
-| Can PGD be added later? | TBD |
-| Does preprocessing make attack integration difficult? | TBD |
+| Can input tensors be accessed before model inference? | Yes. In `run.py`, both the `train()` and `test()` loops receive `inputs, labels` from the data loader before calling `outputs = model(inputs)`. This means CSI input tensors can be accessed before inference and can be modified for adversarial testing. |
+| Is the model differentiable? | Yes. SenseFi uses PyTorch models built with differentiable layers such as `nn.Linear`, `nn.Conv2d`, `nn.ReLU`, `nn.MaxPool2d`, recurrent layers, ResNet-style blocks, and ViT-style modules. UT-HAR models in `UT_HAR_model.py` are PyTorch `nn.Module` classes, so gradients can be computed through the model. |
+| Can gradients be computed with respect to CSI input? | Yes, with modification. The current training loop computes `loss.backward()` for model training. For FGSM/PGD, the input tensor can be changed to `inputs.requires_grad_(True)`, then the loss gradient with respect to `inputs` can be used to create adversarial CSI input. |
+| Can FGSM be added at input-tensor level? | Yes. FGSM can be added after loading a batch and before attacked inference. The attack can perturb the normalized CSI tensor directly: `x_adv = x + epsilon * sign(gradient_x(loss(model(x), y)))`. This is a software-level adversarial robustness test, not a physical-layer packet or preamble perturbation. |
+| Can PGD be added later? | Yes. PGD is feasible because it is an iterative extension of input-gradient attacks. Once FGSM works, PGD can be added by repeatedly applying small FGSM-like steps and projecting the perturbed tensor back into an epsilon-bounded region around the original input. |
+| Does preprocessing make attack integration difficult? | Not for a first software-level attack. SenseFi loaders already convert data into PyTorch tensors before model inference. However, preprocessing affects how epsilon should be interpreted. UT-HAR is reshaped to `1 x 250 x 90` and min-max normalized, while NTU-Fi-style data is normalized and downsampled before being reshaped. Therefore, epsilon values should be treated as perturbations on the processed/normalized tensor, not as physical CSI perturbation strength. |
+
+---
+
+### Attack Feasibility Summary
+
+SenseFi is feasible for software-level adversarial testing.
+
+The practical attack workflow is:
+
+```text
+load clean CSI tensor
+→ enable gradient on input
+→ run model
+→ compute classification loss
+→ compute gradient with respect to input
+→ perturb input using FGSM or PGD
+→ run model on attacked input
+→ save attacked prediction and score
+```
+
+This supports the first implementation goal:
+
+```text
+clean prediction
+→ FGSM/PGD attacked prediction
+→ clean-vs-attacked ML metrics
+→ clean-vs-attacked clinical-safety metrics
+```
+
+---
+
+### Recommended First Attack Target
+
+Use this initial configuration:
+
+```text
+Dataset: UT_HAR_data
+Model: LeNet
+Attack: FGSM
+Perturbation level: processed/normalized CSI tensor
+```
+
+Reason:
+
+```text
+UT_HAR_data includes a fall class and clinically relevant non-fall confusion classes. LeNet is simpler than ResNet or ViT, which makes it easier to debug input-gradient attacks before moving to stronger models.
+```
+
+---
+
+### FGSM Implementation Sketch
+
+The current `test()` loop can be adapted into an attacked evaluation loop.
+
+Conceptual FGSM code:
+
+```python
+inputs = inputs.to(device)
+labels = labels.to(device).long()
+
+inputs.requires_grad_(True)
+
+outputs = model(inputs)
+loss = criterion(outputs, labels)
+
+model.zero_grad()
+loss.backward()
+
+epsilon = 0.01
+inputs_adv = inputs + epsilon * inputs.grad.sign()
+
+outputs_adv = model(inputs_adv)
+attacked_prediction = torch.argmax(outputs_adv, dim=1)
+attacked_score = torch.softmax(outputs_adv, dim=1).max(dim=1).values
+```
+
+Recommended epsilon values to test first:
+
+```text
+0.001
+0.005
+0.01
+0.05
+```
+
+The correct epsilon scale should be adjusted after checking the processed CSI tensor range.
+
+---
+
+### PGD Implementation Sketch
+
+PGD can be added after FGSM works.
+
+Conceptual PGD workflow:
+
+```text
+start from clean input
+repeat for N steps:
+    compute gradient
+    take small gradient-sign step
+    project perturbed input back into epsilon ball
+    optionally clamp to valid processed input range
+evaluate model on final perturbed input
+```
+
+Example parameters to test later:
+
+```text
+epsilon = 0.01
+alpha = 0.002
+steps = 10
+```
+
+---
+
+### Important Implementation Notes
+
+- FGSM/PGD should first be implemented as **software-level attacks on processed CSI tensors**.
+- This does not represent a physical-world attacker yet.
+- Epsilon values are not directly physical signal-power values.
+- If inputs are normalized, the attack strength is in normalized feature space.
+- If the model uses `model.eval()`, gradients can still be computed as long as the code does not use `torch.no_grad()`.
+- The original SenseFi `test()` function does not currently use `torch.no_grad()`, so it can be adapted for gradient-based attack evaluation.
+- Prediction export still needs to be added manually.
+
+---
+
+### Required Attack Output Format
+
+FGSM attacked predictions should be saved to:
+
+```text
+experiments/fall_detection_attack_safety_demo/results/predictions_fgsm.csv
+```
+
+Required columns:
+
+```csv
+sample_id,timestamp,event_id,subject_id,environment_id,true_label,binary_true_label,clean_prediction,clean_score,attacked_prediction,attacked_score,attack_type,epsilon
+```
+
+Use:
+
+```text
+attack_type = FGSM
+```
+
+If a field is unavailable, use:
+
+```text
+NA
+```
+
+---
+
+### Attack Feasibility Decision
+
+```text
+FGSM and PGD are feasible in SenseFi with code modification.
+```
+
+Reason:
+
+```text
+SenseFi exposes input tensors and labels in the training/testing loop, uses differentiable PyTorch models, and computes standard classification loss. Therefore, input-gradient attacks can be added at the processed CSI tensor level.
+```
+
+Limitation:
+
+```text
+This is a software-level adversarial robustness test on processed CSI tensors. It should not be described as a physical-layer packet perturbation, preamble perturbation, or real over-the-air wireless attack unless a separate physical attack implementation is added later.
+```
+
+---
+
+### Reference Links
+
+- [SenseFi GitHub repository](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark)
+- [run.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/run.py)
+- [dataset.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/dataset.py)
+- [util.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/util.py)
+- [UT_HAR_model.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/UT_HAR_model.py)
 
 ---
 
