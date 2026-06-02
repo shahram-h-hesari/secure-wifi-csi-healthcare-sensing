@@ -19,6 +19,7 @@ PGD fall-vs-non-fall safety-proxy metrics completed.
 PGD epsilon sweep completed.
 PGD epsilon sweep figures completed.
 FGSM vs PGD comparison completed.
+Final FGSM/PGD attack-safety lab report completed.
 ```
 
 This is a research implementation demo. It is not clinical validation, medical-device validation, real patient deployment, diagnostic evidence, regulatory evaluation, physical-layer attack validation, SDR validation, packet-level validation, preamble-level validation, or over-the-air validation.
@@ -575,6 +576,7 @@ notes/pgd_safety_proxy_metrics_log.md
 notes/pgd_epsilon_sweep_log.md
 notes/pgd_epsilon_sweep_figures_summary.md
 notes/fgsm_vs_pgd_comparison_summary.md
+notes/final_fgsm_pgd_attack_safety_lab_report.md
 ```
 
 ### Local ignored files
