@@ -1242,3 +1242,20 @@ clinically motivated metric translation
 software-level adversarial perturbation
 processed CSI tensor attack
 clean-to-attacked safety degradation
+```
+
+Avoid overclaiming:
+
+- Do not describe this review as clinical fall-detection validation.
+- Do not imply real patient monitoring or real home deployment.
+- Do not describe the experiment as medical-device evaluation.
+- Do not describe FGSM/PGD on processed CSI tensors as a physical-layer packet attack.
+- Do not describe the experiment as an over-the-air wireless attack.
+- Do not call this framework a formal clinical standard.
+- Do not claim full event-level clinical-safety evaluation unless timestamps, event IDs, and monitoring duration are available.
+
+Important limitation:
+
+```text
+Event-level metrics such as false alarms per day, detection latency, delayed detection rate, and long-lie risk proxy require timestamps, event IDs, fall impact times, or monitoring-duration metadata that are not confirmed in the visible SenseFi documentation.
+```
