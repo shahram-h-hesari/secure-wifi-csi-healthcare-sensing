@@ -13,6 +13,8 @@ Clean fall-vs-non-fall safety-proxy metrics completed.
 FGSM attacked prediction export completed.
 FGSM fall-vs-non-fall safety-proxy metrics completed.
 FGSM epsilon sweep completed.
+PGD attacked prediction export completed.
+PGD fall-vs-non-fall safety-proxy metrics completed.
 ```
 
 This is a research implementation demo. It is not clinical validation, medical-device validation, real patient deployment, diagnostic evidence, regulatory evaluation, physical-layer attack validation, SDR validation, packet-level validation, preamble-level validation, or over-the-air validation.
@@ -62,12 +64,13 @@ This first practical demo focuses on:
 fall vs non-fall safety-proxy evaluation
 ```
 
-The initial clean-vs-attacked comparison uses:
+The current clean-vs-attacked comparison uses:
 
 ```text
 clean baseline
 FGSM processed-tensor attack
 FGSM epsilon sweep
+PGD processed-tensor attack
 ```
 
 The first safety-proxy metrics include:
@@ -150,9 +153,9 @@ non-fall = classes 0, 2, 3, 4, 5, 6
 | Clean safety-proxy metrics | Complete | `scripts/compute_clean_safety_metrics.py`, `results/clean_safety_proxy_metrics.csv`, `notes/clean_safety_proxy_metrics_log.md` |
 | FGSM attacked prediction export | Complete | `scripts/export_fgsm_predictions_short.py`, `results/fgsm_predictions_short_epsilon_0_03.csv` |
 | FGSM safety-proxy metrics | Complete | `scripts/compute_fgsm_safety_metrics.py`, `results/fgsm_safety_proxy_metrics_epsilon_0_03.csv`, `notes/fgsm_safety_proxy_metrics_log.md` |
-| FGSM epsilon sweep | Complete | `scripts/run_fgsm_epsilon_sweep_short.py`, `results/fgsm_epsilon_sweep_summary.csv`, `notes/fgsm_epsilon_sweep_log.md
-notes/fgsm_epsilon_sweep_figures_summary.md
-notes/experiment_status_summary.md` |
+| FGSM epsilon sweep | Complete | `scripts/run_fgsm_epsilon_sweep_short.py`, `results/fgsm_epsilon_sweep_summary.csv`, `notes/fgsm_epsilon_sweep_log.md`, `notes/fgsm_epsilon_sweep_figures_summary.md`, `notes/experiment_status_summary.md` |
+| PGD attacked prediction export | Complete | `scripts/export_pgd_predictions_short.py`, `results/pgd_predictions_short_epsilon_0_03.csv`, `notes/pgd_prediction_export_log.md` |
+| PGD safety-proxy metrics | Complete | `scripts/compute_pgd_safety_metrics.py`, `results/pgd_safety_proxy_metrics_epsilon_0_03.csv`, `notes/pgd_safety_proxy_metrics_log.md` |
 
 ---
 
@@ -298,7 +301,92 @@ The sweep shows that safety-proxy degradation increases as perturbation strength
 
 ---
 
-## 12. Current File Guide
+## 12. PGD Attack Scope
+
+The PGD perturbation in this demo is also applied to processed CSI tensors inside the model evaluation pipeline.
+
+PGD is an iterative adversarial attack. In this implementation, it is applied to processed UT-HAR CSI tensors after data preprocessing.
+
+Unlike FGSM, which applies a single gradient-sign update, PGD applies multiple smaller gradient-based updates and projects the perturbation back inside the allowed epsilon range after each step. This makes PGD a stronger iterative software-level adversarial attack for this research implementation.
+
+This experiment evaluates:
+
+```text
+processed CSI tensor perturbation
+iterative software-level adversarial attack behavior
+window-level fall-vs-non-fall safety-proxy degradation
+```
+
+It does not evaluate:
+
+```text
+physical-layer transmission attack
+packet-level attack
+preamble-level attack
+OFDM waveform attack
+SDR attack
+over-the-air attack
+real-world deployment attack
+```
+
+PGD configuration:
+
+```text
+epsilon = 0.030
+alpha = 0.005
+pgd_steps = 10
+epochs = 5
+device = CPU
+```
+
+---
+
+## 13. PGD Safety-Proxy Result at Epsilon 0.03
+
+At epsilon 0.03, the PGD attack produced strong degradation in the window-level fall-vs-non-fall safety-proxy evaluation.
+
+PGD-attacked binary metrics:
+
+```text
+Total windows: 996
+Fall windows: 89
+Non-fall windows: 907
+
+TP / detected falls: 0
+FN / missed falls: 89
+FP / false fall alarms: 115
+TN / correct non-falls: 792
+
+Seven-class accuracy: 0.0000
+Binary accuracy: 0.7952
+Recall / sensitivity: 0.0000
+Missed fall rate: 1.0000
+Specificity: 0.8732
+False positive rate: 0.1268
+Precision: 0.0000
+F1-score: 0.0000
+Balanced accuracy: 0.4366
+```
+
+Clean-to-PGD safety degradation:
+
+```text
+Detected falls decreased from 57 to 0
+Missed falls increased from 32 to 89
+False fall alarms increased from 32 to 115
+Recall decreased from 0.6404 to 0.0000
+Missed fall rate increased from 0.3596 to 1.0000
+F1-score decreased from 0.6404 to 0.0000
+Balanced accuracy decreased from 0.8026 to 0.4366
+```
+
+At this epsilon, PGD caused complete loss of fall recall in the window-level binary safety-proxy evaluation.
+
+This single-epsilon result should not be interpreted as a full FGSM-vs-PGD comparison. A PGD epsilon sweep and direct FGSM-vs-PGD comparison table are still needed before making broader claims about relative attack strength across epsilon values.
+
+---
+
+## 14. Current File Guide
 
 ### Scripts
 
@@ -311,6 +399,9 @@ scripts/export_fgsm_predictions_short.py
 scripts/compute_fgsm_safety_metrics.py
 scripts/run_fgsm_epsilon_sweep_short.py
 scripts/plot_fgsm_epsilon_sweep.py
+scripts/plot_fgsm_epsilon_combined_summary.py
+scripts/export_pgd_predictions_short.py
+scripts/compute_pgd_safety_metrics.py
 ```
 
 ### Results
@@ -322,6 +413,8 @@ results/clean_safety_proxy_metrics.csv
 results/fgsm_predictions_short_epsilon_0_03.csv
 results/fgsm_safety_proxy_metrics_epsilon_0_03.csv
 results/fgsm_epsilon_sweep_summary.csv
+results/pgd_predictions_short_epsilon_0_03.csv
+results/pgd_safety_proxy_metrics_epsilon_0_03.csv
 ```
 
 ### Figures
@@ -344,6 +437,8 @@ notes/fgsm_safety_proxy_metrics_log.md
 notes/fgsm_epsilon_sweep_log.md
 notes/fgsm_epsilon_sweep_figures_summary.md
 notes/experiment_status_summary.md
+notes/pgd_prediction_export_log.md
+notes/pgd_safety_proxy_metrics_log.md
 ```
 
 ### Local ignored files
@@ -362,7 +457,7 @@ Data/
 
 ---
 
-## 13. Reproducibility Commands
+## 15. Reproducibility Commands
 
 From this folder:
 
@@ -374,13 +469,15 @@ python scripts\compute_clean_safety_metrics.py
 python scripts\export_fgsm_predictions_short.py
 python scripts\compute_fgsm_safety_metrics.py
 python scripts\run_fgsm_epsilon_sweep_short.py
+python scripts\export_pgd_predictions_short.py
+python scripts\compute_pgd_safety_metrics.py
 ```
 
 These commands assume the SenseFi benchmark clone and UT-HAR dataset are already available locally under the ignored `third_party/` directory.
 
 ---
 
-## 14. Claim Boundary
+## 16. Claim Boundary
 
 This experiment is a window-level research implementation baseline for WiFi CSI fall-related activity recognition and safety-proxy metric translation.
 
@@ -405,14 +502,13 @@ The current contribution is a reproducible software pipeline for showing how cle
 
 ---
 
-## 15. Next Planned Work
+## 17. Next Planned Work
 
 Planned next steps:
 
 ```text
-add README result summary tables
-add PGD processed-tensor attack
-compare FGSM vs PGD safety-proxy degradation
+add PGD epsilon sweep
+compare FGSM vs PGD safety-proxy degradation across epsilon values
 evaluate whether longer clean training changes robustness
 prepare a concise lab report figure for GitHub and thesis documentation
 ```

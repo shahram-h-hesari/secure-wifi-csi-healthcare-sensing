@@ -492,3 +492,72 @@ long-lie validation
 
 The current result should be interpreted as a reproducible software pipeline for translating adversarial model degradation into fall-focused safety-proxy metrics.
 
+---
+
+## PGD Single-Epsilon Attack Phase
+
+The experiment now includes a first Projected Gradient Descent (PGD) attack phase.
+
+PGD was implemented as a software-level iterative adversarial perturbation applied to processed UT-HAR CSI tensors. This phase extends the previous clean and FGSM workflow by adding a stronger iterative attack setting.
+
+PGD configuration:
+
+```text
+epsilon = 0.030
+alpha = 0.005
+pgd_steps = 10
+epochs = 5
+device = CPU
+```
+
+Generated files:
+
+```text
+scripts/export_pgd_predictions_short.py
+scripts/compute_pgd_safety_metrics.py
+results/pgd_predictions_short_epsilon_0_03.csv
+results/pgd_safety_proxy_metrics_epsilon_0_03.csv
+notes/pgd_prediction_export_log.md
+notes/pgd_safety_proxy_metrics_log.md
+```
+
+PGD safety-proxy metrics at `epsilon = 0.030`:
+
+```text
+total windows: 996
+fall windows: 89
+non-fall windows: 907
+
+TP detected falls: 0
+FN missed falls: 89
+FP false fall alarms: 115
+TN correct non-falls: 792
+
+seven-class accuracy: 0.0000
+binary accuracy: 0.7952
+recall / sensitivity: 0.0000
+missed fall rate: 1.0000
+specificity: 0.8732
+false positive rate: 0.1268
+precision: 0.0000
+F1-score: 0.0000
+balanced accuracy: 0.4366
+```
+
+Clean-to-PGD safety degradation:
+
+```text
+detected falls decreased from 57 to 0
+missed falls increased from 32 to 89
+false fall alarms increased from 32 to 115
+recall decreased from 0.6404 to 0.0000
+missed fall rate increased from 0.3596 to 1.0000
+F1-score decreased from 0.6404 to 0.0000
+balanced accuracy decreased from 0.8026 to 0.4366
+```
+
+At this epsilon, PGD caused complete loss of fall recall in the window-level fall-vs-non-fall safety-proxy evaluation.
+
+This result should not be interpreted as a full FGSM-vs-PGD comparison yet. A PGD epsilon sweep and a direct FGSM-vs-PGD comparison table are still needed before making broader claims about relative attack strength across epsilon values.
+
+Claim boundary: this is not clinical validation, medical-device validation, diagnostic evidence, regulatory evaluation, real patient deployment evidence, event-level fall detection validation, long-lie validation, physical-layer attack validation, packet-level attack validation, preamble-level attack validation, SDR validation, or over-the-air validation.
