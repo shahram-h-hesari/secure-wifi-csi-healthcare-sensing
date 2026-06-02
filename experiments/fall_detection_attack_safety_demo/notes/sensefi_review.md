@@ -68,24 +68,56 @@ Can SenseFi be used to run a clean WiFi CSI fall or fall-related activity baseli
 
 | Question | Finding |
 |---|---|
-| Does SenseFi include a fall label? | TBD |
-| Does it include a fall-related activity label? | TBD |
-| Which dataset inside SenseFi is most relevant? | TBD |
-| Are non-fall activity labels available? | TBD |
-| Can labels be converted to binary `fall` vs `non-fall`? | TBD |
+| Does SenseFi include a fall label? | Yes. SenseFi includes at least two relevant human-activity-recognition datasets with a `fall` class: **UT-HAR** and **NTU-Fi_HAR**. The SenseFi README lists UT-HAR classes as `lie down`, `fall`, `walk`, `pickup`, `run`, `sit down`, and `stand up`. It lists NTU-Fi_HAR classes as `box`, `circle`, `clean`, `fall`, `run`, and `walk`. |
+| Does it include a fall-related activity label? | Yes. UT-HAR includes several fall-related or fall-confusable activities, especially `lie down`, `sit down`, `stand up`, and `pickup`. NTU-Fi_HAR includes `fall` plus non-fall motion classes such as `box`, `circle`, `clean`, `run`, and `walk`. |
+| Which dataset inside SenseFi is most relevant? | **UT-HAR is the best first candidate** because it has 7 activity classes and includes both `fall` and clinically important fall-confusion classes such as `lie down`, `sit down`, and `stand up`. **NTU-Fi_HAR is the second candidate** because it also includes `fall`, but its non-fall labels are less directly related to fall-safety confusion. |
+| Are non-fall activity labels available? | Yes. UT-HAR has multiple non-fall labels: `lie down`, `walk`, `pickup`, `run`, `sit down`, and `stand up`. NTU-Fi_HAR has non-fall labels: `box`, `circle`, `clean`, `run`, and `walk`. |
+| Can labels be converted to binary `fall` vs `non-fall`? | Yes. Both UT-HAR and NTU-Fi_HAR can be converted into binary labels by assigning `fall = 1` and all other activity labels as `non-fall = 0`. This supports window-level fall/non-fall classification and allows calculation of missed fall rate, false alarm count, precision, recall, F1-score, and confusion matrix. |
 
-Potential binary mapping:
+---
+
+### Candidate Dataset Priority
+
+| Dataset | Fall Label? | Non-Fall Labels | Priority | Reason |
+|---|---|---|---|---|
+| UT-HAR | Yes | `lie down`; `walk`; `pickup`; `run`; `sit down`; `stand up` | First choice | Best first candidate because it includes fall plus realistic confusion classes such as lying down, sitting down, standing up, and pickup. |
+| NTU-Fi_HAR | Yes | `box`; `circle`; `clean`; `run`; `walk` | Second choice | Useful fallback because it includes fall, but the non-fall classes are less directly aligned with clinical fall-confusion scenarios. |
+| NTU-Fi-HumanID | No fall class | Subject identity labels | Not suitable for first fall demo | Human identification dataset, not fall detection. |
+| Widar | No fall class | Gesture classes | Not suitable for first fall demo | Gesture-recognition dataset, not fall detection. |
+
+---
+
+### Proposed Binary Mapping: UT-HAR
 
 | Original Label | Binary Safety Label | Notes |
 |---|---:|---|
 | fall | 1 | True fall class |
-| walking | 0 | Non-fall activity |
-| sitting | 0 | Non-fall activity |
-| standing | 0 | Non-fall activity |
-| lying down | 0 | Important high-risk confusion class |
-| bending / pickup | 0 | May cause false alarms |
-| running | 0 | Non-fall activity |
-| other | 0 | Confirm dataset-specific meaning |
+| lie down | 0 | High-risk confusion class; may look similar to fall in CSI patterns |
+| walk | 0 | Non-fall activity of daily living |
+| pickup | 0 | Important confusion class; bending/pickup may trigger false alarms |
+| run | 0 | Non-fall movement |
+| sit down | 0 | Important transition activity; may be confused with fall |
+| stand up | 0 | Non-fall transition activity |
+
+---
+
+### Proposed Binary Mapping: NTU-Fi_HAR
+
+| Original Label | Binary Safety Label | Notes |
+|---|---:|---|
+| fall | 1 | True fall class |
+| box | 0 | Non-fall activity |
+| circle | 0 | Non-fall activity |
+| clean | 0 | Non-fall activity |
+| run | 0 | Non-fall movement |
+| walk | 0 | Non-fall activity of daily living |
+
+---
+
+### Initial Decision
+
+```text
+SenseFi should remain a high-priority candidate for the first clean fall/non-fall baseline.
 
 ---
 
