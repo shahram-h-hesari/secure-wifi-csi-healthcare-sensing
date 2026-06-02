@@ -30,22 +30,24 @@ Can SenseFi be used to run a clean WiFi CSI fall or fall-related activity baseli
 
 | Item | Finding |
 |---|---|
-| Repository URL | https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark |
-| Paper / benchmark reference | SenseFi: A Library and Benchmark on Deep-Learning-Empowered WiFi Human Sensing |
-| Paper venue/source | Patterns, Cell Press, 2023; arXiv:2207.07859 |
+| Repository URL | [xyanchen/WiFi-CSI-Sensing-Benchmark](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark) |
+| Paper / benchmark reference | [SenseFi: A library and benchmark on deep-learning-empowered WiFi human sensing](https://www.sciencedirect.com/science/article/pii/S2666389923000405) |
+| Journal / publisher | [Patterns, Cell Press / Elsevier, Volume 4, Issue 3, Article 100703, 2023](https://www.sciencedirect.com/science/article/pii/S2666389923000405) |
+| Paper DOI | [10.1016/j.patter.2023.100703](https://doi.org/10.1016/j.patter.2023.100703) |
+| arXiv version | [arXiv:2207.07859](https://arxiv.org/abs/2207.07859) |
 | Authors | Jianfei Yang; Xinyan Chen; Dazhuo Wang; Han Zou; Chris Xiaoxuan Lu; Sumei Sun; Lihua Xie |
-| Dataset / data source | Mendeley Data: SenseFi: A Library and Benchmark on Deep Learning Empowered WiFi Human Sensing |
-| Dataset DOI | 10.17632/dzvgyxkx2f.1 |
+| Dataset / data source | [Mendeley Data: SenseFi: A Library and Benchmark on Deep Learning Empowered WiFi Human Sensing](https://data.mendeley.com/datasets/dzvgyxkx2f/1) |
+| Dataset DOI | [10.17632/dzvgyxkx2f.1](https://doi.org/10.17632/dzvgyxkx2f.1) |
+| Code archive / Zenodo DOI | [10.5281/zenodo.7501869](https://doi.org/10.5281/zenodo.7501869) |
 | Main framework | WiFi CSI human-sensing benchmark and model-zoo library |
 | Programming language | Python |
 | Deep-learning library | PyTorch |
 | Available models | MLP; LeNet/CNN; ResNet18; ResNet50; ResNet101; RNN; GRU; LSTM; BiLSTM; CNN+GRU; ViT |
 | Available datasets | UT_HAR_data; NTU-Fi_HAR; NTU-Fi-HumanID; Widar |
-| Code license | MIT license |
-| Dataset license | CC BY 4.0 on Mendeley Data |
-| Initial relevance to this project | High: SenseFi includes reusable WiFi CSI model code, processed datasets, and fall-containing HAR datasets that may support clean fall vs non-fall baseline evaluation. |
+| Code license | [MIT license](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/LICENSE) |
+| Dataset license | [CC BY 4.0 on Mendeley Data](https://data.mendeley.com/datasets/dzvgyxkx2f/1) |
+| Initial relevance to this project | High: SenseFi includes reusable WiFi CSI model code, processed datasets, and fall-containing or fall-related HAR datasets that may support clean fall vs non-fall baseline evaluation. |
 | Initial limitation | SenseFi is a general WiFi CSI benchmark, not a clinical fall-safety benchmark; event-level timestamps, false alarms per day, and detection latency still need to be checked. |
-
 ---
 
 ## 3. Dataset Availability
