@@ -157,16 +157,147 @@ Reference:
 
 | Question | Finding |
 |---|---|
-| Can the repo be cloned? | TBD |
-| Is installation documented? | TBD |
-| Are dependencies listed? | TBD |
-| Is PyTorch used? | TBD |
-| Is there a clean training script? | TBD |
-| Is there a clean inference script? | TBD |
-| Can the model output prediction scores? | TBD |
-| Can `y_true` be saved? | TBD |
-| Can `y_pred_clean` be saved? | TBD |
-| Can the code be modified to save CSV outputs? | TBD |
+| Can the repo be cloned? | Yes. The repository is public and can be cloned from [xyanchen/WiFi-CSI-Sensing-Benchmark](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark). |
+| Is installation documented? | Partially yes. The README provides a **Requirements** section and a **Run** section. It instructs users to install PyTorch/torchvision and then run `pip install -r requirements.txt`. It also notes that the code runs best on Linux/Ubuntu and may require path changes on Windows. |
+| Are dependencies listed? | Yes. The repository includes `requirements.txt`, which lists `scipy==1.7.3`, `numpy==1.21.5`, and `einops==0.4.0`. The README separately states that PyTorch and torchvision are required, specifically `pytorch==1.12.0` and `torchvision==0.13.0`. |
+| Is PyTorch used? | Yes. The README states that SenseFi is implemented in PyTorch. The code imports `torch`, `torch.nn`, `torch.utils.data`, and defines multiple PyTorch `nn.Module` models. |
+| Is there a clean training script? | Yes. The main supervised training and testing script is `run.py`. It supports the command `python run.py --model [model name] --dataset [dataset name]`. The script loads data/model using `load_data_n_model()`, trains the model, and then runs testing. |
+| Is there a clean inference script? | Partially. There is no separate standalone inference-only script. However, `run.py` includes a `test()` function that runs model evaluation on the test loader after training. This function can be modified to export clean predictions. |
+| Can the model output prediction scores? | Yes, with modification. In `run.py`, the model produces `outputs = model(inputs)`, and predictions are currently generated with `torch.argmax(outputs, dim=1)`. These `outputs` can be converted to scores or probabilities using `torch.softmax(outputs, dim=1)` before saving. |
+| Can `y_true` be saved? | Yes, with modification. The `test()` loop already receives `labels` from the test loader. These labels can be saved as `y_true` or converted into binary `fall` vs `non-fall` labels before export. |
+| Can `y_pred_clean` be saved? | Yes, with modification. The `test()` function already computes `predict_y = torch.argmax(outputs, dim=1)`. This value can be saved as `y_pred_clean`. |
+| Can the code be modified to save CSV outputs? | Yes. The current code prints validation accuracy and loss but does not save prediction CSVs by default. A practical next step is to modify `test()` or create a wrapper script that saves `sample_id`, `true_label`, `binary_true_label`, `clean_prediction`, and `clean_score` into `results/predictions_clean.csv`. |
+
+---
+
+### Code Usability Summary
+
+SenseFi is usable as a first implementation candidate because it provides:
+
+- public GitHub code,
+- documented dataset organization,
+- PyTorch-based model implementations,
+- supervised training/testing through `run.py`,
+- reusable dataset loaders,
+- multiple model choices,
+- UT-HAR support with a fall class,
+- model outputs that can be converted into prediction scores.
+
+However, SenseFi needs modification for this project because it does not currently export the prediction files required for clinical-safety translation.
+
+The required modification is:
+
+```text
+Modify the test/evaluation loop to save:
+sample_id
+true_label
+binary_true_label
+clean_prediction
+clean_score
+```
+
+---
+
+### Recommended First Implementation Choice
+
+Use this starting configuration first:
+
+```bash
+python run.py --model LeNet --dataset UT_HAR_data
+```
+
+Reason:
+
+```text
+UT_HAR_data includes a fall class and clinically relevant non-fall confusion classes. LeNet is a simpler CNN-style model than ResNet or ViT, making it easier to debug before adding FGSM and PGD attacks.
+```
+
+Alternative model choices:
+
+```text
+MLP      = simplest model, easiest to debug
+LeNet    = simple CNN-style model, good first practical choice
+ResNet18 = stronger CNN baseline, useful after LeNet works
+CNN+GRU  = useful later for temporal modeling
+ViT      = useful later, but more complex for first demo
+```
+
+---
+
+### Required Code Modification
+
+The current `test()` function should be extended from accuracy-only evaluation to prediction export.
+
+Current behavior:
+
+```text
+model input
+→ outputs
+→ argmax prediction
+→ validation accuracy/loss printed
+```
+
+Needed behavior:
+
+```text
+model input
+→ outputs
+→ clean prediction
+→ clean score
+→ save y_true
+→ save y_pred_clean
+→ save prediction score
+→ export CSV
+```
+
+Target output file:
+
+```text
+experiments/fall_detection_attack_safety_demo/results/predictions_clean.csv
+```
+
+Required columns:
+
+```csv
+sample_id,timestamp,event_id,subject_id,environment_id,true_label,binary_true_label,clean_prediction,clean_score
+```
+
+For unavailable fields, use:
+
+```text
+NA
+```
+
+---
+
+### Practical Code Feasibility Decision
+
+```text
+SenseFi code is usable for the first clean baseline, but it must be modified to save prediction outputs.
+```
+
+Reason:
+
+```text
+The repository already provides PyTorch models, dataset loaders, and supervised training/testing. The missing piece is prediction export. Because the test loop already has access to model outputs and labels, saving y_true, y_pred_clean, and clean_score should be straightforward.
+```
+
+Limitation:
+
+```text
+SenseFi appears to support window-level or sample-level prediction export. Event-level metrics such as detection latency, false alarms per day, and long-lie risk still require timestamps, event IDs, or monitoring-duration metadata, which must be checked separately.
+```
+
+---
+
+### Reference Links
+
+- [SenseFi / WiFi-CSI-Sensing-Benchmark GitHub repository](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark)
+- [run.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/run.py)
+- [util.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/util.py)
+- [dataset.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/dataset.py)
+- [requirements.txt](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/requirements.txt)
+- [UT_HAR_model.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/UT_HAR_model.py)
 
 ---
 
