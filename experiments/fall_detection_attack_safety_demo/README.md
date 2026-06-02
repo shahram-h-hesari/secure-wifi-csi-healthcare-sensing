@@ -151,7 +151,8 @@ non-fall = classes 0, 2, 3, 4, 5, 6
 | FGSM attacked prediction export | Complete | `scripts/export_fgsm_predictions_short.py`, `results/fgsm_predictions_short_epsilon_0_03.csv` |
 | FGSM safety-proxy metrics | Complete | `scripts/compute_fgsm_safety_metrics.py`, `results/fgsm_safety_proxy_metrics_epsilon_0_03.csv`, `notes/fgsm_safety_proxy_metrics_log.md` |
 | FGSM epsilon sweep | Complete | `scripts/run_fgsm_epsilon_sweep_short.py`, `results/fgsm_epsilon_sweep_summary.csv`, `notes/fgsm_epsilon_sweep_log.md
-notes/fgsm_epsilon_sweep_figures_summary.md` |
+notes/fgsm_epsilon_sweep_figures_summary.md
+notes/experiment_status_summary.md` |
 
 ---
 
@@ -342,6 +343,7 @@ notes/clean_safety_proxy_metrics_log.md
 notes/fgsm_safety_proxy_metrics_log.md
 notes/fgsm_epsilon_sweep_log.md
 notes/fgsm_epsilon_sweep_figures_summary.md
+notes/experiment_status_summary.md
 ```
 
 ### Local ignored files
