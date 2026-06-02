@@ -326,6 +326,7 @@ results/fgsm_epsilon_sweep_summary.csv
 ### Figures
 
 ```text
+figures/fgsm_epsilon_combined_safety_summary.png
 figures/fgsm_epsilon_vs_missed_fall_rate.png
 figures/fgsm_epsilon_vs_false_alarm_count.png
 figures/fgsm_epsilon_vs_recall.png
