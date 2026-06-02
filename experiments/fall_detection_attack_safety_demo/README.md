@@ -308,6 +308,7 @@ scripts/compute_clean_safety_metrics.py
 scripts/export_fgsm_predictions_short.py
 scripts/compute_fgsm_safety_metrics.py
 scripts/run_fgsm_epsilon_sweep_short.py
+scripts/plot_fgsm_epsilon_sweep.py
 ```
 
 ### Results
@@ -319,6 +320,15 @@ results/clean_safety_proxy_metrics.csv
 results/fgsm_predictions_short_epsilon_0_03.csv
 results/fgsm_safety_proxy_metrics_epsilon_0_03.csv
 results/fgsm_epsilon_sweep_summary.csv
+```
+
+### Figures
+
+```text
+figures/fgsm_epsilon_vs_missed_fall_rate.png
+figures/fgsm_epsilon_vs_false_alarm_count.png
+figures/fgsm_epsilon_vs_recall.png
+figures/fgsm_epsilon_vs_f1_score.png
 ```
 
 ### Notes
@@ -396,7 +406,6 @@ Planned next steps:
 
 ```text
 add README result summary tables
-create simple figures from the epsilon sweep CSV
 add PGD processed-tensor attack
 compare FGSM vs PGD safety-proxy degradation
 evaluate whether longer clean training changes robustness
