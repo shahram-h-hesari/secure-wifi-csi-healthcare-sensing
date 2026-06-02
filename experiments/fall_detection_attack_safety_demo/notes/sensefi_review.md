@@ -616,9 +616,54 @@ SenseFi provides fall-containing HAR datasets, labels, PyTorch models, and a tes
 
 ## 8. Main Strengths
 
-- TBD
-- TBD
-- TBD
+- **Public, reproducible benchmark structure.** SenseFi is a public WiFi CSI sensing benchmark with a GitHub repository, processed dataset links, documented run commands, requirements, model files, dataset loaders, and an MIT code license. This makes it a practical starting point for a reproducible clean baseline.
+
+- **Fall-containing datasets are available.** SenseFi includes at least two human-activity-recognition datasets with a `fall` class: `UT_HAR_data` and `NTU-Fi_HAR`. UT-HAR is especially useful for the first demo because it includes `fall` plus clinically relevant non-fall confusion classes such as `lie down`, `sit down`, `stand up`, `pickup`, `walk`, and `run`.
+
+- **PyTorch implementation supports attack modification.** SenseFi is implemented in PyTorch, and the training/testing workflow exposes `inputs`, `labels`, model outputs, and loss calculation. This makes it feasible to add software-level adversarial attacks such as FGSM and PGD at the processed CSI tensor level.
+
+- **Multiple baseline models are available.** SenseFi includes several model families, including MLP, LeNet/CNN, ResNet18, ResNet50, ResNet101, RNN, GRU, LSTM, BiLSTM, CNN+GRU, and ViT. This allows the first experiment to start with a simple model such as LeNet and later compare robustness across stronger or more complex models.
+
+- **UT-HAR is manageable for a first demo.** The SenseFi README lists UT-HAR with 3,977 training samples and 996 test samples, which appears more manageable than larger datasets such as Widar. This makes UT-HAR a reasonable first dataset for debugging clean prediction export, binary fall/non-fall mapping, and FGSM/PGD attack integration.
+
+- **Prediction export appears straightforward.** Although SenseFi does not save `y_true`, `y_pred_clean`, or prediction scores by default, the existing `test()` loop already computes model outputs and predicted labels. This means prediction export can likely be added with a small code modification.
+
+- **Good fit for a first safety-proxy experiment.** SenseFi can likely support window-level clean-vs-attacked safety-proxy metrics such as missed fall rate, false alarm count, precision, recall, F1-score, specificity, and confusion matrix after binary fall/non-fall conversion.
+
+- **Good bridge between evidence and implementation.** SenseFi connects the evidence-hub work to practical implementation because it provides a reusable benchmark, public code, fall-containing datasets, and model outputs that can be extended into the clinical-safety translation pipeline.
+
+---
+
+### Strength Summary
+
+```text
+SenseFi is a strong first implementation candidate because it is public, PyTorch-based, benchmark-oriented, includes fall-containing HAR datasets, and can likely be modified to export clean and attacked predictions for clinical-safety proxy evaluation.
+```
+
+---
+
+### Most Important Strength for This Project
+
+```text
+The strongest advantage of SenseFi is that UT-HAR provides a fall class and multiple non-fall confusion classes inside a PyTorch benchmark that can be modified for clean prediction export and FGSM/PGD adversarial testing.
+```
+
+---
+
+### Practical Implication
+
+```text
+SenseFi should be used as the first candidate for a window-level fall/non-fall clean-vs-attacked safety-proxy demo. The first implementation should start with UT_HAR_data and a simple model such as LeNet before moving to stronger models or more complex datasets.
+```
+
+---
+
+### Reference Links
+
+- [SenseFi / WiFi-CSI-Sensing-Benchmark GitHub repository](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark)
+- [SenseFi paper in Patterns / Cell Press](https://www.sciencedirect.com/science/article/pii/S2666389923000405)
+- [SenseFi arXiv version](https://arxiv.org/abs/2207.07859)
+- [SenseFi Mendeley Data record](https://data.mendeley.com/datasets/dzvgyxkx2f/1)
 
 ---
 
