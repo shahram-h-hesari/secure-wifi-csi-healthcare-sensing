@@ -529,6 +529,88 @@ confusion matrix
 missed fall rate
 false alarm count
 false positive rate
+```
+
+These should be described as:
+
+```text
+window-level ML metrics and window-level clinical-safety proxies
+```
+
+---
+
+### Metrics That Need More Metadata
+
+The following metrics should be marked as unavailable unless timestamp or event-level metadata is found after downloading the dataset:
+
+```text
+false alarms per day
+false alarms per user-day
+event-level recall
+event-level missed fall rate
+detection latency
+delayed detection rate
+long-lie risk proxy
+```
+
+Reason:
+
+```text
+These metrics require monitoring duration, event IDs, timestamps, fall impact time, or continuous recording structure. The visible SenseFi README and loader code document labels and samples/windows, but not full event-level clinical timing metadata.
+```
+
+---
+
+### Recommended First Metric Set
+
+For the first practical SenseFi experiment, report this metric set:
+
+| Metric Type | Metrics | Interpretation |
+|---|---|---|
+| ML metrics | Accuracy; precision; recall; specificity; F1-score; balanced accuracy; confusion matrix | Standard model performance |
+| Safety proxy metrics | Missed fall rate; false alarm count; false positive rate; alert precision | Safety-oriented interpretation from binary fall/non-fall labels |
+| Adversarial degradation metrics | Clean-to-attacked change in recall, missed fall rate, false alarm count, precision, and F1-score | How FGSM/PGD changes safety-relevant outcomes |
+
+---
+
+### Important Wording
+
+Use this wording in reports:
+
+```text
+This SenseFi/UT-HAR experiment supports window-level clinical-safety proxy metrics. Event-level metrics such as false alarms per day, detection latency, delayed detection rate, and long-lie risk proxy require timestamped or event-level annotations that are not confirmed in the visible SenseFi documentation.
+```
+
+Avoid saying:
+
+```text
+SenseFi provides clinical event-level fall detection metrics.
+```
+
+because that is not confirmed.
+
+---
+
+### Metric Feasibility Decision
+
+```text
+SenseFi is feasible for the first clean-vs-attacked fall/non-fall metric demo, but the first result should be framed as window-level safety-proxy evaluation rather than full event-level clinical-safety evaluation.
+```
+
+Reason:
+
+```text
+SenseFi provides fall-containing HAR datasets, labels, PyTorch models, and a test loop that can be modified to save predictions. This is enough to compute clean and attacked ML metrics plus missed fall and false alarm proxy metrics. However, false alarms per day, detection latency, event-level recall, and long-lie risk need additional timing or event metadata.
+```
+
+---
+
+### Reference Links
+
+- [SenseFi / WiFi-CSI-Sensing-Benchmark GitHub repository](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark)
+- [run.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/run.py)
+- [dataset.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/dataset.py)
+- [SenseFi paper in Patterns / Cell Press](https://www.sciencedirect.com/science/article/pii/S2666389923000405)
 
 ---
 
