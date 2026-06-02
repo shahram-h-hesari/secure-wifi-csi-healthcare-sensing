@@ -48,6 +48,7 @@ Can SenseFi be used to run a clean WiFi CSI fall or fall-related activity baseli
 | Dataset license | [CC BY 4.0 on Mendeley Data](https://data.mendeley.com/datasets/dzvgyxkx2f/1) |
 | Initial relevance to this project | High: SenseFi includes reusable WiFi CSI model code, processed datasets, and fall-containing or fall-related HAR datasets that may support clean fall vs non-fall baseline evaluation. |
 | Initial limitation | SenseFi is a general WiFi CSI benchmark, not a clinical fall-safety benchmark; event-level timestamps, false alarms per day, and detection latency still need to be checked. |
+
 ---
 
 ## 3. Dataset Availability
@@ -118,6 +119,37 @@ Can SenseFi be used to run a clean WiFi CSI fall or fall-related activity baseli
 
 ```text
 SenseFi should remain a high-priority candidate for the first clean fall/non-fall baseline.
+```
+
+Recommended first dataset:
+
+```text
+UT-HAR
+```
+
+Reason:
+
+```text
+UT-HAR includes a fall class and multiple clinically relevant non-fall confusion classes. It is more suitable than NTU-Fi_HAR for the first fall safety translation demo because missed falls and false fall alarms can be interpreted against activities such as lie down, sit down, stand up, pickup, walk, and run.
+```
+
+Limitation:
+
+```text
+The SenseFi README documents class labels and sample counts, but event-level timestamps, continuous monitoring duration, and fall impact times still need to be checked. Therefore, the first SenseFi experiment may support window-level clinical-safety proxies rather than full event-level metrics such as detection latency or false alarms per day.
+```
+
+Key finding:
+
+```text
+SenseFi is usable for fall/non-fall mapping, and UT-HAR should be the first candidate inside SenseFi.
+```
+
+Reference:
+
+- [SenseFi / WiFi-CSI-Sensing-Benchmark GitHub repository](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark)
+- [SenseFi paper in Patterns / Cell Press](https://www.sciencedirect.com/science/article/pii/S2666389923000405)
+- [SenseFi arXiv version](https://arxiv.org/abs/2207.07859)
 
 ---
 
