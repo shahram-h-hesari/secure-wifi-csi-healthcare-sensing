@@ -669,9 +669,104 @@ SenseFi should be used as the first candidate for a window-level fall/non-fall c
 
 ## 9. Main Limitations
 
-- TBD
-- TBD
-- TBD
+- **SenseFi is a general WiFi CSI benchmark, not a clinical fall-safety benchmark.** SenseFi is designed for WiFi CSI human sensing and deep-learning benchmarking across tasks and datasets. It is not specifically designed to evaluate clinical fall safety, long-lie risk, alarm burden, detection latency, or caregiver-facing alert reliability.
+
+- **The first SenseFi experiment will likely be window-level, not event-level.** The visible SenseFi documentation and code support sample/window-level classification, but event IDs, continuous monitoring duration, fall impact timestamps, and alert timestamps are not clearly documented. This means the first experiment should be framed as a window-level fall/non-fall safety-proxy evaluation.
+
+- **False alarms per day cannot be calculated unless monitoring duration is available.** SenseFi can support false alarm count after binary fall/non-fall conversion, but false alarms per day or per user-day require time duration, timestamps, or continuous monitoring metadata that is not confirmed in the visible documentation.
+
+- **Detection latency is not currently confirmed.** Detection latency requires a fall impact time and an alert time. SenseFi’s visible README and dataset loader structure document data samples and class labels, but not fall impact timestamps or event-level alert timing.
+
+- **Long-lie risk proxy cannot be responsibly calculated from sample labels alone.** Long-lie risk requires event-level missed falls, severe detection delay, or time-on-floor proxy information. A sample-level fall/non-fall classification result is not enough to claim long-lie risk measurement.
+
+- **Prediction export is not available by default.** SenseFi’s evaluation loop computes predictions and accuracy, but it does not appear to save `y_true`, `y_pred_clean`, prediction scores, or binary fall/non-fall outputs into CSV files by default. This project must modify the test/evaluation loop to export prediction files.
+
+- **FGSM and PGD attacks are not implemented by default.** SenseFi provides PyTorch models and input tensors that make software-level attacks feasible, but adversarial attack scripts must be added separately. The first attack implementation should be described as a software-level perturbation on processed CSI tensors.
+
+- **Attack strength is not physically interpretable by default.** If FGSM/PGD are applied to normalized or preprocessed CSI tensors, the epsilon value represents perturbation strength in processed feature space. It should not be described as a physical-layer packet, preamble, SDR, or over-the-air attack unless a separate physical attack model is implemented.
+
+- **Processed datasets may hide some raw-signal details.** SenseFi provides processed dataset workflows, which are useful for reproducibility, but processed inputs may not preserve all raw CSI acquisition details needed for physical-layer attack realism or signal-level clinical interpretation.
+
+- **Dataset access and file organization still need to be verified locally.** The SenseFi repository links datasets externally and provides expected folder structure, but the actual download process, file size, file format, and local loading behavior still need to be tested before implementation.
+
+- **License and reuse should be documented before using the data.** The code license and dataset license appear usable for research documentation, but the project should still record the exact license terms before using or redistributing any data. Large or restricted datasets should not be copied into the repository unless redistribution is clearly allowed.
+
+- **UT-HAR may not represent real clinical deployment.** UT-HAR is useful because it includes a `fall` class and relevant non-fall activities, but it should not be treated as real patient deployment data or clinical validation. Results should be presented as a reproducible research demo, not as clinical evidence.
+
+- **Class balance and controlled conditions may affect interpretation.** Fall/non-fall sample counts and controlled collection conditions may not reflect real-world fall rarity, real home monitoring, caregiver workflows, or long-term false alarm burden. This should be clearly stated when interpreting missed fall rate or false alarm count.
+
+- **Generalization is not guaranteed.** A model that works on UT-HAR may not generalize to different rooms, users, WiFi devices, sampling settings, or datasets. Later experiments should test FallDeFi, CSI-Bench, or another dataset to evaluate generalization.
+
+---
+
+### Limitation Summary
+
+```text
+SenseFi is suitable for the first reproducible clean-vs-attacked fall/non-fall demo, but the first result should be framed as a window-level safety-proxy evaluation, not as full event-level clinical-safety validation.
+```
+
+---
+
+### Most Important Limitation for This Project
+
+```text
+The most important limitation is that event-level clinical-safety metrics such as false alarms per day, detection latency, delayed detection rate, and long-lie risk proxy are not confirmed from the visible SenseFi documentation. These metrics require timestamps, event IDs, monitoring duration, or fall impact annotations.
+```
+
+---
+
+### Practical Implication
+
+```text
+Use SenseFi/UT-HAR first to prove the clean-vs-attacked safety-proxy pipeline:
+clean predictions
+→ FGSM/PGD attacked predictions
+→ missed fall rate
+→ false alarm count
+→ precision / recall / F1
+→ clean-to-attacked degradation.
+
+Then use a richer dataset later if event-level timing or monitoring-duration metrics are needed.
+```
+
+---
+
+### Wording to Use in Reports
+
+Use:
+
+```text
+This experiment reports window-level clinical-safety proxy metrics using SenseFi/UT-HAR.
+```
+
+Avoid:
+
+```text
+This experiment validates clinical fall-detection performance.
+```
+
+Use:
+
+```text
+FGSM and PGD are implemented as software-level perturbations on processed CSI tensors.
+```
+
+Avoid:
+
+```text
+This experiment demonstrates a physical-world WiFi packet or preamble attack.
+```
+
+---
+
+### Reference Links
+
+- [SenseFi / WiFi-CSI-Sensing-Benchmark GitHub repository](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark)
+- [SenseFi paper in Patterns / Cell Press](https://www.sciencedirect.com/science/article/pii/S2666389923000405)
+- [SenseFi arXiv version](https://arxiv.org/abs/2207.07859)
+- [SenseFi Mendeley Data record](https://data.mendeley.com/datasets/dzvgyxkx2f/1)
+- [dataset.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/dataset.py)
+- [run.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/run.py)
 
 ---
 
@@ -680,38 +775,450 @@ SenseFi should be used as the first candidate for a window-level fall/non-fall c
 Final decision:
 
 ```text
-Use SenseFi as first baseline / Defer SenseFi / Reject SenseFi for first demo
+Use SenseFi as first baseline.
+```
+
+Recommended first configuration:
+
+```text
+Dataset: UT_HAR_data
+Model: LeNet
+Task: Binary fall vs non-fall classification
+Attack stage: FGSM first, PGD later
+Metric stage: Window-level ML metrics and window-level clinical-safety proxy metrics
+```
+
+---
+
+### Reason
+
+SenseFi should be used as the first baseline because it provides a public, PyTorch-based WiFi CSI sensing benchmark with reusable model code, dataset loaders, documented run commands, processed dataset links, and fall-containing human-activity-recognition datasets.
+
+The strongest starting point is `UT_HAR_data` because it includes a `fall` class and multiple clinically relevant non-fall confusion classes:
+
+```text
+lie down
+fall
+walk
+pickup
+run
+sit down
+stand up
+```
+
+This allows the dataset to be converted into a binary safety task:
+
+```text
+fall = 1
+all other activities = 0
+```
+
+This supports the first implementation goal:
+
+```text
+clean WiFi CSI fall/non-fall baseline
+→ saved y_true and y_pred_clean
+→ FGSM/PGD attacked predictions
+→ clean-to-attacked safety-proxy comparison
+```
+
+---
+
+### Why SenseFi Is the Best First Baseline
+
+| Reason | Explanation |
+|---|---|
+| Public code | The SenseFi repository is public and can be cloned. |
+| PyTorch implementation | The benchmark is implemented in PyTorch, which makes it suitable for FGSM/PGD input-gradient attacks. |
+| Fall-containing dataset | `UT_HAR_data` includes a `fall` class. |
+| Useful non-fall classes | UT-HAR includes `lie down`, `pickup`, `sit down`, and `stand up`, which are useful fall-confusion activities. |
+| Multiple models | SenseFi includes MLP, LeNet/CNN, ResNet, RNN, GRU, LSTM, BiLSTM, CNN+GRU, and ViT options. |
+| Simple first model available | LeNet is simple enough for debugging clean prediction export and FGSM attack integration. |
+| Prediction export is feasible | The current evaluation loop already computes model outputs and predicted labels, so `y_true`, `y_pred_clean`, and prediction scores can be added with code modification. |
+| Attack integration is feasible | The PyTorch input tensors, labels, model outputs, and loss calculation can be used to compute gradients for FGSM and PGD. |
+
+---
+
+### Why Not Start With NTU-Fi_HAR?
+
+`NTU-Fi_HAR` also includes a `fall` class, but it is a better second candidate rather than the first.
+
+Reason:
+
+```text
+NTU-Fi_HAR has fall and non-fall classes, but its non-fall labels are less directly connected to fall-safety confusion than UT-HAR.
+```
+
+NTU-Fi_HAR labels:
+
+```text
+box
+circle
+clean
+fall
+run
+walk
+```
+
+These are useful for activity recognition, but UT-HAR provides more clinically interpretable confusion classes such as `lie down`, `sit down`, `stand up`, and `pickup`.
+
+---
+
+### Why Not Start With Widar or NTU-Fi-HumanID?
+
+| Dataset | Decision | Reason |
+|---|---|---|
+| NTU-Fi-HumanID | Not suitable for first demo | Human identification dataset, not fall detection |
+| Widar | Not suitable for first demo | Gesture-recognition dataset, not fall detection |
+
+---
+
+### Expected First Output
+
+The first SenseFi implementation should produce:
+
+```text
+results/predictions_clean.csv
+results/metrics_clean.csv
+results/clean_baseline_summary.md
+```
+
+Then the next stage should produce:
+
+```text
+results/predictions_fgsm.csv
+results/metrics_fgsm.csv
+results/clean_vs_fgsm_summary.csv
+```
+
+---
+
+### Metric Scope for First Demo
+
+The first SenseFi/UT-HAR result should be framed as:
+
+```text
+window-level ML metrics and window-level clinical-safety proxy metrics
+```
+
+Feasible first metrics:
+
+```text
+accuracy
+precision
+recall / sensitivity
+specificity
+F1-score
+balanced accuracy
+confusion matrix
+missed fall rate
+false alarm count
+false positive rate
+```
+
+Metrics that require more metadata:
+
+```text
+false alarms per day
+false alarms per user-day
+event-level recall
+event-level missed fall rate
+detection latency
+delayed detection rate
+long-lie risk proxy
 ```
 
 Reason:
 
 ```text
-TBD
+These event-level clinical-safety metrics require timestamps, event IDs, fall impact times, monitoring duration, or continuous recording structure. These are not confirmed in the visible SenseFi documentation.
 ```
 
 ---
 
-## 11. Next Step
+### Final Decision Statement
 
-If SenseFi is selected, move to:
+```text
+SenseFi/UT_HAR_data should be used as the first practical baseline for the fall detection attack-safety demo. The first implementation should use a simple PyTorch model such as LeNet, export clean predictions, convert labels into binary fall vs non-fall format, compute window-level ML and safety-proxy metrics, and then add FGSM followed by PGD for clean-to-attacked safety degradation analysis.
+```
+
+---
+
+### Limitation Statement
+
+```text
+The first SenseFi/UT-HAR experiment should not be described as full clinical event-level fall-safety evaluation. It should be described as a reproducible window-level fall/non-fall safety-proxy demo. Event-level metrics such as false alarms per day, detection latency, delayed detection rate, and long-lie risk proxy require timestamped or event-level annotations that are not confirmed in the visible SenseFi documentation.
+```
+
+---
+
+### Next Step
+
+Move to:
 
 ```text
 Run clean WiFi CSI fall-detection baseline
 ```
 
-If SenseFi is deferred or rejected, review:
+Implementation target:
 
 ```text
-FallDeFi
+python run.py --model LeNet --dataset UT_HAR_data
 ```
 
-as the next candidate.
+Required modification:
+
+```text
+Modify the SenseFi test/evaluation loop to export y_true, y_pred_clean, binary_true_label, clean_prediction, and clean_score.
+```
+
+---
+
+### Reference Links
+
+- [SenseFi / WiFi-CSI-Sensing-Benchmark GitHub repository](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark)
+- [SenseFi run.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/run.py)
+- [SenseFi dataset.py](https://github.com/xyanchen/WiFi-CSI-Sensing-Benchmark/blob/main/dataset.py)
+- [SenseFi paper in Patterns / Cell Press](https://www.sciencedirect.com/science/article/pii/S2666389923000405)
+- [SenseFi arXiv version](https://arxiv.org/abs/2207.07859)
+- [SenseFi Mendeley Data record](https://data.mendeley.com/datasets/dzvgyxkx2f/1)
+
+---
+
+## 11. Next Step
+
+Because SenseFi is selected as the first implementation baseline, the next step is:
+
+```text
+Run clean WiFi CSI fall-detection baseline
+```
+
+The first implementation should use:
+
+```text
+Dataset: UT_HAR_data
+Model: LeNet
+Task: Binary fall vs non-fall classification
+Repository: secure-wifi-csi-healthcare-sensing
+Experiment folder: experiments/fall_detection_attack_safety_demo/
+```
+
+---
+
+### Immediate Implementation Goal
+
+The immediate goal is to run SenseFi on `UT_HAR_data` and produce clean prediction outputs before adding any adversarial perturbation.
+
+The clean baseline should generate:
+
+```text
+y_true
+y_pred_clean
+clean prediction scores
+binary fall vs non-fall labels
+clean ML metrics
+clean safety-proxy metrics
+```
+
+Expected first output files:
+
+```text
+results/predictions_clean.csv
+results/metrics_clean.csv
+results/clean_baseline_summary.md
+```
+
+---
+
+### Recommended First Command
+
+Start from the SenseFi command pattern:
+
+```bash
+python run.py --model LeNet --dataset UT_HAR_data
+```
+
+This command may need path adjustments depending on how SenseFi is cloned or integrated into this repository.
+
+Recommended approach:
+
+```text
+1. Clone or reference the SenseFi repository locally.
+2. Download or access the processed UT_HAR_data files.
+3. Confirm the expected Benchmark/Data/ folder structure.
+4. Run the clean LeNet + UT_HAR_data baseline.
+5. Modify the evaluation/test loop to export predictions.
+```
+
+---
+
+### Required Clean Prediction Export
+
+The clean baseline should save predictions to:
+
+```text
+experiments/fall_detection_attack_safety_demo/results/predictions_clean.csv
+```
+
+Required columns:
+
+```csv
+sample_id,timestamp,event_id,subject_id,environment_id,true_label,binary_true_label,clean_prediction,clean_score
+```
+
+If a field is not available in SenseFi/UT-HAR, use:
+
+```text
+NA
+```
+
+Do not remove unavailable columns. Keeping a consistent schema will make later datasets easier to compare.
+
+---
+
+### Required Label Conversion
+
+Convert the original UT-HAR labels into binary fall/non-fall labels:
+
+```text
+fall = 1
+all other activities = 0
+```
+
+Recommended UT-HAR mapping:
+
+| Original Label | Binary Safety Label | Notes |
+|---|---:|---|
+| fall | 1 | Positive fall class |
+| lie down | 0 | High-risk confusion class |
+| walk | 0 | Non-fall activity |
+| pickup | 0 | Possible false-alarm confusion class |
+| run | 0 | Non-fall movement |
+| sit down | 0 | Fall-confusable transition |
+| stand up | 0 | Non-fall transition |
+
+---
+
+### Clean Baseline Metrics to Compute
+
+For the first clean baseline, compute:
+
+```text
+accuracy
+precision
+recall / sensitivity
+specificity
+F1-score
+balanced accuracy
+confusion matrix
+missed fall rate
+false alarm count
+false positive rate
+```
+
+These should be described as:
+
+```text
+window-level ML metrics and window-level clinical-safety proxy metrics
+```
+
+Do not describe them as full event-level clinical-safety metrics unless timestamps, event IDs, or monitoring duration are confirmed.
+
+---
+
+### Project Board Update
+
+After this SenseFi review is committed, update the GitHub Project board:
+
+```text
+#2 Review SenseFi for fall labels and usable PyTorch code → Done
+#1 Select first reproducible WiFi CSI fall-detection baseline → Done
+#5 Run clean WiFi CSI fall-detection baseline → In Progress
+```
+
+Keep these as future tasks:
+
+```text
+#3 Review FallDeFi for direct WiFi CSI fall-detection code → Todo
+#4 Confirm dataset access, license, labels, timestamps, and event IDs → Todo or In Progress
+#6 Add FGSM attack and save attacked predictions → Todo
+#7 Compare clean vs attacked clinical-safety metrics → Todo
+```
+
+---
+
+### When to Review FallDeFi
+
+FallDeFi should be reviewed after the SenseFi clean baseline is attempted, or earlier only if SenseFi becomes blocked.
+
+Use FallDeFi if:
+
+```text
+SenseFi data access fails
+SenseFi code cannot run
+UT-HAR labels cannot be loaded correctly
+prediction export becomes impractical
+a more direct WiFi CSI fall-detection baseline is needed
+```
+
+FallDeFi should be treated as:
+
+```text
+second baseline / fallback option
+```
+
+not the first task, because SenseFi currently appears easier for a first PyTorch-based clean-vs-attacked safety-proxy demo.
+
+---
+
+### Next File to Create or Update
+
+Create or update this implementation note:
+
+```text
+experiments/fall_detection_attack_safety_demo/notes/clean_baseline_plan.md
+```
+
+This file should document:
+
+```text
+SenseFi clone/setup path
+UT_HAR_data access path
+model selected
+run command
+label mapping
+prediction export modification plan
+expected output CSV files
+known limitations
+```
+
+---
+
+### Next Practical Task
+
+Move to the project card:
+
+```text
+Run clean WiFi CSI fall-detection baseline
+```
+
+Implementation target:
+
+```text
+SenseFi + UT_HAR_data + LeNet
+```
+
+First coding objective:
+
+```text
+Modify the SenseFi test/evaluation loop to save y_true, y_pred_clean, binary_true_label, clean_prediction, and clean_score.
+```
 
 ---
 
 ## Claim Boundary
 
-This review supports research implementation planning only.
+This SenseFi review supports research implementation planning only.
 
 It does not claim:
 
@@ -719,5 +1226,19 @@ It does not claim:
 - medical-device readiness,
 - diagnostic capability,
 - real patient deployment,
-- regulatory approval, or
-- formal clinical standard compliance.
+- regulatory approval,
+- formal clinical standard compliance,
+- physical-world adversarial attack validation, or
+- event-level clinical fall-safety validation.
+
+This review only concludes that SenseFi/UT-HAR appears suitable for a first reproducible **window-level fall/non-fall clean-vs-attacked safety-proxy demo**.
+
+Use careful wording:
+
+```text
+research implementation baseline
+window-level safety-proxy evaluation
+clinically motivated metric translation
+software-level adversarial perturbation
+processed CSI tensor attack
+clean-to-attacked safety degradation
