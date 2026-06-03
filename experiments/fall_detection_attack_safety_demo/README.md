@@ -21,6 +21,7 @@ PGD epsilon sweep figures completed.
 FGSM vs PGD comparison completed.
 Final FGSM/PGD attack-safety lab report completed.
 Window-level vs event-level limitation note completed.
+FGSM adversarial training defense baseline completed.
 ```
 
 This is a research implementation demo. It is not clinical validation, medical-device validation, real patient deployment, diagnostic evidence, regulatory evaluation, physical-layer attack validation, SDR validation, packet-level validation, preamble-level validation, or over-the-air validation.
@@ -579,6 +580,7 @@ notes/pgd_epsilon_sweep_figures_summary.md
 notes/fgsm_vs_pgd_comparison_summary.md
 notes/final_fgsm_pgd_attack_safety_lab_report.md
 notes/window_level_vs_event_level_limitations.md
+notes/fgsm_adversarial_training_defense_log.md
 ```
 
 ### Local ignored files
@@ -657,3 +659,4 @@ prepare final PGD/FGSM comparison documentation commit
 evaluate whether longer clean training changes robustness
 prepare a concise lab report figure for GitHub and thesis documentation
 ```
+
