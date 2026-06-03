@@ -1,8 +1,8 @@
 # Fall Detection Attack-Safety Demo
 
-This folder is the practical experiment workspace for evaluating WiFi CSI fall-related activity recognition under clean and adversarial conditions.
+This folder is the practical experiment workspace for evaluating WiFi CSI fall-related activity recognition under clean, adversarial, and defended software-level conditions.
 
-The goal is to reproduce a clean WiFi CSI baseline, save clean and attacked predictions, and translate model degradation into fall-focused safety-proxy metrics.
+The goal is to reproduce a clean WiFi CSI baseline, save clean, attacked, and defended predictions, and translate model degradation into fall-focused safety-proxy metrics.
 
 Current status:
 
@@ -22,9 +22,13 @@ FGSM vs PGD comparison completed.
 Final FGSM/PGD attack-safety lab report completed.
 Window-level vs event-level limitation note completed.
 FGSM adversarial training defense baseline completed.
+Defended clean, FGSM, and PGD prediction export completed.
+Defended safety-proxy metrics completed.
+Defended vs undefended safety-proxy comparison completed.
+Defended vs undefended comparison figures completed.
 ```
 
-This is a research implementation demo. It is not clinical validation, medical-device validation, real patient deployment, diagnostic evidence, regulatory evaluation, physical-layer attack validation, SDR validation, packet-level validation, preamble-level validation, or over-the-air validation.
+This is a research implementation demo. It is not clinical validation, medical-device validation, real patient deployment, diagnostic evidence, regulatory evaluation, physical-layer attack validation, SDR validation, packet-level validation, preamble-level validation, event-level fall validation, long-lie validation, or over-the-air validation.
 
 ---
 
@@ -41,7 +45,7 @@ The central translation pathway is:
 ```text
 WiFi CSI sensing output
 -> ML prediction
--> clean or attacked prediction error
+-> clean, attacked, or defended prediction error
 -> fall-vs-non-fall safety-proxy metric
 -> adversarial safety degradation
 ```
@@ -56,10 +60,13 @@ This work uses two related repositories with different purposes.
 |---|---|
 | `ai-ml-wifi-sensing-hub` | Evidence hub, literature mapping, clinical-safety metric framework, and research gap documentation |
 | `secure-wifi-csi-healthcare-sensing` | Implementation repo for experiments, scripts, notebooks, prediction files, metrics, figures, and lab reports |
+| `wifi-csi-fall-attack-safety-demo` | Standalone public demo repo for making the fall attack-safety workflow easier to view as an independent project |
 
 The evidence hub explains why safety-oriented metrics matter.
 
 This implementation repo shows how to calculate them.
+
+The standalone repo makes the completed demo easier to review as a focused GitHub portfolio/research artifact.
 
 ---
 
@@ -71,7 +78,7 @@ This first practical demo focuses on:
 fall vs non-fall safety-proxy evaluation
 ```
 
-The current clean-vs-attacked comparison uses:
+The current clean-vs-attacked-vs-defended comparison uses:
 
 ```text
 clean baseline
@@ -80,6 +87,9 @@ FGSM epsilon sweep
 PGD processed-tensor attack
 PGD epsilon sweep
 FGSM vs PGD comparison
+short FGSM adversarial-training defense baseline
+defended clean/FGSM/PGD prediction export
+defended vs undefended safety-proxy comparison
 ```
 
 The first safety-proxy metrics include:
@@ -125,7 +135,7 @@ This first baseline uses SenseFi / WiFi-CSI-Sensing-Benchmark.
 | Dataset storage | Local only, not committed to GitHub |
 | Third-party benchmark clone | Local only, ignored by Git |
 
-The shortened 5-epoch run is used for reproducibility testing and pipeline development. It should not be interpreted as final benchmark performance.
+The shortened 5-epoch run is used for reproducibility testing, pipeline development, and first defense comparison. It should not be interpreted as final benchmark performance.
 
 ---
 
@@ -169,6 +179,13 @@ non-fall = classes 0, 2, 3, 4, 5, 6
 | PGD epsilon sweep | Complete | `scripts/run_pgd_epsilon_sweep_short.py`, `results/pgd_epsilon_sweep_summary.csv`, `notes/pgd_epsilon_sweep_log.md` |
 | PGD epsilon sweep figures | Complete | `scripts/plot_pgd_epsilon_sweep.py`, `figures/pgd_epsilon_combined_safety_summary.png`, `notes/pgd_epsilon_sweep_figures_summary.md` |
 | FGSM vs PGD comparison | Complete | `scripts/plot_fgsm_vs_pgd_comparison.py`, `results/fgsm_vs_pgd_epsilon_comparison.csv`, `figures/fgsm_vs_pgd_safety_comparison.png`, `notes/fgsm_vs_pgd_comparison_summary.md` |
+| Final attack-safety lab report | Complete | `notes/final_fgsm_pgd_attack_safety_lab_report.md` |
+| Window-level vs event-level limitation note | Complete | `notes/window_level_vs_event_level_limitations.md` |
+| FGSM adversarial training defense baseline | Complete | `scripts/train_fgsm_adversarial_defense_short.py`, `results/fgsm_adversarial_training_short_metrics.csv`, `notes/adversarial_training_defense_plan.md`, `notes/fgsm_adversarial_training_defense_log.md` |
+| Defended prediction export | Complete | `scripts/export_defended_predictions_short.py`, `results/defended_predictions_short.csv`, `results/defended_fgsm_predictions_short_epsilon_0_03.csv`, `results/defended_pgd_predictions_short_epsilon_0_03.csv` |
+| Defended safety-proxy metrics | Complete | `scripts/compute_defended_safety_metrics.py`, `results/defended_safety_proxy_metrics.csv` |
+| Defended vs undefended comparison | Complete | `scripts/compare_defended_vs_undefended_safety_metrics.py`, `results/defended_vs_undefended_safety_comparison.csv`, `notes/defended_vs_undefended_safety_comparison_plan.md`, `notes/defended_vs_undefended_safety_comparison_log.md` |
+| Defended vs undefended figures | Complete | `scripts/plot_defended_vs_undefended_safety_comparison.py`, `figures/defended_vs_undefended_*.png` |
 
 ---
 
@@ -511,7 +528,161 @@ Claim boundary: this is a software-level processed-tensor adversarial comparison
 
 ---
 
-## 17. Current File Guide
+## 17. FGSM Adversarial Training Defense Baseline
+
+The experiment now includes a first FGSM adversarial-training defense baseline.
+
+The purpose of this step is to test whether a model trained with simple FGSM-perturbed examples becomes more robust for later attacked fall-vs-non-fall safety-proxy evaluation.
+
+Defense training configuration:
+
+```text
+dataset = UT_HAR_data
+model = LeNet
+epochs = 5
+optimizer = Adam
+learning rate = 0.001
+FGSM training epsilon = 0.005
+clean loss weight = 0.50
+adversarial loss weight = 0.50
+device = CPU
+evaluation split = SenseFi validation+test loader
+```
+
+The defense training loop uses both clean CSI tensors and FGSM-perturbed CSI tensors during training.
+
+Generated defense baseline files:
+
+```text
+scripts/train_fgsm_adversarial_defense_short.py
+results/fgsm_adversarial_training_short_metrics.csv
+notes/adversarial_training_defense_plan.md
+notes/fgsm_adversarial_training_defense_log.md
+```
+
+Final short defense training output:
+
+```text
+Epoch 01/5 | train_clean_acc=0.2845 | train_adv_acc=0.2845 | test_clean_acc=0.2942
+Epoch 02/5 | train_clean_acc=0.2946 | train_adv_acc=0.2946 | test_clean_acc=0.2952
+Epoch 03/5 | train_clean_acc=0.3569 | train_adv_acc=0.3337 | test_clean_acc=0.4468
+Epoch 04/5 | train_clean_acc=0.5015 | train_adv_acc=0.4259 | test_clean_acc=0.5110
+Epoch 05/5 | train_clean_acc=0.5658 | train_adv_acc=0.4536 | test_clean_acc=0.5753
+```
+
+This step confirms that the defense training loop runs and saves metrics. The next step was to evaluate whether the defended model improves safety-proxy behavior under FGSM and PGD attack.
+
+Claim boundary: this is a software-level processed-tensor adversarial training baseline. It is not a physical-layer defense, packet-level defense, preamble-level defense, SDR defense, or over-the-air defense.
+
+---
+
+## 18. Defended vs Undefended Safety-Proxy Comparison
+
+The experiment now includes a defended-vs-undefended comparison using the short FGSM adversarial-training defense baseline.
+
+The comparison evaluates:
+
+```text
+undefended clean model
+undefended FGSM-attacked model
+undefended PGD-attacked model
+FGSM-adversarial-trained defended clean model
+FGSM-adversarial-trained defended model under FGSM attack
+FGSM-adversarial-trained defended model under PGD attack
+```
+
+Generated Priority 8 files:
+
+```text
+scripts/export_defended_predictions_short.py
+scripts/compute_defended_safety_metrics.py
+scripts/compare_defended_vs_undefended_safety_metrics.py
+scripts/plot_defended_vs_undefended_safety_comparison.py
+
+results/defended_predictions_short.csv
+results/defended_fgsm_predictions_short_epsilon_0_03.csv
+results/defended_pgd_predictions_short_epsilon_0_03.csv
+results/defended_safety_proxy_metrics.csv
+results/defended_vs_undefended_safety_comparison.csv
+
+figures/defended_vs_undefended_balanced_accuracy.png
+figures/defended_vs_undefended_f1_score.png
+figures/defended_vs_undefended_false_alarm_count.png
+figures/defended_vs_undefended_missed_fall_rate.png
+figures/defended_vs_undefended_prediction_change_rate.png
+figures/defended_vs_undefended_recall.png
+
+notes/defended_vs_undefended_safety_comparison_plan.md
+notes/defended_vs_undefended_safety_comparison_log.md
+```
+
+Main comparison table:
+
+| Condition | Attack | TP | FN | FP | TN | Missed Fall Rate | Recall | F1-score | Balanced Accuracy |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Undefended clean | none | 57 | 32 | 32 | 875 | 0.3596 | 0.6404 | 0.6404 | 0.8026 |
+| Undefended FGSM, epsilon 0.03 | FGSM | 0 | 89 | 119 | 788 | 1.0000 | 0.0000 | 0.0000 | 0.4344 |
+| Undefended PGD, epsilon 0.03 | PGD | 0 | 89 | 115 | 792 | 1.0000 | 0.0000 | 0.0000 | 0.4366 |
+| Defended clean | none | 36 | 53 | 22 | 885 | 0.5955 | 0.4045 | 0.4898 | 0.6901 |
+| Defended FGSM, epsilon 0.03 | FGSM | 0 | 89 | 72 | 835 | 1.0000 | 0.0000 | 0.0000 | 0.4603 |
+| Defended PGD, epsilon 0.03 | PGD | 0 | 89 | 56 | 851 | 1.0000 | 0.0000 | 0.0000 | 0.4691 |
+
+Main finding:
+
+```text
+The first short FGSM adversarial-training defense reduced false fall alarms under attack,
+but it did not recover fall recall at epsilon 0.03.
+```
+
+False fall alarm comparison:
+
+```text
+undefended FGSM false fall alarms = 119
+defended FGSM false fall alarms = 72
+change = -47 false fall alarms
+
+undefended PGD false fall alarms = 115
+defended PGD false fall alarms = 56
+change = -59 false fall alarms
+```
+
+However, both defended attacked conditions still produced:
+
+```text
+TP = 0
+FN = 89
+recall = 0.0000
+missed fall rate = 1.0000
+F1-score = 0.0000
+```
+
+This means the first short defense baseline reduced false alarm burden under attack but did not restore fall sensitivity.
+
+The defended clean model also had lower clean fall-detection performance than the undefended clean model:
+
+```text
+undefended clean recall = 0.6404
+defended clean recall = 0.4045
+
+undefended clean missed fall rate = 0.3596
+defended clean missed fall rate = 0.5955
+
+undefended clean F1-score = 0.6404
+defended clean F1-score = 0.4898
+
+undefended clean balanced accuracy = 0.8026
+defended clean balanced accuracy = 0.6901
+```
+
+This suggests a clean-performance tradeoff from the short 5-epoch FGSM adversarial-training setup.
+
+This result does not prove that adversarial training is ineffective in general. A stronger conclusion would require longer clean training, longer defended training, different FGSM training epsilon values, PGD adversarial training, defended epsilon sweeps, and comparison against a longer-trained undefended baseline.
+
+Claim boundary: this is a window-level software comparison on processed CSI tensors. It is not clinical validation, medical-device validation, diagnostic evidence, regulatory evaluation, physical-layer defense validation, packet-level defense validation, preamble-level defense validation, SDR validation, or over-the-air defense validation.
+
+---
+
+## 19. Current File Guide
 
 ### Scripts
 
@@ -530,6 +701,11 @@ scripts/compute_pgd_safety_metrics.py
 scripts/run_pgd_epsilon_sweep_short.py
 scripts/plot_pgd_epsilon_sweep.py
 scripts/plot_fgsm_vs_pgd_comparison.py
+scripts/train_fgsm_adversarial_defense_short.py
+scripts/export_defended_predictions_short.py
+scripts/compute_defended_safety_metrics.py
+scripts/compare_defended_vs_undefended_safety_metrics.py
+scripts/plot_defended_vs_undefended_safety_comparison.py
 ```
 
 ### Results
@@ -545,6 +721,12 @@ results/pgd_predictions_short_epsilon_0_03.csv
 results/pgd_safety_proxy_metrics_epsilon_0_03.csv
 results/pgd_epsilon_sweep_summary.csv
 results/fgsm_vs_pgd_epsilon_comparison.csv
+results/fgsm_adversarial_training_short_metrics.csv
+results/defended_predictions_short.csv
+results/defended_fgsm_predictions_short_epsilon_0_03.csv
+results/defended_pgd_predictions_short_epsilon_0_03.csv
+results/defended_safety_proxy_metrics.csv
+results/defended_vs_undefended_safety_comparison.csv
 ```
 
 ### Figures
@@ -561,6 +743,12 @@ figures/pgd_epsilon_vs_false_alarm_count.png
 figures/pgd_epsilon_vs_recall.png
 figures/pgd_epsilon_vs_f1_score.png
 figures/fgsm_vs_pgd_safety_comparison.png
+figures/defended_vs_undefended_balanced_accuracy.png
+figures/defended_vs_undefended_f1_score.png
+figures/defended_vs_undefended_false_alarm_count.png
+figures/defended_vs_undefended_missed_fall_rate.png
+figures/defended_vs_undefended_prediction_change_rate.png
+figures/defended_vs_undefended_recall.png
 ```
 
 ### Notes
@@ -580,7 +768,10 @@ notes/pgd_epsilon_sweep_figures_summary.md
 notes/fgsm_vs_pgd_comparison_summary.md
 notes/final_fgsm_pgd_attack_safety_lab_report.md
 notes/window_level_vs_event_level_limitations.md
+notes/adversarial_training_defense_plan.md
 notes/fgsm_adversarial_training_defense_log.md
+notes/defended_vs_undefended_safety_comparison_plan.md
+notes/defended_vs_undefended_safety_comparison_log.md
 ```
 
 ### Local ignored files
@@ -599,7 +790,7 @@ Data/
 
 ---
 
-## 18. Reproducibility Commands
+## 20. Reproducibility Commands
 
 From this folder:
 
@@ -618,13 +809,18 @@ python scripts\compute_pgd_safety_metrics.py
 python scripts\run_pgd_epsilon_sweep_short.py
 python scripts\plot_pgd_epsilon_sweep.py
 python scripts\plot_fgsm_vs_pgd_comparison.py
+python scripts\train_fgsm_adversarial_defense_short.py
+python scripts\export_defended_predictions_short.py
+python scripts\compute_defended_safety_metrics.py
+python scripts\compare_defended_vs_undefended_safety_metrics.py
+python scripts\plot_defended_vs_undefended_safety_comparison.py
 ```
 
 These commands assume the SenseFi benchmark clone and UT-HAR dataset are already available locally under the ignored `third_party/` directory.
 
 ---
 
-## 19. Claim Boundary
+## 21. Claim Boundary
 
 This experiment is a window-level research implementation baseline for WiFi CSI fall-related activity recognition and safety-proxy metric translation.
 
@@ -637,26 +833,32 @@ real patient deployment
 diagnostic evidence
 regulatory evaluation
 physical-layer attack validation
+physical-layer defense validation
 packet-level attack validation
+packet-level defense validation
 preamble-level attack validation
+preamble-level defense validation
 SDR validation
 over-the-air validation
 event-level fall validation
 long-lie validation
+time-to-detection validation
 ```
 
-The current contribution is a reproducible software pipeline for showing how clean and adversarial WiFi CSI model outputs can be translated into fall-focused safety-proxy metrics.
+The current contribution is a reproducible software pipeline for showing how clean, adversarial, and defended WiFi CSI model outputs can be translated into fall-focused safety-proxy metrics.
 
 ---
 
-## 20. Next Planned Work
+## 22. Next Planned Work
 
 Planned next steps:
 
 ```text
-update experiment status summary with PGD sweep and FGSM-vs-PGD comparison
-prepare final PGD/FGSM comparison documentation commit
+update experiment status summary with defended-vs-undefended comparison
+copy Priority 8 outputs to standalone repo
+mark Priority 8 project card/status if needed
+prepare thesis-ready tables and figures one by one
 evaluate whether longer clean training changes robustness
-prepare a concise lab report figure for GitHub and thesis documentation
+rerun FGSM and PGD sweeps on a longer-trained model later
+evaluate stronger defense settings later
 ```
-
