@@ -64,11 +64,11 @@ CONDITION_ORDER = [
     },
     {
         "condition": "undefended_fgsm_epsilon_0_03",
-        "title": "Undefended FGSM\nε = 0.030",
+        "title": "Undefended FGSM\nepsilon = 0.030",
     },
     {
         "condition": "undefended_pgd_epsilon_0_03",
-        "title": "Undefended PGD\nε = 0.030",
+        "title": "Undefended PGD\nepsilon = 0.030",
     },
     {
         "condition": "defended_clean",
@@ -76,11 +76,11 @@ CONDITION_ORDER = [
     },
     {
         "condition": "defended_fgsm_epsilon_0_03",
-        "title": "Defended FGSM\nε = 0.030",
+        "title": "Defended FGSM\nepsilon = 0.030",
     },
     {
         "condition": "defended_pgd_epsilon_0_03",
-        "title": "Defended PGD\nε = 0.030",
+        "title": "Defended PGD\nepsilon = 0.030",
     },
 ]
 

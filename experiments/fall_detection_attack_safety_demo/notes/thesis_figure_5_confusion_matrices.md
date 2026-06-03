@@ -22,11 +22,11 @@ This is a research implementation using window-level safety-proxy metrics and so
 | Condition | TP | FN | FP | TN | Recall/Sensitivity | Missed Fall Rate | Precision | F1-Score | Balanced Accuracy |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | Undefended Clean | 57 | 32 | 32 | 875 | 0.6404 | 0.3596 | 0.6404 | 0.6404 | 0.8026 |
-| Undefended FGSM ε = 0.030 | 0 | 89 | 119 | 788 | 0.0000 | 1.0000 | 0.0000 | 0.0000 | 0.4344 |
-| Undefended PGD ε = 0.030 | 0 | 89 | 115 | 792 | 0.0000 | 1.0000 | 0.0000 | 0.0000 | 0.4366 |
+| Undefended FGSM epsilon = 0.030 | 0 | 89 | 119 | 788 | 0.0000 | 1.0000 | 0.0000 | 0.0000 | 0.4344 |
+| Undefended PGD epsilon = 0.030 | 0 | 89 | 115 | 792 | 0.0000 | 1.0000 | 0.0000 | 0.0000 | 0.4366 |
 | Defended Clean | 36 | 53 | 22 | 885 | 0.4045 | 0.5955 | 0.6207 | 0.4898 | 0.6901 |
-| Defended FGSM ε = 0.030 | 0 | 89 | 72 | 835 | 0.0000 | 1.0000 | 0.0000 | 0.0000 | 0.4603 |
-| Defended PGD ε = 0.030 | 0 | 89 | 56 | 851 | 0.0000 | 1.0000 | 0.0000 | 0.0000 | 0.4691 |
+| Defended FGSM epsilon = 0.030 | 0 | 89 | 72 | 835 | 0.0000 | 1.0000 | 0.0000 | 0.0000 | 0.4603 |
+| Defended PGD epsilon = 0.030 | 0 | 89 | 56 | 851 | 0.0000 | 1.0000 | 0.0000 | 0.0000 | 0.4691 |
 
 ## Interpretation
 
