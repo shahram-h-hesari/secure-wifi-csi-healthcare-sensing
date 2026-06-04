@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Collaboration Wiki
+    url: https://github.com/shahram-h-hesari/secure-wifi-csi-healthcare-sensing/wiki
+    about: Read the collaboration wiki before submitting broad research requests.
+  - name: AI/ML WiFi Sensing Evidence Hub
+    url: https://github.com/shahram-h-hesari/ai-ml-wifi-sensing-hub
+    about: Suggest papers, datasets, code releases, and related WiFi sensing resources.

@@ -1,0 +1,110 @@
+name: Collaboration Request
+description: Propose a research collaboration, dataset suggestion, benchmark extension, or technical contribution.
+title: "[Collaboration]: "
+labels: ["collaboration-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for your interest in secure WiFi CSI sensing research.
+
+        Please use this form for focused collaboration ideas related to WiFi CSI sensing, adversarial robustness, dataset quality, metadata review, safety-aware metric translation, aging-in-place research, or open-source benchmark improvement.
+
+        Do not include private, sensitive, restricted, or identifiable data in this public issue.
+
+  - type: input
+    id: name_affiliation
+    attributes:
+      label: Name or organization
+      description: Optional. Share your name, lab, company, institution, or research group.
+      placeholder: "Example: Wireless Sensing Lab, University X"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: collaboration_type
+    attributes:
+      label: Collaboration type
+      description: Select the closest category.
+      options:
+        - Dataset or metadata suggestion
+        - WiFi CSI benchmark extension
+        - Model or algorithm contribution
+        - Adversarial robustness or defense
+        - Wireless security or threat modeling
+        - Safety-aware metric feedback
+        - HR/RR sensing extension
+        - Fall sensing extension
+        - Aging-in-place or human-centered sensing
+        - Documentation or open-source workflow improvement
+        - Translational research discussion
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Short summary
+      description: Briefly describe the collaboration idea or request.
+      placeholder: "Describe the idea, dataset, method, metric, or research question."
+    validations:
+      required: true
+
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Why this is relevant
+      description: Explain how this connects to WiFi CSI sensing, robustness, metadata quality, safety-aware metrics, or aging-in-place research.
+      placeholder: "Explain why this may be useful for the project."
+    validations:
+      required: true
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Related links
+      description: Add links to papers, datasets, codebases, repositories, websites, or documentation.
+      placeholder: |
+        Paper:
+        Dataset:
+        Code:
+        Website:
+    validations:
+      required: false
+
+  - type: textarea
+    id: metadata
+    attributes:
+      label: Dataset or metadata details
+      description: Complete this if the request involves a dataset.
+      placeholder: |
+        Subject IDs available:
+        Session IDs available:
+        Room/environment IDs available:
+        Timestamps available:
+        Event IDs available:
+        Monitoring duration available:
+        Annotation protocol available:
+        Train/test splits documented:
+        License/reuse terms:
+    validations:
+      required: false
+
+  - type: textarea
+    id: proposed_next_step
+    attributes:
+      label: Suggested next step
+      description: What would be a useful next action?
+      placeholder: "Example: review dataset, discuss metric, test workflow, add paper to evidence hub, open collaboration discussion."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: scope_check
+    attributes:
+      label: Responsible scope confirmation
+      description: Please confirm that the request is framed as research collaboration.
+      options:
+        - label: I understand this project is currently a research implementation and does not claim clinical validation, medical-device validation, real patient deployment, FDA readiness, or physical-layer attack validation.
+          required: true
