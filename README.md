@@ -10,6 +10,14 @@
 
 ---
 
+## Collaboration Wiki
+
+This repository includes the main collaboration wiki for secure WiFi CSI sensing research, including the research vision, flagship fall attack-safety case study, technical framework, metadata needs, roadmap, safety boundaries, and contact paths.
+
+[Secure WiFi CSI Sensing Collaboration Wiki](https://github.com/shahram-h-hesari/secure-wifi-csi-healthcare-sensing/wiki)
+
+---
+
 ## Project Summary
 
 An end-to-end research prototype exploring **WiFi Channel State Information (CSI)-inspired fall detection and healthcare sensing security** using synthetic signals, signal processing, and machine learning. The project demonstrates a full pipeline from synthetic CSI generation through baseline classification, clinical-safety-aware evaluation, adversarial robustness stress testing, defense methods, and interactive visualization.
