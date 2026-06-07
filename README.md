@@ -4,9 +4,9 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
 ![Status](https://img.shields.io/badge/Status-Research%20Prototype-yellow)
-![Data](https://img.shields.io/badge/Data-Synthetic%20Only-lightgrey)
+![Data](https://img.shields.io/badge/Data-Synthetic%20%2B%20UT--HAR%2FSenseFi-lightgrey)
 
-> **Disclaimer:** This repository uses **synthetic CSI-like data only**. It does not use real patient data, real clinical data, or validated WiFi CSI hardware measurements. All results are prototype outputs intended to demonstrate a research workflow. This is not a clinical product, a validated fall-detection system, or a medical device.
+> **Disclaimer:** The root prototype workflow uses **synthetic CSI-like data**. The fall-detection attack-safety experiment under `experiments/fall_detection_attack_safety_demo` uses the public **SenseFi / UT-HAR** workflow locally for reproducible research. No real patient data, private clinical data, medical-device data, or deployed monitoring data are included. All outputs are research/prototype artifacts and should not be interpreted as clinical validation, medical-device validation, deployment evidence, or physical-layer / over-the-air attack validation.
 
 ---
 
@@ -20,7 +20,7 @@ This repository includes the main collaboration wiki for secure WiFi CSI sensing
 
 ## Project Summary
 
-An end-to-end research prototype exploring **WiFi Channel State Information (CSI)-inspired fall detection and healthcare sensing security** using synthetic signals, signal processing, and machine learning. The project demonstrates a full pipeline from synthetic CSI generation through baseline classification, clinical-safety-aware evaluation, adversarial robustness stress testing, defense methods, and interactive visualization.
+An end-to-end research prototype exploring **WiFi Channel State Information (CSI)-inspired fall detection and healthcare sensing security** using signal processing, machine learning, adversarial robustness testing, and safety-risk translation. The root prototype demonstrates a synthetic CSI-like workflow from signal generation through baseline classification, clinical-safety-aware evaluation, adversarial robustness stress testing, defense methods, and interactive visualization. The repository also includes a public-dataset fall attack-safety experiment under `experiments/fall_detection_attack_safety_demo`, using the **SenseFi / UT-HAR** workflow for window-level software adversarial stress testing and fall-safety proxy analysis.
 
 Built to support PhD research in **secure WiFi sensing for healthcare IoT** at Portland State University, with emphasis on:
 - Adversarial robustness and attack resilience for CSI-based sensing
@@ -144,7 +144,7 @@ This prototype supports a PhD dissertation focused on:
 - **Threat modeling** for WiFi CSI-based healthcare sensing systems
 - **Adversarial attack characterization** at the physical and ML layers
 - **Clinical-safety impact assessment** of adversarial perturbations
-- **Defense method evaluation** under synthetic stress conditions
+- **Defense method evaluation** under synthetic and UT-HAR / SenseFi window-level stress conditions
 - **Open-source gap identification** in healthcare-aware adversarial CSI research
 
 See [`docs/research_context.md`](docs/research_context.md) and [`docs/roadmap.md`](docs/roadmap.md) for the full research agenda.
@@ -190,3 +190,4 @@ All third-party references are documented in [THIRD_PARTY_NOTICES.md](THIRD_PART
 ---
 
 *Built at Portland State University — PhD Research in Secure WiFi Sensing for Healthcare IoT*
+
