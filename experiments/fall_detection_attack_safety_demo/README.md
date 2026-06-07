@@ -2846,3 +2846,133 @@ physical-layer / packet-level / preamble-level / SDR / over-the-air validation
 ```
 
 Claim boundary: this is a descriptive claim-boundary and evidence-strength summary based on the current window-level research workflow. It is not clinical validation, medical-device validation, event-level validation, long-lie validation, false alarms per hour/day, time-to-alarm validation, or physical-layer / packet-level / preamble-level / SDR / over-the-air validation.
+
+### Thesis Table 22 and Figure 22: Thesis Artifact Evidence Map
+
+Table 22 and Figure 22 add an end-to-end evidence map for the fall attack-safety demo.
+
+**Files**
+
+- `results/thesis_table_22_thesis_artifact_evidence_map.csv`
+- `figures/thesis_figure_22_thesis_artifact_evidence_map.png`
+- `notes/thesis_table_22_figure_22_thesis_artifact_evidence_map.md`
+
+**Purpose**
+
+- show how the artifact package connects workflow setup, software attacks, defenses, safety-proxy metrics, failure patterns, and claim boundaries;
+- list descriptive artifact themes under each evidence-map stage, rather than relying only on table/figure numbers;
+- separate what is currently supported from what remains future work;
+- give the reader a compact, thesis-level evidence roadmap.
+
+**Structure**
+
+- Column 1: Experimental Workflow — what was run
+- Column 2: Window-Level Evidence Products — what was measured
+- Column 3: Claim Interpretation — what can and cannot be claimed
+
+**Current support**
+
+The evidence package supports a window-level research-prototype claim:
+
+```text
+Software-level FGSM/PGD attacks can degrade fall-detection safety proxies,
+and defended-vs-undefended behavior can be analyzed descriptively.
+```
+
+**Claim boundary**
+
+Current results support descriptive window-level proxy analysis and software-level FGSM/PGD stress testing. They do not establish clinical, event-level, deployment, subject/room generalization, or physical-layer validation claims.
+
+### Thesis Table 22 and Figure 22: End-to-End Thesis Artifact Evidence Map
+
+Table 22 and Figure 22 summarize how the thesis artifact package connects end to end.
+
+Files:
+
+```text
+results/thesis_table_22_thesis_artifact_evidence_map.csv
+figures/thesis_figure_22_thesis_artifact_evidence_map.png
+notes/thesis_table_22_figure_22_thesis_artifact_evidence_map.md
+```
+
+Purpose:
+
+```text
+How do the thesis artifacts connect from workflow foundation to attack testing, defense comparison, safety-proxy translation, failure-pattern analysis, and claim boundary?
+```
+
+Figure 22 uses descriptive artifact themes rather than relying only on table/figure numbers. This keeps the figure readable even if numbering changes later.
+
+High-level structure:
+
+```text
+Layer 1: Experimental foundation
+- Dataset / Workflow
+- Attack Stress Test
+- Defense Comparison
+
+Layer 2: Window-level safety evidence
+- Safety-Proxy Metrics
+- Alert Trustworthiness
+- Failure Patterns
+
+Layer 3: Claim boundary / future validation
+- Supported Now
+- Future Validation Needed
+```
+
+Takeaway:
+
+```text
+The evidence package supports a window-level research-prototype claim:
+software FGSM/PGD attacks can degrade fall-detection safety proxies,
+and defended-vs-undefended behavior can be analyzed descriptively.
+```
+
+Evidence source:
+
+```text
+UT-HAR / SenseFi window-level workflow.
+```
+
+Claim boundary:
+
+```text
+The evidence source supports proxy analysis and software-level stress testing,
+not clinical validation, event-level validation, time-to-alarm validation,
+false alarms per hour/day, subject/room generalization, or physical-layer / over-the-air validation.
+```
+
+### Thesis Table 22 and Figure 22: End-to-End Evidence Map
+
+Table 22 and Figure 22 add a meeting-friendly end-to-end evidence map for the fall attack-safety demo.
+
+**Files**
+
+- `results/thesis_table_22_thesis_artifact_evidence_map.csv`
+- `figures/thesis_figure_22_thesis_artifact_evidence_map.png`
+- `notes/thesis_table_22_figure_22_thesis_artifact_evidence_map.md`
+
+**Purpose**
+
+This artifact is designed to explain:
+
+1. what was done in the demo,
+2. what evidence products were produced,
+3. and where collaboration with richer real-world datasets could add value.
+
+**Figure structure**
+
+The figure is organized into three large vertical columns:
+
+- **Research Workflow**
+- **Evidence Generated**
+- **What Collaboration Could Enable**
+
+**Main message**
+
+Current evidence supports window-level fall-safety analysis and software-level FGSM/PGD stress testing. Richer datasets could enable event-level validation, alarm-burden analysis, long-lie analysis, subject/room generalization, and stronger clinical / care-setting relevance.
+
+**Claim boundary**
+
+The current package supports descriptive window-level proxy analysis and software-level stress testing. It does not by itself establish clinical, event-level, deployment, or physical-layer validation.
