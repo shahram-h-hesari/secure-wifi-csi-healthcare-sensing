@@ -4,7 +4,7 @@
 
 ## Purpose
 
-The demo dashboard provides an interactive visualization of the full synthetic WiFi CSI fall-detection prototype pipeline. It is designed to make the research workflow accessible to GitHub visitors, LinkedIn viewers, collaborators, recruiters, and PhD committee members without requiring them to run the Jupyter notebook.
+The demo dashboard provides an interactive visualization of the full synthetic WiFi CSI fall-detection prototype pipeline. It is designed to make the research workflow accessible to GitHub visitors, collaborators, external reviewers, and PhD committee members without requiring them to run the Jupyter notebook.
 
 The dashboard generates all data synthetically at runtime. No external data files are required.
 

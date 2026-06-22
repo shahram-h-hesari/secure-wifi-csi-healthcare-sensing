@@ -4,11 +4,11 @@
 
 ## Purpose
 
-This document provides a transparent, up-to-date record of what the repository contains, what has been implemented, what is planned, and what is explicitly not claimed. It is intended for PhD committee members, collaborators, recruiters, and GitHub visitors.
+This document provides a transparent, up-to-date record of what the repository contains, what has been implemented, what is planned, and what is explicitly not claimed. It is intended for PhD committee members, collaborators, external reviewers, and GitHub visitors.
 
 ## Current Status Summary
 
-**Current phase:** Phase 9 - GitHub Polish and LinkedIn-Ready Presentation
+**Current phase:** Phase 9 - GitHub Polish and Public Research Presentation
 
 **Repository type:** Research prototype (synthetic data only)
 
@@ -78,10 +78,10 @@ This document provides a transparent, up-to-date record of what the repository c
 - Sidebar controls for signal parameters, noise, perturbation, defense
 - Full pipeline visualization from synthetic CSI generation to defense comparison
 
-### Phase 9: GitHub Polish and LinkedIn-Ready Presentation
+### Phase 9: GitHub Polish and Public Research Presentation
 - Polished README with badges, highlights table, quick start, roadmap
 - Project status documentation (this file)
-- LinkedIn summary documentation
+- public research summary documentation
 - Dashboard documentation
 - Screenshot placeholder for future local testing
 

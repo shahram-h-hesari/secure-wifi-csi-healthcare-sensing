@@ -76,10 +76,10 @@ flowchart LR
 
 ---
 
-## How this roadmap supports thesis, job hunting, and future collaboration goals
+## How this roadmap supports thesis, research portfolio, and future collaboration goals
 
 - **Thesis:** Provides clear chapter structure, reproducible experiments, and a path toward theoretical and empirical contributions.
-- **Job hunting / recruiters:** Demonstrates expertise in ML robustness, wireless sensing, signal processing, healthcare cybersecurity, and safety-aware evaluation.
+- **Research portfolio and external reviewers:** Demonstrates expertise in ML robustness, wireless sensing, signal processing, healthcare cybersecurity, and safety-aware evaluation.
 - **Future research collaboration:** Produces reproducible prototype code, planned benchmark artifacts, and documented threat models suitable for research partnerships or technology-transfer discussions as a non-clinical prototype.
 
 ---

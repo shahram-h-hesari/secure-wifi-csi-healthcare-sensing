@@ -143,20 +143,18 @@ The ultimate goal is to contribute to the design of **secure, privacy-preserving
 
 ---
 
-## Phase 9 - GitHub Polish and LinkedIn-Ready Presentation
+## Phase 9 - GitHub Polish and Public Research Presentation
 
 **Status:** Completed
 
 **Goals:**
 - [x] Polish README with badges, highlights table, quick start, and roadmap
 - [x] Add docs/project_status.md
-- [x] Add docs/linkedin_summary.md
+- [x] Prepare public research summary documentation
 - [x] Add docs/demo_dashboard.md
 - [x] Add figures/dashboard_screenshot_placeholder.md
 - [x] Update roadmap.md (this file)
 - [ ] Add actual dashboard screenshot after local testing (next step)
-- [ ] Add GitHub repository to LinkedIn Featured section (next step)
-- [ ] Publish LinkedIn post introducing the project (next step)
 
 ---
 
